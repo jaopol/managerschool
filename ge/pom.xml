@@ -8,7 +8,7 @@
 		<version>1.0</version>
 		<relativePath>projeto-pom.xml</relativePath>
 	</parent>
-
+    
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>powerlogic.app</groupId>
 	<artifactId>ge</artifactId>
