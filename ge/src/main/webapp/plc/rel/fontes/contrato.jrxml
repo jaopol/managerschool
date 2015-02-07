@@ -1,0 +1,738 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="contrato"
+		 columnCount="1"
+		 printOrder="Vertical"
+		 orientation="Portrait"
+		 pageWidth="595"
+		 pageHeight="842"
+		 columnWidth="535"
+		 columnSpacing="0"
+		 leftMargin="30"
+		 rightMargin="30"
+		 topMargin="20"
+		 bottomMargin="20"
+		 whenNoDataType="NoPages"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false">
+	<property name="ireport.zoom" value="1.0" />
+	<property name="ireport.x" value="0" />
+	<property name="ireport.y" value="65" />
+	<property name="ireport.scriptlethandling" value="0" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+
+	<parameter name="mesAtual" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="DIR_IMAGENS" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="REPORT_CONTEXT" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="valor" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="mesesContrato" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="valoresContrato" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="nomeRespFinanceiro" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="mesesContratoExtenso" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="dataBaseContrato" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="dataInicioContrato" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="valorMatriculaMoeda" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="valorTotalMensalidadeMoeda" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="respAluno" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="valorDeducao" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="dataFinalContrato" isForPrompting="false" class="java.lang.String"/>
+
+	<field name="nomeRespFinanceiroStr" class="java.lang.String"/>
+	<field name="nomeAluno" class="java.lang.String"/>
+	<field name="turma.descricao" class="java.lang.String"/>
+	<field name="dataNascimento" class="java.util.Date"/>
+	<field name="rua" class="java.lang.String"/>
+	<field name="numero" class="java.lang.String"/>
+	<field name="complemento" class="java.lang.String"/>
+	<field name="bairro" class="java.lang.String"/>
+	<field name="cidadeStr" class="java.lang.String"/>
+	<field name="cep" class="java.lang.String"/>
+	<field name="ufStr" class="java.lang.String"/>
+	<field name="dataNascimentoStr" class="java.lang.String"/>
+	<field name="nacionalidadeStr" class="java.lang.String"/>
+	<field name="estadoCivilStr" class="java.lang.String"/>
+	<field name="profissaoStr" class="java.lang.String"/>
+	<field name="localTrabalhoStr" class="java.lang.String"/>
+	<field name="telefoneStr" class="java.lang.String"/>
+	<field name="cpfStr" class="java.lang.String"/>
+	<field name="rgStr" class="java.lang.String"/>
+	<field name="saudeAluno" class="java.util.List"/>
+	<field name="aluno" class="java.lang.Object"/>
+
+
+		<group  name="pagina2" >
+			<groupExpression><![CDATA[$F{nomeRespFinanceiroStr}]]></groupExpression>
+			<groupHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+			</groupHeader>
+			<groupFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+			</groupFooter>
+		</group>
+		<background>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</title>
+		<pageHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="742"  isSplitAllowed="true" >
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="477"
+						width="535"
+						height="16"
+						key="textField-56"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle" isStyledText="true">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["      O <style isBold='true' pdfFontName='Helvetica-Bold'>CONTRATANTE</style>, neste ato, assume total responsabilidade quanto às declarações prestadas neste contrato e no Requerimento de Matrícula, relativas à aptidão legal do aluno beneficiário para a matrícula e freqüência na série e grau indicados, obrigando-se a entregar, no prazo estabelecido pela legislação escolar vigente, os documentos comprobatórios daquelas declarações e das demais, exigidos por lei sob pena de rescisão contratual."]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="0"
+						y="494"
+						width="535"
+						height="16"
+						key="staticText-10"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="11" isBold="true" isUnderline="true"/>
+					</textElement>
+				<text><![CDATA[CLÁUSULA X – PERÍODO DE VALIDADE CONTRATUAL]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="510"
+						width="535"
+						height="16"
+						key="textField-57"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica" isBold="false" isUnderline="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["      O presente contrato terá sua validade, iniciando-se em "+$P{dataInicioContrato}+" e extinguindo-se "+$P{dataFinalContrato}+"."]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="579"
+						width="535"
+						height="16"
+						key="textField-58"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Justified" verticalAlignment="Middle" isStyledText="true">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["      As partes elegem para foro do presente, o da cidade de Belo Horizonte, Estado de Minas Gerais, para apreciação de quaisquer dúvidas resultantes da interpretação do presente contrato, sem detrimento de qualquer outro mais favorecido que seja.<br/>      E por estarem justos e contratados, assinam o presente instrumento em duas vias de igual teor, para que se produzam todos os efeitos jurídicos e legais."]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="-1"
+						y="240"
+						width="535"
+						height="16"
+						key="textField-45"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle" isStyledText="true">
+						<font pdfFontName="Helvetica" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["<style isBold='true' pdfFontName='Helvetica-Bold'>I – Efetuar a cobrança ou execução judicial do valor principal devido e acessório; por intermédio da instituição financeira (Banco) responsável pela cobrança do boleto<br/>II – Efetuar a inscrição do devedor em cadastro ou serviço de proteção ao crédito, desde que precedido de notificação prévia e ainda, que não haja ação judicial relativa ao débito, da parte contratante</style>"]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="0"
+						y="257"
+						width="535"
+						height="16"
+						key="staticText-5"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Justified" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="11" isBold="true" isUnderline="true"/>
+					</textElement>
+				<text><![CDATA[CLÁUSULA IV – DA AULA ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="20"
+						width="535"
+						height="16"
+						key="staticText-16"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left">
+						<font pdfFontName="Helvetica-Bold" size="11" isBold="true" isUnderline="true"/>
+					</textElement>
+				<text><![CDATA[CLÁUSULA II – PREÇO / FORMA DE PAGAMENTO]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="36"
+						width="535"
+						height="16"
+						key="textField-73"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle" isStyledText="true">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["      Pelos serviços educacionais objeto deste, o <style isBold='true' pdfFontName='Helvetica-Bold'>CONTRATANTE pagará á ESCOLA uma anuidade escolar, no valor global de "+$P{valor}+", fixada na forma da lei, pago em "+$P{mesesContratoExtenso}+" parcelas mensais e iguais, com vencimento no 1º (primeiro) dia de cada mês, podendo a mensalidade ser paga, sem multa ou acréscimo, até o 5º (quinto) dia útil de cada mês</style>."]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="52"
+						width="535"
+						height="16"
+						key="textField-74"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle" isStyledText="true">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["§1o - Em caso de desistência de matrícula efetuada, por parte do <style isBold='true' pdfFontName='Helvetica-Bold'>CONTRATANTE, em até 10 (dez) dias antes de final do período de</style> matrículas, a <style isBold='true' pdfFontName='Helvetica-Bold'>ESCOLA restituirá ao CONTRATANTE</style> <style isBold='true' pdfFontName='Helvetica-Bold'>o equivalente a 80% (oitenta por cento) do valor pago</style>."]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="68"
+						width="535"
+						height="16"
+						key="textField-75"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle" isStyledText="true">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["§2o - Os pagamentos realizados em cheques serão recebidos em caráter “pro solvendo”, <style isBold='true' pdfFontName='Helvetica-Bold'>cuja quitação se dará após a regular compensação do cheque</style>."]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="84"
+						width="535"
+						height="16"
+						key="textField-76"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["§3º - O valor referido nesta Cláusula corresponde à carga horária ou plano do curso, conforme especificações constantes no Requerimento de Matrícula. Dessa forma, os serviços especiais não terão caráter obrigatório e seus preços serão fixados previamente em acordo verbal entre as partes.<br/>§4º - Será cobrada hora extra pela permanência do aluno após o término do horário, superior aos 15 (quinze) minutos de tolerância, no valor de R$ 18,00 (dezoito reais) a cada hora excedente."]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="118"
+						width="535"
+						height="16"
+						key="textField-84"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle" isStyledText="true">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["§6o - Havendo atraso do pagamento de qualquer parcela por prazo superior ao mencionado no “caput” desta clausula, o <style isBold='true' pdfFontName='Helvetica-Bold'>CONTRATANTE</style> pagará além do valor principal:"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="102"
+						width="535"
+						height="16"
+						key="textField-86"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["§5º - Não recebendo o boleto bancário no endereço indicado à CONTRATADA, deverá o CONTRATANTE dirigir-se à Secretaria do Colégio, com a necessária antecedência, para obter a segunda via e efetuar o pagamento."]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="134"
+						width="535"
+						height="16"
+						key="textField-87"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle" isStyledText="true">
+						<font pdfFontName="Helvetica-Bold" size="11" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["I – Multa de 10% (dez por cento).<br/>II – Juros de 2% (dois por cento) ao mês.<br/>III – Correção monetária com base no INPC."]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="150"
+						width="535"
+						height="16"
+						key="textField-90"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["REPACTUAÇÃO: HAVENDO ALTERAÇÃO NA POLÍTICA DE PREÇOS E SALÁRIOS, EM DECORRÊNCIA DE LEI, OU DEVIDO INTERVENÇÃO DO GOVERNO FEDERAL, COM REFLEXO DIRETO NOS CUSTOS LEVANTADO EM PLANILHA, ELABORADA COMO DETERMINA A LEGISLAÇÃO VIGENTE SOBRE A MATÉRIA, AS PARTES SE COMPROMETEM, APÓS ACORDO, A EFETUAR A ADAPTAÇÃO DO PRESENTE CONTRATO A NOVA REALIDADE, MEDIANTE TERMO DE ADIANTAMENTO."]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="166"
+						width="535"
+						height="18"
+						key="textField-91"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle" isStyledText="true">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["§7o - Valores a deduzir no IR (imposto de renda), referem-se somente ao valor pago como anuidade dividida em parcelas mensais sem acréscimo de tarifas referente a serviços diversos. O valor que deverá ser deduzido ou informado no IR (imposto de renda) será apenas de: <style isBold='true' pdfFontName='Helvetica-Bold'>"+$P{valorDeducao}+"</style><br/><br/>Matricula: "+$P{valorMatriculaMoeda}+" mais "+$P{mesesContratoExtenso}+" parcelas iguais de "+$P{valorTotalMensalidadeMoeda}+"."]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="0"
+						y="208"
+						width="535"
+						height="16"
+						key="staticText-17"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="11" isBold="true" isUnderline="true"/>
+					</textElement>
+				<text><![CDATA[CLÁUSULA III – ATRASO / INADIMPLÊNCIA]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="273"
+						width="535"
+						height="16"
+						key="textField-92"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle" isStyledText="true">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["      As aulas serão ministradas nas salas de aula em locais designados pela CONTRATADA, que levará em conta a natureza do conteúdo e técnica pedagógica a ser aplicada.<br/>    Ao aderir ao presente, a CONTRATANTE submete-se ao regulamento interno e às demais obrigações constantes na legislação aplicável à área, e ainda, às emanadas de outras fontes legais, desde que regulem, supletivamente, a matéria. <br/>    É de exclusiva competência da CONTRATADA o planejamento, escolha de professores, orientação didática, pedagógica e educacional, fixação da carga horária e plano pedagógico, marcação de datas de provas e atividades de verificação de aproveitamento e demais providências de ensino."]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="290"
+						width="535"
+						height="16"
+						key="textField-94"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" size="11" isBold="true" isUnderline="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["CLÁUSULA V – DESISTÊNCIA / TRANSFERÊNCIA "]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="306"
+						width="535"
+						height="16"
+						key="textField-95"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["O presente contrato poderá ser rescindido pelo <style isBold='true' pdfFontName='Helvetica-Bold'>CONTRATANTE</style>, antes do vencimento, desde que a <style isBold='true' pdfFontName='Helvetica-Bold'>ESCOLA</style> seja comunicada por escrito, com uma antecipação mínima de 30 (trinta) dias, <style isBold='true' pdfFontName='Helvetica-Bold'>sendo devido o pagamento desse período.</style> "]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="322"
+						width="535"
+						height="16"
+						key="textField-96"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["§1o – O não comparecimento do aluno às atividades de seu curso e a não utilização dos serviços colocados à sua disposição, sem a comunicação de que trata o caput, não desobriga o CONTRATANTE do pagamento das parcelas contratadas vencidas e vincendas."]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="338"
+						width="535"
+						height="16"
+						key="textField-97"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["§2o - <style isBold='true' pdfFontName='Helvetica-Bold'>Os pedidos de transferência, desistência, cancelamento ou trancamento de matrícula</style>, deverão ser requeridos por escrito pelo <style isBold='true' pdfFontName='Helvetica-Bold'>CONTRATANTE</style>, através de instrumento próprios escritos, observadas as disposições legais e Regimento Interno."]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="372"
+						width="535"
+						height="16"
+						key="textField-98"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["      A <style isBold='true' pdfFontName='Helvetica-Bold'>ESCOLA</style> se reserva o direito de cancelar o contrato e a matrícula, bem como de não firmá-lo para o ano letivo seguinte, expedindo a transferência do aluno, por motivo disciplinar ou de incompatibilidade com o regime da <style isBold='true' pdfFontName='Helvetica-Bold'>ESCOLA</style>, bem como de divergência ou conflito entre os contratantes, <br/>Parágrafo único – a CONTRATADA cobrará multa pela rescisão do contrato por interesse da CONTRATANTE, no valor de 20% (vinte por cento) incidentes sobre o valor descrito na Cláusula II, caso ocorra antes."]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="356"
+						width="535"
+						height="16"
+						key="textField-100"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="11" isBold="true" isUnderline="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["CLÁUSULA VI – RESCISÃO"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="391"
+						width="535"
+						height="16"
+						key="textField-101"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="11" isBold="true" isUnderline="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["CLÁUSULA VII – MUDANÇA DE ENDEREÇO"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="407"
+						width="535"
+						height="16"
+						key="textField-102"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["      O <style isBold='true' pdfFontName='Helvetica-Bold'>CONTRATANTE</style> obriga-se a comunicar à <style isBold='true' pdfFontName='Helvetica-Bold'>CONTRATADA</style>, qualquer mudança de endereço quando ocorrer. "]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="426"
+						width="535"
+						height="16"
+						key="textField-103"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="11" isBold="true" isUnderline="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["CLÁUSULA VIII – OBRIGAÇÕES DO BENEFICIÁRIO"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="443"
+						width="535"
+						height="16"
+						key="textField-104"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["      Além das obrigações previstas neste contrato, o <style isBold='true' pdfFontName='Helvetica-Bold'>CONTRATANTE</style> obriga-se a adquirir, em qualquer estabelecimento, o material escolar individual e coletivo exigido pelo estabelecimento de ensino e a fazer com que o aluno use o uniforme escolar completo e cumpra o Regimento Escolar da <style isBold='true' pdfFontName='Helvetica-Bold'>ESCOLA</style>, o calendário escolar e os horários fixados pela <style isBold='true' pdfFontName='Helvetica-Bold'>ESCOLA</style>, assumindo total responsabilidade pelas conseqüências advindas do descumprimento dessas obrigações.<br/>§1o – Diante do pedido de desistência, transferência, trancamento ou cancelamento de matrícula, a <style isBold='true' pdfFontName='Helvetica-Bold'>CONTRATADA DESOBRIGA-SE</style> da devolução de material didático de uso comum em sua totalidade, bem como o material de uso individual consumido até a data do desligamento."]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="461"
+						width="535"
+						height="16"
+						key="textField-106"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="11" isBold="true" isUnderline="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["CLÁUSULA IX – RESPONSABILIDADE DAS DECLARAÇÕES / ENTREGA DE DOCUMENTOS"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="529"
+						width="535"
+						height="16"
+						key="textField-107"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="11" isBold="true" isUnderline="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["CLÁUSULA XI – DAS DISPOSIÇÕES GERAIS"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="545"
+						width="535"
+						height="16"
+						key="textField-108"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle" isStyledText="true">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["      O CONTRATANTE autoriza a CONTRATADA a utilizar-se sem ônus, <style isBold='true' pdfFontName='Helvetica-Bold'>da imagem do aluno citado neste contrato, sozinho ou em grupo</style>, para fins de divulgação do curso e suas atividades, podendo veiculá-la pelos meios de comunicação disponíveis, <style isBold='true' pdfFontName='Helvetica-Bold'>durante o período de vigência deste contrato</style>. O uso da imagem respeitará sempre a moral, os bons costumes e a ordem pública.<br/>Parágrafo único - O CONTRATANTE será responsável pelos prejuízos que venha a causar às instalações de propriedade da CONTRATADA ou a terceiros, em decorrência da utilização da estrutura física da ESCOLA."]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="0"
+						y="563"
+						width="535"
+						height="16"
+						key="staticText-18"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="11" isBold="true" isUnderline="true"/>
+					</textElement>
+				<text><![CDATA[CLÁUSULA Xll – FORO]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="187"
+						width="535"
+						height="18"
+						key="textField-112"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle" isStyledText="true">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{valoresContrato}]]></textFieldExpression>
+				</textField>
+				<subreport  isUsingCache="true">
+					<reportElement
+						x="0"
+						y="0"
+						width="535"
+						height="20"
+						key="subreport-1"/>
+					<subreportParameter  name="DIR_IMAGENS">
+						<subreportParameterExpression><![CDATA[$P{DIR_IMAGENS}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter  name="nomeRespFinanceiro">
+						<subreportParameterExpression><![CDATA[$P{nomeRespFinanceiro}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter  name="dataBaseContrato">
+						<subreportParameterExpression><![CDATA[$P{dataBaseContrato}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource((java.util.List)$F{saudeAluno})]]></dataSourceExpression>
+					<subreportExpression  class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "/imagem_cabecalho.jasper"]]></subreportExpression>
+				</subreport>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="224"
+						width="535"
+						height="16"
+						key="textField-113"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["      A Contratante declara estar ciente de que o Boleto Bancário para o pagamento da mensalidade escolar é Registrado e sendo que o não pagamento do mesmo dentro do prazo estipulado no caput da Cláusula II, o mesmo será protestado.<br/>      Vencida e não paga qualquer das parcelas da anuidade, caracterizando inadimplência do <style isBold='true' pdfFontName='Helvetica-Bold'>CONTRATANTE</style>, reserva-se à <style isBold='true' pdfFontName='Helvetica-Bold'>ESCOLA</style> o direito de <style isBold='true' pdfFontName='Helvetica-Bold'>não</style> renovar a matrícula do aluno beneficiário para o ano letivo seguinte, com base na lei 9870/99, art.5º, podendo a <style isBold='true' pdfFontName='Helvetica-Bold'>CONTRATADA</style> desligar o beneficiário automaticamente, conforme art. 6º, §1º – MP 2.173-24, da mesma Lei, além de ficar a <style isBold='true' pdfFontName='Helvetica-Bold'>ESCOLA</style> autorizada a adotar os seguintes procedimentos:"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="304"
+						y="697"
+						width="220"
+						height="13"
+						key="textField-114"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{respAluno}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="32"
+						y="697"
+						width="220"
+						height="13"
+						key="staticText-20"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif"/>
+					</textElement>
+				<text><![CDATA[CNPJ: 07.797.977/0001-20]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="684"
+						width="275"
+						height="13"
+						key="textField-115"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["INSTITUTO EDUCACIONAL FACULDADE DA CRIANÇA"]]></textFieldExpression>
+				</textField>
+				<line direction="TopDown">
+					<reportElement
+						x="304"
+						y="683"
+						width="220"
+						height="1"
+						key="line-1"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="0"
+						y="683"
+						width="275"
+						height="1"
+						key="line-2"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="-1"
+						y="625"
+						width="535"
+						height="16"
+						key="textField-116"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Belo Horizonte, "+new java.text.SimpleDateFormat("dd").format(new java.util.Date(System.currentTimeMillis()))+" de "+$P{mesAtual}+" de "+new java.text.SimpleDateFormat("yyyy").format(new java.util.Date(System.currentTimeMillis()))+"."]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="304"
+						y="684"
+						width="220"
+						height="13"
+						key="textField-117"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{nomeRespFinanceiroStr} == null ? "" : $F{nomeRespFinanceiroStr}]]></textFieldExpression>
+				</textField>
+				<break>
+					<reportElement
+						x="0"
+						y="741"
+						width="535"
+						height="0"
+						key="element-1"
+						positionType="Float"/>
+				</break>
+			</band>
+		</detail>
+		<columnFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="19"  isSplitAllowed="true" >
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="436"
+						y="2"
+						width="55"
+						height="16"
+						key="textField-47"
+						isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Página "+$V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Report" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="478"
+						y="2"
+						width="57"
+						height="16"
+						key="textField-48"
+						isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["de "+$V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+			</band>
+		</pageFooter>
+		<summary>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</summary>
+</jasperReport>
