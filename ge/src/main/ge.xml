@@ -5,7 +5,7 @@
          path="ge" 
          privileged="true" swallowOutput="off">
 
-<!-- HOMOLOGACAO teste fac
+<!-- HOMOLOGACAO teste pedac
  <Resource name="jdbc/ge" type="javax.sql.DataSource" driverClassName="org.postgresql.Driver" 
    url="jdbc:postgresql://localhost:5432/jaopol_homolog" username="postgres" password="root"
    maxActive="50" maxWait="-1" maxIdle="10" removeAbandoned="true" logAbandoned="true" />
