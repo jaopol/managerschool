@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jstl/core">
+	
+	Realiza a renderizacao de formulários padronizados por convenção selecionando o conteúdo em conformidade com o padrão
+	definido nos metadados (anotações de camada controle). Usa DP Delegação para desacoplar inteiramente
+	os formulários do desenvolvedor dos leiautes da arquitetura.
+	
+	<ui:composition>
+		
+		<c:if test="#{requestScope.logicaPlc=='tabular'}"> 
+			<ui:include src="/fcls/client/formularioTabularPlc.xhtml" />
+		</c:if>
+		<c:if test="#{requestScope.logicaPlc=='crudtabular'}"> 
+			<ui:include src="/fcls/client/formularioCrudTabularPlc.xhtml" />
+		</c:if>
+		<c:if test="#{requestScope.logicaPlc=='crud'}"> 
+			<ui:include src="/fcls/client/formularioSimplesVBoxPlc.xhtml" />
+		</c:if>	
+		<c:if test="#{requestScope.logicaPlc=='mestredetalhe' or requestScope.logicaPlc=='mandetalhe' or requestScope.logicaPlc=='subdetalhe'}"> 
+			<c:if test="#{not empty requestScope.tabFolderAutomaticoPlc}"> 
+				<ui:include src="/fcls/client/formularioMestreDetalheTabPlc.xhtml" />
+			</c:if>
+			<c:if test="#{empty requestScope.tabFolderAutomaticoPlc}"> 
+				<ui:include src="/fcls/client/formularioMestreDetalheVBoxPlc.xhtml" />
+			</c:if>
+		</c:if>	
+		<c:if test="#{requestScope.logicaPlc=='selecao' or requestScope.logicaPlc=='selecaomandet' or requestScope.logicaPlc=='relatorio'}">  
+			<ui:include src="/fcls/client/formularioSelecaoVBoxPlc.xhtml" />
+		</c:if>
+		<c:if test="#{requestScope.logicaPlc=='consulta'}"> 
+			<ui:include src="/fcls/client/formularioConsultaVBoxPlc.xhtml" />
+		</c:if>
+		<c:if test="#{requestScope.logicaPlc=='controle'}">
+			<ui:include src="/fcls/client/formularioControlePlc.xhtml" />
+		</c:if>
+		<c:if test="#{requestScope.logicaPlc=='prefaplicacao'}">
+			<ui:include src="/fcls/client/formularioPreferenciaAplicacaoPlc.xhtml" />
+		</c:if>
+		<c:if test="#{requestScope.logicaPlc=='prefusuario'}">
+			<ui:include src="/fcls/client/formularioPreferenciaUsuarioPlc.xhtml" />
+		</c:if>
+	</ui:composition>	
+</html>

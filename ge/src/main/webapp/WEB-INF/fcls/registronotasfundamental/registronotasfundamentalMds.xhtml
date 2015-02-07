@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition> 
+		<plcf:tabela tituloChave="registronotasfundamental.mestre.titulo.comp" aoSair="comutaAbaFacelets(1)"> 
+			<plcf:linha>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.professor"/>
+					<plcf:vinculado id="professor" value="#{plcEntidade.professor}" propSelPop="professor" idExibe="N" idSomenteLeitura="N" autoRecuperacaoClasse="com.consisti.sisgesc.entidade.FuncionarioEntity" actionSel="funcionariosel" ajudaChave="ajuda.professor"  onkeydown="selecionaPorTecla(event,this);" lookupTamanho="50" modal="S" parametro="professor=S" />
+				</plcf:celula>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.disciplina"/>
+					<plcf:comboDinamico id="disciplina" value="#{plcEntidade.disciplina}" dominio="DisciplinasEntity" exibeBranco="S"  propRotulo="descricao" onchange="montaDetalheSubDetalhe();" disabled="#{plcEntidade.id != null}"/>
+				</plcf:celula>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.status" />
+					<plcf:comboDinamico id="status" value="#{plcEntidade.status}" dominio="AbertoFechado" exibeBranco="N" disabled="#{plcEntidade.bloqueiaCampo}" ajudaChave="ajuda.status"/>
+				</plcf:celula>
+			</plcf:linha>
+			<plcf:linha>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.anoLetivo"/>
+					<plcf:texto id="anoLetivo" value="#{plcEntidade.anoLetivo}" formato="NUMERICO"   ajudaChave="ajuda.anoLetivo" disabled="true"/>
+				</plcf:celula>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.bimestre"/>
+					<plcf:texto id="bimestre" value="#{plcEntidade.bimestre}" formato="NUMERICO"   ajudaChave="ajuda.bimestre" disabled="#{plcEntidade.id != null}" />
+				</plcf:celula>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.dataCadastro" />
+					<plcf:texto id="dataCadastro" value="#{plcEntidade.dataCadastro}" ajudaChave="ajuda.dataCadastro" disabled="true"/>
+				</plcf:celula>
+			</plcf:linha>
+		</plcf:tabela> 
+		
+		<plcf:escondido id="desabilitaCampo" value="#{requestScope.desabilitaCampo}" />
+
+		<plcf:botaoAcao id="btnMontaDetalheSubDetalhe" acao="montaDetalheSubDetalhe" validaForm="false" limpaForm="false" inlineStyle="display:none" />
+
+
+<script avaliar="S">
+//<![CDATA[
+          
+	if( document.getElementById('corpo:formulario:desabilitaCampo').value == 'S' ){
+		document.getElementById('corpo:formulario:professorSel').style.display = 'none';
+	}
+
+	function montaDetalheSubDetalhe(){
+		document.getElementById('corpo:formulario:btnMontaDetalheSubDetalhe').click();
+	}
+
+//]]>	
+</script>
+
+	</ui:composition> 
+</html>

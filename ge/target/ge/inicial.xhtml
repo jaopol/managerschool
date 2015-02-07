@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jstl/core">
+	<head>
+    <link rel="StyleSheet" href="#{request.contextPath}/plc/css-w2/jquery/ui/themes/ui.all.css" type="text/css" charset="UTF-8" />
+    <link rel="StyleSheet" href="#{request.contextPath}/plc/css-w2/itunes/jquery/jquery-ui-1.7.custom.css" type="text/css" charset="UTF-8" />	
+    <link rel="StyleSheet" href="#{request.contextPath}/plc/css-w2/plc.geral.css" type="text/css" charset="UTF-8" />
+	</head>
+<body>
+Exemplo de página inicial para customização. Por default o jCompany sugere uma página inicial com botões tipo quiosque para principais transações
+e explicações sobre como se obter ajuda para a aplicação. Esta pagina é um exemplo simples para customização, sem I18n.
+<ui:composition template="/fcls/template/PlcGeralTemplate.xhtml">
+<ui:define name="plc-header-complemento">
+	<style>
+			div.home {
+				width: 100%;
+				height: 450px;
+				font-size: 11px;
+			}
+			div.home-coluna-esq {
+				float: left;
+				width: 35%;
+				padding: 0 2%;
+			}
+			div.home-coluna-dir {
+				float:left;
+				width:60%;
+			}
+			a.plc-botao-quiosque {
+				display: block;
+				float: none;
+				width: 240px;
+				height: 32px;
+				font: 13px/32px Arial, Tahoma, sans-serif;
+				font-weight: bold !important;
+				text-decoration: none;
+				margin-bottom: 10px;
+			}
+			a.plc-botao-quiosque img {
+				display: block;
+				vertical-align: middle;
+				float: left;
+				margin-right: 10px;
+			}
+			div.home-titulo {
+				font-weight: bold;
+				font-size: 13px;
+				margin: 10px 0;
+			}
+			div.home-subtitulo {
+				margin: 10px 0;
+			}
+			div.home-subtopico {
+				margin-bottom: 15px;
+			}
+			div.home-subtopico-esq {
+				width: 20px;
+				vertical-align: middle;
+				float: left;
+				text-align: right;
+			}
+			div.home-subtopico-dir {
+				margin-left:25px;
+				padding-left:5px;
+				border-left: 2px solid rgb(153, 153, 153);
+				min-width:400px;
+			}
+			div.home-subtitulo-rodape {
+				margin: 100px 0 10px 20px;
+			}
+			div.home-browser-esq {
+				float:left;
+				margin-left:25px;
+				width:300px;
+				padding:2px;
+			}
+			div.home-browser-dir {
+				float:left;
+				padding:2px;
+			}
+		</style>
+</ui:define>
+<ui:define name="plc-corpo">
+<div class="home">
+	<div class="home-coluna-esq">
+		<div class="home-titulo">Operações Frequentes</div>
+		<div class="home-botao"> 
+			<a href="f/n/alunosel?fwPlc=alunomdt" 
+			class="plc-botao-quiosque ui-state-default ui-corner-all plc-botao">
+			
+			Cadastrar Aluno</a>
+			<a href="#" onclick="document.getElementById('plc-acao-desconecta').click();" 
+			class="plc-botao-quiosque ui-state-default ui-corner-all plc-botao">
+			
+			Sair</a> 
+		</div>
+	</div>
+	
+</div>
+</ui:define>
+</ui:composition>	
+</body>
+</html>

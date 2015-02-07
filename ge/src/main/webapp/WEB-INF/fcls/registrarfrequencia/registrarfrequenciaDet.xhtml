@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:plct="http://www.powerlogic.com.br/plct" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition> 
+		<plcf:tabela  aoSair="visualizaFormulario();">
+	<plcf:linha>
+		<plcf:celula/>
+		<plcf:celula rendered="#{empty requestScope.visualizaDocumentoPlc}">
+			<plcf:tituloExclusao/>
+		</plcf:celula>
+		<plcf:celula/>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.aluno"/>
+		</plcf:celula>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.diaUm"/>
+		</plcf:celula>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.diaDois"/>
+		</plcf:celula>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.diaTres"/>
+		</plcf:celula>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.diaQuatro"/>
+		</plcf:celula>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.diaCinco"/>
+		</plcf:celula>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.diaSeis"/>
+		</plcf:celula>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.diaSete"/>
+		</plcf:celula>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.diaOito"/>
+		</plcf:celula>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.diaNove"/>
+		</plcf:celula>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.diaDez"/>
+		</plcf:celula>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.diaOnze"/>
+		</plcf:celula>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.diaDoze"/>
+		</plcf:celula>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.diaTreze"/>
+		</plcf:celula>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.diaQuatorze"/>
+		</plcf:celula>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.diaQuinze"/>
+		</plcf:celula>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.diaDezesseis"/>
+		</plcf:celula>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.diaDezessete"/>
+		</plcf:celula>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.diaDezoito"/>
+		</plcf:celula>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.diaDezenove"/>
+		</plcf:celula>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.diaVinte"/>
+		</plcf:celula>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.diaVinteUm"/>
+		</plcf:celula>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.diaVinteDois"/>
+		</plcf:celula>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.diaVinteTres"/>
+		</plcf:celula>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.diaVinteQuatro"/>
+		</plcf:celula>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.diaVinteCinco"/>
+		</plcf:celula>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.diaVinteSeis"/>
+		</plcf:celula>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.diaVinteSete"/>
+		</plcf:celula>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.diaVinteOito"/>
+		</plcf:celula>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.diaVinteNove"/>
+		</plcf:celula>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.diaTrinta"/>
+		</plcf:celula>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.diaTrintaUm"/>
+		</plcf:celula>
+		<plcf:celula >
+			<plcf:titulo tituloChave="label.total"/>
+		</plcf:celula>
+	</plcf:linha>
+	<plcf:iteracao id="frequenciaAluno" value="#{plcEntidade.frequenciaAluno}">
+		<plcf:linha>
+			<plcf:celula styleClass="celulaFormularioContador">
+				<plcf:contador/>
+			</plcf:celula>
+			<plcf:celula styleClass="celulaFormularioCaixaMarcacao" rendered="#{empty requestScope.visualizaDocumentoPlc}">
+				<plcf:caixaExclusao id="indExcPlc"  />
+			</plcf:celula>
+			<plcf:celula/>
+			<plcf:celula>
+				<plcf:vinculado id="alunoEsc" value="#{item.aluno}" inlineStyle="display:none" actionSel=""  />
+				<plcf:exibe id="aluno" value="#{item.aluno.nomeAluno}" />
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:texto id="diaMes1" value="#{item.diaUm}"    ajudaChave="ajuda.diaUm" onchange="calculaFalta( #{plcItensStatus.index})" />
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:texto id="diaMes2" value="#{item.diaDois}"    ajudaChave="ajuda.diaDois" onchange="calculaFalta( #{plcItensStatus.index})"/>
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:texto id="diaMes3" value="#{item.diaTres}"    ajudaChave="ajuda.diaTres" onchange="calculaFalta( #{plcItensStatus.index})"/>
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:texto id="diaMes4" value="#{item.diaQuatro}"    ajudaChave="ajuda.diaQuatro" onchange="calculaFalta( #{plcItensStatus.index})"/>
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:texto id="diaMes5" value="#{item.diaCinco}"    ajudaChave="ajuda.diaCinco" onchange="calculaFalta( #{plcItensStatus.index})"/>
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:texto id="diaMes6" value="#{item.diaSeis}"    ajudaChave="ajuda.diaSeis" onchange="calculaFalta( #{plcItensStatus.index})"/>
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:texto id="diaMes7" value="#{item.diaSete}"    ajudaChave="ajuda.diaSete" onchange="calculaFalta( #{plcItensStatus.index})"/>
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:texto id="diaMes8" value="#{item.diaOito}"    ajudaChave="ajuda.diaOito" onchange="calculaFalta( #{plcItensStatus.index})"/>
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:texto id="diaMes9" value="#{item.diaNove}"    ajudaChave="ajuda.diaNove" onchange="calculaFalta( #{plcItensStatus.index})"/>
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:texto id="diaMes10" value="#{item.diaDez}"    ajudaChave="ajuda.diaDez" onchange="calculaFalta( #{plcItensStatus.index})"/>
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:texto id="diaMes11" value="#{item.diaOnze}"    ajudaChave="ajuda.diaOnze" onchange="calculaFalta( #{plcItensStatus.index})"/>
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:texto id="diaMes12" value="#{item.diaDoze}"    ajudaChave="ajuda.diaDoze" onchange="calculaFalta( #{plcItensStatus.index})"/>
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:texto id="diaMes13" value="#{item.diaTreze}"    ajudaChave="ajuda.diaTreze" onchange="calculaFalta( #{plcItensStatus.index})"/>
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:texto id="diaMes14" value="#{item.diaQuatorze}"    ajudaChave="ajuda.diaQuatorze" onchange="calculaFalta( #{plcItensStatus.index})"/>
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:texto id="diaMes15" value="#{item.diaQuinze}"    ajudaChave="ajuda.diaQuinze" onchange="calculaFalta( #{plcItensStatus.index})"/>
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:texto id="diaMes16" value="#{item.diaDezesseis}"    ajudaChave="ajuda.diaDezesseis" onchange="calculaFalta( #{plcItensStatus.index})"/>
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:texto id="diaMes17" value="#{item.diaDezessete}"    ajudaChave="ajuda.diaDezessete" onchange="calculaFalta( #{plcItensStatus.index})"/>
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:texto id="diaMes18" value="#{item.diaDezoito}"    ajudaChave="ajuda.diaDezoito" onchange="calculaFalta( #{plcItensStatus.index})"/>
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:texto id="diaMes19" value="#{item.diaDezenove}"    ajudaChave="ajuda.diaDezenove" onchange="calculaFalta( #{plcItensStatus.index})"/>
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:texto id="diaMes20" value="#{item.diaVinte}"    ajudaChave="ajuda.diaVinte" onchange="calculaFalta( #{plcItensStatus.index})"/>
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:texto id="diaMes21" value="#{item.diaVinteUm}"    ajudaChave="ajuda.diaVinteUm" onchange="calculaFalta( #{plcItensStatus.index})"/>
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:texto id="diaMes22" value="#{item.diaVinteDois}"    ajudaChave="ajuda.diaVinteDois" onchange="calculaFalta( #{plcItensStatus.index})"/>
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:texto id="diaMes23" value="#{item.diaVinteTres}"    ajudaChave="ajuda.diaVinteTres" onchange="calculaFalta( #{plcItensStatus.index})"/>
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:texto id="diaMes24" value="#{item.diaVinteQuatro}"    ajudaChave="ajuda.diaVinteQuatro" onchange="calculaFalta( #{plcItensStatus.index})"/>
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:texto id="diaMes25" value="#{item.diaVinteCinco}"    ajudaChave="ajuda.diaVinteCinco" onchange="calculaFalta( #{plcItensStatus.index})"/>
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:texto id="diaMes26" value="#{item.diaVinteSeis}"    ajudaChave="ajuda.diaVinteSeis" onchange="calculaFalta( #{plcItensStatus.index})"/>
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:texto id="diaMes27" value="#{item.diaVinteSete}"    ajudaChave="ajuda.diaVinteSete" onchange="calculaFalta( #{plcItensStatus.index})"/>
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:texto id="diaMes28" value="#{item.diaVinteOito}"    ajudaChave="ajuda.diaVinteOito" onchange="calculaFalta( #{plcItensStatus.index})"/>
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:texto id="diaMes29" value="#{item.diaVinteNove}"    ajudaChave="ajuda.diaVinteNove" onchange="calculaFalta( #{plcItensStatus.index})"/>
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:texto id="diaMes30" value="#{item.diaTrinta}"    ajudaChave="ajuda.diaTrinta" onchange="calculaFalta( #{plcItensStatus.index})"/>
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:texto id="diaMes31" value="#{item.diaTrintaUm}"    ajudaChave="ajuda.diaTrintaUm" onchange="calculaFalta( #{plcItensStatus.index})"/>
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:texto id="total" value="#{item.total}" formato="NUMERICO"   ajudaChave="ajuda.total" />
+			</plcf:celula>
+		</plcf:linha>
+	</plcf:iteracao>
+</plcf:tabela>
+
+<script language="javascript">
+				//<![CDATA[
+				/* Fix Menus Antigos! */
+				function calculaFalta( index ){
+
+		var soma = 0;
+
+		for( i = 1; i <= 31; i++ ){
+			if( document.getElementById('corpo:formulario:frequenciaAluno:'+index+":diaMes"+i).value == 'F' ){
+				soma = parseInt(soma) +  1;
+			}
+		} 
+		document.getElementById('corpo:formulario:frequenciaAluno:'+index+":total").value = soma;
+	}
+				//]]>
+				</script>
+
+ 
+	</ui:composition> 
+</html>

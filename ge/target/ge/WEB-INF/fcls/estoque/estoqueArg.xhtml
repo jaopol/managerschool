@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition> 
+		<plcf:tabela tituloChave="selecao.argumento.titulo"> 
+			<plcf:linha> 
+				 <plcf:celula columnSpan="3"> 
+					<plcf:titulo tituloChave="label.produtoMaterial"/>  
+					<plcf:vinculado id="produtoMaterial" lookupTamanho="50" autoRecuperacaoClasse="com.consisti.sisgesc.entidade.estoque.ProdutoMaterialEntity" onkeydown="selecionaPorTecla(event,this);" value="#{plcLogicaItens.argumentos.produtoMaterial.valor}" ajudaChave="ajuda.produtoMaterial" modal="S" idExibe="N" actionSel="produtomaterialsel"/> 
+				</plcf:celula>
+				<plcf:celula columnSpan="2"> 
+					<plcf:titulo tituloChave="label.fornecedor"/>  
+					<plcf:vinculado id="fornecedor" idExibe="N" onkeydown="selecionaPorTecla(event,this);" autoRecuperacaoClasse="com.consisti.sisgesc.entidade.FornecedorEntity" value="#{plcLogicaItens.argumentos.fornecedor.valor}" ajudaChave="ajuda.fornecedor" actionSel="fornecedorsel" modal="S" lookupTamanho="40"/> 
+				</plcf:celula>  
+			</plcf:linha> 
+			<plcf:linha> 
+				 <plcf:celula> 
+					<plcf:titulo tituloChave="label.status"/>  
+					<plcf:comboEstatico id="status" value="#{plcLogicaItens.argumentos.status.valor}" dominio="Status" exibeBranco="S" ajudaChave="ajuda.status"/> 
+				</plcf:celula> 
+				<plcf:celula width="300px"> 
+					<plcf:titulo tituloChave="label.saldo.produto"/>  
+					<plcf:texto id="saldo" value="#{plcLogicaItens.argumentos.saldo.valor}" ajudaChave="label.saldo.produto"/> 
+				</plcf:celula>
+				
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.dataMovimentacao.inicio"/>  
+					<plcf:data id="dataMovimentacao_ArgINI" value="#{plcLogicaItens.argumentos.dataMovimentacao_ArgINI.valor}" ajudaChave="ajuda.data.inicio" obrigatorio="N" tamanho="10"/>
+				</plcf:celula>
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.dataMovimentacao.fim"/>  
+					<plcf:data id="dataMovimentacao_ArgFIM" value="#{plcLogicaItens.argumentos.dataMovimentacao_ArgFIM.valor}" ajudaChave="ajuda.data.fim" obrigatorio="N" tamanho="10"/>
+				</plcf:celula>
+			</plcf:linha>
+		</plcf:tabela> 
+	</ui:composition> 
+</html>

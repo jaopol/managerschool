@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<parent>
+		<groupId>powerlogic.app</groupId>
+		<artifactId>projeto-ge</artifactId>
+		<version>1.0</version>
+		<relativePath>../ge/projeto-pom.xml</relativePath>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>powerlogic.app</groupId>
+	<artifactId>ge_modelo</artifactId>
+	<name>ge_modelo</name>
+	<packaging>ejb</packaging>
+	
+	<dependencies>
+		<dependency>
+			<groupId>powerlogic.app</groupId>
+			<artifactId>ge_comuns</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>powerlogic.jcompany</groupId>
+			<artifactId>jcompany_comuns</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>aspectwerkz</groupId>
+					<artifactId>aspectwerkz</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>powerlogic.jcompany</groupId>
+			<artifactId>jcompany_modelo</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.lucene</groupId>
+					<artifactId>lucene-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jbpm-jpdl</artifactId>
+					<groupId>org.jbpm.jbpm3</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jbpm-identity</artifactId>
+					<groupId>org.jbpm.jbpm3</groupId>
+				</exclusion>				
+			</exclusions>
+		</dependency>
+	</dependencies>
+	
+	<!-- Para a utilização no jBoss 5, descomentar os codigos abaixo -->
+	
+	<!-- build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<excludes>
+					<exclude>META-INF/persistence.xml</exclude>
+				</excludes>
+			</resource>
+		</resources>
+	</build -->
+</project> 

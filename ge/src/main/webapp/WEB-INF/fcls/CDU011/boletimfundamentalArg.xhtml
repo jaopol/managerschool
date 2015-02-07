@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition> 
+		<plcf:tabela tituloChave="selecao.argumento.titulo"> 
+			<plcf:linha>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.aluno"/>
+					<plcf:vinculado id="aluno" value="#{plcLogicaItens.argumentos.aluno.valor}" propSelPop="aluno" idExibe="N" idSomenteLeitura="N" autoRecuperacaoClasse="com.consisti.sisgesc.entidade.AlunoEntity" actionSel="alunosel" ajudaChave="ajuda.aluno"  onkeydown="selecionaPorTecla(event,this);" lookupTamanho="50" modal="S" obrigatorio="S"/>
+				</plcf:celula>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.anoLetivo"/>
+					<plcf:texto id="anoLetivo" value="#{plcLogicaItens.argumentos.anoLetivo.valor}" formato="NUMERICO"   ajudaChave="ajuda.anoLetivo" />
+				</plcf:celula>
+			</plcf:linha>
+			<plcf:linha>
+				<plcf:celula columnSpan="2">
+					<plcf:titulo tituloChave="label.situacaoBoletim"/>
+					<plcf:comboEstatico id="situacaoBoletim" value="#{plcLogicaItens.argumentos.situacaoBoletim.valor}" dominio="SituacaoBoletim"  exibeBranco="S" />
+				</plcf:celula>
+			</plcf:linha> 
+		</plcf:tabela> 
+	</ui:composition> 
+</html>

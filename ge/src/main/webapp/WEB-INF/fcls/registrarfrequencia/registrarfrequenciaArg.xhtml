@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition> 
+		<plcf:tabela tituloChave="registrarfrequenciaarg.titulo">
+	<plcf:linha>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.turma"/>
+			<plcf:comboDinamico id="turma" value="#{plcLogicaItens.argumentos.turma.valor}" dominio="TurmaEntity" exibeBranco="S"  propRotulo="descricao" />
+		</plcf:celula>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.professor"/>
+			<plcf:vinculado id="professor" value="#{plcLogicaItens.argumentos.professor.valor}" propSelPop="professor" idExibe="N" idSomenteLeitura="N" autoRecuperacaoClasse="com.consisti.sisgesc.entidade.FuncionarioEntity" actionSel="funcionariosel" ajudaChave="ajuda.professor"  onkeydown="selecionaPorTecla(event,this);" lookupTamanho="50" modal="S"/>
+		</plcf:celula>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.dataCadastro"/>
+			<plcf:data id="dataCadastro_ArgINI" value="#{plcLogicaItens.argumentos.dataCadastro_ArgINI.valor}"    ajudaChave="ajuda.dataCadastro" />
+		</plcf:celula>
+	</plcf:linha>
+	<plcf:linha>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.periodo"/>
+			<plcf:comboEstatico id="periodo" value="#{plcLogicaItens.argumentos.periodo.valor}" dominio="PeriodoAluno"  exibeBranco="S" />
+		</plcf:celula>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.status"/>
+			<plcf:comboEstatico id="status" value="#{plcLogicaItens.argumentos.status.valor}" dominio="AbertoFechado"  exibeBranco="S" />
+		</plcf:celula>
+		<plcf:celula>
+			<plcf:titulo tituloChave="label.tipoEducacao"/>
+			<plcf:comboEstatico id="tipoEducacao" value="#{plcLogicaItens.argumentos.tipoEducacao.valor}" dominio="TipoEducacao"  exibeBranco="S" />
+		</plcf:celula>
+	</plcf:linha>
+</plcf:tabela>
+
+<plcf:escondido id="desabilitaCampo" value="#{requestScope.desabilitaCampo}" />
+
+<script language="javascript">
+				//<![CDATA[
+				/* Fix Menus Antigos! */
+
+	if( document.getElementById('corpo:formulario:desabilitaCampo').value == 'S' ){
+		document.getElementById('corpo:formulario:professorSel').style.display = 'none';
+	}
+	//]]>
+</script>
+	</ui:composition> 
+</html>

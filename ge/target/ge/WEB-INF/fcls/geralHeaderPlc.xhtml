@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html>
+jCompany 5.5. Nova Arquitetura unificada para Javascript e CSS com Theme Roller
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jstl/core">
+	
+	<link rel="StyleSheet" href="#{request.contextPath}/plc/css-w2/#{sessionScope['SESSION_CACHE'].pele}/pele.css" type="text/css" charset="UTF-8" />
+	<link rel="StyleSheet" href="#{request.contextPath}/plc/css-w2/plc.comuns.css" type="text/css" charset="UTF-8" />
+	
+	<script type="text/javascript" charset="UTF-8">
+		function setContextPath() {
+			plcGeral.contextPath = "#{request.contextPath}";
+			plcGeral.parcialAjaxUsa = #{metadados['parcialAjaxUsa'] == 'S'};
+		}
+	</script>
+	
+	<script src="#{request.contextPath}/plc/javascript-w2/plc.comuns.js" type="text/javascript" charset="UTF-8" />		
+	
+	<c:if test="${not empty requestScope.googleMapKey}">
+		<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=${requestScope.googleMapKey}"  type="text/javascript" charset="UTF-8" />
+	</c:if>
+	
+	<script type="text/javascript">
+	  jQuery(function(){
+			jQuery("a.ui-state-default").hover(
+				function(){ jQuery(this).addClass("ui-state-hover"); },
+				function(){ jQuery(this).removeClass("ui-state-hover"); }
+			)
+			jQuery("span.ui-state-default").hover(
+				function(){ jQuery(this).addClass("ui-state-hover"); },
+				function(){ jQuery(this).removeClass("ui-state-hover"); }
+			)
+			jQuery("button.ui-state-default").hover(
+				function(){ jQuery(this).addClass("ui-state-hover"); },
+				function(){ jQuery(this).removeClass("ui-state-hover"); }
+			)
+		});
+	</script>
+	
+	<ui:insert name="plc-header-complemento"></ui:insert>
+	
+</ui:composition>
+</html>

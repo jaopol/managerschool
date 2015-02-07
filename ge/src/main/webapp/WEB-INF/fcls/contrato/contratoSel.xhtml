@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition> 
+		<plcf:tabela tituloChave="selecionarcontratosel.titulo" rendered="#{not empty plcLogicaItens.itensPlc}">
+			<plcf:linha>
+				<plcf:celula styleClass="cabecalho">
+					<plcf:titulo tituloChave="label.aluno"/>
+				</plcf:celula>
+				<plcf:celula styleClass="cabecalho">
+					<plcf:titulo tituloChave="label.anoContrato"/>
+				</plcf:celula>
+				<plcf:celula styleClass="cabecalho">
+					<plcf:titulo tituloChave="label.statusContrato"/>
+				</plcf:celula>
+			</plcf:linha>
+			<plcf:iteracao id="plcLogicaItens" value="#{plcLogicaItens.itensPlc}">
+				<plcf:linhaSelecao id="linhaSel" action="contratomdt" linkEdicao="#{item.linkEdicaoPlc}">
+					<plcf:celula styleClass="campo">
+						<plcf:exibe value="#{item.aluno}"/>
+					</plcf:celula>
+					<plcf:celula styleClass="campo">
+						<plcf:exibe value="#{item.anoContrato}"/>
+					</plcf:celula>
+					<plcf:celula styleClass="campo">
+						<plcf:exibe value="#{item.statusContrato.descricao}"/>
+					</plcf:celula>
+				</plcf:linhaSelecao>
+			</plcf:iteracao>
+		</plcf:tabela>
+	</ui:composition> 
+</html>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE facelet-taglib
+  PUBLIC "-//Sun Microsystems, Inc.//DTD Facelet Taglib 1.0//EN" "http://java.sun.com/dtd/facelet-taglib_1_0.dtd">
+<facelet-taglib xmlns="http://java.sun.com/JSF/Facelet">
+
+	<namespace>http://www.powerlogic.com.br/plct</namespace>
+
+	<tag>
+		<tag-name>ajudar</tag-name>
+		<source>tags/plc/ajudar.xhtml</source>
+	</tag>
+	<tag>
+		<tag-name>arquivoAnexado</tag-name>
+		<source>tags/plc/arquivoAnexado.xhtml</source>
+	</tag>
+	<tag>
+		<tag-name>arquivoMultiploAnexado</tag-name>
+		<source>tags/plc/arquivoMultiploAnexado.xhtml</source>
+	</tag>
+	<tag>
+    	<tag-name>imprimir</tag-name>
+    	<source>tags/plc/imprimir.xhtml</source>
+  	</tag>
+  	<tag>
+    	<tag-name>imprimirPainel</tag-name>
+    	<source>tags/plc/imprimirPainel.xhtml</source>
+  	</tag>
+  	
+  	<tag>
+    	<tag-name>subDetalhe</tag-name>
+    	<source>tags/plc/subDetalhe.xhtml</source>
+  	</tag>
+
+	<tag>
+    	<tag-name>paginacaoDetalhe</tag-name>
+    	<source>tags/plc/paginacaoDetalhe.xhtml</source>
+  	</tag>
+  	
+  	<tag>
+    	<tag-name>logFimDocumento</tag-name>
+    	<source>tags/plc/logFimDocumento.xhtml</source>
+  	</tag>
+ 
+	<function>
+		<function-name>cacheService</function-name>
+		<function-class>com.powerlogic.jcompany.controle.cache.PlcCacheService</function-class>
+		<function-signature>java.lang.Object recupera(java.lang.Object)</function-signature>
+	</function>
+	
+	<function>
+		<function-name>limpaCacheErroFatalInicializacao</function-name>
+		<function-class>com.powerlogic.jcompany.controle.cache.PlcCacheService</function-class>
+		<function-signature>void limpaErroFatalInicializacao()</function-signature>
+	</function>
+	
+	<function>
+		<function-name>exploradorUsa</function-name>
+		<function-class>com.powerlogic.jcompany.comuns.helper.PlcAnotacaoHelper</function-class>
+		<function-signature>boolean explorerUsa(java.lang.String)</function-signature>
+	</function>
+	
+	<function>
+		<function-name>entidadeTitulo</function-name>
+		<function-class>com.powerlogic.jcompany.comuns.helper.PlcAnotacaoHelper</function-class>
+		<function-signature>java.lang.String getEntidadeTitulo(java.lang.String, java.lang.Class)</function-signature>
+	</function>
+	
+</facelet-taglib>

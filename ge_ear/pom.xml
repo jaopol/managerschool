@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<parent>
+		<groupId>powerlogic.app</groupId>
+		<artifactId>projeto-ge_ear</artifactId>
+		<version>1.0</version>
+		<relativePath>projeto-pom.xml</relativePath>
+	</parent>
+	
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>powerlogic.app</groupId>
+	<artifactId>ge_ear</artifactId>
+	<name>ge_ear</name>
+	<packaging>ear</packaging>
+	
+	<dependencies>
+		<dependency>
+			<groupId>powerlogic.app</groupId>
+			<artifactId>ge_comuns</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>powerlogic.app</groupId>
+			<artifactId>ge_modelo</artifactId>
+			<version>1.0</version>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>powerlogic.jcompany</groupId>
+			<artifactId>jcompany_modelo</artifactId>
+			<type>ejb</type>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.lucene</groupId>
+					<artifactId>lucene-core</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+      		<groupId>powerlogic.app</groupId>
+			<artifactId>ge</artifactId>
+			<version>1.0</version>
+	  	<type>war</type>
+    </dependency>
+	</dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+        		<artifactId>maven-ear-plugin</artifactId>
+        		<configuration>
+					<ejbVersion>3.0</ejbVersion>
+					<applicationXml>${basedir}/EarContent/META-INF/application.xml</applicationXml>  
+          			<modules>
+            			<ejbModule>
+              				<groupId>powerlogic.jcompany</groupId>
+							<artifactId>jcompany_modelo</artifactId>
+            			</ejbModule>
+            			<ejbModule>
+            				<groupId>powerlogic.app</groupId>
+							<artifactId>ge_modelo</artifactId>
+            			</ejbModule>
+            			<webModule>
+            				<groupId>powerlogic.app</groupId>
+							<artifactId>ge</artifactId>
+						</webModule>
+          			</modules>
+        		</configuration>
+      		</plugin>
+		</plugins>
+	</build>
+
+</project> 

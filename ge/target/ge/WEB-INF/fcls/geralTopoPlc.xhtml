@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:fn="http://java.sun.com/jsf/functions"
+	xmlns:plcf="http://www.powerlogic.com.br/plcf"
+	xmlns:tr="http://myfaces.apache.org/trinidad"
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">
+<head>
+    <link rel="StyleSheet" href="#{request.contextPath}/plc/css-w2/jquery/ui/themes/ui.all.css" type="text/css" charset="UTF-8" />
+    <link rel="StyleSheet" href="#{request.contextPath}/plc/css-w2/itunes/jquery/jquery-ui-1.7.custom.css" type="text/css" charset="UTF-8" />	
+    <link rel="StyleSheet" href="#{request.contextPath}/plc/css-w2/plc.geral.css" type="text/css" charset="UTF-8" />
+</head>
+<body>
+	<ui:composition>
+		
+		<f:loadBundle basename="ApplicationResources" var="msg" />	
+		
+		<div id="tituloPagina" class="ui-widget-content ui-corner-all plc-topo-titulo">
+			<ui:insert name="plc-titulo"><label jsfc="plcf:titulo" tituloChave="#{plcAliasPrefixoAction}.titulo"></label></ui:insert>
+		</div>
+		<c:if test="${metadados['parcialAjaxUsa'] == 'S'}">
+			<script type="text/javascript">
+				document.title = "#{msg[plcAliasPrefixoAction.replace('/','').concat('.titulo')]}";
+			</script>
+		</c:if>	
+		<div id="siglaAplicacao" class="plc-topo-aplicacao">#{metadados['nomeAplicacao']}</div>
+		
+		<div id="plc-topo-menu" class="plc-topo-menu">
+			<!-- Teste realizado para verificar se o parcialAjax est� abilitado ou n�o -->
+			<div class="plc-topo-menu-item" >
+				<a href="#{request.contextPath}" id="plc-topo-menu-link2" class="ico iHome" title="#{jCompanyResources['jcompany.rodape.home']}" >Home</a>
+			</div>
+			<div class="plc-topo-menu-item" >
+				<a href="#" onclick="jQuery('#plc-acao-desconecta').click();" id="plc-topo-menu-link1" class="ico iDesconectar" title="#{jCompanyResources['jcompany.evt.desconectar']}" >Desconectar</a>
+			</div>
+		</div>
+			
+	</ui:composition>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<parent>
+		<groupId>powerlogic.app</groupId>
+		<artifactId>projeto-ge</artifactId>
+		<version>1.0</version>
+		<relativePath>projeto-pom.xml</relativePath>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>powerlogic.app</groupId>
+	<artifactId>ge</artifactId>
+	<name>ge</name>
+	<packaging>war</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>powerlogic.jcompany</groupId>
+			<artifactId>jcompany_visao</artifactId>
+			<type>war</type>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>powerlogic.jcompany</groupId>
+			<artifactId>jcompany_visao_jsfw2</artifactId>
+			<type>war</type>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>powerlogic.jcompany</groupId>
+			<artifactId>jcompany_doc_visao</artifactId>
+			<type>war</type>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+	        <groupId>net.sf.jasperreports</groupId>
+	        <artifactId>jasperreports</artifactId>
+	        <version>4.1.2</version>
+	    </dependency>
+	    
+	    <dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.1</version>
+		</dependency>
+            
+		<dependency>
+			<groupId>powerlogic.jcompany</groupId>
+			<artifactId>jcompany_controle_jsf</artifactId>
+			
+			<exclusions>
+				<exclusion>
+					<groupId>jasperreports</groupId>
+					<artifactId>jasperreports</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>eclipsebirt-engine</groupId>
+					<artifactId>eclipsebirt-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>eclipsebirt-engine</groupId>
+					<artifactId>eclipsebirt-engine</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>eclipsebirt-engine</groupId>
+					<artifactId>eclipsebirt-modelapi</artifactId>
+				</exclusion>
+			</exclusions>
+			
+			<!-- Para a utilização no jBoss 5, descomentar os codigos abaixo -->
+			
+			<!-- exclusions>
+				<exclusion>
+					<groupId>javax.faces</groupId>
+					<artifactId>jsf-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>javax.faces</groupId>
+					<artifactId>jsf-impl</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>jboss</groupId>
+					<artifactId>javassist</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>jboss</groupId>
+					<artifactId>jbossall-client</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>xerces</groupId>
+					<artifactId>xmlParserAPIs</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>xerces</groupId>
+					<artifactId>xercesImpl</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>xml-apis</groupId>
+					<artifactId>xml-apis</artifactId>
+				</exclusion>
+			</exclusions -->
+		</dependency>
+		
+		<!-- Para a utilização no jBoss 5, descomentar os codigos abaixo 
+		
+		<dependency>
+			<groupId>com.sun.facelets</groupId>
+			<artifactId>jsf-facelets</artifactId>
+			<version>1.1.15.B1</version>
+			<scope>import</scope>
+		</dependency>	
+		
+		<dependency>
+			<groupId>javax.faces</groupId>
+			<artifactId>jsf-api</artifactId>
+			<version>1.2_09</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		Para a utilização no jBoss 5, descomentar os codigos abaixo  -->
+		
+		<dependency>
+			<groupId>powerlogic.app</groupId>
+			<artifactId>ge_comuns</artifactId>
+			<version>1.0</version>
+		</dependency>
+		
+		<!-- Caso utilize EJB, comentar todo codigos abaixo -->
+		<dependency>
+			<groupId>powerlogic.app</groupId>
+			<artifactId>ge_modelo</artifactId>
+			<version>1.0</version>
+			
+			<!-- Para a utilização no jBoss 5, descomentar os codigos abaixo -->
+			
+			<!-- exclusions>
+				<exclusion>
+					<groupId>xml-apis</groupId>
+					<artifactId>xml-apis</artifactId>
+				</exclusion>
+			</exclusions  -->
+			
+		</dependency>
+		<!-- Caso utilize EJB, comentar todo codigos acima -->
+		
+		<dependency>
+			<groupId>powerlogic.jcompany</groupId>
+			<artifactId>jcompany_comuns</artifactId>
+		</dependency>
+		
+		<!--  jCompany Service -->
+        <dependency>
+            <groupId>powerlogic.jcompany</groupId>
+            <artifactId>jcompany_service</artifactId>
+        </dependency>  
+			
+	</dependencies>
+
+	<build>
+		<plugins>
+
+	<plugin>
+		<groupId>powerlogic.jcompany.maven</groupId>
+		<artifactId>plc-maven-plugin</artifactId>
+		<configuration>
+			<!-- Dependencias War que necessitam ser descompactadas no deploy -->
+			<wars>
+				<war>
+					powerlogic.jcompany.jcompany_visao:excludes=/plc/erros,/plc/jsps,/plc/layouts,/plc/midia,/plc/dtds,/plc/recursos,/WEB-INF/jsps,/WEB-INF/tags,/WEB-INF/plc-tiles-menu.xml,/WEB-INF/plc-tiles-pagina.xml,/WEB-INF/struts-tiles.tld,/WEB-INF/struts-tiles-el.tld,/WEB-INF/struts-logic.tld,/WEB-INF/struts-html-el.tld,/WEB-INF/struts-html.tld,/WEB-INF/struts-bean.tld,/plc/css/,/plc/javascript/dojo/
+				</war>
+				<war>
+					powerlogic.jcompany.jcompany_visao_jsfw2
+				</war>
+				<war>
+					powerlogic.jcompany.jcompany_doc_visao:excludes=/plc/doc
+				</war>
+			</wars>
+			
+		</configuration>
+
+	</plugin>
+		
+		</plugins>
+		
+		
+		
+		
+	</build>
+			
+</project> 

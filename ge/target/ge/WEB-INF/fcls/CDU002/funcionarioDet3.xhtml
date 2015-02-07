@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:plct="http://www.powerlogic.com.br/plct" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition> 
+		<plcf:tabela tituloChave="funcionario.detalhe.3.titulo.comp" aoSair="comutaAbaFacelets(4)"> 
+			<plcf:iteracao id="horarioTrabalho" value="#{plcEntidade.horarioTrabalho}">
+				<plcf:linha>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.horaEntrada"/>
+					</plcf:celula>
+					<plcf:celula >
+						<plcf:titulo tituloChave="label.horaSaida"/>
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha>
+					<plcf:celula>
+						<plcf:texto id="horaEntrada" value="#{item.horaEntrada}"    ajudaChave="ajuda.horaEntrada" onkeydown="mascara(this,hora)" />
+					</plcf:celula>
+					<plcf:celula >
+						<plcf:texto id="horaSaida" value="#{item.horaSaida}"    ajudaChave="ajuda.horaSaida" onkeydown="mascara(this,hora)" />
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.intervaloAlmocoInicio"/>
+					</plcf:celula>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.intervaloAlmocoFim"/>
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha>
+					<plcf:celula>
+						<plcf:texto id="intervaloAlmocoInicio" value="#{item.intervaloAlmocoInicio}"    ajudaChave="ajuda.intervaloAlmocoInicio" onkeydown="mascara(this,hora)" />
+					</plcf:celula>
+					<plcf:celula >
+						<plcf:texto id="intervaloAlmocoFim" value="#{item.intervaloAlmocoFim}"    ajudaChave="ajuda.intervaloAlmocoFim" onkeydown="mascara(this,hora)" />
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.trabalhaSabado"/>
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha>
+					<plcf:celula>
+						<plcf:caixaMarcacao id="trabalhaSabado" value="#{item.trabalhaSabado}"  ajudaChave="ajuda.trabalhaSabado" onclick="submit();"/>
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.entradaSabado" rendered="#{item.trabalhaSabado eq 'S'}"/>
+					</plcf:celula>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.saidaSabado" rendered="#{item.trabalhaSabado eq 'S'}"/>
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha>
+					<plcf:celula>
+						<plcf:texto id="entradaSabado" value="#{item.entradaSabado}"    ajudaChave="ajuda.entradaSabado" obrigatorio="S" rendered="#{item.trabalhaSabado eq 'S'}" onkeydown="mascara(this,hora)"  />
+					</plcf:celula>
+					<plcf:celula>
+						<plcf:texto id="saidaSabado" value="#{item.saidaSabado}"    ajudaChave="ajuda.saidaSabado" obrigatorio="S" rendered="#{item.trabalhaSabado eq 'S'}"  onkeydown="mascara(this,hora)" />
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.intervaloAlmocoSabInicio" rendered="#{item.trabalhaSabado eq 'S'}"/>
+					</plcf:celula>
+					<plcf:celula >
+						<plcf:titulo tituloChave="label.intervaloAlmocoSabFim" rendered="#{item.trabalhaSabado eq 'S'}"/>
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha>
+					<plcf:celula>
+						<plcf:texto id="intervaloAlmocoSabInicio" value="#{item.intervaloAlmocoSabInicio}"    ajudaChave="ajuda.intervaloAlmocoSabInicio" onkeydown="mascara(this,hora)" obrigatorio="S" rendered="#{item.trabalhaSabado eq 'S'}"/>
+					</plcf:celula>
+					<plcf:celula >
+						<plcf:texto id="intervaloAlmocoSabFim" value="#{item.intervaloAlmocoSabFim}"    ajudaChave="ajuda.intervaloAlmocoSabFim" onkeydown="mascara(this,hora)" obrigatorio="S" rendered="#{item.trabalhaSabado eq 'S'}" />
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.salarioFamilia"/>
+					</plcf:celula>
+					<plcf:celula >
+						<plcf:titulo tituloChave="label.quantidadeFilho"/>
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha>
+					<plcf:celula>
+						<plcf:radio id="salarioFamilia" value="#{item.salarioFamilia}" dominio="PlcSimNao" ajudaChave="ajuda.salarioFamilia" layout="horizontal"/>
+					</plcf:celula>
+					<plcf:celula >
+						<plcf:texto id="quantidadeFilho" value="#{item.quantidadeFilho}" formato="NUMERICO"   ajudaChave="ajuda.quantidadeFilho" />
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.utilizaValeTransporte"/>
+					</plcf:celula>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.valorValeTransporte"/>
+					</plcf:celula>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.contribuicaoSindicalDescontada"/>
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha>
+					<plcf:celula>
+						<plcf:radio id="utilizaValeTransporte" value="#{item.utilizaValeTransporte}" dominio="PlcSimNao" ajudaChave="ajuda.utilizaValeTransporte" layout="horizontal" />
+					</plcf:celula>
+					<plcf:celula>
+						<plcf:numerico id="valorValeTransporte" value="#{item.valorValeTransporte}"    ajudaChave="ajuda.valorValeTransporte" />
+					</plcf:celula>
+					<plcf:celula>
+						<plcf:caixaMarcacao id="contribuicaoSindicalDescontada" value="#{item.contribuicaoSindicalDescontada}"  ajudaChave="ajuda.contribuicaoSindicalDescontada" obrigatorio="N"/>
+					</plcf:celula>
+				</plcf:linha>
+			</plcf:iteracao>
+		</plcf:tabela>
+					
+			
+	</ui:composition> 
+</html>

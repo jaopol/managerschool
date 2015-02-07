@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:plcf="http://www.powerlogic.com.br/plcf"
+	xmlns:plct="http://www.powerlogic.com.br/plct"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:cs="http://java.sun.com/jsp/jstl/core"
+	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+	xmlns:tr="http://myfaces.apache.org/trinidad"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">
+	
+	<c:if test="#{initParam['jOssoUsa'] == 'S' and initParam['modoExecucao'] == 'P' and fn:contains(header['User-Agent'], 'Mozilla') }">
+	 <cs:redirect url="/josso_login/"/>
+	</c:if>
+	
+	<head> 	
+		<title>#{metadados['nomeAplicacao']}</title>
+		<script type="text/javascript" src="#{request.contextPath}/plc/javascript-w2/jquery/jquery-1.4.2.min.js" />
+		
+		<script type="text/javascript">
+			jQuery(document).ready(function(){
+				jQuery('#id_j_username').focus();
+			});
+			
+			function redireciona(url){
+				var win;
+				win = window.open(url,"win","");
+				history.back();
+			}
+			
+		</script>
+	<link rel="StyleSheet" href="#{request.contextPath}/plc/css-w2/#{sessionScope['SESSION_CACHE'].pele}/pele.css" 	type="text/css" charset="UTF-8" />
+	<link rel="StyleSheet" href="#{request.contextPath}/plc/css-w2/plc.geral.css" type="text/css" charset="UTF-8" />
+	</head>	
+	
+	<c:choose>
+		<c:when test="#{plct:cacheService('ERRO_INI_PLC') != null}">
+			<body onLoad="redireciona('#{request.contextPath}/f/fcls/erros/erro597.xhtml');"/>
+		</c:when>
+	    <c:otherwise>
+			<body scroll="no" >
+				<form method="post" action="j_security_check">
+					<table width="100%" align="center">
+						<tr width="100%" align="center" valign="middle">
+							<td width="100%" valign="middle" align="center">
+								<div class="plc-login">
+									 <c:if test="${not empty metadados['logoEmpresaLogin']}">
+									    <div class="plc-login-marca" align="center"><img src="#{request.contextPath}${metadados['logoEmpresaLogin']}"/></div>
+									 </c:if>
+									 <c:if test="${empty metadados['logoEmpresaLogin']}">
+										<div class="plc-login-marca" align="center"><img src="#{request.contextPath}/plc/midia/login-logo-empresa.png"/></div>
+									 </c:if>
+									 <div class="ui-widget ui-widget-header ui-corner-all plc-login-formulario">
+										<div class="plc-usuario">
+											<table>
+												<tr>
+													<td>
+														<label jsfc="plcf:titulo" tituloChave="jcompany.login.usuario" for="j_password" />
+													</td>
+													<td>
+														<input class="loginTexto" name="j_username" type="text" id="id_j_username"/>
+													</td>
+												</tr>
+											</table>
+										</div>
+										<div class="plc-senha">
+											<table>
+												<tr>
+													<td>
+														<label jsfc="plcf:titulo" tituloChave="jcompany.login.senha" for="j_password"  />
+													</td>
+													<td>
+														<input class="loginTexto" type="password" name="j_password"/>
+													</td>
+												</tr>
+											</table>
+										</div>
+										<div>					
+											<div class="plc-login-botao">
+												<table>
+													<tr>
+														<td>
+														
+														</td>
+														<td>
+															<input class="plc-login-botao" name="plc-login-botao" type="submit" value="Ok" title="Ok" />
+														</td>
+													</tr>
+												</table>
+												
+											</div>
+										</div>	
+										
+									</div>
+								</div>	
+							</td>
+						</tr>
+					</table>
+					
+				</form>
+			</body>
+		
+		</c:otherwise>
+	</c:choose>
+</html>

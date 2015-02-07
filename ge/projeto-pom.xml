@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<parent>
+		<groupId>powerlogic.jcompany</groupId>
+		<artifactId>projeto-plc</artifactId>
+		<version>5.5.3</version>
+	</parent>
+	
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>powerlogic.app</groupId>
+	<artifactId>projeto-ge</artifactId>
+	<version>1.0</version>
+	<name>projeto-ge</name>
+	<packaging>pom</packaging>
+	
+
+	<description>Descrição do projeto</description>
+  	<url>www.meuprojeto.com.br</url>
+  	<issueManagement>
+    	<system>eprocess</system>
+    	<url>http://www.minhaempresa.com.br/eprj</url>
+  	</issueManagement>
+  	<organization>
+		<name>Minha Empresa</name>
+		<url>www.minhaempresa.com.br</url>
+  	</organization>
+  	<mailingLists>
+		<mailingList>
+			<name>Forum do Projeto</name>
+			<subscribe>http://www.minhaempresa.com.br/ecp/forum.do</subscribe>
+			<unsubscribe>http://www.minhaempresa.com.br/ecp/forum.do</unsubscribe>
+			<post>http://www.minhaempresa.com.br/ecp/forum.do</post>
+			<archive>http://www.minhaempresa.com.br/ecp/forum.do</archive>
+    	</mailingList>
+  	</mailingLists>
+  	<ciManagement>
+	 	<system>Sistema de Integração</system>
+     	<url>www.sisintegracao.com</url>
+    	<notifiers>
+     		<notifier>
+        		<type>email</type>
+        		<sendOnError>true</sendOnError>
+        		<sendOnFailure>true</sendOnFailure>
+        		<sendOnWarning>false</sendOnWarning>
+        		<address>test@address.com</address>
+     		</notifier>
+    	</notifiers>
+  	</ciManagement>
+  	<developers>
+    	<developer>
+      		<id>admin</id>
+      		<name>Desenvolvedor 1</name>
+      		<email>desen1@desenvolvedor.com.br</email>
+      		<organization>Empresa</organization>
+      		<organizationUrl>www.minhaempresa.com.br</organizationUrl>
+      		<roles>
+				<role>desenvolvedor</role>
+	  		</roles>
+      		<timezone>-3</timezone>
+    	</developer>
+	</developers>
+  	<contributors>
+    	<contributor>
+      		<name>Contribuidor</name>
+      		<email>cont@contribuidor.com.br</email>
+      		<organization>MinhaEmpresa</organization>
+      		<organizationUrl>www.minhaempresa.com.br</organizationUrl>
+    	  	<roles>
+				<role>Contribuidor</role>
+	  		</roles>
+      		<timezone>-3</timezone>
+    	</contributor>
+  	</contributors>
+
+
+	<modules>
+		<module>../ge_comuns</module>
+		<module>../ge_modelo</module>
+		<module>../ge</module>
+	</modules>
+
+	<dependencyManagement>
+		
+	</dependencyManagement>
+
+
+	<dependencies>
+		
+	</dependencies>
+	
+	<properties>
+		<finalName>ge</finalName>
+	</properties>
+</project> 

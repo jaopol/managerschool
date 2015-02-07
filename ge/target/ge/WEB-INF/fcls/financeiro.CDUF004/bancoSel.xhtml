@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition> 
+		<plcf:tabela tituloChave="selecao.lista.titulo" rendered="#{not empty plcLogicaItens.itensPlc}"> 
+			<plcf:linha styleClass="ui-widget-header"> 
+				<plcf:celula header="true" styleClass="cabecalho"> 
+					<plcf:titulo tituloChave="label.nomeBanco">Nome banco</plcf:titulo> 
+				</plcf:celula>  
+				<plcf:celula header="true" styleClass="cabecalho"> 
+					<plcf:titulo tituloChave="label.tipoConta">Tipo conta</plcf:titulo> 
+				</plcf:celula>  
+				<plcf:celula header="true" styleClass="cabecalho"> 
+					<plcf:titulo tituloChave="label.agencia">Agência</plcf:titulo> 
+				</plcf:celula>  
+				<plcf:celula header="true" styleClass="cabecalho"> 
+					<plcf:titulo tituloChave="label.numeroConta">Número conta</plcf:titulo> 
+				</plcf:celula>  
+				<plcf:celula header="true" styleClass="cabecalho"> 
+					<plcf:titulo tituloChave="label.telefoneBanco">Telefone banco</plcf:titulo> 
+				</plcf:celula>  
+				<plcf:celula header="true" styleClass="cabecalho"> 
+					<plcf:titulo tituloChave="label.status">Status</plcf:titulo> 
+				</plcf:celula> 
+			</plcf:linha>  
+			<plcf:iteracao id="plcLogicaItens" value="#{plcLogicaItens.itensPlc}"> 
+				<plcf:linhaSelecao id="linhaSel" action="${sessionScope.actionUltManPlc}" linkEdicao="#{item.linkEdicaoPlc}" propAgregada="banco"> 
+					<plcf:celula styleClass="campo"> 
+						<plcf:exibe value="#{item.bancoSuportado.descricao}">nomeBanco</plcf:exibe> 
+					</plcf:celula>  
+					<plcf:celula styleClass="campo"> 
+						<plcf:exibe value="#{item.tipoConta.descricao}">tipoConta</plcf:exibe> 
+					</plcf:celula>  
+					<plcf:celula styleClass="campo"> 
+						<plcf:exibe value="#{item.agencia}">agencia</plcf:exibe> 
+					</plcf:celula>  
+					<plcf:celula styleClass="campo"> 
+						<plcf:exibe value="#{item.numeroConta}">numeroConta</plcf:exibe> 
+					</plcf:celula>  
+					<plcf:celula styleClass="campo"> 
+						<plcf:exibe value="#{item.telefoneBanco}">telefoneBanco</plcf:exibe> 
+					</plcf:celula>  
+					<plcf:celula styleClass="campo"> 
+						<plcf:exibe value="#{item.status}">status</plcf:exibe> 
+					</plcf:celula> 
+				</plcf:linhaSelecao> 
+			</plcf:iteracao> 
+		</plcf:tabela> 
+	</ui:composition> 
+</html>

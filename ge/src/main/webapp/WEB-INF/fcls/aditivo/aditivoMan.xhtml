@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:plcf="http://www.powerlogic.com.br/plcf"
+	xmlns:tr="http://myfaces.apache.org/trinidad"
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">
+	
+    
+	              
+		<ui:composition>
+
+			<plcf:tabela tituloChave="aditivoman.titulo">
+			
+				<plcf:linha>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.nomeAluno"/>
+						<plcf:exibe id="nomeAluno" value="#{plcAction.aluno.nomeAluno}"/>
+					</plcf:celula>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.dataCriacao"/>
+						<plcf:exibe id="dataCriacao" value="#{plcAction.dataAtual}"/>
+					</plcf:celula>
+				</plcf:linha>
+				
+				<plcf:linha>
+					<plcf:celula columnSpan="2">
+						<hr/>
+					</plcf:celula>
+				</plcf:linha>
+				
+				<plcf:linha>
+					<plcf:celula columnSpan="2">
+						<plcf:area id="aditivo" value="#{plcAction.texto}" labelAndAccessKey="Texto do Aditivo" numLinhas="10" colunas="100" tamanhoMaximo="10000" ajudaChave="ajuda.texto.aditivo" obrigatorio="S"/>
+					</plcf:celula>
+				</plcf:linha>
+			</plcf:tabela>
+			
+			<script>
+			//<![CDATA[
+				function aposGravaAditivo(){
+					document.getElementById("corpo:formulario:gravar").click();
+					setTimeout("dialogClose()",2000);
+					return false;
+				}
+
+				$(document).ready(function(){
+
+					$('.ui-dialog').bind('dialogclose', function(event) {
+						executarAoFecharModal();
+					 });	
+					 alert()
+
+				});
+
+				function executarAoFecharModal(){
+					
+					window.location='#{request.contextPath}/f/n/contratomdt?chPlc='+jQuery("#corpo\\:formulario\\:idAluno").val();
+				}
+
+				//]]>
+				
+			</script>
+			
+			<plcf:botaoAcao id="gravar" acao="gravarAditivo" validaForm="true" inlineStyle="display:none;"/>
+			
+	</ui:composition>
+</html>

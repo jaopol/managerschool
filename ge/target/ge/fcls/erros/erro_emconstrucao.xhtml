@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Em constru&ccedil;&atilde;o</title>
+		<link href="#{request.contextPath}/fcls/erros/erros.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body marginheight="0" marginwidth="0" style="background-image:url(#{request.contextPath}/fcls/erros/error_em_construcao.png)">
+		<h1>Em Construção</h1>
+		<h2>Página está em construção</h2>
+		<p>Prezado usuário,</p>
+		<p>A página requisitada encontra-se em construção.</p>
+		<p>Verifique com o administrador do sistema o status desta página.</p>
+		<hr size="1" width="100%" color="#b70c0c" noshade="noshade"/>	
+		<p class="rodape">
+		#{metadados['nomeEmpresa']}<br/>
+		#{metadados['enderecoEmpresa']}<br/>
+		#{metadados['telefoneSuporteEmpresa']}<br />
+		Email: <a href="mailto:#{metadados['emailSuporteEmpresa']}">
+		#{metadados['emailSuporteEmpresa']}</a>
+		</p>
+		
+	</body>
+</html>

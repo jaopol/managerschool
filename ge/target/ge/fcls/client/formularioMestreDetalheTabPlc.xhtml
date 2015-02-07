@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:plcf="http://www.powerlogic.com.br/plcf"
+	xmlns:plct="http://www.powerlogic.com.br/plct"
+	xmlns:tr="http://myfaces.apache.org/trinidad"
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">
+	
+	Realiza a renderizacao de formulario tipo Mestre-Detalhe em ergonomia de Tab-Folder. Tratar Tab-Folder como elementos de layout facilita a comutacao
+	dinamica de leiautes de Abas para Caixas Verticais (VBox) em tempo de execucao, facilitando impressao e conferencia
+	
+	<ui:composition template="/fcls/template/PlcGeralTemplate.xhtml">
+		<ui:define name="plc-corpo-formulario">
+			<f:loadBundle basename="ApplicationResources" var="msg" />			
+			<c:set var="tituloTab" value="#{plcAliasPrefixoAction}.mestre.titulo.comp"/>
+			<c:set var="sufixoMestre" value="Mdt"/>
+			<c:if test="#{requestScope.logicaPlc=='subdetalhe'}">
+				<c:set var="sufixoMestre" value="Mds"/>
+			</c:if>
+			<c:if test="#{requestScope.logicaPlc=='mandetalhe'}">
+				<c:set var="sufixoMestre" value="Mad"/>
+				<c:if test="#{requestScope.nomeSubdetalhe != null and requestScope.nomeSubdetalhe != ''}">
+					<c:set var="sufixoMestre" value="Mas"/>
+				</c:if>
+			</c:if>
+			<div id="plc-form-tab" class="ui-widget ui-widget-content ui-state-active plc-form-tab">
+			 	<ul>
+					<c:if test="#{plcConfigUrlColaboracao.exibeAba(0)}">
+						<li><a href="##{plcAliasPrefixoAction}Mestre"><span id="span-tab-1">#{msg[tituloTab]}</span></a></li>
+					</c:if>		
+					<c:forEach begin="1" end="#{plcConfigUrlColaboracao.getNumComponentes()}" varStatus="status">
+						<c:if test="#{plcConfigUrlColaboracao.exibeAba(status.index)}">
+							<c:set var="tituloTab" value="#{plcAliasPrefixoAction}.mestre.#{status.index + 1}.titulo.comp"/>
+							<li><a href="##{plcAliasPrefixoAction}Mestre#{status.index + 1}"><span id="span-tab-#{status.index+1}">#{msg[tituloTab]}</span></a></li>
+						</c:if>			
+					</c:forEach>
+
+				 	<c:forEach begin="1" end="#{plcConfigUrlColaboracao.getNumDetalhes()}" varStatus="status">
+						<c:if test="#{plcConfigUrlColaboracao.exibeAba(plcConfigUrlColaboracao.getNumComponentes() + status.index)}">
+							<c:set var="tituloTab" value="#{plcAliasPrefixoAction}.detalhe#{status.index != 1 ? '.'.concat(status.index).concat('.') : '.'}titulo.comp"/>
+							<li>
+								<a id="#{plcConfigUrlColaboracao.getNomeDetalhe(status.index - 1)}" href="##{plcAliasPrefixoAction}Det#{status.index != 1 ? status.index : ''}" 
+										class="#{plcControleConversacao.getDetalhesPorDemanda().containsKey(plcConfigUrlColaboracao.getNomeDetalhe(status.index - 1) ) and !('N'.equals(requestScope.naoVerificarDetalheDemanda)) and !('S'.equals(requestScope.plcIndAcaoNovo))?'plc-por-demanda':''}">
+										<span id="span-tab-#{status.index+1}">#{msg[tituloTab]}#{plcControleConversacao.getDetalhesPorDemanda().containsKey(plcConfigUrlColaboracao.getNomeDetalhe(status.index - 1)) and !('N'.equals(requestScope.naoVerificarDetalheDemanda)) and !('S'.equals(requestScope.plcIndAcaoNovo))?'...':''}
+								</span></a>
+							</li>		
+						</c:if>	
+					</c:forEach>
+				</ul>
+				
+				<div id="#{plcAliasPrefixoAction}Mestre" class="plc-form-tab plc-form-basico-topo">
+					<ui:include src="#{requestScope.dirBaseFacelets}/#{plcAliasPrefixoAction}#{sufixoMestre}.xhtml" />
+				</div>
+				<c:forEach begin="1" end="#{plcConfigUrlColaboracao.getNumComponentes()}" varStatus="status">
+					<div id="#{plcAliasPrefixoAction}Mestre#{status.index + 1}" class="plc-form-tab plc-form-basico-topo">
+						<ui:include src="#{requestScope.dirBaseFacelets}/#{plcAliasPrefixoAction}#{sufixoMestre}#{status.index + 1}.xhtml" />
+					</div>	
+				</c:forEach>
+				<c:forEach begin="1" end="#{plcConfigUrlColaboracao.getNumDetalhes()}" varStatus="status">
+					<c:set var="colecaoNomePlc" value="#{plcConfigUrlColaboracao.getNomeDetalhe(status.index - 1)}" scope="request" />
+					<div id="#{plcAliasPrefixoAction}Det#{status.index != 1 ? status.index : ''}" class="plc-form-tab plc-form-detalhe">
+						<c:if test="#{not empty plcEntidade.idAux}">
+							<c:if test="#{not empty plcControleDetalhePaginado.mapaControles[plcConfigUrlColaboracao.getNomeDetalhe(status.index - 1)]
+											and not empty plcControleDetalhePaginado.getMapaArgumentos(plcConfigUrlColaboracao.getNomeDetalhe(status.index - 1))}">
+								<ui:include src="#{requestScope.dirBaseFacelets}/#{plcAliasPrefixoAction}Det#{status.index != 1 ? status.index : ''}Arg.xhtml" />
+							</c:if>
+							<plct:paginacaoDetalhe nomeDetalhe="#{plcConfigUrlColaboracao.getNomeDetalhe(status.index - 1)}" />
+						</c:if>
+						<ui:include src="#{requestScope.dirBaseFacelets}/#{plcAliasPrefixoAction}Det#{status.index != 1 ? status.index : ''}.xhtml" />
+					</div>	
+				</c:forEach>
+			</div>
+			<ui:include src="/fcls/javascript/tabJs.xhtml"/>
+			
+		</ui:define>
+	</ui:composition>	
+</html>

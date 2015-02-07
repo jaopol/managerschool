@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:plct="http://www.powerlogic.com.br/plct" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition> 
+		<plcf:tabela tituloChave="perfilusuario.detalhe.2.titulo.comp" aoSair="comutaAbaFacelets(3)"> 
+			
+			<plcf:linha>
+				<plcf:celula/>
+				<plcf:celula rendered="#{empty requestScope.visualizaDocumentoPlc}">
+					<plcf:tituloExclusao/>
+				</plcf:celula>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.urlAcesso"/>
+				</plcf:celula>
+			</plcf:linha>
+			<plcf:iteracao id="urlAcessoPerfil" value="#{plcEntidade.urlAcessoPerfil}">
+				<plcf:linha>
+					<plcf:celula styleClass="celulaFormularioContador">
+						<plcf:contador/>
+					</plcf:celula>
+					<plcf:celula styleClass="celulaFormularioCaixaMarcacao" rendered="#{empty requestScope.visualizaDocumentoPlc}">
+						<plcf:caixaExclusao id="indExcPlc"  />
+					</plcf:celula>
+					<plcf:celula>
+						<plcf:vinculado id="urlAcesso" value="#{item.urlAcesso}" propSelPop="urlAcesso" idExibe="N" idSomenteLeitura="N" autoRecuperacaoClasse="com.consisti.sisgesc.entidade.autenticacao.UrlAcessoEntity" actionSel="selecionarurlacessosel" ajudaChave="ajuda.urlAcesso"  onkeydown="selecionaPorTecla(event,this);" lookupTamanho="60" modal="S"/>
+					</plcf:celula>
+				</plcf:linha>
+			</plcf:iteracao>
+		</plcf:tabela>
+
+	</ui:composition> 
+</html>

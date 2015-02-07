@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:plct="http://www.powerlogic.com.br/plct" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition> 
+		
+		<plcf:linha styleClass="ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" >
+			<plcf:celula>
+				<plcf:titulo tituloChave="titulo.filiacaoPai" />
+			</plcf:celula>
+		</plcf:linha>
+		<!-- ##### FILIACAO PAI ####### -->
+		<plcf:tabela titulo="titulo.filiacaoPai" aoSair="comutaAbaFacelets(3)" >
+			<plcf:iteracao id="filiacaoPai" value="#{plcEntidade.filiacaoPai}">
+				<plcf:linha>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.nomePai"/>
+						<plcf:texto id="nomePai" value="#{item.nomePai}"    ajudaChave="ajuda.nomePai" onblur="apresentaIconeFiliacao();" />
+						<div id="iconePai1">
+							<img src="/sisgesc/plc/midia/ico_obrig.png" style="border:0; " title="Este campo é obrigatório. Preencha-o antes de gravar."/>
+						</div>
+					</plcf:celula>
+					<plcf:celula columnSpan="2">
+						<plcf:titulo tituloChave="label.dataNascimento"/>
+						<plcf:data id="dataNascimento" value="#{item.dataNascimento}"    ajudaChave="ajuda.dataNascimento"  />
+						<div id="iconePai2">
+							<img src="/sisgesc/plc/midia/ico_obrig.png" style="border:0; " title="Este campo é obrigatório. Preencha-o antes de gravar."/>
+						</div>
+					</plcf:celula>
+					
+					<plcf:celula>
+						<plcf:botaoAcao id="btSetaResponsavelFinanceiro" acao="setarPaiResponsavel" validaForm="false" limpaForm="false" text="Resp financeiro"/>
+					</plcf:celula>
+					
+				</plcf:linha>
+				<plcf:linha>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.identidade"/>
+						<plcf:texto id="identidade" value="#{item.identidade}"    ajudaChave="ajuda.identidade"  />
+						<div id="iconePai3">
+							<img src="/sisgesc/plc/midia/ico_obrig.png" style="border:0; " title="Este campo é obrigatório. Preencha-o antes de gravar."/>
+						</div>
+					</plcf:celula>
+					<plcf:celula columnSpan="2">
+						<plcf:titulo tituloChave="label.cpf"/>
+						<plcf:texto id="cpf" value="#{item.cpf}"    ajudaChave="ajuda.cpf" onkeydown="mascara(this,cpf)"   />
+						<div id="iconePai4">
+							<img src="/sisgesc/plc/midia/ico_obrig.png" style="border:0; " title="Este campo é obrigatório. Preencha-o antes de gravar."/>
+						</div>
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.grauInstrucao"/>
+						<plcf:texto id="grauInstrucao" value="#{item.grauInstrucao}"    ajudaChave="ajuda.grauInstrucao" />
+					</plcf:celula>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.profissao"/>
+						<plcf:texto id="profissao" value="#{item.profissao}"    ajudaChave="ajuda.profissao" />
+					</plcf:celula>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.telefone"/>
+						<plcf:texto id="telefone" value="#{item.telefone}"    ajudaChave="ajuda.telefone" onkeydown="mascara(this,telefoneDDD)"  />
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.localTrabalho"/>
+						<plcf:texto id="localTrabalho" value="#{item.localTrabalho}"    ajudaChave="ajuda.localTrabalho" />
+					</plcf:celula>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.celular"/>
+						<plcf:texto id="celular" value="#{item.celular}"    ajudaChave="ajuda.celular" onkeydown="mascara(this,telefoneDDD)" />
+					</plcf:celula>
+					<plcf:celula columnSpan="2">
+						<plcf:titulo tituloChave="label.email"/>
+						<plcf:texto id="email" value="#{item.email}"    ajudaChave="ajuda.email" tamanho="50" tamanhoMaximo="100"/>
+					</plcf:celula>
+				</plcf:linha>
+			</plcf:iteracao>
+		</plcf:tabela>
+		
+		<br/>
+		<!-- ##### FILIACAO MAE ####### -->
+		<plcf:linha styleClass="ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" >
+			<plcf:celula>
+				<plcf:titulo tituloChave="titulo.filiacaoMae" />
+			</plcf:celula>
+		</plcf:linha>
+		
+		<plcf:tabela titulo="titulo.filiacaoMae" aoSair="comutaAbaFacelets(4)">
+			<plcf:iteracao id="filiacaoMae" value="#{plcEntidade.filiacaoMae}">
+				<plcf:linha>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.nomeMae"/>
+						<plcf:texto id="nomeMae" value="#{item.nomeMae}"    ajudaChave="ajuda.nomeMae" onblur="apresentaIconeFiliacaoMae();" />
+						<div id="iconeMae1">
+							<img src="/sisgesc/plc/midia/ico_obrig.png" style="border:0; " title="Este campo é obrigatório. Preencha-o antes de gravar."/>
+						</div>
+					</plcf:celula>
+					<plcf:celula columnSpan="2">
+						<plcf:titulo tituloChave="label.dataNascimento"/>
+						<plcf:data id="dataNascimento" value="#{item.dataNascimento}"    ajudaChave="ajuda.dataNascimento"  />
+						<div id="iconeMae2">
+							<img src="/sisgesc/plc/midia/ico_obrig.png" style="border:0; " title="Este campo é obrigatório. Preencha-o antes de gravar."/>
+						</div>
+					</plcf:celula>
+					
+					<plcf:celula>
+						<plcf:botaoAcao id="btSetaResponsavelFinanceiro" acao="setarMaeResponsavel" validaForm="false" limpaForm="false" text="Resp financeiro"/>
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.identidade"/>
+						<plcf:texto id="identidade" value="#{item.identidade}"    ajudaChave="ajuda.identidade" />
+						<div id="iconeMae3">
+							<img src="/sisgesc/plc/midia/ico_obrig.png" style="border:0; " title="Este campo é obrigatório. Preencha-o antes de gravar."/>
+						</div>
+					</plcf:celula>
+					<plcf:celula columnSpan="2">
+						<plcf:titulo tituloChave="label.cpf"/>
+						<plcf:texto id="cpf" value="#{item.cpf}"    ajudaChave="ajuda.cpf" onkeydown="mascara(this,cpf)" />
+						<div id="iconeMae4">
+							<img src="/sisgesc/plc/midia/ico_obrig.png" style="border:0; " title="Este campo é obrigatório. Preencha-o antes de gravar."/>
+						</div>
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.grauInstrucao"/>
+						<plcf:texto id="grauInstrucao" value="#{item.grauInstrucao}"    ajudaChave="ajuda.grauInstrucao" />
+					</plcf:celula>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.profissao"/>
+						<plcf:texto id="profissao" value="#{item.profissao}"    ajudaChave="ajuda.profissao" />
+					</plcf:celula>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.telefone"/>
+						<plcf:texto id="telefone" value="#{item.telefone}"    ajudaChave="ajuda.telefone" onkeydown="mascara(this,telefoneDDD)" />
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.localTrabalho"/>
+						<plcf:texto id="localTrabalho" value="#{item.localTrabalho}"    ajudaChave="ajuda.localTrabalho" />
+					</plcf:celula>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.celular"/>
+						<plcf:texto id="celular" value="#{item.celular}"    ajudaChave="ajuda.celular"  onkeydown="mascara(this,telefoneDDD)" />
+					</plcf:celula>
+					<plcf:celula columnSpan="2">
+						<plcf:titulo tituloChave="label.email"/>
+						<plcf:texto id="email" value="#{item.email}"    ajudaChave="ajuda.email" tamanho="50" tamanhoMaximo="100"/>
+					</plcf:celula>
+				</plcf:linha>
+			</plcf:iteracao>
+		</plcf:tabela>
+		
+		
+		<script avaliar="S">
+
+		//<![CDATA[
+
+		apresentaIconeFiliacaoMae();
+		apresentaIconeFiliacao();
+		
+		function apresentaIconeFiliacaoMae(){
+			
+			if( document.getElementById('corpo:formulario:filiacaoMae:0:nomeMae').value != "" ){
+				document.getElementById('iconeMae1').style.display = "block";
+				document.getElementById('iconeMae2').style.display = "block";
+				document.getElementById('iconeMae3').style.display = "block";
+				document.getElementById('iconeMae4').style.display = "block";
+				document.getElementById('iconeMae5').style.display = "block";
+				document.getElementById('iconeMae6').style.display = "block";
+			}
+			else{
+				document.getElementById('iconeMae1').style.display = "none";
+				document.getElementById('iconeMae2').style.display = "none";
+				document.getElementById('iconeMae3').style.display = "none";
+				document.getElementById('iconeMae4').style.display = "none";
+				document.getElementById('iconeMae5').style.display = "none";
+				document.getElementById('iconeMae6').style.display = "none";
+			}
+		}
+
+		function apresentaIconeFiliacao(){
+			if( document.getElementById('corpo:formulario:filiacaoPai:0:nomePai').value != "" ){
+				document.getElementById('iconePai1').style.display = "block";
+				document.getElementById('iconePai2').style.display = "block";
+				document.getElementById('iconePai3').style.display = "block";
+				document.getElementById('iconePai4').style.display = "block";
+				document.getElementById('iconePai5').style.display = "block";
+				document.getElementById('iconePai6').style.display = "block";
+			}
+			else{
+				document.getElementById('iconePai1').style.display = "none";
+				document.getElementById('iconePai2').style.display = "none";
+				document.getElementById('iconePai3').style.display = "none";
+				document.getElementById('iconePai4').style.display = "none";
+				document.getElementById('iconePai5').style.display = "none";
+				document.getElementById('iconePai6').style.display = "none";
+			}
+		}
+		//]]>
+			
+		</script>
+		
+	</ui:composition> 
+</html>

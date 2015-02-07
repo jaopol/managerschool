@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:plct="http://www.powerlogic.com.br/plct" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition> 
+		<plcf:tabela  aoSair="comutaAbaFacelets(2)">
+			<plcf:iteracao id="endereco" value="#{plcEntidade.endereco}">
+			<plcf:linha>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.logradouro"/>
+					<plcf:texto id="logradouro" value="#{item.logradouro}"    ajudaChave="ajuda.logradouro" tamanho="50" tamanhoMaximo="100" obrigatorio="S" />
+				</plcf:celula>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.numero"/>
+					<plcf:texto id="numero" value="#{item.numero}"    ajudaChave="ajuda.numero" />
+				</plcf:celula>
+				<plcf:celula>   
+					<plcf:titulo tituloChave="label.complemento"/>
+					<plcf:texto id="complemento" value="#{item.complemento}"    ajudaChave="ajuda.complemento" />
+				</plcf:celula>
+			</plcf:linha>
+			<plcf:linha>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.cep"/>
+					<plcf:texto id="cep" value="#{item.cep}"    ajudaChave="ajuda.cep" onkeydown="mascara(this,cep)" />
+				</plcf:celula>
+				<plcf:celula columnSpan="2">
+					<plcf:titulo tituloChave="label.bairro"/>
+					<plcf:texto id="bairro" value="#{item.bairro}"    ajudaChave="ajuda.bairro" />
+				</plcf:celula>
+			</plcf:linha>
+			<plcf:linha>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.cidade"/>
+					<plcf:texto id="cidade" value="#{item.cidade}"    ajudaChave="ajuda.cidade" />
+				</plcf:celula>
+				<plcf:celula columnSpan="2">
+					<plcf:titulo tituloChave="label.uf"/>
+					<plcf:comboEstatico id="uf" value="#{item.uf}" dominio="Uf"  exibeBranco="S" />
+				</plcf:celula> 
+			</plcf:linha>
+		</plcf:iteracao>
+	</plcf:tabela>
+	</ui:composition> 
+</html>

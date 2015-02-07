@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:plct="http://www.powerlogic.com.br/plct" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition> 
+		<plcf:tabela tituloChave="funcionario.detalhe.2.titulo.comp" aoSair="comutaAbaFacelets(3)"> 
+			<plcf:iteracao id="dadoFuncionario" value="#{plcEntidade.dadoFuncionario}">
+				<plcf:linha>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.escolaridade"/>
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha>
+					<plcf:celula>
+						<plcf:texto id="escolaridade" value="#{item.escolaridade}"    ajudaChave="ajuda.escolaridade" />
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.tituloEleitoral"/>
+					</plcf:celula>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.zona"/>
+					</plcf:celula>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.secao"/>
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha>
+					<plcf:celula>
+						<plcf:texto id="tituloEleitoral" value="#{item.tituloEleitoral}"    ajudaChave="ajuda.tituloEleitoral" />
+					</plcf:celula>
+					<plcf:celula>
+						<plcf:texto id="zona" value="#{item.zona}" formato="NUMERICO"   ajudaChave="ajuda.zona" />
+					</plcf:celula>
+					<plcf:celula>
+						<plcf:texto id="secao" value="#{item.secao}" formato="NUMERICO"   ajudaChave="ajuda.secao" />
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.identidade"/>
+					</plcf:celula>
+					<plcf:celula >
+						<plcf:titulo tituloChave="label.dataExpedicao"/>
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha>
+					<plcf:celula>
+						<plcf:texto id="identidade" value="#{item.identidade}"    ajudaChave="ajuda.identidade" />
+					</plcf:celula>
+					<plcf:celula >
+						<plcf:data id="dataExpedicao" value="#{item.dataExpedicao}"    ajudaChave="ajuda.dataExpedicao" />
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.ctps"/>
+					</plcf:celula>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.serie"/>
+					</plcf:celula>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.dataEmissaoCtps"/>
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha>
+					<plcf:celula>
+						<plcf:texto id="ctps" value="#{item.ctps}"    ajudaChave="ajuda.ctps" />
+					</plcf:celula>
+					<plcf:celula>
+						<plcf:texto id="serie" value="#{item.serie}" formato="NUMERICO"   ajudaChave="ajuda.serie" />
+					</plcf:celula>
+					<plcf:celula>
+						<plcf:data id="dataEmissaoCtps" value="#{item.dataEmissaoCtps}"    ajudaChave="ajuda.dataEmissaoCtps" />
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.pis"/>
+					</plcf:celula>
+					<plcf:celula >
+						<plcf:titulo tituloChave="label.dataVinculoPis"/>
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha>
+					<plcf:celula>
+						<plcf:texto id="pis" value="#{item.pis}" formato="NUMERICO"   ajudaChave="ajuda.pis" />
+					</plcf:celula>
+					<plcf:celula>
+						<plcf:data id="dataVinculoPis" value="#{item.dataVinculoPis}"    ajudaChave="ajuda.dataVinculoPis" />
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.cpf"/>
+					</plcf:celula>
+					<plcf:celula >
+						<plcf:titulo tituloChave="label.naturalidade"/>
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha>
+					<plcf:celula>
+						<plcf:texto id="cpf" value="#{item.cpf}"    ajudaChave="ajuda.cpf" onkeydown="mascara(this,cpf)"/>
+					</plcf:celula>
+					<plcf:celula >
+						<plcf:texto id="naturalidade" value="#{item.naturalidade}"    ajudaChave="ajuda.naturalidade" />
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.funcao"/>
+					</plcf:celula>
+					<plcf:celula >
+						<plcf:titulo tituloChave="label.rendaMensal"/>
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha>
+					<plcf:celula>
+						<plcf:texto id="funcao" value="#{item.funcao}"    ajudaChave="ajuda.funcao" />
+					</plcf:celula>
+					<plcf:celula columnSpan="2">
+						<plcf:numerico id="rendaMensal" value="#{item.rendaMensal}"    ajudaChave="ajuda.rendaMensal" />
+					</plcf:celula>
+				</plcf:linha>
+			</plcf:iteracao>
+		</plcf:tabela>
+		
+	</ui:composition> 
+</html>

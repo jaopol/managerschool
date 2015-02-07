@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition> 
+		<plcf:tabela tituloChave="tipoplanocontasman.titulo"> 
+			<plcf:linha> 
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.planoContas"/>  
+					<plcf:comboDinamico id="planoContas" value="#{plcEntidade.planoContas}" dominio="PlanoContasEntity" exibeBranco="S" ajudaChave="ajuda.planoContas"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.dataCadastro"/>  
+					<plcf:texto id="dataCadastro" value="#{plcEntidade.dataCadastro}" ajudaChave="ajuda.dataCadastro" somenteLeitura="S"/> 
+				</plcf:celula> 
+			</plcf:linha>  
+			<plcf:linha> 
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.descricao"/>  
+					<plcf:texto id="descricao" value="#{plcEntidade.descricao}" ajudaChave="ajuda.descricao"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.observacao"/> 
+					<plcf:area id="observacao" value="#{plcEntidade.observacao}" ajudaChave="ajuda.descricao" numLinhas="3" colunas="50"/>
+				</plcf:celula> 
+			</plcf:linha> 
+		</plcf:tabela> 
+	</ui:composition> 
+</html>

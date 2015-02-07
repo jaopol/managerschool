@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:c="http://java.sun.com/jstl/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<head>
+<title>
+<f:loadBundle basename="jCompanyResources" var="msg" />
+#{msg['jcompany.autenticacao']}
+</title>
+<script type="text/javascript">
+function redirect(url) {
+	document.location=url;
+}
+</script>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<link rel="StyleSheet" href="#{request.contextPath}/plc/css-w2/#{sessionScope['SESSION_CACHE'].pele}/pele.css" 	type="text/css" charset="UTF-8" />
+<link rel="StyleSheet" href="#{request.contextPath}/plc/css-w2/plc.geral.css" type="text/css" charset="UTF-8" />
+</head>
+<body scroll="no">
+	<h:form>
+		<div class="plc-login">
+		<c:if test="${not empty metadados['logoEmpresaLogin']}">
+			    <div class="plc-login-marca"><img src="#{request.contextPath}${metadados['logoEmpresaLogin']}"/></div>
+			 </c:if>
+			 <c:if test="${empty metadados['logoEmpresaLogin']}">
+				<div class="plc-login-marca"><img src="#{request.contextPath}/plc/midia/login-logo-empresa.png"/></div>
+			</c:if>
+			<div class="ui-widget ui-widget-header ui-corner-all plc-login-formulario sessao-encerrada">
+				<div class="ui-state-highlight plc-msg-ok plc-login-mensagem">
+					<span class="ico iAlerta"></span>
+					<p>#{msg['jcompany.sessao.encerrada']}</p>
+				</div>
+				<div class="plc-login-botao">
+					<input type="button" class="plc-login-botao-logout" value="#{msg['jcompany.retornar']}" onclick="redirect('#{request.contextPath}');"/> 
+				</div>
+			</div>
+		</div>	
+	</h:form>
+</body>
+<!-- Imagem para desconectar a aplicação do JOSSO, pode ser um ponto de falha caso o desenvolvedor não redirecione o logout para essa tela-->
+<img src="#{request.contextPath}/josso_logout/" width="0" heigth="0"/>
+</html>

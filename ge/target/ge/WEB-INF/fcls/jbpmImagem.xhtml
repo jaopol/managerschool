@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+				xmlns:tr="http://myfaces.apache.org/trinidad"
+				xmlns:plcf="http://www.powerlogic.com.br/plcf"
+				xmlns:c="http://java.sun.com/jstl/core">
+				
+				
+	<!-- BPM -->
+	
+	<c:if test="#{not empty requestScope['BPM_PROCESS_DEFINITION'] and idJbpm !=null and idJbpm !='' }">		
+	<a href="#" style="border: none"
+		onclick="atualizaDiv('#{requestScope.URL_BPM_CONSOLE}', '#{idJbpm}', '#{requestScope.idDefinicaoProcesso}'); return false;"
+		inibeAlertaAlteracao="S"> <img  class="icone_acao_fixo" border="0"
+		src="#{request.contextPath}/plc/midia/form-bpm.png"
+		alt="iconeJBpm"/>
+	</a>
+	
+	<script type="text/javascript" id="avaliar:imagemProcesso" >
+		jQuery(function(){
+			verificaImagemProcesso('#{requestScope.URL_BPM_CONSOLE}', '#{idJbpm}', '#{requestScope.idDefinicaoProcesso}', false);
+		});
+	</script>
+	</c:if> 
+	
+	<!-- BPM -->
+				
+</ui:composition>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <jboss-web>
+	<!--security-domain>java:/jaas/jsecurity</security-domain--> 
+	<resource-ref>
+        <res-ref-name>jdbc/sisgesc</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <jndi-name>java:sisgesc</jndi-name>
+    </resource-ref>
+ 	<!-- descomentar caso utilize ejb com jBoss 5 com ejb
+	<depends>
+		jboss.j2ee:ear=sisgesc_ear.ear,jar=sisgesc_modelo.jar,name=AppManager,service=EJB3
+	</depends>
+	descomentar caso utilize ejb com jBoss 5 com ejb-->
+ </jboss-web>

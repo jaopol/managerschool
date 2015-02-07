@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:plct="http://www.powerlogic.com.br/plct" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition> 
+		<plcf:tabela tituloChave="estoque.detalhe.titulo.comp"> 
+			
+			<plcf:iteracao id="movimento" value="#{plcEntidade.movimento}" > 
+			<plcf:linha> 
+				<plcf:celula header="true" styleClass="cabecalho"/>  
+				<plcf:celula header="true" styleClass="cabecalho" rendered="#{empty requestScope.visualizaDocumentoPlc}"> 
+					<plcf:tituloExclusao caminhoImagem="/plc/midia/form-lixeira.png">Exc.</plcf:tituloExclusao> 
+				</plcf:celula> 
+				<plcf:celula header="true" styleClass="cabecalho"> 
+					<plcf:titulo tituloChave="label.tipo.movimentacao">Tipo Movimentacao</plcf:titulo> 
+				</plcf:celula> 
+				<plcf:celula header="true" styleClass="cabecalho"> 
+					<plcf:titulo tituloChave="label.qtdeEntrada">Qtde Entrada</plcf:titulo> 
+				</plcf:celula>  
+				<plcf:celula header="true" styleClass="cabecalho"> 
+					<plcf:titulo tituloChave="label.qtdeSaida">Qtde Saida</plcf:titulo> 
+				</plcf:celula>
+				<plcf:celula header="true" styleClass="cabecalho"> 
+					<plcf:titulo tituloChave="label.dataMovimentacao">Data Movimentacao</plcf:titulo> 
+				</plcf:celula>  
+				<plcf:celula header="true" styleClass="cabecalho"> 
+					<plcf:titulo tituloChave="label.valorTotal">Valor Total</plcf:titulo> 
+				</plcf:celula>  
+				<plcf:celula header="true" styleClass="cabecalho"> 
+					<plcf:titulo tituloChave="label.valorUnitario">Valor Unitario</plcf:titulo> 
+				</plcf:celula>
+			</plcf:linha>
+				<plcf:linha> 
+					<plcf:celula columnSpan="6"> 
+						<div style="height: 10px;"></div>
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha> 
+					<plcf:celula styleClass="celulaFormularioContador"> 
+						<plcf:contador>1.</plcf:contador> 
+					</plcf:celula>  
+					<plcf:celula styleClass="celulaFormularioCaixaMarcacao" rendered="#{empty requestScope.visualizaDocumentoPlc}"> 
+						<plcf:caixaExclusao id="indExcPlc"/> 
+					</plcf:celula>
+					<plcf:celula> 
+						<plcf:comboEstatico id="tipoMovimentacao" value="#{item.tipoMovimentacao}" dominio="TipoMovimentacao" ajudaChave="ajuda.qtdeEntrada" exibeBranco="S" obrigatorio="S" onchange="limpaCampos(#{plcItensStatus.index}, this); " autoSubmit="true" /> 
+					</plcf:celula>  
+					<plcf:celula> 
+						<plcf:texto id="qtdeEntrada" value="#{item.qtdeEntrada}" onblur="calculaTotal(#{plcItensStatus.index});" ajudaChave="ajuda.qtdeEntrada" disabled="#{item.tipoMovimentacao != 'E'}"/> 
+					</plcf:celula>  
+					<plcf:celula> 
+						<plcf:texto id="qtdeSaida" value="#{item.qtdeSaida}" ajudaChave="ajuda.qtdeSaida" onblur="calculaTotalSaida(#{plcItensStatus.index});" disabled="#{item.tipoMovimentacao != 'S'}"/>
+					</plcf:celula>
+					<plcf:celula> 
+						<plcf:texto id="dataMovimentacao" value="#{item.dataMovimentacao}" ajudaChave="ajuda.dataMovimentacao" obrigatorio="N" somenteLeitura="S"/> 
+					</plcf:celula>  
+					<plcf:celula> 
+						<plcf:numerico id="valorTotal" value="#{item.valorTotal}" onblur="calculaTotal(#{plcItensStatus.index})" ajudaChave="ajuda.valorTotal" obrigatorio="N" disabled="#{item.tipoMovimentacao != 'E'}"/> 
+					</plcf:celula>
+					<plcf:celula> 
+						<plcf:numerico id="valorUnitario" value="#{item.valorUnitario}" ajudaChave="ajuda.valorUnitario" obrigatorio="N" disabled="true"/> 
+					</plcf:celula>
+				</plcf:linha> 
+				<plcf:linha>
+					<plcf:celula>
+					</plcf:celula>
+					<plcf:celula>
+					</plcf:celula>
+					<plcf:celula header="true" styleClass="cabecalho" columnSpan="2"> 
+						<plcf:titulo tituloChave="label.fornecedor">Fonecedor</plcf:titulo> 
+					</plcf:celula>
+					<plcf:celula header="true" styleClass="cabecalho" columnSpan="2"> 
+						<plcf:titulo tituloChave="label.turma">Turma</plcf:titulo> 
+					</plcf:celula> 
+				</plcf:linha>
+				<plcf:linha>
+					<plcf:celula>
+					</plcf:celula>
+					<plcf:celula>
+					</plcf:celula>
+					<plcf:celula columnSpan="2"> 
+						<plcf:vinculado id="fornecedor" obrigatorio="S" idExibe="N" value="#{item.fornecedor}" ajudaChave="ajuda.fornecedor" actionSel="fornecedorsel" lookupTamanho="40" modal="S" autoRecuperacaoClasse="com.consisti.sisgesc.entidade.FornecedorEntity"/>
+					</plcf:celula>
+					<plcf:celula columnSpan="2">   
+						<plcf:comboDinamico id="turma" obrigatorio="S" value="#{item.turma}" dominio="TurmaEntity" exibeBranco="S"  propRotulo="descricao" />
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha>
+					<plcf:celula>
+					</plcf:celula>
+					<plcf:celula>
+					</plcf:celula>
+					<plcf:celula header="true" styleClass="cabecalho"> 
+						<plcf:titulo tituloChave="label.observacao">Observacao</plcf:titulo> 
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha>
+					<plcf:celula>
+					</plcf:celula>
+					<plcf:celula>
+					</plcf:celula>
+					<plcf:celula columnSpan="3"> 
+						<plcf:area id="observacao"  value="#{item.observacao}" ajudaChave="ajuda.observacao" numLinhas="4" columns="70" disabled="#{item.tipoMovimentacao == null}"/> 
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha> 
+					<plcf:celula columnSpan="9"> 
+						<div style="height: 10px;"></div>
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha> 
+					<plcf:celula columnSpan="9"> 
+						<hr/>
+					</plcf:celula> 
+				</plcf:linha>
+			</plcf:iteracao> 
+			
+			<plcf:botaoAcao id="calculaUnitarioEntrada" acao="calculaEntradaSaidaEstoque" validaForm="false" inlineStyle="display:none;"/>
+			<plcf:botaoAcao id="ajustaEstoque" acao="ajustaEstoque" validaForm="false" inlineStyle="display:none;"/>
+			<plcf:escondido id="indice"/>
+			
+		</plcf:tabela> 
+		
+		<script>
+
+			function limpaCampos(index, valor){
+				
+				if (""==valor.value){
+					document.getElementById("corpo:formulario:movimento:"+index+":qtdeEntrada").value="";	
+					document.getElementById("corpo:formulario:movimento:"+index+":qtdeSaida").value="";
+					document.getElementById("corpo:formulario:movimento:"+index+":valorUnitario").value="";
+					document.getElementById("corpo:formulario:movimento:"+index+":observacao").value="";	
+				} else if ("0"==valor.value){
+					document.getElementById("corpo:formulario:movimento:"+index+":qtdeSaida").value="";
+				} else {
+					document.getElementById("corpo:formulario:movimento:"+index+":qtdeEntrada").value="";
+				}
+
+				document.getElementById("corpo:formulario:indice").value=index;
+				document.getElementById("corpo:formulario:ajustaEstoque").click();
+				
+			}
+
+			function calculaTotalSaida(index){
+
+				document.getElementById("corpo:formulario:indice").value=index;
+				document.getElementById("corpo:formulario:calculaUnitarioEntrada").click();
+
+			}
+
+			function calculaTotal(index){
+				
+				document.getElementById("corpo:formulario:indice").value=index;
+
+				if (""!=document.getElementById("corpo:formulario:movimento:"+index+":valorTotal").value){
+					if (""!=document.getElementById("corpo:formulario:movimento:"+index+":qtdeEntrada").value){
+						document.getElementById("corpo:formulario:calculaUnitarioEntrada").click();
+					}
+				}
+
+			}
+	
+			jQuery( document ).ajaxComplete(function() {
+				jQuery("#corpo\\:formulario\\:observacao").focus();
+				});
+			
+		</script>
+		
+		
+	</ui:composition> 
+	
+
+	
+</html>
+
+

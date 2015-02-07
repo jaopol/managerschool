@@ -1,0 +1,25 @@
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence">
+	<persistence-unit name="ge" transaction-type="JTA">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<jta-data-source>jdbc/ge</jta-data-source>
+		<!-- Descomentar caso utilize ejb no jBoss 5 
+		<jar-file>ge_comuns.jar</jar-file>
+		-->
+		
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.DerbyDialect"/>
+			<property name="hibernate.show_sql" value="true"/>
+			<property name="hibernate.format_sql" value="true"/>
+			
+			<property name="hibernate.ejb.event.pre-insert" value="com.powerlogic.jcompany.persistencia.jpa.PlcBaseJpaListener"/>
+			<property name="hibernate.ejb.event.pre-load" value="com.powerlogic.jcompany.persistencia.jpa.PlcBaseJpaListener"/>
+			<property name="hibernate.ejb.event.pre-update" value="com.powerlogic.jcompany.persistencia.jpa.PlcBaseJpaListener"/>
+			<property name="hibernate.ejb.event.pre-delete" value="com.powerlogic.jcompany.persistencia.jpa.PlcBaseJpaListener"/>
+			<property name="hibernate.ejb.event.post-insert" value="com.powerlogic.jcompany.persistencia.jpa.PlcBaseJpaListener"/>
+			<property name="hibernate.ejb.event.post-load" value="com.powerlogic.jcompany.persistencia.jpa.PlcBaseJpaListener"/>
+			<property name="hibernate.ejb.event.post-update" value="com.powerlogic.jcompany.persistencia.jpa.PlcBaseJpaListener"/>
+			<property name="hibernate.ejb.event.post-delete" value="com.powerlogic.jcompany.persistencia.jpa.PlcBaseJpaListener"/>
+			
+		</properties>
+	</persistence-unit>
+</persistence>

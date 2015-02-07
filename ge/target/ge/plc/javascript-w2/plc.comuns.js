@@ -1,0 +1,16 @@
+document.write('<'+'script'+' src="#contextPath#/plc/javascript-w2/jquery/jquery-1.4.2.min.js">'+'</'+'script'+'>');
+document.write('<'+'script'+' src="#contextPath#/plc/javascript/PlcGeral.js">'+'</'+'script'+'>');
+document.write('<'+'script'+' src="#contextPath#/plc/javascript-w2/jquery/ui/jquery-ui-min.js">'+'</'+'script'+'>');
+document.write('<'+'script'+' src="#contextPath#/plc/javascript-w2/jquery/cookie/jquery.cookie.js">'+'</'+'script'+'>');
+document.write('<'+'script'+' src="#contextPath#/plc/javascript-w2/jquery/ui/i18n/ui.datepicker-pt-BR.js">'+'</'+'script'+'>');
+document.write('<'+'script'+' src="#contextPath#/plc/javascript-w2/jquery/jquery.bgiframe.min.js">'+'</'+'script'+'>');
+document.write('<'+'script'+' src="#contextPath#/plc/javascript-w2/jquery/jquery.ajaxQueue.js">'+'</'+'script'+'>');
+document.write('<'+'script'+' src="#contextPath#/plc/javascript-w2/jquery/jquery.autocomplete.js">'+'</'+'script'+'>');
+document.write('<'+'script'+' src="#contextPath#/plc/javascript-w2/jquery/jquery.autogrow.js">'+'</'+'script'+'>');
+document.write('<'+'script'+' src="#contextPath#/plc/javascript-w2/jquery/jquery.maskinput.js">'+'</'+'script'+'>');
+document.write('<'+'script'+' src="#contextPath#/plc/javascript-w2/jquery/jqGrid-3.6.4/js/i18n/grid.locale-pt-br.js">'+'</'+'script'+'>');
+document.write('<'+'script'+' src="#contextPath#/plc/javascript-w2/jquery/jqGrid-3.6.4/js/jquery.jqGrid.min.js">'+'</'+'script'+'>');
+document.write('<'+'script'+' src="#contextPath#/plc/javascript-w2/jquery/starRating/jquery.starRating.js">'+'</'+'script'+'>');
+document.write('<'+'script'+' src="#contextPath#/plc/javascript-w2/fckeditor/fckeditor.js">'+'</'+'script'+'>');
+document.write('<'+'script'+' src="#contextPath#/plc/javascript-w2/app.comuns.js">'+'</'+'script'+'>');
+document.write('<'+'script'+' src="#contextPath#/plc/javascript-w2/app.geral.js">'+'</'+'script'+'>');

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition> 
+		<plcf:tabela tituloChave="perfilman.titulo" aoSair="comutaAbaFacelets(1)"> 
+			
+			<plcf:linha>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.nome"/>
+					<plcf:texto id="nome" value="#{plcEntidade.nome}"    ajudaChave="ajuda.nome" />
+				</plcf:celula>
+				<plcf:celula >
+					<plcf:titulo tituloChave="label.bloqueado"/>
+					<plcf:caixaMarcacao id="bloqueado" value="#{plcEntidade.bloqueado}"  ajudaChave="ajuda.bloqueado" obrigatorio="N"/>
+				</plcf:celula>
+			</plcf:linha>
+			<plcf:linha>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.descricao"/>
+					<plcf:texto id="descricao" value="#{plcEntidade.descricao}"    ajudaChave="ajuda.descricao" tamanho="50" tamanhoMaximo="100"/>
+				</plcf:celula>
+			</plcf:linha>
+			
+			<plcf:linha>
+				<plcf:celula>
+					<plcf:linha>
+						<plcf:celula>
+							<plcf:titulo tituloChave="label.grava"/>
+							<plcf:caixaMarcacao id="grava" value="#{plcEntidade.grava}"  ajudaChave="ajuda.grava" obrigatorio="N"/>
+						</plcf:celula>
+						<plcf:celula>
+							<plcf:titulo tituloChave="label.exclui"/>
+							<plcf:caixaMarcacao id="exclui" value="#{plcEntidade.exclui}"  ajudaChave="ajuda.exclui" obrigatorio="N"/>
+						</plcf:celula>
+						<plcf:celula>
+							<plcf:titulo tituloChave="label.pesquisa"/>
+							<plcf:caixaMarcacao id="pesquisa" value="#{plcEntidade.pesquisa}"  ajudaChave="ajuda.pesquisa" obrigatorio="N"/>
+						</plcf:celula>
+					</plcf:linha>
+				</plcf:celula>
+			</plcf:linha>
+		</plcf:tabela>
+			
+	</ui:composition> 
+</html>

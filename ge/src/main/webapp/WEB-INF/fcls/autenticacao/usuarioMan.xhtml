@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:plcf="http://www.powerlogic.com.br/plcf"
+	xmlns:tr="http://myfaces.apache.org/trinidad"
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">
+
+	<ui:composition>
+	
+		<plcf:tabela tituloChave="usuarioman.titulo">
+		<plcf:linha></plcf:linha><br></br>
+		<plcf:linha>
+			<plcf:celula>
+				<span id="corpo:formulario:professorSel" class="botao_menu ui-state-default plc-botao" title="Buscar na Lista de Funcionários" 
+					style="font-size: 12px"
+					onkeydown="selecionaPorTecla(event,this);" 
+					onclick="selecaoModal('/sisgesc/f/t/funcionariosel?&amp;modoJanelaPlc=modal&amp;delimPropsPlc=,','corpo:formulario:professor#professor,lookup_corpo:formulario:professor#professorLookup,corpo:formulario:idFuncionario#professor','','600','500','10','10','funcionariosel',','); jQuery.plc.componenteFoco = document.getElementById('lookup_corpo:formulario:professor'); return false;">
+		           <div class="plc-corpo-acao-t"> Buscar na Lista de Funcionarios</div> </span>
+			</plcf:celula>	
+		</plcf:linha>
+		<plcf:linha>
+			<plcf:celula>
+				<plcf:titulo tituloChave="label.nome"/>
+				<plcf:texto id="nome" value="#{plcEntidade.nome}"    ajudaChave="ajuda.nome" disabled="#{!plcEntidade.alteraCampo}" />
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:titulo tituloChave="label.ativoInativo"/>
+				<plcf:caixaMarcacao id="ativoInativo" value="#{plcEntidade.ativo}" ajudaChave="ajuda.ativoInativo"/>
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:titulo tituloChave="label.professor"/>
+				<plcf:caixaMarcacao id="flgProfessor" value="#{plcEntidade.flgProfessor}" ajudaChave="ajuda.professor" disabled="true"/>
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:titulo tituloChave="label.administrador"/>
+				<plcf:caixaMarcacao id="flgAdministrador" value="#{plcEntidade.flgAdministrador}" ajudaChave="ajuda.administrador"/>
+			</plcf:celula>
+		</plcf:linha>
+		<plcf:linha>
+			<plcf:celula>
+				<plcf:titulo tituloChave="label.email"/>
+				<plcf:texto id="email" value="#{plcEntidade.email}"    ajudaChave="ajuda.email" tamanho="50" tamanhoMaximo="250" disabled="#{!plcEntidade.alteraCampo}" />
+			</plcf:celula>
+		</plcf:linha>
+		<plcf:linha>
+			<plcf:celula>
+				<plcf:titulo tituloChave="label.login"/>
+				<plcf:texto id="login" value="#{plcEntidade.login}"    ajudaChave="ajuda.login" tamanho="20" tamanhoMaximo="10"/>
+			</plcf:celula>
+		</plcf:linha>
+		<!-- Renderiza somente na ediçao -->
+		<plcf:linha rendered="#{plcEntidade.id != null}">
+			<plcf:celula>
+				<plcf:titulo tituloChave="label.alteraSenha"/>
+				<plcf:caixaMarcacao id="alteraSenha" value="#{plcEntidade.alteraSenha}" ajudaChave="ajuda.alteraSenha" onclick="alteraSenha();"/> 
+			</plcf:celula>
+		</plcf:linha>
+		<!-- Renderiza somente quando for um novo registro ou for alterar a senha na ediçao -->
+		<plcf:linha rendered="#{plcEntidade.id eq null or plcEntidade.alteraSenha eq 'S'}">
+			<plcf:celula>
+				<plcf:titulo tituloChave="label.senha"/>
+				<tr:inputText id="senha" value="#{plcEntidade.senha}"  secret="true" />
+			</plcf:celula>
+			<plcf:celula >
+				<plcf:titulo tituloChave="label.confirmaSenha"/>
+				<tr:inputText id="confirmaSenha" value="#{plcEntidade.confirmaSenha}"  secret="true"  labelAndAccessKey="Confrimar senha"/>
+			</plcf:celula>
+		</plcf:linha>
+		<plcf:linha>
+			<plcf:celula>
+				<plcf:titulo tituloChave="label.matricula"/>
+				<plcf:texto id="matricula" value="#{plcEntidade.matricula}"    ajudaChave="ajuda.matricula" />
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:titulo tituloChave="label.celular"/>
+				<plcf:texto id="celular" value="#{plcEntidade.celular}"    ajudaChave="ajuda.celular" onkeydown="mascara(this,telefoneDDD);" disabled="#{!plcEntidade.alteraCampo}" />
+			</plcf:celula>
+		</plcf:linha>
+	</plcf:tabela>
+
+<plcf:botaoAcao id="btAlteraSenha" acao="alterarSenha" validaForm="false" limpaForm="false" inlineStyle="display:none" />
+<plcf:botaoAcao id="btRecuperaFuncionario" acao="recuperaFuncionario" validaForm="false" limpaForm="false" inlineStyle="display:none" />
+
+
+		<script avaliar="S">
+		
+		//<![CDATA[
+		
+		function alteraSenha(){
+			document.getElementById('corpo:formulario:btAlteraSenha').click();
+		}
+		
+		PlcGeral.prototype.aposDevolveSelecaoPopup = function() {
+			document.getElementById('corpo:formulario:btRecuperaFuncionario').click();
+			iniciarBarraProgresso();
+		}
+		
+		//]]>
+		
+		</script>
+					
+	</ui:composition>
+	
+	
+</html>

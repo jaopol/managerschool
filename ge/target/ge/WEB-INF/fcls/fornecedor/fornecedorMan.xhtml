@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition> 
+		<plcf:tabela tituloChave="fornecedorman.titulo">
+			<plcf:linha>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.tipoFavorecido"/>
+					<plcf:comboEstatico id="tipoPessoa" value="#{plcEntidade.tipoPessoa}" dominio="TipoFavorecido" obrigatorio="S" exibeBranco="S" onchange="atualiza(this.value)"/>
+				</plcf:celula>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.data.cadastro"/>
+					<plcf:data id="dataCadastro" value="#{plcEntidade.dataCadastro}" tamanho="10" label="ajuda.data.cadastro" tamanhoMaximo="10" somenteLeitura="S"/>
+				</plcf:celula>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.status"/>
+					<plcf:comboEstatico id="status" value="#{plcEntidade.status}" obrigatorio="S" ajudaChave="ajuda.status" dominio="AtivoInativo" />
+				</plcf:celula>
+			</plcf:linha>
+			
+			<plcf:linha rendered="#{plcEntidade.tipoPessoa == 'J'}">
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.nomeFantasia"/>
+					<plcf:texto id="nomeFantasia" value="#{plcEntidade.nomeFantasia}" tamanho="50" tamanhoMaximo="100" obrigatorio="S" ajudaChave="ajuda.nomeFantasia" />
+				</plcf:celula>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.razaoSocial"/>
+					<plcf:texto id="razaoSocial" value="#{plcEntidade.razaoSocial}" tamanho="50" tamanhoMaximo="100"  ajudaChave="ajuda.razaoSocial" />
+				</plcf:celula>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.cnpj"/>
+					<plcf:texto id="cnpj" value="#{plcEntidade.cnpj}" obrigatorio="S" labelAndAccessKey="CNPJ" onkeydown="mascara(this,cnpj)" tamanho="18" ajudaChave="ajuda.cnpj" tamanhoMaximo="18"/>
+				</plcf:celula>
+			</plcf:linha>
+			
+			<plcf:linha rendered="#{plcEntidade.tipoPessoa == 'F'}">
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.nome"/>
+					<plcf:texto id="nome" value="#{plcEntidade.nome}"  tamanho="50" tamanhoMaximo="100" obrigatorio="S" ajudaChave="ajuda.nome" />
+				</plcf:celula>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.cpf"/>
+					<plcf:texto id="cpf" value="#{plcEntidade.cpf}" obrigatorio="S" labelAndAccessKey="CPF" onkeydown="mascara(this,cpf)" tamanho="14"  ajudaChave="ajuda.cpf" tamanhoMaximo="14"/>
+				</plcf:celula>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.rg"/>
+					<plcf:texto id="rg" value="#{plcEntidade.rg}" tamanho="15" tamanhoMaximo="15" ajudaChave="ajuda.rg" />
+				</plcf:celula>
+			</plcf:linha>
+			
+			<plcf:linha rendered="#{plcEntidade.tipoPessoa == 'I'}">
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.nome"/>
+					<plcf:texto id="nomeImposto" value="#{plcEntidade.nome}"  tamanho="50" tamanhoMaximo="100" obrigatorio="S" ajudaChave="ajuda.nome" />
+				</plcf:celula>
+			</plcf:linha>
+			
+		</plcf:tabela>
+		<plcf:tabela tituloChave="label.endereco" rendered="#{plcEntidade.tipoPessoa != 'I'}">
+			<plcf:linha>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.uf"/>
+					<plcf:comboEstatico id="uf" value="#{plcEntidade.uf}" dominio="Uf"  exibeBranco="S"/>
+				</plcf:celula>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.municipio"/>
+					<plcf:texto id="outroMunicipio" value="#{plcEntidade.outroMunicipio}" tamanho="50" tamanhoMaximo="60" ajudaChave="ajuda.municipio" rendered="#{plcEntidade.uf != 'MG'}"/>
+				</plcf:celula>
+			</plcf:linha>
+			
+			<plcf:linha>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.rua"/>
+					<plcf:texto id="rua" value="#{plcEntidade.rua}" tamanho="50" tamanhoMaximo="100" ajudaChave="ajuda.rua"/>
+				</plcf:celula>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.numero"/>
+					<plcf:texto id="numero" value="#{plcEntidade.numero}" tamanho="10" tamanhoMaximo="11" ajudaChave="ajuda.numero"/>
+				</plcf:celula>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.complemento"/>
+					<plcf:texto id="complemento" value="#{plcEntidade.complemento}" tamanho="20" tamanhoMaximo="21" ajudaChave="ajuda.complemento"/>
+				</plcf:celula>
+			</plcf:linha>
+			
+			<plcf:linha>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.nome.contato"/>
+					<plcf:texto id="nomeContato" value="#{plcEntidade.nomeContato}" tamanho="50" tamanhoMaximo="100" ajudaChave="ajuda.nome.contato"/>
+				</plcf:celula>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.telefone"/>
+					<plcf:texto id="telefone" value="#{plcEntidade.telefoneContato}"  ajudaChave="ajuda.telefone" onkeydown="mascara(this,telefoneDDD)" />
+				</plcf:celula>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.celular"/>
+					<plcf:texto id="celular" value="#{plcEntidade.celular}"  ajudaChave="ajuda.celular" onkeydown="mascara(this,telefoneDDD)" />
+				</plcf:celula>
+			</plcf:linha>
+			
+			<plcf:linha>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.email"/>
+					<plcf:texto id="email" value="#{plcEntidade.email}" tamanho="50" tamanhoMaximo="50" ajudaChave="ajuda.email"/>
+				</plcf:celula>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.site"/>
+					<plcf:texto id="site" value="#{plcEntidade.site}" tamanho="50" tamanhoMaximo="100" ajudaChave="ajuda.site"/>
+				</plcf:celula>
+			</plcf:linha>
+			
+			<plcf:linha>
+				<plcf:celula columnSpan="2">
+					<plcf:titulo tituloChave="label.observacao"/>
+					<plcf:area id="observacao" value="#{plcEntidade.observacao}" tamanho="50" tamanhoMaximo="300" ajudaChave="ajuda.observacao" colunas="50" numLinhas="6"/>
+				</plcf:celula>
+			</plcf:linha>
+			
+			<plcf:escondido id="ufSelecionado"/>
+			<plcf:botaoAcao id="filtraMunicipio" acao="filtraMunicipio" inlineStyle="display:none" validaForm="false"/>
+			
+		</plcf:tabela>
+		
+		<script>
+			function atualiza(obj){
+				if (""!=obj){
+					getForm().submit();		
+				}
+			}
+		</script> 
+	</ui:composition> 
+</html>

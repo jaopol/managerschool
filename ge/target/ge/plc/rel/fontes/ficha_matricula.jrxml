@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="ficha_matricula"
+		 columnCount="1"
+		 printOrder="Vertical"
+		 orientation="Portrait"
+		 pageWidth="595"
+		 pageHeight="842"
+		 columnWidth="535"
+		 columnSpacing="0"
+		 leftMargin="30"
+		 rightMargin="30"
+		 topMargin="14"
+		 bottomMargin="14"
+		 whenNoDataType="NoPages"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false">
+	<property name="ireport.scriptlethandling" value="0" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+
+	<parameter name="SUBREPORT_DIR" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="DIR_IMAGENS" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="mesAtual" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="REPORT_CONTEXT" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="anoLetivo" isForPrompting="false" class="java.lang.String"/>
+
+	<field name="nomeAluno" class="java.lang.String"/>
+	<field name="sexo.descricao" class="java.lang.String"/>
+	<field name="matricula" class="java.lang.String"/>
+	<field name="turma.descricao" class="java.lang.String"/>
+	<field name="dataCadastro" class="java.util.Date"/>
+	<field name="dataNascimento" class="java.util.Date"/>
+	<field name="rua" class="java.lang.String"/>
+	<field name="telefone" class="java.lang.String"/>
+	<field name="numero" class="java.lang.String"/>
+	<field name="complemento" class="java.lang.String"/>
+	<field name="bairro" class="java.lang.String"/>
+	<field name="cep" class="java.lang.String"/>
+	<field name="ufStr" class="java.lang.String"/>
+	<field name="filiacaoPai" class="java.util.List"/>
+	<field name="filiacaoMae" class="java.util.List"/>
+	<field name="responsavelAluno" class="java.lang.String"/>
+	<field name="necessidadeEduEspecial" class="java.lang.String"/>
+	<field name="ultimaEscola" class="java.lang.String"/>
+	<field name="fazTratSaude" class="java.lang.String"/>
+	<field name="nomeRespFinanceiroStr" class="java.lang.String"/>
+	<field name="idAux" class="java.lang.String"/>
+	<field name="horaEntrada" class="java.lang.String"/>
+	<field name="horaSaida" class="java.lang.String"/>
+	<field name="documento" class="java.lang.String"/>
+	<field name="certidaoNascimento" class="java.util.List"/>
+	<field name="impostoStr" class="java.lang.String"/>
+	<field name="qualImpostoStr" class="java.lang.String"/>
+	<field name="periodoAluno.descricao" class="java.lang.String"/>
+	<field name="nacionalidadeStr" class="java.lang.String"/>
+	<field name="alergia" class="java.lang.String"/>
+	<field name="febreDorCabeca" class="java.lang.String"/>
+
+		<background>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</title>
+		<pageHeader>
+			<band height="101"  isSplitAllowed="true" >
+				<image  scaleImage="FillFrame" vAlign="Middle" hAlign="Center" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="7"
+						y="4"
+						width="183"
+						height="93"
+						key="image-1"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<graphicElement stretchType="NoStretch"/>
+					<imageExpression class="java.lang.String"><![CDATA[$P{DIR_IMAGENS}+"/LOGO_FINAL.jpg"]]></imageExpression>
+				</image>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="192"
+						y="3"
+						width="339"
+						height="94"
+						key="textField-66"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["      Educação Infantil e Ensino Fundamental <br/>"+
+"                 Unidade I - Rua Genebra 1000 <br/>"+
+"                 Unidade II - Rua Genebra 1063 <br/>"+
+"Nova Suíssa - CEP: 30.421-121 - Belo Horizonte - MG<br/>"+
+"                          Tel.: (31) 2526-4194<br/>"]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="3"
+						y="1"
+						width="531"
+						height="100"
+						key="rectangle-2"/>
+					<graphicElement stretchType="NoStretch"/>
+				</rectangle>
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="467"  isSplitAllowed="true" >
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="2"
+						width="535"
+						height="23"
+						key="textField-1"
+						isPrintRepeatedValues="false"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" pdfFontName="Helvetica-Bold" size="16" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["FICHA DE MATRÍCULA - ANO LETIVO "+$P{anoLetivo}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="24"
+						width="248"
+						height="15"
+						key="textField-2"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font fontName="SansSerif" size="10"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["<style isBold='true' pdfFontName='Helvetica-Bold'>Matricula: </style> "+$F{matricula}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="284"
+						y="24"
+						width="246"
+						height="15"
+						key="textField-3"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font fontName="SansSerif" size="10"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["<style isBold='true' pdfFontName='Helvetica-Bold'>Data:</style> "+new java.text.SimpleDateFormat("dd/MM/yyyy").format($F{dataCadastro})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="66"
+						width="535"
+						height="15"
+						key="textField-6"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font fontName="SansSerif" size="10"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["<style isBold='true' pdfFontName='Helvetica-Bold'>Nome: </style>"+$F{nomeAluno}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="80"
+						width="125"
+						height="15"
+						key="textField-7"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font fontName="SansSerif" size="10"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["<style isBold='true' pdfFontName='Helvetica-Bold'>Sexo: </style>"+$F{sexo.descricao}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="399"
+						y="110"
+						width="136"
+						height="15"
+						key="textField-8"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font fontName="SansSerif" size="10"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["<style isBold='true' pdfFontName='Helvetica-Bold'>UF:</style>"+$F{ufStr}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="125"
+						y="80"
+						width="203"
+						height="15"
+						key="textField-9"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font fontName="SansSerif" size="10"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["<style isBold='true' pdfFontName='Helvetica-Bold'>Data de nascimento: </style>"+new java.text.SimpleDateFormat("dd/MM/yyyy").format($F{dataNascimento})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="94"
+						width="313"
+						height="15"
+						key="textField-11"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font fontName="SansSerif" size="10"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["<style isBold='true' pdfFontName='Helvetica-Bold'>Rua: </style>"+$F{rua}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="314"
+						y="94"
+						width="85"
+						height="15"
+						key="textField-12"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font fontName="SansSerif" size="10"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["<style isBold='true' pdfFontName='Helvetica-Bold'>Nº: </style>"+$F{numero}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="-1"
+						y="110"
+						width="369"
+						height="15"
+						key="textField-13"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font fontName="SansSerif" size="10"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{complemento}==null ? "<style isBold='true' pdfFontName='Helvetica-Bold'>Complemento:</style>" : "<style isBold='true' pdfFontName='Helvetica-Bold'>Complemento: </style>"+$F{complemento}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="125"
+						width="270"
+						height="15"
+						key="textField-14"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font fontName="SansSerif" size="10"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["<style isBold='true' pdfFontName='Helvetica-Bold'>Bairro: </style>"+$F{bairro}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="270"
+						y="125"
+						width="127"
+						height="15"
+						key="textField-15"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font fontName="SansSerif" size="10"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["<style isBold='true' pdfFontName='Helvetica-Bold'>CEP: </style>"+$F{cep}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="399"
+						y="125"
+						width="132"
+						height="15"
+						key="textField-16"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font fontName="SansSerif" size="10"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{telefone} == null ? "<style isBold='true' pdfFontName='Helvetica-Bold'>Telefone: </style>" : "<style isBold='true' pdfFontName='Helvetica-Bold'>Telefone: </style>"+$F{telefone}]]></textFieldExpression>
+				</textField>
+				<subreport  isUsingCache="true">
+					<reportElement
+						x="0"
+						y="164"
+						width="535"
+						height="18"
+						key="subreport-1"
+						positionType="Float"/>
+					<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource((java.util.List)$F{certidaoNascimento})]]></dataSourceExpression>
+					<subreportExpression  class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "/ficha_matricula_certidao.jasper"]]></subreportExpression>
+				</subreport>
+				<subreport  isUsingCache="true">
+					<reportElement
+						x="1"
+						y="183"
+						width="535"
+						height="18"
+						key="subreport-2"
+						positionType="Float"/>
+					<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource((java.util.List)$F{filiacaoPai})]]></dataSourceExpression>
+					<subreportExpression  class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "/ficha_matricula_filiacao_pai.jasper"]]></subreportExpression>
+				</subreport>
+				<subreport  isUsingCache="true">
+					<reportElement
+						x="1"
+						y="202"
+						width="535"
+						height="18"
+						key="subreport-3"
+						positionType="Float"/>
+					<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource((java.util.List)$F{filiacaoMae})]]></dataSourceExpression>
+					<subreportExpression  class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "/ficha_matricula_filiacaomae.jasper"]]></subreportExpression>
+				</subreport>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="-3"
+						y="38"
+						width="279"
+						height="15"
+						key="textField-67"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{turma.descricao} == null ? "<style isBold='true' pdfFontName='Helvetica-Bold'> TURMA:</style>" : "<style isBold='true' pdfFontName='Helvetica-Bold'> TURMA:</style> "+$F{turma.descricao}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="-3"
+						y="52"
+						width="279"
+						height="15"
+						key="textField-68"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{periodoAluno.descricao} == null ? "<style isBold='true' pdfFontName='Helvetica-Bold'> TURNO:</style>" : "<style isBold='true' pdfFontName='Helvetica-Bold'> TURNO:</style> "+$F{periodoAluno.descricao}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="225"
+						width="535"
+						height="15"
+						key="textField-70"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["<style isBold='true' pdfFontName='Helvetica-Bold'>Nome do responsável pelo(a) aluno(a): </style>"+$F{responsavelAluno}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="240"
+						width="535"
+						height="15"
+						key="textField-73"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{necessidadeEduEspecial} == null ? "<style isBold='true' pdfFontName='Helvetica-Bold'>Necessidades Educacionais Especiais? </style>" : "<style isBold='true' pdfFontName='Helvetica-Bold'>Necessidades Educacionais Especiais? </style>"+$F{necessidadeEduEspecial}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="255"
+						width="535"
+						height="15"
+						key="textField-74"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{ultimaEscola} == null ? "<style isBold='true' pdfFontName='Helvetica-Bold'>Última escola frequentada pelo aluno:</style>" : "<style isBold='true' pdfFontName='Helvetica-Bold'>Última escola frequentada pelo aluno: </style>"+$F{ultimaEscola}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="270"
+						width="535"
+						height="15"
+						key="textField-76"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["<style isBold='true' pdfFontName='Helvetica-Bold'>Fez algum tratamento de saúde: </style>"+$F{fazTratSaude}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="285"
+						width="535"
+						height="15"
+						key="textField-77"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["<style isBold='true' pdfFontName='Helvetica-Bold'>É alérgico? </style>"+$F{alergia}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="300"
+						width="535"
+						height="15"
+						key="textField-78"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{febreDorCabeca}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="315"
+						width="535"
+						height="15"
+						key="textField-80"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["<style isBold='true' pdfFontName='Helvetica-Bold'>Responsável financeiro: </style>"+$F{nomeRespFinanceiroStr}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="167"
+						y="330"
+						width="94"
+						height="15"
+						key="textField-81"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="SansSerif" size="10"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{impostoStr} == "N" ? "(X) Não" : "(  ) Não"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="167"
+						y="343"
+						width="367"
+						height="15"
+						key="textField-83"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{impostoStr} == "S" ? "(X) Sim       Qual: "+$F{qualImpostoStr} : "( ) Sim"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="357"
+						width="535"
+						height="15"
+						key="textField-84"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["    Declaro que conheço as normas regimentais do estabelecimento de ensino e, em caso de renovação de matricula, que possuem qualquer débito em aberto, estando ciente de que, em tal hipótese, nos termos do da lei 9.870/99, poderá a matricula ser rejeitada.<br/>"+
+"    Declaram, por igual, estar cientes de que o deferimento da matricula ora pleitada está condicionada à existência de vaga, bem como a verificação das demais condições expressa na legislação de ensino.<br/>"+
+"    Finalmente, em caso de deferimento do pedido, afirmam estar cientes de que esta ficha de matricula passa a fazer parte integrante do contrato de prestação de serviços."]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="0"
+						y="143"
+						width="535"
+						height="22"
+						key="staticText-3"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="SansSerif" pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Dados da certidão de nascimento do aluno:]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="1"
+						y="390"
+						width="534"
+						height="16"
+						key="textField-85"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="10"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Belo Horizonte, "+new SimpleDateFormat("dd").format(new Date())+" de "+$P{mesAtual}+" de "+new SimpleDateFormat("yyyy").format(new Date())+"."]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="1"
+						y="415"
+						width="534"
+						height="16"
+						key="textField-86"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="SansSerif" size="10"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Assinatura do Pai/Mãe ou Responsável:______________________________________________________________."]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="1"
+						y="431"
+						width="534"
+						height="16"
+						key="textField-87"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="SansSerif" size="10"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Visto da direção e Secretária:     ( ) Deferido ( ) Indeferido"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="330"
+						width="165"
+						height="15"
+						key="textField-88"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["<style isBold='true' pdfFontName='Helvetica-Bold'>Declarante do imposoto de renda</style>"]]></textFieldExpression>
+				</textField>
+			</band>
+		</detail>
+		<columnFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageFooter>
+		<summary>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</summary>
+</jasperReport>

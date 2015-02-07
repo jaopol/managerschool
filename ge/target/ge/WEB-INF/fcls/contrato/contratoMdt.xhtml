@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition> 
+	
+		<plcf:tabela tituloChave="contratoman.titulo" id="ok">
+			<plcf:linha>
+				<plcf:celula/>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.aluno"/>
+					<plcf:vinculado id="aluno" value="#{plcEntidade.aluno}" propSelPop="aluno" idExibe="N" idSomenteLeitura="N" autoRecuperacaoClasse="com.consisti.sisgesc.entidade.AlunoEntity" actionSel="alunosel" modal="S" ajudaChave="ajuda.aluno" onkeydown="selecionaPorTecla(event,this);" lookupTamanho="50" obrigatorio="S"/>
+				</plcf:celula>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.dataInicioContrato"/>
+					<plcf:data id="dataInicioContrato" value="#{plcEntidade.dataInicioContrato}" ajudaChave="label.dataInicioContrato"/>
+				</plcf:celula>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.dataFimContrato"/>
+					<plcf:data id="dataFimContrato" value="#{plcEntidade.dataFimContrato}" ajudaChave="label.dataFimContrato" />
+				</plcf:celula>
+			</plcf:linha>
+		</plcf:tabela>
+	
+	
+		<plcf:tabela tituloChave="contratoman.titulo" rendered="#{not empty plcEntidade.id}">
+			<plcf:linha>
+				<plcf:celula/>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.aluno"/>
+					<plcf:exibe id="alunoExi" value="#{plcEntidade.aluno}"/>
+				</plcf:celula>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.anoContrato"/>
+					<plcf:exibe id="anoContrato" value="#{plcEntidade.anoContrato}"/>
+				</plcf:celula>
+				<plcf:celula inlineStyle="cursor:pointer" onclick="verContrato();">
+					<plcf:exibe id="ver" value="Ver Contrato"/>
+				</plcf:celula>
+			</plcf:linha>
+		</plcf:tabela>
+
+		<plcf:tabela rendered="#{not empty plcEntidade.id}" titulo="Aditivos">
+			
+			<plcf:iteracao id="adtivoAluno" value="#{plcEntidade.adtivoAluno}" varStatus="aditivo"> 
+				
+				<plcf:linha rendered="#{aditivo.index == 0}">
+					<plcf:celula width="50px">
+						<plcf:titulo titulo="Cont."/>
+					</plcf:celula>
+					<plcf:celula width="300px">
+						<plcf:titulo tituloChave="label.dataCriacao"/>
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha styleClass="linhapar" rendered="#{aditivo.index mod 2 == 0}">
+					<plcf:celula width="50px">
+						<plcf:exibe id="contador" value="#{aditivo.index + 1}"/>
+					</plcf:celula>
+					<plcf:celula width="300px">
+						<plcf:exibe id="dataCriacao" value="#{item.dataCriacao}"/>
+					</plcf:celula>
+					<plcf:celula inlineStyle="cursor:pointer" onclick="verArquivo(#{aditivo.index})">
+						<plcf:exibe id="ver" value="Ver"/>
+					</plcf:celula>
+				</plcf:linha>
+				<plcf:linha styleClass="linhaimpar" rendered="#{aditivo.index mod 2 != 0}">
+					<plcf:celula width="50px">
+						<plcf:exibe id="contador2" value="#{aditivo.index + 1}"/>
+					</plcf:celula>
+					<plcf:celula width="300px">
+						<plcf:exibe id="dataCriacao2" value="#{item.dataCriacao}"/>
+					</plcf:celula>
+					<plcf:celula inlineStyle="cursor:pointer" onclick="verArquivo(#{aditivo.index})">
+						<plcf:exibe id="ver2" value="Ver"/>
+					</plcf:celula>
+				</plcf:linha>
+			</plcf:iteracao>
+			
+			<plcf:botaoAcao id="verContrato" acao="verContrato" inlineStyle="display:none" validaForm="false"/>
+		
+			<plcf:escondido id="jaTemContratoVigente" value="#{requestScope.jaTemContratoVigente}"/>
+			<plcf:botaoAcao id="addAditivoContratoPlc" acao="addAditivoContratoPlc" inlineStyle="display:none"/>
+			<plcf:escondido id="idContrato" value="#{requestScope.idContrato}"/>
+			<plcf:escondido id="geraAditivo" value="#{requestScope.geraAditivo}"/>
+			<plcf:escondido id="nomeAluno" value="#{requestScope.nomeAluno}" />	
+			<plcf:escondido id="idAluno" value="#{plcEntidade.id}" />	
+
+<div id="aditivo" style="display: none;">
+		
+		<div class="ui-corner-all ui-state-error plc-msg-erro" style="display: none;" id="campoObrigatorio">
+			<span class="ico iAlertaVermelho"></span> 
+			<p>Informe um texto para criar um aditivo!</p>
+		</div>
+		
+		<div class="ui-corner-all ui-state-highlight  plc-msg-ok" style="display: none;" id="gravadoSucesso">
+			<span class="ico iAlerta"></span> 
+			<p>Registro gravado com sucesso</p>
+		</div>
+
+		<div class="plc-corpo-acao-generico">
+			<plcf:botaoAcao id="gravarAditivo2" acao="gravarAditivo" validaForm="false" urlIcone="ico iGravar" label="jcompany.evt.gravar" onclick="return gravarAditivo();" partialSubmit="true"/>
+		</div>
+		
+			<plcf:tabela tituloChave="aditivoman.titulo">
+				
+					<plcf:linha>
+						<plcf:celula>
+							<plcf:titulo tituloChave="label.nomeAluno"/>
+						</plcf:celula>
+						<plcf:celula>
+							<plcf:titulo tituloChave="label.dataCriacao"/>
+						</plcf:celula>
+					</plcf:linha>
+					
+					<plcf:linha>
+						<plcf:celula>
+							<plcf:exibe id="nomeAluno2" value="#{plcEntidade.aluno}"/>
+						</plcf:celula>
+						<plcf:celula>
+							<plcf:exibe id="dataCriacao" value="#{plcAction.dataAtual}"/>
+						</plcf:celula>
+					</plcf:linha>
+					
+					<plcf:linha>
+						<plcf:celula columnSpan="2">
+							<hr/>
+						</plcf:celula>
+					</plcf:linha>
+					
+					<plcf:linha>
+						<plcf:celula columnSpan="2">
+							<plcf:titulo titulo="Texto"/>
+						</plcf:celula>
+					</plcf:linha>
+					
+					<plcf:linha>
+						<plcf:celula columnSpan="2">
+							<plcf:area id="aditivoTexto" value="#{plcEntidade.texto}" labelAndAccessKey="Texto do Aditivo" numLinhas="10" colunas="100" tamanhoMaximo="10000" ajuda="Texto aditivo" obrigatorio="N"/>
+							<plcf:area id="aditivoTexto2" value="#{plcEntidade.texto}" labelAndAccessKey="Texto do Aditivo" numLinhas="10" colunas="100" tamanhoMaximo="10000" ajudaChave="ajuda.texto.aditivo" obrigatorio="N" inlineStyle="display:none;"/>
+						</plcf:celula>
+					</plcf:linha>
+					
+				</plcf:tabela>
+		
+		</div>
+
+		</plcf:tabela>
+		
+		
+
+<script avaliar="S">
+
+//<![CDATA[
+
+function abrirTelaAditivo(){
+
+	$(function() {
+		$( "#aditivo" ).dialog({ 
+			title: "Adicionar Aditivo",
+			width: 600,
+			height: 400,
+			close: function( event, ui ) {
+				window.location='#{request.contextPath}/f/n/contratomdt?chPlc='+jQuery("#corpo\\:formulario\\:idAluno").val();
+			} 
+		});
+	  });
+
+	return false;
+	
+}
+
+	function gravarAditivo(){
+
+		if (""==document.getElementById("corpo:formulario:aditivoTexto").value){
+			jQuery("#campoObrigatorio").show();
+			return false;
+		} else {
+			jQuery('#corpo\\:formulario').append(jQuery('#corpo\\:formulario\\:aditivoTexto'));
+			jQuery("#campoObrigatorio").hide();
+			jQuery("#gravadoSucesso").show();
+			jQuery('#corpo\\:formulario\\:aditivoTexto2').val(jQuery('#corpo\\:formulario\\:aditivoTexto').val());
+			jQuery(".af_inputText").show();
+			jQuery('#corpo\\:formulario\\:gravarAditivo2').hide();
+			return true;
+		}
+		
+	}
+
+function verContrato(){
+
+	document.getElementById("corpo:formulario:verContrato").click();
+	
+}
+
+geraAditivo();
+
+function geraAditivo(){
+	if ("S" == document.getElementById("corpo:formulario:geraAditivo").value){
+		var nomeAluno = document.getElementById("corpo:formulario:nomeAluno").value;
+		var idContrato = document.getElementById("corpo:formulario:idContrato").value;
+		selecaoModal('/sisgesc/f/n/aditivoman?&modoJanelaPlc=modal&nomeAluno='+nomeAluno+'&idContrato='+idContrato,'aditivo','','800','500','100','200','funcionariosel',',');
+	}
+	document.getElementById("corpo:formulario:geraAditivo").value="";
+}
+
+function selecaoModal(url, listaCampos, separador, larg, alt, posX, posY, alvo, delimPropsPlc)
+{
+	// Registra os campos de retorno, no escopo da janela que pediu o Modal Window!
+	window.camposRetorno = registrarCamposRetorno(listaCampos, "nome,id", separador);
+	if (window.camposRetorno) {
+		window.camposRetorno.delimPropsPlc = delimPropsPlc;
+	}
+	// Cria a Janela Modal!
+	var dialog = jQuery.plc.janelaModal({
+		title: 'Adicionar aditivo ao contrato'
+		,url: url.replace('modal','popup')
+		,hide: {
+	        effect: "explode",
+	        duration: 1000
+	      }
+		,width: (larg != '' ? parseInt(larg) : '')
+		,height: (alt != '' ? parseInt(alt) : '')
+	});
+
+}
+
+function executarAoFecharModal(){
+	window.location='#{request.contextPath}/f/n/contratomdt?chPlc='+jQuery("#corpo\\:formulario\\:idAluno").val();
+}
+
+jaTemContratoVigente();
+
+function jaTemContratoVigente(){
+	if ("S" == document.getElementById("corpo:formulario:jaTemContratoVigente").value){
+		if (confirm("Já existe um contrato vigente para este aluno, deseja incluir um aditivo?")){
+			var nomeAluno = document.getElementById("corpo:formulario:nomeAluno").value;
+			var idContrato = document.getElementById("corpo:formulario:idContrato").value;
+			selecaoModal('/sisgesc/f/n/aditivoman?&modoJanelaPlc=popUp&nomeAluno='+nomeAluno+'&idContrato='+idContrato,'aditivo','','800','500','100','200','funcionariosel',',');
+		}
+	}
+	document.getElementById("corpo:formulario:jaTemContratoVigente").value="";
+}
+
+//]]>
+
+</script>
+	</ui:composition> 
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application>
+
+	<description>ge_ear</description>
+	<display-name>ge_ear</display-name>
+	<module>
+		<java>jcompany_modelo-5.5.3.jar</java>
+	</module>
+	<module>
+		<ejb>ge_modelo.jar</ejb>
+	</module>
+	<module>
+		<java>jcompany_comuns-5.5.3.jar</java>
+	</module>
+	<module>
+		<java>ge_comuns.jar</java>
+	</module>
+	<module>
+		<web>
+			<web-uri>ge.war</web-uri>
+			<context-root>ge</context-root>
+		</web>
+	</module>
+</application>

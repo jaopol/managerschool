@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	
+	<parent>
+		<groupId>powerlogic</groupId>
+		<artifactId>jcompany</artifactId>
+		<version>5.5.3</version>
+	</parent>
+			
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>powerlogic.jcompany</groupId>
+	<artifactId>jcompany_doc_visao</artifactId>
+	<name>jCompany Visao Doc</name>
+	<packaging>war</packaging>
+	
+	<distributionManagement>
+		<repository>
+			<id>powerlogic</id>
+			<name>Repositorio Powerlogic</name>
+			<url>http://archiva.powerlogic.com.br:8080/archiva/repository/powerreleases</url>
+		</repository>
+		<snapshotRepository>
+			<id>powerlogic</id>
+			<name>Repositorio de Snapshots</name>
+			<url>http://archiva.powerlogic.com.br:8080/archiva/repository/powersnapshots</url>
+		</snapshotRepository>
+		
+		<!-- <site>
+			<id>poseidon</id>
+			<name>Repositorio Powerlogic</name>
+			<url>scp://poseidon/home/maven/sites/</url>
+		</site>	 -->	
+	</distributionManagement>
+	
+	<scm>
+    	<connection>scm:svn:http://poseidon/repositorio/jcompany/trunk/jcompany/</connection>
+    	<developerConnection>scm:svn:http://poseidon/repositorio/jcompany/trunk/jcompany/</developerConnection>
+	    <url>http://poseidon/repositorio/jcompany/trunk/jcompany/framework/</url>
+	</scm>
+	
+</project> 

@@ -1,0 +1,12 @@
+@charset "UTF-8";
+/* Estilos espec�ficos para modo de impressao */
+span.af_outputLabel{font-weight: bold; display:block; float:left; width: 100%;}
+td.celulaFormulario{vertical-align: middle;}
+span.af_selectOneRadio_content{padding: 0px;border-width: 0px;}
+input,textarea{padding: 0px;border-width: 0px; border-style: none;}
+a.iconeCalendario {display: none;}
+span.plc-botao {display: none}
+.ui-datepicker-trigger {display:none}
+.plc-impressao{font-family:Lucida Grande,Tahoma,sans-serif}
+.plc-impressao-emitido-em{font-size:11px}
+.plc-img-obrigatorio {display: none;}
