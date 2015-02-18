@@ -25,17 +25,11 @@ import java.util.List;
 
 import org.jrimum.bopepo.Boleto;
 
-import com.consisti.sisgesc.comuns.AppBaseContextVO;
 import com.consisti.sisgesc.entidade.AlunoEntity;
-import com.consisti.sisgesc.entidade.BoletimFundamentalDetEntity;
-import com.consisti.sisgesc.entidade.BoletimFundamentalEntity;
 import com.consisti.sisgesc.entidade.ContratoEntity;
-import com.consisti.sisgesc.entidade.CronogramaTurma;
-import com.consisti.sisgesc.entidade.Disciplinas;
 import com.consisti.sisgesc.entidade.EnderecoEntity;
 import com.consisti.sisgesc.entidade.FornecedorEntity;
 import com.consisti.sisgesc.entidade.FuncionarioEntity;
-import com.consisti.sisgesc.entidade.RegistroNotasFundamentalEntity;
 import com.consisti.sisgesc.entidade.ResponsavelFinanceiroAlunoEntity;
 import com.consisti.sisgesc.entidade.ServicoAluno;
 import com.consisti.sisgesc.entidade.ServicosEntity;
@@ -49,18 +43,14 @@ import com.consisti.sisgesc.entidade.financeiro.ContaReceber;
 import com.consisti.sisgesc.entidade.financeiro.ContaReceberEntity;
 import com.consisti.sisgesc.entidade.financeiro.TipoPlanoContasEntity;
 import com.consisti.sisgesc.modelo.AlunoManager;
-import com.consisti.sisgesc.modelo.BoletimFundamentalManager;
 import com.consisti.sisgesc.modelo.ContaReceberManager;
 import com.consisti.sisgesc.modelo.ContratoManager;
-import com.consisti.sisgesc.modelo.RegistroNotasFundamentalManager;
 import com.consisti.sisgesc.modelo.ServicoAlunoManager;
 import com.consisti.sisgesc.persistencia.hibernate.AlunoDAO;
 import com.consisti.sisgesc.persistencia.hibernate.BancoDAO;
 import com.consisti.sisgesc.persistencia.hibernate.ContaPagarDAO;
 import com.consisti.sisgesc.persistencia.hibernate.ContaReceberDAO;
 import com.consisti.sisgesc.persistencia.hibernate.ContratoDAO;
-import com.consisti.sisgesc.persistencia.hibernate.CronogramaTurmaDAO;
-import com.consisti.sisgesc.persistencia.hibernate.CronogramaTurmaDisciplinaDAO;
 import com.consisti.sisgesc.persistencia.hibernate.EnderecoDAO;
 import com.consisti.sisgesc.persistencia.hibernate.FornecedorDAO;
 import com.consisti.sisgesc.persistencia.hibernate.FuncionarioDAO;
@@ -102,16 +92,6 @@ public class AppFacadeImpl extends PlcFacadeImpl implements IAppFacade, IAppFaca
 		return dao.recuperaAlunoPelaTurma(turma);
 	}
 	
-	public List<Disciplinas> recuperaDisciplinasByIdAluno( Long idAluno ) throws PlcException{
-		CronogramaTurmaDisciplinaDAO dao = (CronogramaTurmaDisciplinaDAO)getDAO(CronogramaTurmaDisciplinaDAO.class);
-		return dao.recuperaDisciplinasByIdAluno(idAluno);
-	}
-
-	public List<CronogramaTurma> recuperaCronogramaTurma(Long idTurma) throws PlcException {
-		CronogramaTurmaDAO dao = (CronogramaTurmaDAO) getDAO(CronogramaTurmaDAO.class);
-		return dao.recuperaCronogramaTurma(idTurma);
-	}
-	
 	public UsuarioEntity recuperaUsuarioByLogin( String login ) throws PlcException{
 		UsuarioDAO dao = (UsuarioDAO)getDAO(UsuarioDAO.class);
 		return dao.recuperaUsuarioByLogin(login);
@@ -122,24 +102,9 @@ public class AppFacadeImpl extends PlcFacadeImpl implements IAppFacade, IAppFaca
 		return dao.recuperaFuncionarioById(idFuncionario);
 	}
 	
-	public void montaDetalheSubDetalhe( RegistroNotasFundamentalEntity registro ) throws PlcException{
-		RegistroNotasFundamentalManager manager = (RegistroNotasFundamentalManager)getBO(RegistroNotasFundamentalManager.class);
-		manager.montaDetalheSubDetalhe(registro);
-	}
-	
 	public String recuperaDescricaoTurma( Long idTurma ) throws PlcException{
 		TurmaDAO dao = (TurmaDAO)getDAO(TurmaDAO.class);
 		return dao.recuperaDescricaoTurma(idTurma);
-	}
-
-	public PlcBaseVO montaBoletimAluno( Long idAluno, BoletimFundamentalEntity boletim,  AppBaseContextVO appBaseContextVO ) throws PlcException{
-		BoletimFundamentalManager manager = (BoletimFundamentalManager)getBO( BoletimFundamentalEntity.class );
-		return manager.montaBoletimAluno(idAluno, boletim, appBaseContextVO );	
-	}
-	
-	public void reprovaRegistroNotas(List<BoletimFundamentalDetEntity> listBoletimDetReprovar) throws PlcException{
-		RegistroNotasFundamentalManager manager = (RegistroNotasFundamentalManager)getBO(RegistroNotasFundamentalManager.class);
-		manager.reprovaRegistroNotas( listBoletimDetReprovar );
 	}
 
 	public Long temContratoVigente(Long idAluno, int ano) throws PlcException {

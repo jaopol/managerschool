@@ -57,12 +57,10 @@
 		com.consisti.sisgesc.entidade.FornecedorEntity.class,
 		com.consisti.sisgesc.entidade.financeiro.FormaPagamentoEntity.class,
 		com.consisti.sisgesc.entidade.financeiro.PlanoContasEntity.class,
-		com.consisti.sisgesc.entidade.ConteudoEntity.class,
-		com.consisti.sisgesc.entidade.DisciplinasEntity.class,
 		com.consisti.sisgesc.entidade.TurmaEntity.class}
 )
 
-@PlcConfigOtimizacao(javascriptEspecificoUsa=true, cssEspecificoUsa=true)
+@PlcConfigOtimizacao(javascriptEspecificoUsa=true, cssEspecificoUsa=false)
 
 /*
 @PlcConfigComportamento

@@ -42,8 +42,6 @@ import com.powerlogic.jcompany.dominio.tipo.PlcSimNao;
 })
 public class AlunoEntity extends Aluno {
 	
-	
-	private transient List<CronogramaTurma> cronogramaTurma;
 	private transient AlunoEntity aluno;
 	//utilizado no contas receber demanda
 	private transient Long idBanco;
@@ -406,13 +404,6 @@ public class AlunoEntity extends Aluno {
 			return "";
 		}
 		return "";
-	}
-	
-	public List<CronogramaTurma> getCronogramaTurma() {
-		return cronogramaTurma;
-	}
-	public void setCronogramaTurma(List<CronogramaTurma> cronogramaTurma) {
-		this.cronogramaTurma = cronogramaTurma;
 	}
 	
 	public AlunoEntity(Long id, String matricula, Sexo sexo) {
