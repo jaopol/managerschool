@@ -456,7 +456,7 @@ public class AlunoAction extends RelatorioActionPlc  {
 	}
 
 	/**
-	 * Calcula do valor da mensalidade com o desconto em %
+	 * Calcula do valor da mensalidade com o desconto
 	 * @return
 	 * @throws PlcException
 	 */
@@ -465,8 +465,7 @@ public class AlunoAction extends RelatorioActionPlc  {
 		AlunoEntity aluno = (AlunoEntity) entidadePlc;
 		
 		if ( aluno.getDescontoMensalidade() != null ){
-			BigDecimal percent = new BigDecimal( aluno.getDescontoMensalidade().doubleValue() / 100.0 );
-			aluno.setValorTotalMensalidade( aluno.getValorMensalidadeAluno().subtract( aluno.getValorMensalidadeAluno().multiply( percent ) ) );
+			aluno.setValorTotalMensalidade( aluno.getValorMensalidadeAluno().subtract( aluno.getDescontoMensalidade() ) );
 		} else {
 			aluno.setValorTotalMensalidade( aluno.getValorMensalidadeAluno());
 		}
@@ -475,7 +474,7 @@ public class AlunoAction extends RelatorioActionPlc  {
 	}
 	
 	/**
-	 * Calcula do valor da matricula com o desconto em %
+	 * Calcula do valor da matricula com o desconto
 	 * @return
 	 * @throws PlcException
 	 */
@@ -484,8 +483,7 @@ public class AlunoAction extends RelatorioActionPlc  {
 		AlunoEntity aluno = (AlunoEntity) entidadePlc;
 		
 		if ( aluno.getDescontoMatricula() != null ){
-			BigDecimal percent = new BigDecimal( aluno.getDescontoMatricula().doubleValue() / 100.0 );
-			aluno.setValorMatricula( aluno.getValorMensalidadeAluno().subtract( aluno.getValorMensalidadeAluno().multiply( percent ) ) );
+			aluno.setValorMatricula( aluno.getValorMensalidadeAluno().subtract(  aluno.getDescontoMatricula() ) );
 		}
 		
 		return NAVEGACAO.IND_MESMA_PAGINA;

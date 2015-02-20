@@ -41,6 +41,7 @@
 		<mapping class="com.consisti.sisgesc.entidade.FuncionarioEntity"/>
 		<mapping class="com.consisti.sisgesc.entidade.DadoFuncionarioEntity"/>
 		<mapping class="com.consisti.sisgesc.entidade.HorarioTrabalhoEntity"/>
+		<!-- 
 		<mapping class="com.consisti.sisgesc.entidade.ConteudoEntity"/>
 		<mapping class="com.consisti.sisgesc.entidade.ProfessorDisciplinaEntity"/>
 		<mapping class="com.consisti.sisgesc.entidade.DisciplinasEntity"/>
@@ -48,6 +49,18 @@
 		<mapping class="com.consisti.sisgesc.entidade.CronogramaTurmaDisciplinaEntity"/>
 		<mapping class="com.consisti.sisgesc.entidade.CronogramaTurmaDisciplinaConteudoEntity"/>
 		<mapping class="com.consisti.sisgesc.entidade.TurmaProfessorEntity"/>
+		<mapping class="com.consisti.sisgesc.entidade.RegistrarFrequenciaEntity"/>
+		<mapping class="com.consisti.sisgesc.entidade.FrequenciaAlunoEntity"/>
+		<mapping class="com.consisti.sisgesc.entidade.RegistroNotasFundamentalEntity"/>
+		<mapping class="com.consisti.sisgesc.entidade.RegistroNotasFundamentalDetEntity"/>
+		<mapping class="com.consisti.sisgesc.entidade.RegistroNotasFundamentalSubDetEntity"/>
+		<mapping class="com.consisti.sisgesc.entidade.BoletimFundamentalEntity"/>
+		<mapping class="com.consisti.sisgesc.entidade.BoletimFundamentalDetEntity"/>
+		<mapping class="com.consisti.sisgesc.entidade.CadastroFeriadoEntity"/>
+		<mapping class="com.consisti.sisgesc.entidade.CalendarioAnualEntity"/>
+		<mapping class="com.consisti.sisgesc.entidade.CalendarioAnualDetEntity"/>
+		<mapping class="com.consisti.sisgesc.entidade.CalendarioAnualSubDetEntity"/>
+		 -->
 		<mapping class="com.consisti.sisgesc.entidade.autenticacao.UsuarioEntity"/>
 		<mapping class="com.consisti.sisgesc.entidade.autenticacao.UrlAcessoEntity"/>
 		<mapping class="com.consisti.sisgesc.entidade.autenticacao.PerfilEntity"/>
@@ -55,24 +68,13 @@
 		<mapping class="com.consisti.sisgesc.entidade.autenticacao.UrlAcessoPerfilEntity"/>
 		<mapping class="com.consisti.sisgesc.entidade.ServicosEntity"/>
 		<mapping class="com.consisti.sisgesc.entidade.ServicoAlunoEntity"/>
-		<mapping class="com.consisti.sisgesc.entidade.RegistrarFrequenciaEntity"/>
-		<mapping class="com.consisti.sisgesc.entidade.FrequenciaAlunoEntity"/>
-		<mapping class="com.consisti.sisgesc.entidade.RegistroNotasFundamentalEntity"/>
-		<mapping class="com.consisti.sisgesc.entidade.RegistroNotasFundamentalDetEntity"/>
-		<mapping class="com.consisti.sisgesc.entidade.RegistroNotasFundamentalSubDetEntity"/>
 		<mapping class="com.consisti.sisgesc.entidade.FornecedorEntity"/>
-		<mapping class="com.consisti.sisgesc.entidade.BoletimFundamentalEntity"/>
-		<mapping class="com.consisti.sisgesc.entidade.BoletimFundamentalDetEntity"/>
 		<mapping class="com.consisti.sisgesc.entidade.AnexoEntity"/>
 		<mapping class="com.consisti.sisgesc.entidade.ContratoEntity"/>
 		<mapping class="com.consisti.sisgesc.entidade.AditivoEntity"/>
 		<mapping class="com.consisti.sisgesc.entidade.TabelaPrecoEntity"/>
 		<mapping class="com.consisti.sisgesc.entidade.TabelaPrecoDetEntity"/>
 		<mapping class="com.consisti.sisgesc.entidade.ResponsavelFinanceiroAlunoEntity"/>
-		<mapping class="com.consisti.sisgesc.entidade.CadastroFeriadoEntity"/>
-		<mapping class="com.consisti.sisgesc.entidade.CalendarioAnualEntity"/>
-		<mapping class="com.consisti.sisgesc.entidade.CalendarioAnualDetEntity"/>
-		<mapping class="com.consisti.sisgesc.entidade.CalendarioAnualSubDetEntity"/>
 		<mapping class="com.consisti.sisgesc.entidade.financeiro.PlanoContasEntity"/>
 		<mapping class="com.consisti.sisgesc.entidade.financeiro.TipoPlanoContasEntity"/>
 		<mapping class="com.consisti.sisgesc.entidade.financeiro.FormaPagamentoEntity"/>
