@@ -1,11 +1,14 @@
 package com.consisti.sisgesc.entidade.financeiro;
 
 
+import java.text.NumberFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.AccessType;
 
@@ -103,5 +106,13 @@ public class ContaPagarEntity extends ContaPagar {
 	}
 	public void setContaPagaDesc(String contaPagaDesc) {
 		this.contaPagaDesc = contaPagaDesc;
+	}
+	
+	@Transient
+	public String getValorTotalFormatado(){
+		if (getValorPagar()!=null){
+			return NumberFormat.getCurrencyInstance().format(getValorPagar());
+		}
+		return "";
 	}
 }

@@ -26,4 +26,22 @@ public class ContaReceberDAO extends AppBaseDAO {
 		return getSession().createQuery(str.toString()).setParameter("dataInicio", dataInicio).setParameter("dataFim", dataFim).list();
 		
 	}
+
+	@SuppressWarnings("unchecked")
+	public List<ContaReceber> recuperaListaContasAReceber(Date date) {
+		
+		StringBuffer str = new StringBuffer(); 
+		str.append(" from ContaReceberEntity obj where obj.dataRecebimento = :data");
+		
+		try {
+			return getSession().createQuery(str.toString()).setParameter("data", date).list();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} catch (PlcException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+		
+	}
 }

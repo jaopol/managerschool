@@ -976,6 +976,24 @@
 		<redirect/> 
 	</navigation-case> 
 </navigation-rule>
+	<navigation-rule> 
+	<display-name>Seleção Movimento Dia</display-name>  
+	<from-view-id>/n/movimentodiasel</from-view-id>  
+	<navigation-case> 
+		<from-outcome>mesmaPagina</from-outcome>  
+		<to-view-id>/n/movimentodiasel</to-view-id> 
+	</navigation-case>  
+	<navigation-case> 
+		<from-outcome>edita</from-outcome>  
+		<to-view-id>/n/movimentodiaman</to-view-id>  
+		<redirect/> 
+	</navigation-case>  
+	<navigation-case> 
+		<from-outcome>novo</from-outcome>  
+		<to-view-id>/n/movimentodiaman</to-view-id>  
+		<redirect/> 
+	</navigation-case> 
+</navigation-rule>
 	<lifecycle>
 		<phase-listener>com.consisti.sisgesc.controle.listener.AppPhaseListener</phase-listener>
 	</lifecycle>

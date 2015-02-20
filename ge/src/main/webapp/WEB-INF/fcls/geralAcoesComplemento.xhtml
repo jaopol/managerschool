@@ -10,6 +10,7 @@
 	<body>
 		<ui:composition>
 			<div id='plc-corpo-acao-personalisado' class='plc-corpo-acao-generico'>
+				<plcf:botaoAcao id="botaoAcaoFecharCaixa" acao="fecharCaixa" label="app.evt.fecha.caixa" botaoArrayID="FECHAR_CAIXA" rendered="#{requestScope.fecharCaixa eq 'S'}"  blocking="true" validaForm="false" limpaForm="false"/>
 				<plcf:botaoAcao id="botaoAcaoImprimirRelEstoqueAnalitico" acao="geraRelEstoqueAnalitico" label="app.evt.imprimir.rel.estoque.analitico" botaoArrayID="IMPRIMIR_REL_ANALITICO" rendered="#{requestScope.exibeRelEstoqueAnalitico eq 'S'}"  blocking="true" validaForm="false" limpaForm="false"/>
 				<plcf:botaoAcao id="botaoAcaoImprimirRelEstoqueSintetico" acao="geraRelEstoqueSintetico" label="app.evt.imprimir.rel.estoque.sintetico" botaoArrayID="IMPRIMIR_REL_SINTETICO" rendered="#{requestScope.exibeRelEstoqueSintetico eq 'S'}"  blocking="true" validaForm="false" limpaForm="false"/>
 				<plcf:botaoAcao id="botaoAcaoImprimirTermoMatricula" acao="geraRelatorioTermoMatricula" label="app.evt.imprimir.termo.matricula" botaoArrayID="IMPRIMIR_MATRICULA" rendered="#{requestScope.exibeImprimirTermoMatricula eq 'S'}"  blocking="true" validaForm="false" limpaForm="false"/>

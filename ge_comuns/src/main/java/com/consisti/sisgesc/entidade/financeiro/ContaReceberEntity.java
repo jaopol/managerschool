@@ -2,6 +2,7 @@ package com.consisti.sisgesc.entidade.financeiro;
 
 
 import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.AccessType;
 
@@ -139,5 +141,13 @@ public class ContaReceberEntity extends ContaReceber {
 	}
 	public void setGeraRemessa(Boolean geraRemessa) {
 		this.geraRemessa = geraRemessa;
+	}
+	
+	@Transient
+	public String getValorTotalFormatado(){
+		if (getValorTotal()!=null){
+			return NumberFormat.getCurrencyInstance().format(getValorTotal());
+		}
+		return "";
 	}
 }

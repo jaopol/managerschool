@@ -35,6 +35,7 @@ import com.consisti.sisgesc.entidade.Disciplinas;
 import com.consisti.sisgesc.entidade.EnderecoEntity;
 import com.consisti.sisgesc.entidade.FornecedorEntity;
 import com.consisti.sisgesc.entidade.FuncionarioEntity;
+import com.consisti.sisgesc.entidade.MovimentoDiaEntity;
 import com.consisti.sisgesc.entidade.RegistroNotasFundamentalEntity;
 import com.consisti.sisgesc.entidade.ResponsavelFinanceiroAlunoEntity;
 import com.consisti.sisgesc.entidade.ServicoAluno;
@@ -246,4 +247,8 @@ public interface IAppFacade extends IPlcFacade {
 	List<BancoEntity> recuperaListaBanco() throws PlcException;
 
 	void excluirServicoAluno(Long id) throws PlcException;
+
+	void pesquisaMovimentoDia(MovimentoDiaEntity movimentoDia, Date date)throws PlcException;
+
+	void fecharCaixa(MovimentoDiaEntity movimentoDia)throws PlcException;
 }

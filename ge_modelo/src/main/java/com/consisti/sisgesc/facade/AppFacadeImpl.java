@@ -35,6 +35,7 @@ import com.consisti.sisgesc.entidade.Disciplinas;
 import com.consisti.sisgesc.entidade.EnderecoEntity;
 import com.consisti.sisgesc.entidade.FornecedorEntity;
 import com.consisti.sisgesc.entidade.FuncionarioEntity;
+import com.consisti.sisgesc.entidade.MovimentoDiaEntity;
 import com.consisti.sisgesc.entidade.RegistroNotasFundamentalEntity;
 import com.consisti.sisgesc.entidade.ResponsavelFinanceiroAlunoEntity;
 import com.consisti.sisgesc.entidade.ServicoAluno;
@@ -52,6 +53,7 @@ import com.consisti.sisgesc.modelo.AlunoManager;
 import com.consisti.sisgesc.modelo.BoletimFundamentalManager;
 import com.consisti.sisgesc.modelo.ContaReceberManager;
 import com.consisti.sisgesc.modelo.ContratoManager;
+import com.consisti.sisgesc.modelo.MovimentoDiaManager;
 import com.consisti.sisgesc.modelo.RegistroNotasFundamentalManager;
 import com.consisti.sisgesc.modelo.ServicoAlunoManager;
 import com.consisti.sisgesc.persistencia.hibernate.AlunoDAO;
@@ -64,6 +66,7 @@ import com.consisti.sisgesc.persistencia.hibernate.CronogramaTurmaDisciplinaDAO;
 import com.consisti.sisgesc.persistencia.hibernate.EnderecoDAO;
 import com.consisti.sisgesc.persistencia.hibernate.FornecedorDAO;
 import com.consisti.sisgesc.persistencia.hibernate.FuncionarioDAO;
+import com.consisti.sisgesc.persistencia.hibernate.MovimentoDiaDAO;
 import com.consisti.sisgesc.persistencia.hibernate.ResponsavelFinanceiroAlunoDAO;
 import com.consisti.sisgesc.persistencia.hibernate.ServicoAlunoDAO;
 import com.consisti.sisgesc.persistencia.hibernate.ServicoDAO;
@@ -238,5 +241,15 @@ public class AppFacadeImpl extends PlcFacadeImpl implements IAppFacade, IAppFaca
 			throws PlcException {
 		ContaReceberManager bo = (ContaReceberManager)getBO(ContaReceberManager.class);
 		bo.gravarContaReceberPorDemanda(listaVO);
+	}
+
+	public void pesquisaMovimentoDia(MovimentoDiaEntity movimentoDia, Date date) throws PlcException {
+		MovimentoDiaManager movimentoManager = (MovimentoDiaManager)getBO(MovimentoDiaManager.class);
+		movimentoManager.pesquisaMovimentoDia(movimentoDia, date);
+	}
+
+	public void fecharCaixa(MovimentoDiaEntity movimentoDia) throws PlcException {
+		MovimentoDiaDAO dao = (MovimentoDiaDAO)getDAO(MovimentoDiaDAO.class);
+		dao.inclui(movimentoDia);
 	}
 }
