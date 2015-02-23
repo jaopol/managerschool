@@ -38,6 +38,10 @@
 					<plcf:titulo tituloChave="label.anoLetivoAluno"/>
 					<plcf:texto id="anoLetivo" value="#{plcEntidade.anoLetivo}" ajudaChave="ajuda.anoLetivoAluno" tamanho="5" obrigatorio="S"/>
 				</plcf:celula>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.status"/>
+					<plcf:comboDinamico id="status" value="#{plcEntidade.status}" ajudaChave="ajuda.status" dominio="AtivoInativo" obrigatorio="S" exibeBranco="N"/>
+				</plcf:celula>
 			</plcf:linha>
 			
 			<br>&nbsp;</br>

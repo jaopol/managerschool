@@ -28,6 +28,7 @@ import org.joda.time.PeriodType;
 import com.consisti.sisgesc.comuns.AppBaseContextVO;
 import com.consisti.sisgesc.comuns.AppConstantesComuns;
 import com.consisti.sisgesc.controle.jsf.RelatorioActionPlc;
+import com.consisti.sisgesc.dominio.AtivoInativo;
 import com.consisti.sisgesc.dominio.TipoMatricula;
 import com.consisti.sisgesc.entidade.AlunoEntity;
 import com.consisti.sisgesc.entidade.CertidaoNascimento;
@@ -77,7 +78,7 @@ public class AlunoAction extends RelatorioActionPlc  {
 		AlunoEntity aluno = (AlunoEntity)entidadePlc;
 		aluno.setAnexoAluno(null);
 		setDataCadastro( aluno );
-		
+		aluno.setStatus(AtivoInativo.A);
 		return super.novoApos();
 	}
 	
@@ -234,6 +235,10 @@ public class AlunoAction extends RelatorioActionPlc  {
 	 */
 	private void validaCampoObrigatorio(AlunoEntity aluno) throws PlcException {
 		List<String> listaCampoMSg = new ArrayList<String>();
+		
+		if(aluno.getValorMatricula() == null ){
+			throw new PlcException("msg.campo.obrigatorio.aluno", new String[]{"Matricula é obrigatório(a)"} );
+		}
 		
 		validaCampoObrigatorioPai( aluno.getFiliacaoPai(), listaCampoMSg );
 		validaCampoObrigatorioMae( aluno.getFiliacaoMae(), listaCampoMSg );

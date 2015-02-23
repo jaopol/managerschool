@@ -25,14 +25,12 @@ import java.util.List;
 
 import org.jrimum.bopepo.Boleto;
 
-import com.consisti.sisgesc.comuns.AppBaseContextVO;
 import com.consisti.sisgesc.entidade.AlunoEntity;
 import com.consisti.sisgesc.entidade.ContratoEntity;
 import com.consisti.sisgesc.entidade.EnderecoEntity;
 import com.consisti.sisgesc.entidade.FornecedorEntity;
 import com.consisti.sisgesc.entidade.FuncionarioEntity;
 import com.consisti.sisgesc.entidade.MovimentoDiaEntity;
-import com.consisti.sisgesc.entidade.RegistroNotasFundamentalEntity;
 import com.consisti.sisgesc.entidade.ResponsavelFinanceiroAlunoEntity;
 import com.consisti.sisgesc.entidade.ServicoAluno;
 import com.consisti.sisgesc.entidade.ServicosEntity;

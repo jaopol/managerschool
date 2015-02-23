@@ -23,6 +23,7 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.ForeignKey;
 import org.hibernate.validator.Valid;
 
+import com.consisti.sisgesc.dominio.AtivoInativo;
 import com.consisti.sisgesc.dominio.PeriodoAluno;
 import com.consisti.sisgesc.dominio.Sexo;
 import com.consisti.sisgesc.dominio.TipoEducacao;
@@ -183,6 +184,10 @@ public abstract class Aluno extends AppBaseEntity {
 	@PlcValFormatoSimples(formato=FormatoSimples.NUMERICO)
 	@Column (name="ANO_LETIVO", length=4)
 	private String anoLetivo;
+	
+	@Column (name="STATUS")
+	@Enumerated (EnumType.STRING)
+	private AtivoInativo status;
 
 	public Long getId() {
 		return id;
@@ -455,6 +460,16 @@ public abstract class Aluno extends AppBaseEntity {
 	public void setAnoLetivo(String anoLetivo) {
 		this.anoLetivo = anoLetivo;
 	}
+	
+	public AtivoInativo getStatus() {
+		if(status == null){
+			return AtivoInativo.A;
+		}
+		return status;
+	}
 
+	public void setStatus(AtivoInativo status) {
+		this.status = status;
+	}
 
 }
