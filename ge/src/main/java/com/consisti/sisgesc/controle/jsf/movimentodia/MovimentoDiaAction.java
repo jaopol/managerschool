@@ -41,10 +41,8 @@ public class MovimentoDiaAction extends RelatorioActionPlc  {
 		
 		MovimentoDiaEntity movimentoDia = (MovimentoDiaEntity) entidadePlc;
 		
-		if (movimentoDia!=null){
-			if (isValorRecebidoMaiorValorPago() && (movimentoDia.getDataMovimento() != null || new Date().compareTo(movimentoDia.getDataMovimento()) == 0)){
-				contextHelperPlc.getRequest().setAttribute( "fecharCaixa", PlcConstantes.EXIBIR );
-			}
+		if (isValorRecebidoMaiorValorPago()){
+			contextHelperPlc.getRequest().setAttribute( "fecharCaixa", PlcConstantes.EXIBIR );
 		}
 			
 		Map<String, PlcArgVO> listaArgumentos = ((PlcBaseLogicaArgumento) this.logicaItensPlc).getArgumentos();
@@ -72,11 +70,15 @@ public class MovimentoDiaAction extends RelatorioActionPlc  {
 	public void fecharCaixa() throws PlcException{
 		
 		MovimentoDiaEntity movimentoDia = (MovimentoDiaEntity) entidadePlc;
+		
+		if (movimentoDia.getValorRetirada().compareTo(movimentoDia.getSaldoDia()) > 0){
+			throw new PlcException("erro");
+		}
+		
 		movimentoDia.setDataMovimento(new Date());
-		movimentoDia.setSaldoDia(somaSaldoDia());
+		movimentoDia.setSaldoTotal(movimentoDia.getTotalEntrada().subtract(movimentoDia.getValorRetirada()));
 		movimentoDia.setTotalEntrada(getTotalRecebido());
 		movimentoDia.setTotalSaida(getTotalPago());
-		movimentoDia.setSaldoTotal(somaSaldoTotal(movimentoDia.getValorRetirada(), movimentoDia.getSaldoDia()));
 		getFachada().fecharCaixa(movimentoDia);
 		
 	}
@@ -88,11 +90,6 @@ public class MovimentoDiaAction extends RelatorioActionPlc  {
 			}
 		}
 		return saldoDoDia;
-	}
-
-	private BigDecimal somaSaldoDia() {
-		
-		return getTotalRecebido().subtract(getTotalPago());
 	}
 
 	private IAppFacade getFachada() {
@@ -112,6 +109,7 @@ public class MovimentoDiaAction extends RelatorioActionPlc  {
 		
 		Map<String, PlcArgVO> listaArgumentos = ((PlcBaseLogicaArgumento) this.logicaItensPlc).getArgumentos();
 		MovimentoDiaEntity movimentoDia = new MovimentoDiaEntity();
+		entidadePlc = movimentoDia;
 		PlcArgVO plcArgVO = listaArgumentos.get("dataMovimento");
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date dataMovimento = null;
@@ -156,11 +154,10 @@ public class MovimentoDiaAction extends RelatorioActionPlc  {
 		}
 		
 		setTotalRecebido(totalContasRecebidas);
+		movimentoDia.setTotalEntrada(totalContasRecebidas);
 		setTotalPago(totalContaPagas);
-		
-		contextHelperPlc.getRequest().setAttribute("totalRecebido", NumberFormat.getCurrencyInstance().format(getTotalRecebido()));
-		contextHelperPlc.getRequest().setAttribute("totalPago", NumberFormat.getCurrencyInstance().format(getTotalPago()));
-		
+		movimentoDia.setTotalSaida(totalContaPagas);
+		movimentoDia.setSaldoDia(totalContasRecebidas.subtract(totalContaPagas));
 	}
 
 	public boolean isValorRecebidoMaiorValorPago() {

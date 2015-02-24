@@ -45,9 +45,6 @@ public abstract class MovimentoDia extends AppBaseEntity {
 	@Column (name = "SALDO_TOTAL", nullable=false, length=19)
 	private BigDecimal saldoTotal;
 	
-	@Column (name = "VALOR_TOTAL_CAIXA", nullable=false, length=19)
-	private BigDecimal valorTotalCaixa;
-	
 	@Column (name = "VALOR_RETIRADA", nullable=false, length=19)
 	private BigDecimal valorRetirada;
 	
@@ -94,14 +91,6 @@ public abstract class MovimentoDia extends AppBaseEntity {
 
 	public void setSaldoTotal(BigDecimal saldoTotal) {
 		this.saldoTotal=saldoTotal;
-	}
-
-	public BigDecimal getValorTotalCaixa() {
-		return valorTotalCaixa;
-	}
-
-	public void setValorTotalCaixa(BigDecimal valorTotalCaixa) {
-		this.valorTotalCaixa=valorTotalCaixa;
 	}
 
 	public Date getDataMovimento() {

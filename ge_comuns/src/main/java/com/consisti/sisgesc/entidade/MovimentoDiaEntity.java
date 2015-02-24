@@ -3,6 +3,7 @@ package com.consisti.sisgesc.entidade;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.List;
 import java.util.Locale;
 
@@ -15,6 +16,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.AccessType;
 import org.hibernate.annotations.ForeignKey;
@@ -63,6 +65,15 @@ public class MovimentoDiaEntity extends MovimentoDia {
        else
            return "";
     }
+	
+	@javax.persistence.Transient
+    public String getSaldoTotalStr()   {
+       if (getSaldoTotal() != null) 
+           return( df.format(getSaldoTotal()) );
+       else
+           return "";
+    }
+	
     public void setSaldoDiaStr( String saldoDiaStr )   {
         if (saldoDiaStr != null && saldoDiaStr.length()>0) {
         		try{
