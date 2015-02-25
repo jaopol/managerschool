@@ -7,24 +7,16 @@ import java.text.NumberFormat;
 import java.util.List;
 import java.util.Locale;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import org.hibernate.annotations.AccessType;
-import org.hibernate.annotations.ForeignKey;
 
 import com.consisti.sisgesc.entidade.financeiro.ContaPagar;
-import com.consisti.sisgesc.entidade.financeiro.ContaPagarEntity;
 import com.consisti.sisgesc.entidade.financeiro.ContaReceber;
-import com.consisti.sisgesc.entidade.financeiro.ContaReceberEntity;
 /**
  * Classe Concreta gerada a partir do assistente
  */
@@ -61,7 +53,7 @@ public class MovimentoDiaEntity extends MovimentoDia {
 	@javax.persistence.Transient
     public String getSaldoDiaStr()   {
        if (getSaldoDia() != null) 
-           return( df.format(getSaldoDia()) );
+           return NumberFormat.getCurrencyInstance().format(getSaldoDia());
        else
            return "";
     }
@@ -69,7 +61,7 @@ public class MovimentoDiaEntity extends MovimentoDia {
 	@javax.persistence.Transient
     public String getSaldoTotalStr()   {
        if (getSaldoTotal() != null) 
-           return( df.format(getSaldoTotal()) );
+           return NumberFormat.getCurrencyInstance().format(getSaldoTotal());
        else
            return "";
     }

@@ -5,6 +5,7 @@ import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -23,6 +24,8 @@ import com.powerlogic.jcompany.comuns.PlcBaseVO;
 import com.powerlogic.jcompany.comuns.PlcException;
 import com.powerlogic.jcompany.config.comuns.PlcConstantes;
 import com.powerlogic.jcompany.controle.jsf.PlcBaseLogicaArgumento;
+import com.powerlogic.jcompany.controle.jsf.helper.PlcMsgJsfHelper;
+import com.powerlogic.jcompany.dominio.valida.PlcMensagem.Cor;
 
 /**
  * Classe de Controle gerada pelo assistente
@@ -48,9 +51,31 @@ public class MovimentoDiaAction extends RelatorioActionPlc  {
 		Map<String, PlcArgVO> listaArgumentos = ((PlcBaseLogicaArgumento) this.logicaItensPlc).getArgumentos();
 		PlcArgVO plcArgVO = listaArgumentos.get("dataMovimento");
 		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		if (StringUtils.isEmpty(plcArgVO.getValor())){
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			plcArgVO.setValor(sdf.format(new Date()));
+		} else {
+			Date dataInformada = null;
+			Calendar cal = Calendar.getInstance();
+			cal.set(Calendar.HOUR, 0);
+			cal.set(Calendar.SECOND, 0);
+			cal.set(Calendar.MINUTE, 0);
+			Date dataAtual = cal.getTime();
+			try {
+				dataInformada = sdf.parse(plcArgVO.getValor());
+			} catch (ParseException e) {
+				throw new PlcException("data.invalida.caixa");
+			}
+			if (dataInformada.compareTo(dataAtual) < 0 || dataInformada.compareTo(new Date()) > 0 && (!getContasPagar().isEmpty() || !getContasReceber().isEmpty())){
+				contextHelperPlc.getRequest().setAttribute( "fecharCaixa", PlcConstantes.NAO_EXIBIR );
+			}
+			
+			if (dataInformada.compareTo(dataAtual) == -1 || movimentoDia.getId()!=null){
+				contextHelperPlc.getRequest().setAttribute( "imitir_livro_caixa", PlcConstantes.EXIBIR );
+			} else {
+				contextHelperPlc.getRequest().setAttribute( "imitir_livro_caixa", PlcConstantes.NAO_EXIBIR );
+			}
+			
 		}
 		
 		contextHelperPlc.getRequest().setAttribute( PlcConstantes.ACAO.EXIBE_BT_LIMPAR, PlcConstantes.NAO_EXIBIR );
@@ -63,6 +88,10 @@ public class MovimentoDiaAction extends RelatorioActionPlc  {
 		
 		MovimentoDiaEntity movimentoDia = (MovimentoDiaEntity) entidadePlc;
 		HashMap map = new HashMap<String, String>();
+		map.put("totalPagoStr", getTotalPagoStr());
+		map.put("totalRecebidoStr", getTotalRecebidoStr());
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		map.put("dataMovimento", sdf.format(movimentoDia.getDataMovimento()));
 		
 		super.geraRelatorioPlc(AppConstantesComuns.RELATORIO.REL_MOVIMENTO_DIA, movimentoDia, map);
 	}
@@ -75,11 +104,19 @@ public class MovimentoDiaAction extends RelatorioActionPlc  {
 			throw new PlcException("erro");
 		}
 		
-		movimentoDia.setDataMovimento(new Date());
-		movimentoDia.setSaldoTotal(movimentoDia.getTotalEntrada().subtract(movimentoDia.getValorRetirada()));
-		movimentoDia.setTotalEntrada(getTotalRecebido());
-		movimentoDia.setTotalSaida(getTotalPago());
+		Map<String, PlcArgVO> listaArgumentos = ((PlcBaseLogicaArgumento) this.logicaItensPlc).getArgumentos();
+		PlcArgVO plcArgVO = listaArgumentos.get("dataMovimento");
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		
+		try {
+			movimentoDia.setDataMovimento(sdf.parse(plcArgVO.getValor()));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		movimentoDia.setSaldoTotal(movimentoDia.getSaldoDia().subtract(movimentoDia.getValorRetirada()));
 		getFachada().fecharCaixa(movimentoDia);
+		PlcMsgJsfHelper.getInstance().msg("msg.infor.cx.fechado", Cor.msgAzulPlc.toString());
 		
 	}
 	
@@ -108,17 +145,23 @@ public class MovimentoDiaAction extends RelatorioActionPlc  {
 	public String pesquisa() throws PlcException {
 		
 		Map<String, PlcArgVO> listaArgumentos = ((PlcBaseLogicaArgumento) this.logicaItensPlc).getArgumentos();
-		MovimentoDiaEntity movimentoDia = new MovimentoDiaEntity();
-		entidadePlc = movimentoDia;
 		PlcArgVO plcArgVO = listaArgumentos.get("dataMovimento");
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date dataMovimento = null;
 		try {
 			dataMovimento = sdf.parse(plcArgVO.getValor());
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new PlcException("data.invalida.caixa");
 		}
+		
+		MovimentoDiaEntity movimentoDia = movimentoDia = getFachada().recuperaMovimentoExistente(dataMovimento);;
+		
+		if (movimentoDia  == null){
+			movimentoDia = new MovimentoDiaEntity();
+		} 
+		
+		entidadePlc = movimentoDia;
+		
 		getFachada().pesquisaMovimentoDia(movimentoDia, dataMovimento);
 		
 		if (movimentoDia.getContasPagar().isEmpty() && movimentoDia.getContasReceber().isEmpty()){
@@ -198,6 +241,20 @@ public class MovimentoDiaAction extends RelatorioActionPlc  {
 
 	public void setContasReceber(List<ContaReceber> contasReceber) {
 		this.contasReceber = contasReceber;
+	}
+	
+	public String getTotalRecebidoStr() {
+		if (getTotalRecebido()!=null){
+			return NumberFormat.getCurrencyInstance().format(getTotalRecebido());
+		}
+		return "";
+	}
+
+	public String getTotalPagoStr() {
+		if (getTotalPago()!=null){
+			return NumberFormat.getCurrencyInstance().format(getTotalPago());
+		}
+		return "";
 	}
 	
 }

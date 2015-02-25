@@ -207,4 +207,6 @@ public interface IAppFacade extends IPlcFacade {
 	void pesquisaMovimentoDia(MovimentoDiaEntity movimentoDia, Date date)throws PlcException;
 
 	void fecharCaixa(MovimentoDiaEntity movimentoDia)throws PlcException;
+
+	MovimentoDiaEntity recuperaMovimentoExistente(Date dataMovimento)throws PlcException;
 }

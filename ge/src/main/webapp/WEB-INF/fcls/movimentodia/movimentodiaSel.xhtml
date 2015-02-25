@@ -43,7 +43,7 @@
 				
 				<plcf:linha rendered="#{plcAction.contasPagar.size == pagar.index + 1}">
 					<plcf:celula inlineStyle="text-align: center;" columnSpan="2">
-						<plcf:exibe value="Valor total pago no dia: #{plcAction.totalPago}"/>
+						<plcf:exibe value="Valor total pago no dia: #{plcAction.totalPagoStr}"/>
 					</plcf:celula>
 				</plcf:linha>
 				
@@ -84,7 +84,7 @@
 				
 				<plcf:linha rendered="#{plcAction.contasReceber.size == receber.index + 1}">
 					<plcf:celula inlineStyle="text-align: center;" columnSpan="2">
-						<plcf:exibe value="Valor total recebido no dia: #{plcAction.totalRecebido}"/>
+						<plcf:exibe value="Valor total recebido no dia: #{plcAction.totalRecebidoStr}"/>
 					</plcf:celula>
 				</plcf:linha>
 			
@@ -106,14 +106,9 @@
 					<plcf:numerico numCasas="2" id="valorRetirada" value="#{plcAction.entidadePlc.valorRetirada}"/>
 				</plcf:celula>
 				
-				<plcf:celula rendered="#{plcAction.entidadePlc.saltoTotalStr != null}">
+				<plcf:celula rendered="#{plcAction.entidadePlc.saldoTotalStr != null}">
 					<plcf:titulo titulo="Valor Em Caixa do Dia"/>
-					<plcf:exibe id="valorSaldoTotal" value="#{plcAction.entidadePlc.saltoTotalStr}"/>
-				</plcf:celula>
-				
-				<plcf:celula rendered="#{plcAction.entidadePlc.valorTotalCaixaStr != null}">
-					<plcf:titulo titulo="Valor Total Em Caixa"/>
-					<plcf:exibe id="valorTotal" value="#{plcAction.entidadePlc.valorTotalCaixaStr}"/>
+					<plcf:exibe id="valorSaldoTotal" value="#{plcAction.entidadePlc.saldoTotalStr}"/>
 				</plcf:celula>
 				
 			</plcf:linha>

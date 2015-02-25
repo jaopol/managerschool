@@ -215,6 +215,15 @@ public class AppFacadeImpl extends PlcFacadeImpl implements IAppFacade, IAppFaca
 
 	public void fecharCaixa(MovimentoDiaEntity movimentoDia) throws PlcException {
 		MovimentoDiaDAO dao = (MovimentoDiaDAO)getDAO(MovimentoDiaDAO.class);
-		dao.inclui(movimentoDia);
+		if (movimentoDia.getId()==null){
+			dao.inclui(movimentoDia);
+		} else {
+			dao.altera(movimentoDia);
+		}
+	}
+
+	public MovimentoDiaEntity recuperaMovimentoExistente(Date dataMovimento) throws PlcException {
+		MovimentoDiaDAO dao = (MovimentoDiaDAO)getDAO(MovimentoDiaDAO.class);
+		return dao.recuperaMovimentoExistente(dataMovimento);
 	}
 }
