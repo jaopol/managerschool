@@ -17,7 +17,7 @@
 		 whenNoDataType="NoPages"
 		 isTitleNewPage="false"
 		 isSummaryNewPage="false">
-	<property name="ireport.scriptlethandling" value="2" />
+	<property name="ireport.scriptlethandling" value="0" />
 	<property name="ireport.encoding" value="UTF-8" />
 	<import value="java.util.*" />
 	<import value="net.sf.jasperreports.engine.*" />
@@ -28,6 +28,7 @@
 	<parameter name="dataMovimento" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="totalPagoStr" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="totalRecebidoStr" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="valorRetirada" isForPrompting="false" class="java.lang.String"/>
 
 	<field name="contasReceber" class="java.util.List"/>
 	<field name="contasPagar" class="java.util.List"/>
@@ -52,7 +53,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font pdfFontName="Helvetica-Bold" size="18" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["Movimento do Dia -" + $P{dataMovimento}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Movimento do Dia - " + $P{dataMovimento}]]></textFieldExpression>
 				</textField>
 			</band>
 		</title>
@@ -104,10 +105,11 @@
 				<staticText>
 					<reportElement
 						x="0"
-						y="95"
+						y="94"
 						width="534"
 						height="26"
-						key="staticText-2"/>
+						key="staticText-2"
+						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
@@ -116,7 +118,7 @@
 				</staticText>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="16"
+						x="3"
 						y="205"
 						width="125"
 						height="20"
@@ -131,7 +133,7 @@
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="361"
+						x="392"
 						y="204"
 						width="125"
 						height="20"
@@ -146,9 +148,9 @@
 				</textField>
 				<staticText>
 					<reportElement
-						x="16"
+						x="3"
 						y="185"
-						width="167"
+						width="235"
 						height="20"
 						key="staticText-3"
 						positionType="Float"/>
@@ -160,7 +162,7 @@
 				</staticText>
 				<staticText>
 					<reportElement
-						x="208"
+						x="238"
 						y="185"
 						width="126"
 						height="20"
@@ -174,7 +176,7 @@
 				</staticText>
 				<staticText>
 					<reportElement
-						x="361"
+						x="392"
 						y="184"
 						width="143"
 						height="20"
@@ -233,6 +235,20 @@
 						<font/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA["Valor total pago no dia: "+$P{totalRecebidoStr}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="238"
+						y="205"
+						width="126"
+						height="20"
+						key="textField"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{valorRetirada}]]></textFieldExpression>
 				</textField>
 			</band>
 		</detail>

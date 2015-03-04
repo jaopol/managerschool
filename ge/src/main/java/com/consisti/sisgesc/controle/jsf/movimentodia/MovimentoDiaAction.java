@@ -92,6 +92,7 @@ public class MovimentoDiaAction extends RelatorioActionPlc  {
 		map.put("totalRecebidoStr", getTotalRecebidoStr());
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		map.put("dataMovimento", sdf.format(movimentoDia.getDataMovimento()));
+		map.put("valorRetirada", NumberFormat.getCurrencyInstance().format(movimentoDia.getValorRetirada()));
 		
 		super.geraRelatorioPlc(AppConstantesComuns.RELATORIO.REL_MOVIMENTO_DIA, movimentoDia, map);
 	}
