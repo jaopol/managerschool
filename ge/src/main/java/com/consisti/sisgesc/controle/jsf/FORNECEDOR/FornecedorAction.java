@@ -97,7 +97,7 @@ public class FornecedorAction extends AppAction  {
 		String msg = "";
 		String identificadorFornecedor = "";
 		
-		if (TipoPessoa.F.equals(fornecedor.getTipoPessoa())){
+		if (TipoPessoa.F.equals(fornecedor.getTipoPessoa()) && StringUtils.isNotBlank(fornecedor.getCpf())){
 			FornecedorEntity cpf = facade.recuperaCpf(fornecedor.getCpf());
 			if (cpf!=null){
 				identificadorFornecedor = fornecedor.getCpf();
@@ -109,7 +109,7 @@ public class FornecedorAction extends AppAction  {
 					}
 				}
 			}
-		} else {
+		} else if( StringUtils.isNotBlank( fornecedor.getCnpj() ) ){
 			FornecedorEntity cnpj = facade.recuperaCnpj(fornecedor.getCnpj());
 			if (cnpj!=null){
 				identificadorFornecedor = fornecedor.getCnpj();
