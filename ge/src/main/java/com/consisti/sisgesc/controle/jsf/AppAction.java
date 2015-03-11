@@ -206,7 +206,7 @@ public class AppAction extends PlcBaseJsfAction {
 		
 		super.trataBotoesConformeLogicaApos();
 		
-		//validaUrlAcesso();  
+		//validaUrlAcesso();
 		
 		contextHelperPlc.getRequest().setAttribute( PlcConstantes.ACAO.EXIBE_BT_CLONAR, PlcConstantes.NAO_EXIBIR );
 		contextHelperPlc.getRequest().setAttribute( PlcConstantes.ACAO.EXIBE_BT_VISUALIZA_DOCUMENTO, PlcConstantes.NAO_EXIBIR );
