@@ -208,6 +208,7 @@ public class AppFacadeImpl extends PlcFacadeImpl implements IAppFacade, IAppFaca
 		bo.gravarContaReceberPorDemanda(listaVO);
 	}
 
+
 	public void pesquisaMovimentoDia(MovimentoDiaEntity movimentoDia, Date date) throws PlcException {
 		MovimentoDiaManager movimentoManager = (MovimentoDiaManager)getBO(MovimentoDiaManager.class);
 		movimentoManager.pesquisaMovimentoDia(movimentoDia, date);
@@ -226,4 +227,7 @@ public class AppFacadeImpl extends PlcFacadeImpl implements IAppFacade, IAppFaca
 		MovimentoDiaDAO dao = (MovimentoDiaDAO)getDAO(MovimentoDiaDAO.class);
 		return dao.recuperaMovimentoExistente(dataMovimento);
 	}
-}
+	public ContratoEntity recuperaUltimoContratoAluno(Long idAluno) throws PlcException {
+		ContratoDAO dao = (ContratoDAO)getDAO(ContratoDAO.class);
+		return dao.recuperaContratoAluno(idAluno);
+	}}

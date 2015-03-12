@@ -45,7 +45,7 @@ public class ContratoDAO extends AppBaseDAO {
 		
 		Session sess = getSession();
 		
-		String hql = "from ContratoEntity obj where obj.aluno.id= :IDALUNO order by obj.anoContrato desc";
+		String hql = "from ContratoEntity obj where obj.aluno.id= :IDALUNO and obj.statusContrato = 'A' order by obj.anoContrato desc";
 		
 		Query query = sess.createQuery(hql);
 		query.setLong("IDALUNO", idAluno);
@@ -72,5 +72,4 @@ public class ContratoDAO extends AppBaseDAO {
 		
 		return (byte[]) query.uniqueResult();
 	}
-	
 }
