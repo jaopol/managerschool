@@ -246,4 +246,12 @@ public interface IAppFacade extends IPlcFacade {
 	List<BancoEntity> recuperaListaBanco() throws PlcException;
 
 	void excluirServicoAluno(Long id) throws PlcException;
+
+	/**
+	 * Recupera o ultimo contrato ativo do aluno
+	 * @param id
+	 * @return
+	 * @throws PlcException 
+	 */
+	ContratoEntity recuperaUltimoContratoAluno(Long id) throws PlcException;
 }

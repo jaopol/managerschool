@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 import com.consisti.sisgesc.comuns.AppConstantesComuns;
@@ -86,6 +87,8 @@ public class ContratoManAction extends AditivoAction  {
 		
 		if (getIdContrato()==null){
 			
+			ContratoEntity contratoAnterior = facade.recuperaUltimoContratoAluno(aluno.getId());
+			
 			contextHelperPlc.getRequest().getSession().setAttribute("gravaContrato", PlcSimNao.S);
 			HashMap<String, String> maps = new HashMap<String, String>();
 			maps.putAll(mesAtual());
@@ -127,6 +130,12 @@ public class ContratoManAction extends AditivoAction  {
 			contextHelperPlc.setSessionAttribute("dataFim", contrato.getDataFimContrato() );
 			
 			super.geraRelatorioPlc(AppConstantesComuns.RELATORIO.REL_CONTRATO, aluno, maps);
+			
+			if(contratoAnterior != null){
+				//inativa o contrato anterior. Pode existir somente um contrato ativo
+				contratoAnterior.setStatusContrato(AtivoInativo.I);
+				facade.alteraContrato(contratoAnterior);
+			}
 
 		} else {
 			chamaGerarAditivo( contrato );
