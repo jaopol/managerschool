@@ -29,7 +29,7 @@ public class GerarBoletoUtil {
 	public void gerarBoleto(){
 		
 		 /*
-         * INFORMANDO DADOS SOBRE O CEDENTE.
+         * INFORMANDO DADOS SOBRE O CEDENTE. teste commit master
          */
         Cedente cedente = new Cedente("PROJETO JRimum", "00.000.208/0001-00");
 

@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -21,9 +20,6 @@ import javax.faces.event.ValueChangeEvent;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.myfaces.trinidad.model.UploadedFile;
-import org.joda.time.DateMidnight;
-import org.joda.time.Period;
-import org.joda.time.PeriodType;
 
 import com.consisti.sisgesc.comuns.AppBaseContextVO;
 import com.consisti.sisgesc.comuns.AppConstantesComuns;
@@ -44,7 +40,6 @@ import com.consisti.sisgesc.entidade.ResponsavelFinanceiroAlunoEntity;
 import com.consisti.sisgesc.entidade.SaudeAluno;
 import com.consisti.sisgesc.entidade.ServicoAluno;
 import com.consisti.sisgesc.entidade.ServicoAlunoEntity;
-import com.consisti.sisgesc.entidade.TurmaEntity;
 import com.consisti.sisgesc.facade.IAppFacade;
 import com.powerlogic.jcompany.comuns.PlcException;
 import com.powerlogic.jcompany.config.comuns.PlcConstantes;
@@ -134,8 +129,6 @@ public class AlunoAction extends RelatorioActionPlc  {
 	protected boolean gravaSimplesAntes() throws PlcException {
 		AlunoEntity aluno = (AlunoEntity) entidadePlc;
 		
-		validaIdadeAlunoTurma( aluno );
-		
 		if (aluno.getFiliacaoPai()!=null){
 			if (aluno.getFiliacaoPai().size()>0){
 				aluno.getFiliacaoPai().get(0).setAluno(aluno);
@@ -156,79 +149,6 @@ public class AlunoAction extends RelatorioActionPlc  {
 		return super.gravaSimplesAntes();
 	}
 	
-	/**
-	 * Utilizado para validar a idade do aluno com a permitida para a turma
-	 * @param aluno
-	 * @throws PlcException
-	 */
-	private void validaIdadeAlunoTurma(AlunoEntity aluno) throws PlcException {
-		
-		if( aluno.getTurma() != null ){
-			IAppFacade fc = (IAppFacade)getServiceFacade();
-			TurmaEntity turmaEntity = fc.recuperaIdadePermitida( aluno.getTurma().getId() );
-			
-			int mesIdadeAlunoPermitida = getMesIdadePermitida( aluno.getDataNascimento() );
-			int anoIdadeAlunoPermitida = getAnoIdadePermitida( aluno.getDataNascimento() );
-			
-			int anosTurma = 0;
-			int mesTurma = 0;
-			if( turmaEntity.getIdadeMaxima().contains("-") ){
-				anosTurma = Integer.parseInt( turmaEntity.getIdadeMaxima().split("-")[0] );
-				mesTurma = Integer.parseInt( turmaEntity.getIdadeMaxima().split("-")[1] );
-			}
-			else{
-				anosTurma = Integer.parseInt( turmaEntity.getIdadeMaxima() );
-				mesTurma = Integer.parseInt( turmaEntity.getIdadeMaxima() );
-			}
-				
-			anosTurma = anosTurma > 0 ? anosTurma : 0;
-			mesTurma = mesTurma > 0? mesTurma : 0;
-
-			if( anoIdadeAlunoPermitida > anosTurma || ( anoIdadeAlunoPermitida == anosTurma && mesIdadeAlunoPermitida > mesTurma ) ){
-				throw new PlcException("msg.erro.CDU001.RNE_001", new String[]{ aluno.getTurma().getDescricao(), turmaEntity.getIdadeMaxima()});
-			}
-		}
-	}
-	
-	/**
-	 * Retorna quantos anos o aluno tem ate 30/03
-	 * @param dataNascimento
-	 * @return
-	 */
-	private int getAnoIdadePermitida(Date dataNascimento) {
-		DateMidnight nascimento = new DateMidnight( dataNascimento );
-		DateMidnight futuro = dataLimite();
-				
-		Period period = new Period(nascimento, futuro, PeriodType.yearMonthDay());
-		int anos= period.getYears();
-		return anos;
-	}
-
-	/**
-	 * Retorna quantos meses o aluno tem ate 30/03
-	 * @param dataNascimento
-	 * @return
-	 */
-	private int getMesIdadePermitida(Date dataNascimento) {
-		DateMidnight nascimento = new DateMidnight( dataNascimento );
-		//Pega como referencia 30/03 ano corrente
-		DateMidnight futuro = dataLimite();
-				
-		Period period = new Period(nascimento, futuro, PeriodType.yearMonthDay());
-		int meses= period.getMonths();
-		return meses;
-	}
-
-	/**
-	 * Utilizado para retornar a data limite tendo como referencia 30/03 do ano corrente
-	 * @return
-	 */
-	private DateMidnight dataLimite() {
-		DateMidnight futuro = new DateMidnight( new GregorianCalendar().get( GregorianCalendar.YEAR ), 3, 30);
-		return futuro;
-	}
-
-
 	/**
 	 * @param aluno
 	 * @throws PlcException

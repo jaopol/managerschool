@@ -1,15 +1,15 @@
 package com.consisti.sisgesc.entidade;
 
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+
 import com.powerlogic.jcompany.dominio.valida.PlcValFormatoSimples;
 import com.powerlogic.jcompany.dominio.valida.PlcValidacaoUnificada;
 import com.powerlogic.jcompany.dominio.valida.PlcValFormatoSimples.FormatoSimples;
-
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.GenerationType;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.GeneratedValue;
 
 @SuppressWarnings("serial")
 @MappedSuperclass
@@ -26,7 +26,7 @@ public abstract class Turma extends AppBaseEntity {
 	
 	@Column (name = "IDADE_MAXIMA", nullable=false, length=5)
 	private String idadeMaxima;
-	
+
 	@Column (name = "IDADE_MINIMA", nullable=false, length=5)
 	private String idadeMinima;
 	
