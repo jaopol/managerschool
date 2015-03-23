@@ -139,6 +139,11 @@ public abstract class Aluno extends AppBaseEntity {
 	@Column (name = "DESCONTO_MENSALIDADE", length=10, precision=10, scale=2 )
 	private BigDecimal descontoMensalidade;
 	
+	@ManyToOne (targetEntity = EmpresaEntity.class)
+	@ForeignKey(name="FK_DESCONTO_EMPRESA")
+	@JoinColumn (name = "DESCONTO_EMPRESA")
+	private Empresa descontoEmpresa;
+	
 	@Column (name = "VALOR_TOTAL_MENSALIDADE", nullable=false, length=10, precision=10, scale=2 )
 	private BigDecimal valorTotalMensalidade;
 	
@@ -470,6 +475,14 @@ public abstract class Aluno extends AppBaseEntity {
 
 	public void setStatus(AtivoInativo status) {
 		this.status = status;
+	}
+
+	public Empresa getDescontoEmpresa() {
+		return descontoEmpresa;
+	}
+
+	public void setDescontoEmpresa(Empresa descontoEmpresa) {
+		this.descontoEmpresa = descontoEmpresa;
 	}
 
 }

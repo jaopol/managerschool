@@ -994,6 +994,37 @@
 		<redirect/> 
 	</navigation-case> 
 </navigation-rule>
+	<navigation-rule> 
+	<display-name>Manutencao Cadastro de Empresa</display-name>  
+	<from-view-id>/n/cadastroempresaman</from-view-id>  
+	<navigation-case> 
+		<from-outcome>mesmaPagina</from-outcome>  
+		<to-view-id>/n/cadastroempresaman</to-view-id> 
+	</navigation-case>  
+	<navigation-case> 
+		<from-outcome>abre</from-outcome>  
+		<to-view-id>/n/cadastroempresasel</to-view-id>  
+		<redirect/> 
+	</navigation-case> 
+</navigation-rule>
+	<navigation-rule> 
+	<display-name>Seleção Cadastro de Empresa</display-name>  
+	<from-view-id>/n/cadastroempresasel</from-view-id>  
+	<navigation-case> 
+		<from-outcome>mesmaPagina</from-outcome>  
+		<to-view-id>/n/cadastroempresasel</to-view-id> 
+	</navigation-case>  
+	<navigation-case> 
+		<from-outcome>edita</from-outcome>  
+		<to-view-id>/n/cadastroempresaman</to-view-id>  
+		<redirect/> 
+	</navigation-case>  
+	<navigation-case> 
+		<from-outcome>novo</from-outcome>  
+		<to-view-id>/n/cadastroempresaman</to-view-id>  
+		<redirect/> 
+	</navigation-case> 
+</navigation-rule>
 	<lifecycle>
 		<phase-listener>com.consisti.sisgesc.controle.listener.AppPhaseListener</phase-listener>
 	</lifecycle>

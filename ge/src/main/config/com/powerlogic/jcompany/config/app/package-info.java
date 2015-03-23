@@ -57,6 +57,7 @@
 		com.consisti.sisgesc.entidade.FornecedorEntity.class,
 		com.consisti.sisgesc.entidade.financeiro.FormaPagamentoEntity.class,
 		com.consisti.sisgesc.entidade.financeiro.PlanoContasEntity.class,
+		com.consisti.sisgesc.entidade.EmpresaEntity.class,
 		com.consisti.sisgesc.entidade.TurmaEntity.class}
 )
 

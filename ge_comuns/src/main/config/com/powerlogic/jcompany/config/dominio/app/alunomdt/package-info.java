@@ -2,7 +2,7 @@
  *  ******************************************************************************************/
 @PlcConfigGrupoAgregacao(
 		entidade = com.consisti.sisgesc.entidade.AlunoEntity.class,
-		classesLookup = {com.consisti.sisgesc.entidade.TurmaEntity.class},
+		classesLookup = {com.consisti.sisgesc.entidade.TurmaEntity.class,com.consisti.sisgesc.entidade.EmpresaEntity.class},
 		classesDominioDiscreto = {com.consisti.sisgesc.dominio.TipoMatricula.class,
 			                      com.consisti.sisgesc.dominio.EstadoCivil.class},
 		padrao = @PlcConfigPadrao(logica = PlcConfigPadrao.Logica.MESTRE_DETALHE,
