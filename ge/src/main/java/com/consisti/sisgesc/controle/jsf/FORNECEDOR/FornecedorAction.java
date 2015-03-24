@@ -97,7 +97,8 @@ public class FornecedorAction extends AppAction  {
 		String msg = "";
 		String identificadorFornecedor = "";
 		
-		if (StringUtils.isNotBlank(fornecedor.getCpf())){			FornecedorEntity cpf = facade.recuperaCpf(fornecedor.getCpf());
+		if (StringUtils.isNotBlank(fornecedor.getCpf())){			
+			FornecedorEntity cpf = facade.recuperaCpf(fornecedor.getCpf());
 			if (cpf!=null){
 				identificadorFornecedor = fornecedor.getCpf();
 				if (cpf.getCpfCnpj().equals(fornecedor.getCpf()) && fornecedor.getId()==null){
@@ -108,7 +109,8 @@ public class FornecedorAction extends AppAction  {
 					}
 				}
 			}
-		} else if (StringUtils.isNotBlank(fornecedor.getCnpj())) {			FornecedorEntity cnpj = facade.recuperaCnpj(fornecedor.getCnpj());
+		} else if (StringUtils.isNotBlank(fornecedor.getCnpj())) {			
+			FornecedorEntity cnpj = facade.recuperaCnpj(fornecedor.getCnpj());
 			if (cnpj!=null){
 				identificadorFornecedor = fornecedor.getCnpj();
 				if (cnpj.getCpfCnpj().equals(fornecedor.getCnpj()) && fornecedor.getId()==null){
