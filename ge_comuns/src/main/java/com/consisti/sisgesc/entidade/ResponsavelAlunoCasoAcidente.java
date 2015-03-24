@@ -34,10 +34,10 @@ public abstract class ResponsavelAlunoCasoAcidente extends AppBaseEntity {
 	@Column (name = "NOME", length=50)
 	private String nome;
 	
-	@Column (name = "TELEFONE", length=13)
+	@Column (name = "TELEFONE", length=14)
 	private String telefone;
 	
-	@Column (name = "CELULAR", length=13)
+	@Column (name = "CELULAR", length=14)
 	private String celular;
 
 	public Long getId() {

@@ -64,10 +64,10 @@ public abstract class FiliacaoPai extends AppBaseEntity {
 	@Column (name = "LOCAL_TRABALHO", length=50)
 	private String localTrabalho;
 	
-	@Column (name = "TELEFONE", length=13)
+	@Column (name = "TELEFONE", length=14)
 	private String telefone;
 	
-	@Column (name = "CELULAR", length=13)
+	@Column (name = "CELULAR", length=14)
 	private String celular;
 	
 	@PlcValFormatoSimples(formato=FormatoSimples.MAIUSCULO)

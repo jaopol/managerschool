@@ -113,7 +113,7 @@ public abstract class Aluno extends AppBaseEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataNascimento;
 	
-	@Column (name = "TELEFONE", length=13)
+	@Column (name = "TELEFONE", length=14)
 	private String telefone;
 	
 	@PlcValFormatoSimples(formato=FormatoSimples.MAIUSCULO)

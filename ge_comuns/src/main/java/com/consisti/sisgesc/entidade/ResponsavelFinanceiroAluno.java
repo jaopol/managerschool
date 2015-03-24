@@ -80,10 +80,10 @@ public abstract class ResponsavelFinanceiroAluno extends AppBaseEntity {
 	@Column (name = "UF", nullable=false, length=2)
 	private Uf uf;
 	
-	@Column (name = "TELEFONE", nullable=false, length=13)
+	@Column (name = "TELEFONE", nullable=false, length=14)
 	private String telefone;
 	
-	@Column (name = "CELULAR", length=13)
+	@Column (name = "CELULAR", length=14)
 	private String celular;
 	
 	@PlcValFormatoSimples(formato=FormatoSimples.MAIUSCULO)

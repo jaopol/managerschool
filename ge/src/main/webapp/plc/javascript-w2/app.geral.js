@@ -724,15 +724,18 @@ function abreTelaImportacaoRefresh(){
  */
 function telefoneDDD(v) {
 	v = v.replace(/\D/g, "") // Remove tudo o que não é dígito
-	v = v.replace(/(\d{2})(\d)/, "($1)$2") // Coloca hífen entre o segundo e o
-											// terceiro dígitos
-	v = v.replace(/(\d{4})(\d)/, "$1-$2") // Coloca hífen entre o quarto e o
-											// quinto dígitos
+	v = v.replace(/(\d{2})(\d)/, "($1)$2"); // Coloca hífen entre o segundo e o
+	
+	if (v.length < 13){
+		v = v.replace(/(\d{4})(\d)/, "$1-$2"); // Coloca hífen entre o quarto e o
+	}
+	else if (v.length == 13){//9 digitos
+		v = v.replace('-','');
+		v = v.replace(/(\d{5})(\d)/, "$1-$2"); // Coloca hífen entre o quarto e o
+		//navegarParaProximoCampo();
+	}
 
-	if (v.length == 13)
-		navegarParaProximoCampo();
-
-	return v
+	return v;
 }
 
 
