@@ -81,10 +81,10 @@ public abstract class Funcionario extends AppBaseEntity {
 	@Column (name = "STATUS", length=1)
 	private AtivoInativo status;
 	
-	@Column (name = "TELEFONE", nullable=false, length=13)
+	@Column (name = "TELEFONE", nullable=false, length=14)
 	private String telefone;
 	
-	@Column (name = "CELULAR", length=13)
+	@Column (name = "CELULAR", length=14)
 	private String celular;
 	
 	@Enumerated(EnumType.STRING)

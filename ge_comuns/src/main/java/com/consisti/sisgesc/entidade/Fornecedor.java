@@ -71,7 +71,7 @@ public abstract class Fornecedor extends AppBaseEntity {
 	@Column (name = "UF", length=2)
 	private Uf uf;
 	
-	@Column (name = "TELEFONE_CONTATO", length=13)
+	@Column (name = "TELEFONE_CONTATO", length=14)
 	private String telefoneContato;
 	
 	@Column (name = "OBSERVACAO")
@@ -81,10 +81,11 @@ public abstract class Fornecedor extends AppBaseEntity {
 	@Column (name = "NOME_CONTATO")
 	private String nomeContato;
 	
+	@PlcValFormatoSimples(formato=FormatoSimples.MAIUSCULO)
 	@Column (name = "OUTRO_MUNICIPIO")
 	private String outroMunicipio;
 	
-	@Column (name = "CELULAR", length=13)
+	@Column (name = "CELULAR", length=14)
 	private String celular;
 	
 	@Column (name = "DATA_CADASTRO")
