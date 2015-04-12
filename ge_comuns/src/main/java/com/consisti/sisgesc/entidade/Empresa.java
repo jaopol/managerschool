@@ -1,7 +1,11 @@
 package com.consisti.sisgesc.entidade;
 
 import java.util.Date;
+
+import com.powerlogic.jcompany.dominio.valida.PlcValFormatoSimples;
 import com.powerlogic.jcompany.dominio.valida.PlcValidacaoUnificada;
+import com.powerlogic.jcompany.dominio.valida.PlcValFormatoSimples.FormatoSimples;
+
 import javax.persistence.Column;
 import javax.persistence.TemporalType;
 import javax.persistence.Id;
@@ -19,6 +23,7 @@ public abstract class Empresa extends AppBaseEntity {
 	@Column (name = "ID_EMPRESA", nullable=false, length=5)
 	private Long id;
 	
+	@PlcValFormatoSimples(formato=FormatoSimples.MAIUSCULO)
 	@Column (name = "NOME_EMPRESA", nullable=false, length=100)	
 	private String nomeEmpresa;
 	

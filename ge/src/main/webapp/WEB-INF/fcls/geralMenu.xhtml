@@ -81,11 +81,6 @@
 					</a>
 				</li>
 				<li>
-					<a href="#{request.contextPath}/f/n/produtomaterialsel?fwPlc=produtomaterialman">
-						<label jsfc="plcf:titulo" tituloChave="menu.produtomaterial.titulo">Cadastro produto/material</label>
-					</a>
-				</li>
-				<li>
 					<a href="#{request.contextPath}/f/n/cadastroempresasel?evento=y">
 						<label jsfc="plcf:titulo" tituloChave="menu.cadastroempresa.titulo">Cadastro de Empresa</label>
 					</a>
@@ -141,6 +136,11 @@
 					<li>
 						<a href="#{request.contextPath}/f/n/estoquesaidasel" title="Saída">Saída</a>
 					</li>
+					<li>
+						<a href="#{request.contextPath}/f/n/produtomaterialsel?fwPlc=produtomaterialman">
+							<label jsfc="plcf:titulo" tituloChave="menu.produtomaterial.titulo">Cadastro produto/material</label>
+						</a>
+					</li>
 				</ul>
 			</li>
 		</ul>
@@ -192,9 +192,14 @@
 				</ul>
 			</li>
 			<li>
-				<a href="#{request.contextPath}/f/n/movimentodiasel">
-					<label jsfc="plcf:titulo" tituloChave="menu.movimento.dia.titulo">Caixa</label>
-				</a>
+				<a href="#" title="menu.caixa.titulo">Caixa</a>
+				<ul>
+					<li>
+						<a href="#{request.contextPath}/f/n/movimentodiasel">
+							<label jsfc="plcf:titulo" tituloChave="menu.movimento.dia.titulo">Caixa</label>
+						</a>
+					</li>	
+				</ul>
 			</li>
 			<!-- 
 					<li>

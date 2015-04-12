@@ -38,7 +38,7 @@ public class ContaReceberAction extends AppAction  {
 		
 		if( entidadePlc != null && entidadePlc.getId() != null ){
 			
-			contextHelperPlc.getRequest().setAttribute("exibeGeraBoleto", "S");
+			//contextHelperPlc.getRequest().setAttribute("exibeGeraBoleto", "S");
 			contextHelperPlc.getRequest().setAttribute("exibeLiquidaTitulo", "S");
 			//Se o titulo estiver quitado
 			if( PlcSimNao.S.equals( ((ContaReceberEntity)entidadePlc ).getRecebido() ) ){
