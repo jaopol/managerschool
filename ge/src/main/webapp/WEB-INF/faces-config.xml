@@ -1025,6 +1025,14 @@
 		<redirect/> 
 	</navigation-case> 
 </navigation-rule>
+	<navigation-rule> 
+	<display-name>Manutencao Produto venda</display-name>  
+	<from-view-id>/n/produtovendatab</from-view-id>  
+	<navigation-case> 
+		<from-outcome>mesmaPagina</from-outcome>  
+		<to-view-id>/n/produtovendatab</to-view-id> 
+	</navigation-case> 
+</navigation-rule>
 	<lifecycle>
 		<phase-listener>com.consisti.sisgesc.controle.listener.AppPhaseListener</phase-listener>
 	</lifecycle>

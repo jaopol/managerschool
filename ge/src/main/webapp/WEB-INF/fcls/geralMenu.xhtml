@@ -7,112 +7,65 @@
 			<link rel="StyleSheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/black-tie/jquery-ui.css" type="text/css" charset="UTF-8"/>
 		</head>
 		<body>
-			<ui:composition>
-				<ul>
-					<li>
-						<a>
-							<span class="ico iLeiautepadrao"/>
-							<label jsfc="plcf:titulo" tituloChave="app.m.inicial">Principal</label>
-						</a>
-						<ul class="ui-state-hover">
-							<li>
-								<a href="#{request.contextPath}/f/n/alunosel?fwPlc=alunomdt">
-									<label jsfc="plcf:titulo" tituloChave="menu.aluno.titulo">Matricular Aluno</label>
-								</a>
-							</li>
-							<li>
-								<a href="#{request.contextPath}/f/n/contratosel?fwPlc=contratomdt">
-									<label jsfc="plcf:titulo" tituloChave="menu.contrato.titulo">contrato</label>
-								</a>
-							</li>
-							<!-- 
-						 <li>
-							<a href="#{request.contextPath}/f/n/registrarfrequenciasel">
-								<label jsfc="plcf:titulo" tituloChave="registrarfrequenciaman.titulo">registrar</label>
-							</a>
-						</li> 
-						 -->
-					</ul>
-				</li>
+	<ui:composition>
+		<ul>
+		<li>
+			<a>
+				<span class="ico iLeiautepadrao"/>
+				<label jsfc="plcf:titulo" tituloChave="app.m.inicial">Principal</label>
+			</a>
+			<ul class="ui-state-hover">
 				<li>
-					<a>
-						<span class="ico iLeiautepadrao"/>
-						<label jsfc="plcf:titulo" tituloChave="app.m.cadastro">Cadastro</label>
-					</a>
-					<ul class="ui-state-hover">
-						<li>
-							<a href="#{request.contextPath}/f/n/turmatab">
-								<label jsfc="plcf:titulo" tituloChave="menu.turma.titulo">Cadastrar Turma</label>
-							</a>
-						</li>
-						<!-- 
-						
-						<li>
-						<a href="#{request.contextPath}/f/n/conteudosel?fwPlc=conteudoman">
-							<label jsfc="plcf:titulo" tituloChave="menu.conteundo.titulo">Cadastrar Conteúdo</label>
-						</a>
-					</li>
-					<li>
-						<a href="#{request.contextPath}/f/n/disciplinastab">
-							<label jsfc="plcf:titulo" tituloChave="menu.disciplinas.titulo">Cadastrar Disciplinas</label>
-						</a>
-					</li>
-						 -->
-					<li>
-						<a href="#{request.contextPath}/f/n/funcionariosel?fwPlc=funcionariomdt">
-							<label jsfc="plcf:titulo" tituloChave="menu.funcionario.titulo">Cadastrar Funcionário</label>
-						</a>
-					</li>
-					<li>
-						<a href="#{request.contextPath}/f/n/servicossel">
-							<label jsfc="plcf:titulo" tituloChave="menu.servicos.titulo">servicos</label>
-						</a>
-					</li>
-					<!-- 
-						<li>
-					<a href="#{request.contextPath}/f/n/cronogramaturmasel?fwPlc=cronogramaturmamds">
-						<label jsfc="plcf:titulo" tituloChave="menu.cronogramaturma.titulo">cr</label>
-					</a>
-				</li>
-						 -->
-				<li>
-					<a href="#{request.contextPath}/f/n/fornecedorsel">
-						<label jsfc="plcf:titulo" tituloChave="menu.fornecedor.titulo">Fornecedor</label>
+					<a href="#{request.contextPath}/f/n/alunosel?fwPlc=alunomdt">
+						<label jsfc="plcf:titulo" tituloChave="menu.aluno.titulo">Matricular Aluno</label>
 					</a>
 				</li>
 				<li>
-					<a href="#{request.contextPath}/f/n/cadastroempresasel?evento=y">
-						<label jsfc="plcf:titulo" tituloChave="menu.cadastroempresa.titulo">Cadastro de Empresa</label>
+					<a href="#{request.contextPath}/f/n/contratosel?fwPlc=contratomdt">
+						<label jsfc="plcf:titulo" tituloChave="menu.contrato.titulo">contrato</label>
 					</a>
 				</li>
 			</ul>
 		</li>
-		<!-- 
-				
+		<li>
+			<a>
+				<span class="ico iLeiautepadrao"/>
+				<label jsfc="plcf:titulo" tituloChave="app.m.cadastro">Cadastro</label>
+			</a>
+			<ul class="ui-state-hover">
 				<li>
-		<a>
-			<span class="ico iLeiautepadrao"/>
-			<label jsfc="plcf:titulo" tituloChave="app.m.professor">Professor</label>
-		</a>
-		<ul class="ui-state-hover">
+					<a href="#{request.contextPath}/f/n/turmatab">
+						<label jsfc="plcf:titulo" tituloChave="menu.turma.titulo">Cadastrar Turma</label>
+					</a>
+				</li>
+				
 			<li>
-				<a href="#{request.contextPath}/f/n/gerirprofessorsel?fwPlc=gerirprofessormdt">
-					<label jsfc="plcf:titulo" tituloChave="menu.gerirprofessor.titulo">Gerir professor</label>
+				<a href="#{request.contextPath}/f/n/funcionariosel?fwPlc=funcionariomdt">
+					<label jsfc="plcf:titulo" tituloChave="menu.funcionario.titulo">Cadastrar Funcionário</label>
 				</a>
 			</li>
 			<li>
-				<a href="#{request.contextPath}/f/n/registronotasfundamentalsel?fwPlc=registronotasfundamentalmds">
-					<label jsfc="plcf:titulo" tituloChave="menu.registronotasfundamental.titulo">Registro notas fundamental</label>
+				<a href="#{request.contextPath}/f/n/servicossel">
+					<label jsfc="plcf:titulo" tituloChave="menu.servicos.titulo">servicos</label>
 				</a>
 			</li>
 			<li>
-				<a href="#{request.contextPath}/f/n/boletimfundamentalsel?fwPlc=boletimfundamentalmdt">
-					<label jsfc="plcf:titulo" tituloChave="menu.boletimfundamental.titulo">Boletim Fundamental</label>
+				<a href="#{request.contextPath}/f/n/fornecedorsel">
+					<label jsfc="plcf:titulo" tituloChave="menu.fornecedor.titulo">Fornecedor</label>
+				</a>
+			</li>
+			<li>
+				<a href="#{request.contextPath}/f/n/cadastroempresasel?evento=y">
+					<label jsfc="plcf:titulo" tituloChave="menu.cadastroempresa.titulo">Cadastro de Empresa</label>
+				</a>
+			</li>
+			<li>
+				<a href="#{request.contextPath}/f/n/produtovendatab">
+					<label jsfc="plcf:titulo" tituloChave="menu.produtovenda.titulo">Produto venda</label>
 				</a>
 			</li>
 		</ul>
 	</li>
-				 -->
 	<li>
 		<a>
 			<span class="ico iLeiautepadrao"/>
@@ -198,7 +151,7 @@
 						<a href="#{request.contextPath}/f/n/movimentodiasel">
 							<label jsfc="plcf:titulo" tituloChave="menu.movimento.dia.titulo">Caixa</label>
 						</a>
-					</li>	
+					</li>
 				</ul>
 			</li>
 			<!-- 
