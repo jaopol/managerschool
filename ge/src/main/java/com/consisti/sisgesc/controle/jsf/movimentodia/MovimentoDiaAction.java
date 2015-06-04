@@ -51,26 +51,31 @@ public class MovimentoDiaAction extends RelatorioActionPlc  {
 		Map<String, PlcArgVO> listaArgumentos = ((PlcBaseLogicaArgumento) this.logicaItensPlc).getArgumentos();
 		PlcArgVO plcArgVO = listaArgumentos.get("dataMovimento");
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy  HH:mm:ss");
 		if (StringUtils.isEmpty(plcArgVO.getValor())){
 			plcArgVO.setValor(sdf.format(new Date()));
 		} else {
-			Date dataInformada = null;
-			Calendar cal = Calendar.getInstance();
-			cal.set(Calendar.HOUR, 0);
-			cal.set(Calendar.SECOND, 0);
-			cal.set(Calendar.MINUTE, 0);
-			Date dataAtual = cal.getTime();
+			Date dataInformadaZerada = null;
+			Date dataAtual = new Date();
+			dataAtual.setHours(0);
+			dataAtual.setMinutes(0);
+			dataAtual.setSeconds(0);
+			sdf.format(dataAtual);
 			try {
-				dataInformada = sdf.parse(plcArgVO.getValor());
+				dataInformadaZerada = sdf.parse(plcArgVO.getValor());
+				dataInformadaZerada.setHours(0);
+				dataInformadaZerada.setMinutes(0);
+				dataInformadaZerada.setSeconds(0);
+				
+				if (dataInformadaZerada.compareTo(dataAtual) < 0 || dataInformadaZerada.compareTo(new Date()) > 0 && (!getContasPagar().isEmpty() || !getContasReceber().isEmpty())){
+					contextHelperPlc.getRequest().setAttribute( "fecharCaixa", PlcConstantes.NAO_EXIBIR );
+				} 
+				
 			} catch (ParseException e) {
-				throw new PlcException("data.invalida.caixa");
-			}
-			if (dataInformada.compareTo(dataAtual) < 0 || dataInformada.compareTo(new Date()) > 0 && (!getContasPagar().isEmpty() || !getContasReceber().isEmpty())){
-				contextHelperPlc.getRequest().setAttribute( "fecharCaixa", PlcConstantes.NAO_EXIBIR );
+				
 			}
 			
-			if (dataInformada.compareTo(dataAtual) == -1 || movimentoDia.getId()!=null){
+			if (movimentoDia!=null && movimentoDia.getId()!=null){
 				contextHelperPlc.getRequest().setAttribute( "imitir_livro_caixa", PlcConstantes.EXIBIR );
 			} else {
 				contextHelperPlc.getRequest().setAttribute( "imitir_livro_caixa", PlcConstantes.NAO_EXIBIR );
