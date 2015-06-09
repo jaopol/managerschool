@@ -53,7 +53,9 @@
 				com.consisti.sisgesc.dominio.BancoSuportado.class,
 				com.consisti.sisgesc.dominio.CarteiraBanco.class,
 				com.consisti.sisgesc.dominio.TipoFavorecido.class},
-	classesLookup={com.consisti.sisgesc.entidade.financeiro.BancoEntity.class,
+	classesLookup={
+		com.consisti.sisgesc.entidade.financeiro.BancoEntity.class,
+		com.consisti.sisgesc.entidade.financeiro.ProdutoVendaEntity.class,
 		com.consisti.sisgesc.entidade.FornecedorEntity.class,
 		com.consisti.sisgesc.entidade.financeiro.FormaPagamentoEntity.class,
 		com.consisti.sisgesc.entidade.financeiro.PlanoContasEntity.class,

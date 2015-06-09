@@ -24,11 +24,23 @@ import com.consisti.sisgesc.entidade.AlunoEntity;
 import com.consisti.sisgesc.entidade.AppBaseEntity;
 import com.powerlogic.jcompany.dominio.tipo.PlcSimNao;
 import com.powerlogic.jcompany.dominio.valida.PlcValidacaoUnificada;
+import java.util.List;
+import javax.persistence.OneToMany;
+import javax.persistence.CascadeType;
+import org.hibernate.validator.Valid;
 
 @SuppressWarnings("serial")
 @MappedSuperclass
 @PlcValidacaoUnificada
 public abstract class ContaReceber extends AppBaseEntity {
+
+	
+	@OneToMany (targetEntity = ContaReceberProdutoVendaEntity.class, fetch = FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="contaReceber")
+	@ForeignKey(name="FK_CONTARECEBERPRODUTOVENDA_CONTARECEBER")
+	@Valid
+	@JoinColumn (name = "ID_CONTA_RECEBER")
+	private List<ContaReceberProdutoVenda> contaReceberProdutoVenda;
+
 
 	@Id @GeneratedValue(strategy=GenerationType.AUTO, generator = "SE_CONTA_RECEBER")
 	@Column (name = "ID_CONTA_RECEBER", nullable=false, length=5)
@@ -274,6 +286,14 @@ public abstract class ContaReceber extends AppBaseEntity {
 
 	public void setRemessaGerado(PlcSimNao remessaGerado) {
 		this.remessaGerado = remessaGerado;
+	}
+
+	public List<ContaReceberProdutoVenda> getContaReceberProdutoVenda() {
+		return contaReceberProdutoVenda;
+	}
+
+	public void setContaReceberProdutoVenda(List<ContaReceberProdutoVenda> contaReceberProdutoVenda) {
+		this.contaReceberProdutoVenda=contaReceberProdutoVenda;
 	}
 
 }

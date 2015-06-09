@@ -87,6 +87,7 @@
 		<mapping class="com.consisti.sisgesc.entidade.MovimentoDiaEntity"/>
 		<mapping class="com.consisti.sisgesc.entidade.EmpresaEntity"/>
 		<mapping class="com.consisti.sisgesc.entidade.financeiro.ProdutoVendaEntity"/>
+		<mapping class="com.consisti.sisgesc.entidade.financeiro.ContaReceberProdutoVendaEntity"/>
 	</session-factory>
 
 </hibernate-configuration>

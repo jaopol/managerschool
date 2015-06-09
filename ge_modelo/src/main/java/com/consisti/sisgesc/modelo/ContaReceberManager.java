@@ -35,6 +35,7 @@ import com.consisti.sisgesc.entidade.EnderecoEntity;
 import com.consisti.sisgesc.entidade.ResponsavelFinanceiroAlunoEntity;
 import com.consisti.sisgesc.entidade.financeiro.BancoEntity;
 import com.consisti.sisgesc.entidade.financeiro.ContaReceberEntity;
+import com.consisti.sisgesc.entidade.financeiro.ContaReceberProdutoVenda;
 import com.consisti.sisgesc.entidade.financeiro.FormaPagamento;
 import com.consisti.sisgesc.entidade.financeiro.FormaPagamentoEntity;
 import com.consisti.sisgesc.persistencia.hibernate.BancoDAO;
@@ -76,8 +77,28 @@ public class ContaReceberManager extends AppManager {
 			throws PlcException {
 		
 		ContaReceberEntity contaReceber = (ContaReceberEntity)entidadeAtual;
-		
-		contaReceber.setNumeroDocumento( geraNumeroDocumento( contaReceber ) );
+		//gera nosso numero somente para mensalidade aluno
+		if( contaReceber.getContaReceberProdutoVenda() == null || contaReceber.getContaReceberProdutoVenda().isEmpty() ){
+			contaReceber.setNumeroDocumento( geraNumeroDocumento( contaReceber ) );
+		}
+		else{
+			for (ContaReceberProdutoVenda produtoVenda : contaReceber.getContaReceberProdutoVenda()) {
+				if(produtoVenda.getDataCadastro() == null ){
+					produtoVenda.setDataCadastro(new Date());
+				}
+				
+				if( "S".equals( produtoVenda.getIndExcPlc() ) ){
+					if( contaReceber.getValorTotal() != null ){
+						contaReceber.setValorTotal( contaReceber.getValorTotal().subtract( produtoVenda.getValorTotal() ) );
+						contaReceber.setValorDocumento( contaReceber.getValorTotal() );
+					}
+					else{
+						contaReceber.setValorTotal( BigDecimal.ZERO );
+						contaReceber.setValorDocumento( contaReceber.getValorTotal() );
+					}
+				}
+			}
+		}
 		
 		super.antesPersistencia(entidadeAtual, entidadeAnterior, modoGravacao);
 	}

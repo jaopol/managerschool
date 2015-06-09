@@ -22,7 +22,7 @@ import javax.persistence.Entity;
 
 @SuppressWarnings("serial")
 @NamedQueries({
-	@NamedQuery(name="ProdutoVendaEntity.queryMan", query="from ProdutoVendaEntity obj"),
+	@NamedQuery(name="ProdutoVendaEntity.queryMan", query="from ProdutoVendaEntity obj order by descricao asc "),
 	@NamedQuery(name="ProdutoVendaEntity.querySelLookup", query="select new ProdutoVendaEntity (obj.id, obj.descricao) from ProdutoVendaEntity obj where obj.id = ? order by obj.descricao asc")
 })
 public class ProdutoVendaEntity extends ProdutoVenda {

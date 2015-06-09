@@ -1033,6 +1033,37 @@
 		<to-view-id>/n/produtovendatab</to-view-id> 
 	</navigation-case> 
 </navigation-rule>
+	<navigation-rule> 
+	<display-name>Manutencao Receber do dia</display-name>  
+	<from-view-id>/n/contareceberdiariomdt</from-view-id>  
+	<navigation-case> 
+		<from-outcome>mesmaPagina</from-outcome>  
+		<to-view-id>/n/contareceberdiariomdt</to-view-id> 
+	</navigation-case>  
+	<navigation-case> 
+		<from-outcome>abre</from-outcome>  
+		<to-view-id>/n/contareceberdiariosel</to-view-id>  
+		<redirect/> 
+	</navigation-case> 
+</navigation-rule>
+	<navigation-rule> 
+	<display-name>Seleção Receber do dia</display-name>  
+	<from-view-id>/n/contareceberdiariosel</from-view-id>  
+	<navigation-case> 
+		<from-outcome>mesmaPagina</from-outcome>  
+		<to-view-id>/n/contareceberdiariosel</to-view-id> 
+	</navigation-case>  
+	<navigation-case> 
+		<from-outcome>edita</from-outcome>  
+		<to-view-id>/n/contareceberdiariomdt</to-view-id>  
+		<redirect/> 
+	</navigation-case>  
+	<navigation-case> 
+		<from-outcome>novo</from-outcome>  
+		<to-view-id>/n/contareceberdiariomdt</to-view-id>  
+		<redirect/> 
+	</navigation-case> 
+</navigation-rule>
 	<lifecycle>
 		<phase-listener>com.consisti.sisgesc.controle.listener.AppPhaseListener</phase-listener>
 	</lifecycle>

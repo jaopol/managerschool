@@ -5,7 +5,6 @@ import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -30,6 +29,7 @@ import com.powerlogic.jcompany.dominio.valida.PlcMensagem.Cor;
 /**
  * Classe de Controle gerada pelo assistente
  */
+@SuppressWarnings("serial")
 public class MovimentoDiaAction extends RelatorioActionPlc  {
 	
 	private boolean valorRecebidoMaiorValorPago = false;
