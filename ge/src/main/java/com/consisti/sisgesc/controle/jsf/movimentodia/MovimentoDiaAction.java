@@ -106,6 +106,9 @@ public class MovimentoDiaAction extends RelatorioActionPlc  {
 		
 		MovimentoDiaEntity movimentoDia = (MovimentoDiaEntity) entidadePlc;
 		
+		if (movimentoDia.getValorRetirada()==null)
+			movimentoDia.setValorRetirada(new BigDecimal(0));
+		
 		if (movimentoDia.getValorRetirada().compareTo(movimentoDia.getSaldoDia()) > 0){
 			throw new PlcException("erro");
 		}

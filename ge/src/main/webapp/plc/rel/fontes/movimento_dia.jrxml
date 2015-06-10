@@ -158,7 +158,7 @@
 					<textElement textAlignment="Left" verticalAlignment="Middle">
 						<font pdfFontName="Helvetica-Bold" size="10" isBold="true"/>
 					</textElement>
-				<text><![CDATA[Saldo do Dia (Valor Recebido - Valor Pago)]]></text>
+				<text><![CDATA[Saldo Inicial (Valor Recebido - Valor Pago)]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
@@ -186,7 +186,7 @@
 					<textElement textAlignment="Left" verticalAlignment="Middle">
 						<font pdfFontName="Helvetica-Bold" size="10" isBold="true"/>
 					</textElement>
-				<text><![CDATA[Valor Em Caixa do Dia]]></text>
+				<text><![CDATA[Saldo Final]]></text>
 				</staticText>
 				<line direction="TopDown">
 					<reportElement

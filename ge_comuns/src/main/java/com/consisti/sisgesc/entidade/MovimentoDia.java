@@ -45,7 +45,7 @@ public abstract class MovimentoDia extends AppBaseEntity {
 	@Column (name = "SALDO_TOTAL", nullable=false, length=19)
 	private BigDecimal saldoTotal;
 	
-	@Column (name = "VALOR_RETIRADA", nullable=false, length=19)
+	@Column (name = "VALOR_RETIRADA", length=19)
 	private BigDecimal valorRetirada;
 	
 	@Column (name = "DATA_MOVIMENTO", nullable=false, length=11)
