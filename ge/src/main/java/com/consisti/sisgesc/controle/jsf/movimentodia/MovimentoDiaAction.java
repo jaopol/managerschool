@@ -125,8 +125,11 @@ public class MovimentoDiaAction extends RelatorioActionPlc  {
 		}
 		movimentoDia.setSaldoTotal(movimentoDia.getSaldoDia().subtract(movimentoDia.getValorRetirada()));
 		getFachada().fecharCaixa(movimentoDia);
-		PlcMsgJsfHelper.getInstance().msg("msg.infor.cx.fechado", Cor.msgAzulPlc.toString());
+		if (contextHelperPlc.getRequest().getAttribute( "exibir_msg_cx_fechado")==null){
+			PlcMsgJsfHelper.getInstance().msg("msg.infor.cx.fechado", Cor.msgAzulPlc.toString());
+		}
 		
+		contextHelperPlc.getRequest().setAttribute( "exibir_msg_cx_fechado", null);
 	}
 	
 	private BigDecimal somaSaldoTotal(BigDecimal valorRetirada, BigDecimal saldoDoDia) {
@@ -185,7 +188,8 @@ public class MovimentoDiaAction extends RelatorioActionPlc  {
 		setContasReceber(movimentoDia.getContasReceber());
 		
 		calculaTotais(movimentoDia);
-		
+		contextHelperPlc.getRequest().setAttribute( "exibir_msg_cx_fechado", PlcConstantes.NAO_EXIBIR );
+		fecharCaixa();
 		return "";
 	}
 
