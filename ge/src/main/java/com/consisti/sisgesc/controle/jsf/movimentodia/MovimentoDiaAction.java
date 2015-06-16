@@ -99,7 +99,7 @@ public class MovimentoDiaAction extends RelatorioActionPlc  {
 		map.put("dataMovimento", sdf.format(movimentoDia.getDataMovimento()));
 		map.put("valorRetirada", NumberFormat.getCurrencyInstance().format(movimentoDia.getValorRetirada()));
 		
-		super.geraRelatorioPlc(AppConstantesComuns.RELATORIO.REL_MOVIMENTO_DIA, movimentoDia, map);
+		super.geraRelatorio(AppConstantesComuns.RELATORIO.REL_MOVIMENTO_DIA, movimentoDia, map);
 	}
 	
 	public void fecharCaixa() throws PlcException{

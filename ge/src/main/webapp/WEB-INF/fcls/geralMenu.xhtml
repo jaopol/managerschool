@@ -190,138 +190,22 @@
 						</li>
 					</ul>
 				</li>
-				<ui:include src="/WEB-INF/fcls/geralMenuAreaTecnica.xhtml"/>
-			</ul>
-		</ui:composition>
-	</body>
+				
 				<li>
 					<a>
 						<span class="ico iLeiautepadrao"/>
-						<label jsfc="plcf:titulo" tituloChave="app.m.administracao">Administracao</label>
+						<label jsfc="plcf:titulo" tituloChave="app.m.relatorios">Relatórios</label>
 					</a>
 					<ul class="ui-state-hover">
 						<li>
-							<a href="#{request.contextPath}/f/n/tabelaprecosel?fwPlc=tabelaprecomdt">
-								<label jsfc="plcf:titulo" tituloChave="menu.tabelapreco.titulo">Tabela de preços</label>
+							<a href="#{request.contextPath}/f/n/mensalidadesturmaman">
+							<label jsfc="plcf:titulo" tituloChave="menu.mensalidadesturma.titulo">Mensalidades Por Turma</label>
 							</a>
 						</li>
-						<!-- 
-							<li>
-						<a href="#{request.contextPath}/f/n/cadastroferiadotab">
-							<label jsfc="plcf:titulo" tituloChave="menu.cadastroferiado.titulo">Cadastro Feriados</label>
-						</a>
-					</li>
-					<li>
-						<a href="#{request.contextPath}/f/n/calendarioanualmds">
-							<label jsfc="plcf:titulo" tituloChave="menu.calendarioanual.titulo">Calendário anual</label>
-						</a>
-					</li>-->
-					<li>
-						<a href="#" title="Estoque">Estoque</a>
-						<ul>
-							<li>
-								<a href="#{request.contextPath}/f/n/estoquesel?fwPlc=estoquemdt" title="Relatórios">Relatórios</a>
-							</li>
-							<li>
-								<a href="#{request.contextPath}/f/n/estoqueentradasel" title="Entrada">Entrada</a>
-							</li>
-							<li>
-								<a href="#{request.contextPath}/f/n/estoquesaidasel" title="Saída">Saída</a>
-							</li>
-						</ul>
-					</li>
-				</ul>
-			</li>
-			<li>
-				<a>
-					<span class="ico iLeiautepadrao"/>
-					<label jsfc="plcf:titulo" tituloChave="app.m.financeiro">Financeiro</label>
-				</a>
-				<ul class="ui-state-hover">
-					<li>
-						<a href="#{request.contextPath}/f/n/formapagamentotab">
-							<label jsfc="plcf:titulo" tituloChave="menu.formapagamento.titulo">Formas pagamento</label>
-						</a>
-					</li>
-					<li>
-						<a href="#{request.contextPath}/f/n/planocontastab">
-							<label jsfc="plcf:titulo" tituloChave="menu.planocontas.titulo">Plano de contas</label>
-						</a>
-					</li>
-					<li>
-						<a href="#{request.contextPath}/f/n/tipoplanocontassel?fwPlc=tipoplanocontasman">
-							<label jsfc="plcf:titulo" tituloChave="menu.tipoplanocontas.titulo">Tipo plano contas</label>
-						</a>
-					</li>
-					<li>
-						<a href="#{request.contextPath}/f/n/bancosel?fwPlc=bancomdt">
-							<label jsfc="plcf:titulo" tituloChave="menu.banco.titulo">Cadastro banco</label>
-						</a>
-					</li>
-					<li>
-						<a href="#{request.contextPath}/f/n/contapagarsel?fwPlc=contapagarman">
-							<label jsfc="plcf:titulo" tituloChave="menu.contapagar.titulo">Conta a pagar</label>
-						</a>
-					</li>
-					<li>
-						<a href="#{request.contextPath}/f/n/contarecebersel?fwPlc=contareceberman">
-							<label jsfc="plcf:titulo" tituloChave="menu.contareceber.titulo">Contas a receber</label>
-						</a>
-					</li>
-					<!-- 
-					<li>
-						<a href="#{request.contextPath}/f/n/gerarremessaboletosel">
-							<label jsfc="plcf:titulo" tituloChave="menu.gerarremessaboleto.titulo">Gerar remessa boleto</label>
-						</a>
-					</li>
-					 -->
-					<li>
-							<a href="#{request.contextPath}/f/n/contareceberdemandacon">
-								<label jsfc="plcf:titulo" tituloChave="menu.contareceberdemanda.titulo">Contas a receber por demanda</label>
-							</a>
-						</li> 
-					<li>
-						<a href="#{request.contextPath}/f/n/extratocontascon">
-							<label jsfc="plcf:titulo" tituloChave="menu.extratocontas.titulo">Extrato Contas</label>
-						</a>
-					</li>
-				</ul>
-			</li>
-			
-			<li>
-				<a>
-					<span class="ico iLeiautepadrao"/>
-					<label jsfc="plcf:titulo" tituloChave="app.m.relatorios">Relatórios</label>
-				</a>
-				<ul class="ui-state-hover">
-					<li>
-						<a href="#{request.contextPath}/f/n/mensalidadesturmaman">
-						<label jsfc="plcf:titulo" tituloChave="menu.mensalidadesturma.titulo">Mensalidades Por Turma</label>
-						</a>
-					</li>
-				</ul>
-			</li>
-			
-			<li>
-				<a>
-					<span class="ico iLeiautepadrao"/>
-					<label jsfc="plcf:titulo" tituloChave="app.m.seguranca">Segurança</label>
-				</a>
-				<ul class="ui-state-hover">
-					<li>
-						<a href="#{request.contextPath}/f/n/usuariosel?fwPlc=usuarioman">
-							<label jsfc="plcf:titulo" tituloChave="menu.usuario.titulo">Cadastrar Usuário</label>
-						</a>
-					</li>
-					<li>
-						<a href="#{request.contextPath}/f/n/perfilusuariosel?fwPlc=perfilusuariomdt">
-							<label jsfc="plcf:titulo" tituloChave="menu.perfilusuario.titulo">Perfil usuário</label>
-						</a>
-					</li>
-				</ul>
-			</li>
-			<ui:include src="/WEB-INF/fcls/geralMenuAreaTecnica.xhtml"/>
-		</ul>
+					</ul>
+				</li>
+				
+			</ul>
 	</ui:composition>
 </body>
 </html>
