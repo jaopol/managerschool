@@ -958,6 +958,21 @@
 		<redirect/> 
 	</navigation-case> 
 </navigation-rule>
+
+<navigation-rule> 
+	<display-name>Manutencao Mensalidades Por Turma</display-name>  
+	<from-view-id>/n/mensalidadesturmaman</from-view-id>  
+	<navigation-case> 
+		<from-outcome>mesmaPagina</from-outcome>  
+		<to-view-id>/n/mensalidadesturmaman</to-view-id> 
+	</navigation-case>  
+	<navigation-case> 
+		<from-outcome>abre</from-outcome>  
+		<to-view-id>/n/mensalidadesturmasel</to-view-id>  
+		<redirect/> 
+	</navigation-case> 
+</navigation-rule>
+
 	<navigation-rule> 
 	<display-name>Seleção Contas a receber por demanda</display-name>  
 	<from-view-id>/n/contareceberdemandasel</from-view-id>  

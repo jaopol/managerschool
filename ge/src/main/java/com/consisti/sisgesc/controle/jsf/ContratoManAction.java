@@ -129,7 +129,7 @@ public class ContratoManAction extends AditivoAction  {
 			
 			contextHelperPlc.setSessionAttribute("dataFim", contrato.getDataFimContrato() );
 			
-			super.geraRelatorioPlc(AppConstantesComuns.RELATORIO.REL_CONTRATO, aluno, maps);
+			super.geraRelatorio(AppConstantesComuns.RELATORIO.REL_CONTRATO, aluno, maps);
 			
 			if(contratoAnterior != null){
 				//inativa o contrato anterior. Pode existir somente um contrato ativo

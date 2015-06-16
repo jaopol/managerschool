@@ -50,6 +50,10 @@ public class AlunoEntity extends Aluno {
 	private transient Date dataVencimento;
 	private transient BigDecimal valorTotal;
 	private transient String tipoEducacaoStr;
+	private transient List<AlunoEntity> dadosPorTurma;
+	private transient String responsavelFinanceiroStr;
+	private transient String valorMensalidadeStr;
+	private transient Long periodoContrato;
  	
     /*
      * Construtor padrão
@@ -475,5 +479,29 @@ public class AlunoEntity extends Aluno {
 	}
 	public void setIdBanco(Long idBanco) {
 		this.idBanco = idBanco;
+	}
+	public List<AlunoEntity> getDadosPorTurma() {
+		return dadosPorTurma;
+	}
+	public void setDadosPorTurma(List<AlunoEntity> dadosPorTurma) {
+		this.dadosPorTurma = dadosPorTurma;
+	}
+	public String getResponsavelFinanceiroStr() {
+		return responsavelFinanceiroStr;
+	}
+	public void setResponsavelFinanceiroStr(String responsavelFinanceiroStr) {
+		this.responsavelFinanceiroStr = responsavelFinanceiroStr;
+	}
+	public String getValorMensalidadeStr() {
+		return valorMensalidadeStr;
+	}
+	public void setValorMensalidadeStr(String valorMensalidadeStr) {
+		this.valorMensalidadeStr = valorMensalidadeStr;
+	}
+	public Long getPeriodoContrato() {
+		return periodoContrato;
+	}
+	public void setPeriodoContrato(Long periodoContrato) {
+		this.periodoContrato = periodoContrato;
 	}
 }

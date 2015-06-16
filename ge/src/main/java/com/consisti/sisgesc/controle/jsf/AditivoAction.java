@@ -52,7 +52,7 @@ public class AditivoAction extends RelatorioActionPlc  {
 		
 		contextHelperPlc.getRequest().getSession().setAttribute("gravarAditivo", PlcSimNao.S);
 		contextHelperPlc.getRequest().getSession().setAttribute("idContrato", contrato.getId());
-		geraRelatorioPlc(AppConstantesComuns.RELATORIO.ADITIVO, aditivo, parametros);
+		geraRelatorio(AppConstantesComuns.RELATORIO.ADITIVO, aditivo, parametros);
 		
 	}
 	
