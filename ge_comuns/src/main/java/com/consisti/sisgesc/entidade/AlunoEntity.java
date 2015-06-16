@@ -2,6 +2,7 @@ package com.consisti.sisgesc.entidade;
 
 
 import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -493,6 +494,7 @@ public class AlunoEntity extends Aluno {
 		this.responsavelFinanceiroStr = responsavelFinanceiroStr;
 	}
 	public String getValorMensalidadeStr() {
+		valorMensalidadeStr = NumberFormat.getCurrencyInstance().format( this.getValorMensalidadeAluno() );
 		return valorMensalidadeStr;
 	}
 	public void setValorMensalidadeStr(String valorMensalidadeStr) {

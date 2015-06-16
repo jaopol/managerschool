@@ -89,10 +89,9 @@ private ResponsavelFinanceiroAlunoDAO responsavelFinanceiroAlunoDAO;
 				"left outer join aluno.turma tur " +
 				"left outer join aluno.contrato contr " +
 				"where tur.id =:idTurma " +
-				"and :DATA_ATUAL between contr.dataInicioContrato and contr.dataFimContrato " +
 				"order by aluno.nomeAluno asc ";
 		
-		Iterator it = getSession().createQuery( hql.toString() ).setLong( "idTurma", idTurma ).setParameter("DATA_ATUAL", new Date()).iterate();
+		Iterator it = getSession().createQuery( hql.toString() ).setLong( "idTurma", idTurma ).iterate();
 		if (it!=null){
 			List<AlunoEntity> lista = new ArrayList<AlunoEntity>();
 			while (it.hasNext()) {
