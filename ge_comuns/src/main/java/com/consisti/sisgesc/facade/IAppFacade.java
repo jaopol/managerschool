@@ -213,4 +213,8 @@ public interface IAppFacade extends IPlcFacade {
 	 * @return
 	 * @throws PlcException 
 	 */
-	ContratoEntity recuperaUltimoContratoAluno(Long id) throws PlcException;}
+	ContratoEntity recuperaUltimoContratoAluno(Long id) throws PlcException;
+	
+	List<AlunoEntity> recuperaDadosPorTurma(Long idTurma) throws PlcException;
+	
+}
