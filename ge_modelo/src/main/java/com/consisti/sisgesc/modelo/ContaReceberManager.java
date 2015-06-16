@@ -6,9 +6,9 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.CharUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.tools.ant.util.CollectionUtils;
 import org.jrimum.bopepo.BancosSuportados;
 import org.jrimum.bopepo.Boleto;
 import org.jrimum.domkee.comum.pessoa.endereco.CEP;
@@ -33,11 +33,13 @@ import com.consisti.sisgesc.entidade.Aluno;
 import com.consisti.sisgesc.entidade.AlunoEntity;
 import com.consisti.sisgesc.entidade.EnderecoEntity;
 import com.consisti.sisgesc.entidade.ResponsavelFinanceiroAlunoEntity;
+import com.consisti.sisgesc.entidade.ServicoAluno;
 import com.consisti.sisgesc.entidade.financeiro.BancoEntity;
 import com.consisti.sisgesc.entidade.financeiro.ContaReceberEntity;
 import com.consisti.sisgesc.entidade.financeiro.ContaReceberProdutoVenda;
 import com.consisti.sisgesc.entidade.financeiro.FormaPagamento;
 import com.consisti.sisgesc.entidade.financeiro.FormaPagamentoEntity;
+import com.consisti.sisgesc.persistencia.hibernate.AlunoDAO;
 import com.consisti.sisgesc.persistencia.hibernate.BancoDAO;
 import com.consisti.sisgesc.persistencia.hibernate.ContaReceberDAO;
 import com.consisti.sisgesc.persistencia.hibernate.EnderecoDAO;
@@ -58,14 +60,16 @@ public class ContaReceberManager extends AppManager {
 	private BancoDAO bancoDAO;
 	private ContaReceberDAO contaReceberDAO;
 	private FormaPagamentoDAO formaPagamentoDAO;
+	private AlunoDAO alunoDAO;
 	
 	public ContaReceberManager( EnderecoDAO enderecoDAO, ResponsavelFinanceiroAlunoDAO responsavelFinanceiroAlunoDAO,
-			BancoDAO bancoDAO, ContaReceberDAO contaReceberDAO, FormaPagamentoDAO formaPagamentoDAO) {
+			BancoDAO bancoDAO, ContaReceberDAO contaReceberDAO, FormaPagamentoDAO formaPagamentoDAO, AlunoDAO alunoDAO) {
 		this.enderecaoDAO = enderecoDAO;
 		this.responsavelFinanceiroAlunoDAO = responsavelFinanceiroAlunoDAO;
 		this.bancoDAO = bancoDAO;
 		this.contaReceberDAO = contaReceberDAO;
 		this.formaPagamentoDAO = formaPagamentoDAO;
+		this.alunoDAO = alunoDAO;
 	}
 	
 	/* (non-Javadoc)
@@ -611,6 +615,25 @@ public class ContaReceberManager extends AppManager {
 	public Cedente getCedente() {
 	       Cedente cedente = new Cedente("INSTITUTO EDUCACIONAL FACULDADE DA CRIANCA", "07.797.977/0001-20");
 		return cedente;
+	}
+	
+	public ContaReceberEntity recuperaValorAlunoSetContaReceber(Long idAluno) throws PlcException{
+		
+		ContaReceberEntity contaReceber = new ContaReceberEntity();
+		
+		if( idAluno != null){
+			AlunoEntity aluno = alunoDAO.recuperaValorMensalidadeAluno( idAluno );
+			if(aluno != null){
+				contaReceber.setValorDocumento( aluno.getValorTotalMensalidade() );
+				
+				if( aluno.getServicoAluno() != null && !aluno.getServicoAluno().isEmpty() ){
+					for (ServicoAluno servicoAluno : aluno.getServicoAluno()) {
+						contaReceber.setValorDocumento( contaReceber.getValorDocumento().add( servicoAluno.getServico().getValorServico() ) );
+					}
+				}
+			}
+		}
+		return contaReceber;
 	}
 
 }

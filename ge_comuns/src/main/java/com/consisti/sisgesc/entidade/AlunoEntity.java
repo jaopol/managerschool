@@ -3,6 +3,7 @@ package com.consisti.sisgesc.entidade;
 
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -72,6 +73,25 @@ public class AlunoEntity extends Aluno {
 	public AlunoEntity(Long id, String nomeAluno) {
 		this.setId(id);
 		this.setNomeAluno(nomeAluno);
+	}
+	
+	public AlunoEntity(BigDecimal valorTotalMensalidade,  List<ServicoAluno> servicoAluno) {
+		this.setValorTotalMensalidade(valorTotalMensalidade);
+		this.setServicoAluno(servicoAluno);
+	}
+
+	public AlunoEntity(BigDecimal valorTotalMensalidade,  BigDecimal valorServicoAluno) {
+		this.setValorTotalMensalidade(valorTotalMensalidade);
+		if(valorServicoAluno != null){
+			if( getServicoAluno() == null ){
+				this.setServicoAluno(new ArrayList<ServicoAluno>());
+			}
+			ServicoAluno serAluno = new ServicoAlunoEntity();
+			serAluno.setServico( new ServicosEntity() );
+			serAluno.getServico().setValorServico(valorServicoAluno);
+			getServicoAluno().add(serAluno);
+		}
+		//this.setServicoAluno(servicoAluno);
 	}
 	
 	@Override

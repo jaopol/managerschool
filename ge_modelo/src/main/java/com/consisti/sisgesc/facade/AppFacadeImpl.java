@@ -236,5 +236,10 @@ public class AppFacadeImpl extends PlcFacadeImpl implements IAppFacade, IAppFaca
 		AlunoDAO dao = (AlunoDAO)getDAO(AlunoDAO.class);
 		return dao.recuperaDadosPorTurma(idTurma);
 	}
+
+	public ContaReceberEntity recuperaValorAlunoSetContaReceber(Long idAluno) throws PlcException {
+		ContaReceberManager bo = (ContaReceberManager)getBO(ContaReceberManager.class);
+		return bo.recuperaValorAlunoSetContaReceber(idAluno);
+	}
 	
 }

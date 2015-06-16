@@ -14,7 +14,21 @@
 				<plcf:celula> 
 					<plcf:titulo tituloChave="label.favorecido"/>  
 					<plcf:vinculado id="favorecido" value="#{plcLogicaItens.argumentos.favorecido.valor}" propSelPop="contapagar" idExibe="N" idSomenteLeitura="N" autoRecuperacaoClasse="com.consisti.sisgesc.entidade.FornecedorEntity" actionSel="fornecedorsel" modal="S" ajudaChave="ajuda.favorecido" onkeydown="selecionaPorTecla(event,this);" lookupTamanho="50"/> 
-				</plcf:celula>  
+				</plcf:celula>
+				<plcf:celula width="350px;"> 
+					<plcf:titulo tituloChave="label.periodoVencimento"/>  
+					<table>
+						<tr>
+							<td>
+								<plcf:data id="dataIni" value="#{plcLogicaItens.argumentos.dataVencimento_ArgINI.valor}" ajudaChave="ajuda.dataVencimentoInicio" />
+							</td>
+							<td width="20px;"><span class="af_outputLabel">a</span></td>
+							<td>
+								<plcf:data id="dataFim" value="#{plcLogicaItens.argumentos.dataVencimento_ArgFIM.valor}" ajudaChave="ajuda.dataVencimentoFim" /> 
+							</td>
+						</tr>
+					</table>
+				</plcf:celula>   
 			</plcf:linha>  
 			<plcf:linha> 
 				<plcf:celula> 

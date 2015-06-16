@@ -27,7 +27,7 @@
 			<plcf:linha> 
 				<plcf:celula> 
 					<plcf:titulo tituloChave="label.sacado"/>  
-					<plcf:vinculado id="aluno" value="#{plcEntidade.aluno}" propSelPop="aluno" idExibe="N" idSomenteLeitura="N" autoRecuperacaoClasse="com.consisti.sisgesc.entidade.AlunoEntity" actionSel="alunosel" modal="S" ajudaChave="ajuda.aluno" onkeydown="selecionaPorTecla(event,this);" lookupTamanho="50" obrigatorio="S"/> 
+					<plcf:vinculado id="aluno" value="#{plcEntidade.aluno}" propSelPop="aluno" idExibe="N" idSomenteLeitura="N" autoRecuperacaoClasse="com.consisti.sisgesc.entidade.AlunoEntity" actionSel="alunosel" modal="S" ajudaChave="ajuda.aluno" onkeydown="selecionaPorTecla(event,this);" lookupTamanho="50" obrigatorio="S" larg="980" alt="640"/> 
 				</plcf:celula>  
 				<plcf:celula> 
 					<plcf:titulo tituloChave="label.formaRecebimento"/>  
@@ -49,27 +49,19 @@
 			<plcf:linha> 	
 				<plcf:celula> 
 					<plcf:titulo tituloChave="label.juroValor"/>  
-					<plcf:numerico id="juroValor" value="#{plcEntidade.juroValor}" ajudaChave="ajuda.juroValor"/> 
+					<plcf:numerico id="juroValor" value="#{plcEntidade.juroValor}" ajudaChave="ajuda.juroValor" onblur="adicionarJuro();"/> 
 				</plcf:celula>  
-				<plcf:celula > 
-					<plcf:titulo tituloChave="label.juroPercentual"/>  
-					<plcf:numerico id="juroPercentual" value="#{plcEntidade.juroPercentual}" ajudaChave="ajuda.juroPercentual" tamanho="10"/> 
-				</plcf:celula> 
 			</plcf:linha>  
 			<plcf:linha> 
 				<plcf:celula> 
 					<plcf:titulo tituloChave="label.descontoValor"/>  
-					<plcf:numerico id="descontoValor" value="#{plcEntidade.descontoValor}" ajudaChave="ajuda.descontoValor"/> 
-				</plcf:celula>  
-				<plcf:celula> 
-					<plcf:titulo tituloChave="label.descontoPercentual"/>  
-					<plcf:numerico id="descontoPercentual" value="#{plcEntidade.descontoPercentual}" ajudaChave="ajuda.descontoPercentual" tamanho="10"/> 
+					<plcf:numerico id="descontoValor" value="#{plcEntidade.descontoValor}" ajudaChave="ajuda.descontoValor" onblur="subtrairDesconto();"/> 
 				</plcf:celula>  
 			</plcf:linha>
 			<plcf:linha>
 				<plcf:celula> 
 					<plcf:titulo tituloChave="label.valorTotal"/>  
-					<plcf:numerico id="valorTotal" value="#{plcEntidade.valorTotal}" ajudaChave="ajuda.valorTotal"/> 
+					<plcf:numerico id="valorTotal" value="#{plcEntidade.valorTotal}" ajudaChave="ajuda.valorTotal" somenteLeitura="S"/> 
 				</plcf:celula>  
 			</plcf:linha>  
 			<plcf:linha> 
@@ -101,13 +93,23 @@
 			</plcf:linha> 
 		</plcf:tabela> 
 		
-		 	<plcf:botaoAcao id="arquivo" acao="exportar" validaForm="false" limpaForm="false"/>
+		 	<plcf:botaoAcao id="btRecuperaValorAluno" acao="recuperaValorALuno" validaForm="false" limpaForm="false" inlineStyle="display:none;"/>
+		 	<plcf:botaoAcao id="btAdicionarJuro" acao="adicionarJuro" validaForm="false" limpaForm="false" inlineStyle="display:none;"/>
+		 	<plcf:botaoAcao id="btSubtrairDesconto" acao="subtrairDesconto" validaForm="false" limpaForm="false" inlineStyle="display:none;"/>
 		<script avaliar="S">
 
 		//<![CDATA[
 		
 			PlcGeral.prototype.aposDevolveSelecaoPopup = function() {
-				//document.getElementById("corpo:formulario:botaoValidacaoMunicipio").click();
+				document.getElementById("corpo:formulario:btRecuperaValorAluno").click();
+			}
+
+			function adicionarJuro(){
+				document.getElementById("corpo:formulario:btAdicionarJuro").click();
+			}
+
+			function subtrairDesconto(){
+				document.getElementById("corpo:formulario:btSubtrairDesconto").click();
 			}
 
 		 //]]>
