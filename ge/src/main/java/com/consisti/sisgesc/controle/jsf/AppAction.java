@@ -61,6 +61,7 @@ public class AppAction extends PlcBaseJsfAction {
 	protected static final Logger log = Logger.getLogger(AppAction.class);
 	private UploadedFile arquivo;
 	private String descricao;
+	private String exibeGravar = null;
 	
 	/**
 	 * vai validar o tamanho de um arquivo
@@ -206,6 +207,8 @@ public class AppAction extends PlcBaseJsfAction {
 		
 		super.trataBotoesConformeLogicaApos();
 		
+		exibeGravar = exibeGravar == null ? contextHelperPlc.getRequest().getParameter("exibeBtGrava") : exibeGravar;
+		
 		//validaUrlAcesso();       
 		
 		contextHelperPlc.getRequest().setAttribute( PlcConstantes.ACAO.EXIBE_BT_CLONAR, PlcConstantes.NAO_EXIBIR );
@@ -229,10 +232,9 @@ public class AppAction extends PlcBaseJsfAction {
 			contextHelperPlc.getRequest().setAttribute( PlcConstantes.ACAO.EXIBE_BT_EXCLUIR, PlcConstantes.NAO_EXIBIR );
 		}
 		//Se for popup nao apresenta o botao novo nem o excluir
-		if( "popup".equals( controleConversacaoPlc.getModoJanelaPlc() ) &&
-				!"S".equals( contextHelperPlc.getRequest().getParameter("exibeBtGrava") ) ){
-			contextHelperPlc.getRequest().setAttribute( PlcConstantes.ACAO.EXIBE_BT_EXCLUIR, PlcConstantes.NAO_EXIBIR );
-			contextHelperPlc.getRequest().setAttribute( PlcConstantes.ACAO.EXIBE_BT_INCLUIR, PlcConstantes.NAO_EXIBIR );
+		if( "popup".equals( controleConversacaoPlc.getModoJanelaPlc() ) && !"S".equals( exibeGravar ) ){
+				contextHelperPlc.getRequest().setAttribute( PlcConstantes.ACAO.EXIBE_BT_EXCLUIR, PlcConstantes.NAO_EXIBIR );
+				contextHelperPlc.getRequest().setAttribute( PlcConstantes.ACAO.EXIBE_BT_INCLUIR, PlcConstantes.NAO_EXIBIR );
 		}
 	}
 	

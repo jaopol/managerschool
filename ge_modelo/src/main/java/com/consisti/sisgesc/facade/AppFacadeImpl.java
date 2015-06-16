@@ -230,4 +230,11 @@ public class AppFacadeImpl extends PlcFacadeImpl implements IAppFacade, IAppFaca
 	public ContratoEntity recuperaUltimoContratoAluno(Long idAluno) throws PlcException {
 		ContratoDAO dao = (ContratoDAO)getDAO(ContratoDAO.class);
 		return dao.recuperaContratoAluno(idAluno);
-	}}
+	}
+
+	public ContaReceberEntity recuperaValorAlunoSetContaReceber(Long idAluno) throws PlcException {
+		ContaReceberManager bo = (ContaReceberManager)getBO(ContaReceberManager.class);
+		return bo.recuperaValorAlunoSetContaReceber(idAluno);
+	}
+	
+}

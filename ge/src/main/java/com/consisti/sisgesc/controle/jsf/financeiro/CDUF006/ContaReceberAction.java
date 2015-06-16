@@ -29,9 +29,9 @@ public class ContaReceberAction extends AppAction  {
 	@Override
 	protected void trataBotoesConformeLogicaApos() throws PlcException {
 		
+		super.trataBotoesConformeLogicaApos();
 		trataBotoes();
 		
-		super.trataBotoesConformeLogicaApos();
 	}
 
 	private void trataBotoes() {
@@ -51,6 +51,7 @@ public class ContaReceberAction extends AppAction  {
 				contextHelperPlc.getRequest().setAttribute("exibeLiquidaTitulo", "S");
 			}
 		}
+		contextHelperPlc.getRequest().setAttribute( PlcConstantes.ACAO.EXIBE_BT_IMPRIMIR, "S");
 	}
 	
 	/* (non-Javadoc)
@@ -172,6 +173,41 @@ public class ContaReceberAction extends AppAction  {
 		if( contaReceber.getBanco() == null ){
 			throw new PlcException("msg.info.informar.banco");
 		}
+	}
+	
+	public String recuperaValorALuno() throws PlcException{
+		
+		ContaReceberEntity contaReceber = ( ContaReceberEntity )entidadePlc;
+		
+		if(contaReceber.getAluno() != null){
+			IAppFacade fc = (IAppFacade)getServiceFacade();
+			ContaReceberEntity receber = fc.recuperaValorAlunoSetContaReceber(contaReceber.getAluno().getId());
+			
+			contaReceber.setValorDocumento( receber.getValorDocumento() );
+			contaReceber.setValorTotal( receber.getValorDocumento() );
+		}
+		
+		return NAVEGACAO.IND_MESMA_PAGINA;
+	}
+	
+	public String adicionarJuro(){
+		
+		ContaReceberEntity contaReceber = (ContaReceberEntity)entidadePlc;
+		if( contaReceber.getValorDocumento() != null && contaReceber.getJuroValor() != null){
+			contaReceber.setValorTotal( contaReceber.getValorTotal().add( contaReceber.getJuroValor() ) );
+		}
+		
+		return NAVEGACAO.IND_MESMA_PAGINA;
+	}
+	
+	public String subtrairDesconto(){
+		
+		ContaReceberEntity contaReceber = (ContaReceberEntity)entidadePlc;
+		if( contaReceber.getValorDocumento() != null && contaReceber.getDescontoValor() != null ){
+			contaReceber.setValorTotal( contaReceber.getValorTotal().subtract( contaReceber.getDescontoValor() ) );
+		}
+		
+		return NAVEGACAO.IND_MESMA_PAGINA;
 	}
 	
 }
