@@ -198,7 +198,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{periodoContrato} == null ? "" : $F{periodoContrato}+" mese(s)"]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{periodoContrato} == null ? "" : $F{periodoContrato}+" meses"]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
