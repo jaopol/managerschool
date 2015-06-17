@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.CharUtils;
 import org.apache.commons.lang.StringUtils;
 import org.jrimum.bopepo.BancosSuportados;
@@ -33,7 +32,8 @@ import com.consisti.sisgesc.entidade.Aluno;
 import com.consisti.sisgesc.entidade.AlunoEntity;
 import com.consisti.sisgesc.entidade.EnderecoEntity;
 import com.consisti.sisgesc.entidade.ResponsavelFinanceiroAlunoEntity;
-import com.consisti.sisgesc.entidade.ServicoAluno;
+import com.consisti.sisgesc.entidade.ServicoAlunoEntity;
+import com.consisti.sisgesc.entidade.Servicos;
 import com.consisti.sisgesc.entidade.financeiro.BancoEntity;
 import com.consisti.sisgesc.entidade.financeiro.ContaReceberEntity;
 import com.consisti.sisgesc.entidade.financeiro.ContaReceberProdutoVenda;
@@ -45,6 +45,7 @@ import com.consisti.sisgesc.persistencia.hibernate.ContaReceberDAO;
 import com.consisti.sisgesc.persistencia.hibernate.EnderecoDAO;
 import com.consisti.sisgesc.persistencia.hibernate.FormaPagamentoDAO;
 import com.consisti.sisgesc.persistencia.hibernate.ResponsavelFinanceiroAlunoDAO;
+import com.consisti.sisgesc.persistencia.hibernate.ServicoDAO;
 import com.powerlogic.jcompany.comuns.PlcBaseVO;
 import com.powerlogic.jcompany.comuns.PlcException;
 import com.powerlogic.jcompany.dominio.tipo.PlcSimNao;
@@ -61,15 +62,18 @@ public class ContaReceberManager extends AppManager {
 	private ContaReceberDAO contaReceberDAO;
 	private FormaPagamentoDAO formaPagamentoDAO;
 	private AlunoDAO alunoDAO;
+	private ServicoDAO servicoDAO;
 	
 	public ContaReceberManager( EnderecoDAO enderecoDAO, ResponsavelFinanceiroAlunoDAO responsavelFinanceiroAlunoDAO,
-			BancoDAO bancoDAO, ContaReceberDAO contaReceberDAO, FormaPagamentoDAO formaPagamentoDAO, AlunoDAO alunoDAO) {
+			BancoDAO bancoDAO, ContaReceberDAO contaReceberDAO, FormaPagamentoDAO formaPagamentoDAO, AlunoDAO alunoDAO,
+			ServicoDAO servicoDAO) {
 		this.enderecaoDAO = enderecoDAO;
 		this.responsavelFinanceiroAlunoDAO = responsavelFinanceiroAlunoDAO;
 		this.bancoDAO = bancoDAO;
 		this.contaReceberDAO = contaReceberDAO;
 		this.formaPagamentoDAO = formaPagamentoDAO;
 		this.alunoDAO = alunoDAO;
+		this.servicoDAO = servicoDAO;
 	}
 	
 	/* (non-Javadoc)
@@ -626,9 +630,11 @@ public class ContaReceberManager extends AppManager {
 			if(aluno != null){
 				contaReceber.setValorDocumento( aluno.getValorTotalMensalidade() );
 				
-				if( aluno.getServicoAluno() != null && !aluno.getServicoAluno().isEmpty() ){
-					for (ServicoAluno servicoAluno : aluno.getServicoAluno()) {
-						contaReceber.setValorDocumento( contaReceber.getValorDocumento().add( servicoAluno.getServico().getValorServico() ) );
+				List<Servicos> listServico = servicoDAO.recuperaValorServicoByIdAluno(idAluno);
+				
+				if( listServico != null && !listServico.isEmpty() ){
+					for (Servicos servico : listServico) {
+						contaReceber.setValorDocumento( contaReceber.getValorDocumento().add( servico.getValorServico() ) );
 					}
 				}
 			}

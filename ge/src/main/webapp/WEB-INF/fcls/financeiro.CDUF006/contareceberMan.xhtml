@@ -49,19 +49,28 @@
 			<plcf:linha> 	
 				<plcf:celula> 
 					<plcf:titulo tituloChave="label.juroValor"/>  
-					<plcf:numerico id="juroValor" value="#{plcEntidade.juroValor}" ajudaChave="ajuda.juroValor" onblur="adicionarJuro();"/> 
+					<plcf:numerico id="juroValor" value="#{plcEntidade.juroValor}" ajudaChave="ajuda.juroValor" /> 
 				</plcf:celula>  
 			</plcf:linha>  
 			<plcf:linha> 
 				<plcf:celula> 
 					<plcf:titulo tituloChave="label.descontoValor"/>  
-					<plcf:numerico id="descontoValor" value="#{plcEntidade.descontoValor}" ajudaChave="ajuda.descontoValor" onblur="subtrairDesconto();"/> 
+					<plcf:numerico id="descontoValor" value="#{plcEntidade.descontoValor}" ajudaChave="ajuda.descontoValor" /> 
 				</plcf:celula>  
 			</plcf:linha>
 			<plcf:linha>
 				<plcf:celula> 
 					<plcf:titulo tituloChave="label.valorTotal"/>  
-					<plcf:numerico id="valorTotal" value="#{plcEntidade.valorTotal}" ajudaChave="ajuda.valorTotal" somenteLeitura="S"/> 
+					<table>
+						<tr>
+							<td>
+								<plcf:numerico id="valorTotal" value="#{plcEntidade.valorTotal}" ajudaChave="ajuda.valorTotal" somenteLeitura="S"/> 
+							</td>
+							<td>
+								<plcf:botaoAcao id="btCalcularTotal" acao="calcularTotal" validaForm="false" limpaForm="false" label="label.calculaTotal" />
+							</td>
+						</tr>
+					</table>
 				</plcf:celula>  
 			</plcf:linha>  
 			<plcf:linha> 
@@ -78,7 +87,7 @@
 			<plcf:linha> 
 				<plcf:celula > 
 					<plcf:titulo tituloChave="label.observacao"/>  
-					<plcf:area id="observacao" value="#{plcEntidade.observacao}" ajudaChave="ajuda.observacao" colunas="50" numLinhas="4" tamanhoMaximo="200"/> 
+					<plcf:area id="observacao" value="#{plcEntidade.observacao}" ajudaChave="ajuda.observacao" colunas="50" numLinhas="4" tamanhoMaximo="200" onfocus="this"/> 
 				</plcf:celula>
 				
 				<plcf:celula> 
@@ -94,22 +103,12 @@
 		</plcf:tabela> 
 		
 		 	<plcf:botaoAcao id="btRecuperaValorAluno" acao="recuperaValorALuno" validaForm="false" limpaForm="false" inlineStyle="display:none;"/>
-		 	<plcf:botaoAcao id="btAdicionarJuro" acao="adicionarJuro" validaForm="false" limpaForm="false" inlineStyle="display:none;"/>
-		 	<plcf:botaoAcao id="btSubtrairDesconto" acao="subtrairDesconto" validaForm="false" limpaForm="false" inlineStyle="display:none;"/>
 		<script avaliar="S">
 
 		//<![CDATA[
 		
 			PlcGeral.prototype.aposDevolveSelecaoPopup = function() {
 				document.getElementById("corpo:formulario:btRecuperaValorAluno").click();
-			}
-
-			function adicionarJuro(){
-				document.getElementById("corpo:formulario:btAdicionarJuro").click();
-			}
-
-			function subtrairDesconto(){
-				document.getElementById("corpo:formulario:btSubtrairDesconto").click();
 			}
 
 		 //]]>

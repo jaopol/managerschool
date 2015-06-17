@@ -190,22 +190,21 @@ public class ContaReceberAction extends AppAction  {
 		return NAVEGACAO.IND_MESMA_PAGINA;
 	}
 	
-	public String adicionarJuro(){
-		
-		ContaReceberEntity contaReceber = (ContaReceberEntity)entidadePlc;
-		if( contaReceber.getValorDocumento() != null && contaReceber.getJuroValor() != null){
-			contaReceber.setValorTotal( contaReceber.getValorTotal().add( contaReceber.getJuroValor() ) );
-		}
-		
-		return NAVEGACAO.IND_MESMA_PAGINA;
-	}
+	public String calcularTotal(){
 	
-	public String subtrairDesconto(){
-		
 		ContaReceberEntity contaReceber = (ContaReceberEntity)entidadePlc;
-		if( contaReceber.getValorDocumento() != null && contaReceber.getDescontoValor() != null ){
-			contaReceber.setValorTotal( contaReceber.getValorTotal().subtract( contaReceber.getDescontoValor() ) );
+		if( contaReceber.getValorDocumento() != null ){
+			if( contaReceber.getDescontoValor() != null ){
+				contaReceber.setValorTotal( contaReceber.getValorTotal().subtract( contaReceber.getDescontoValor() ) );
+			}
+			else if( contaReceber.getJuroValor() != null ){
+				contaReceber.setValorTotal( contaReceber.getValorTotal().add( contaReceber.getJuroValor() ) );
+			}
+			else{
+				contaReceber.setValorTotal( contaReceber.getValorDocumento() );
+			}
 		}
+		
 		
 		return NAVEGACAO.IND_MESMA_PAGINA;
 	}

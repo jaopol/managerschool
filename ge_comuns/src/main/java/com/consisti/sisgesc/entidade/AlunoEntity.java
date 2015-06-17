@@ -76,18 +76,8 @@ public class AlunoEntity extends Aluno {
 		this.setServicoAluno(servicoAluno);
 	}
 
-	public AlunoEntity(BigDecimal valorTotalMensalidade,  BigDecimal valorServicoAluno) {
+	public AlunoEntity(BigDecimal valorTotalMensalidade) {
 		this.setValorTotalMensalidade(valorTotalMensalidade);
-		if(valorServicoAluno != null){
-			if( getServicoAluno() == null ){
-				this.setServicoAluno(new ArrayList<ServicoAluno>());
-			}
-			ServicoAluno serAluno = new ServicoAlunoEntity();
-			serAluno.setServico( new ServicosEntity() );
-			serAluno.getServico().setValorServico(valorServicoAluno);
-			getServicoAluno().add(serAluno);
-		}
-		//this.setServicoAluno(servicoAluno);
 	}
 	
 	@Override
