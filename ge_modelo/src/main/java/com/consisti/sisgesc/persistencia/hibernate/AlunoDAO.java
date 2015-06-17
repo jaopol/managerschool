@@ -1,6 +1,7 @@
 package com.consisti.sisgesc.persistencia.hibernate;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -89,10 +90,9 @@ private ResponsavelFinanceiroAlunoDAO responsavelFinanceiroAlunoDAO;
 				"left outer join aluno.turma tur " +
 				"left outer join aluno.contrato contr " +
 				"where tur.id =:idTurma " +
-				"and :DATA_ATUAL between contr.dataInicioContrato and contr.dataFimContrato " +
 				"order by aluno.nomeAluno asc ";
 		
-		Iterator it = getSession().createQuery( hql.toString() ).setLong( "idTurma", idTurma ).setParameter("DATA_ATUAL", new Date()).iterate();
+		Iterator it = getSession().createQuery( hql.toString() ).setLong( "idTurma", idTurma ).iterate();
 		if (it!=null){
 			List<AlunoEntity> lista = new ArrayList<AlunoEntity>();
 			while (it.hasNext()) {
@@ -107,7 +107,14 @@ private ResponsavelFinanceiroAlunoDAO responsavelFinanceiroAlunoDAO;
 				
 				if (!aluno.getContrato().isEmpty()){
 					for (Contrato contrato : aluno.getContrato()) {
-						aluno.setPeriodoContrato(8L);
+						Calendar calInicio = Calendar.getInstance();
+						Calendar calFim = Calendar.getInstance();
+						calInicio.setTime(contrato.getDataInicioContrato());
+						calFim.setTime(contrato.getDataFimContrato());
+						Integer meses = calFim.get(Calendar.MONTH) - calInicio.get(Calendar.MONTH);
+						if (meses!=null){
+							aluno.setPeriodoContrato(new Long(meses));
+						} 
 						break;
 					}
 				} else {
