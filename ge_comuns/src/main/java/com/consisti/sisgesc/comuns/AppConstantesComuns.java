@@ -32,6 +32,7 @@ public interface AppConstantesComuns extends PlcConstantesComuns {
     
     interface RELATORIO{
     	
+    	String REL_MENSALIDADES_TURMA = "mensalidades_turma.jasper";
     	String PASTA_IMAGENS = "midia";
     	String PASTA_RELATORIOS = "rel";
     	String REL_CDU001 = "ficha_matricula.jasper";

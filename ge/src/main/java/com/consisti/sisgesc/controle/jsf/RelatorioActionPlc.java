@@ -3,6 +3,8 @@ package com.consisti.sisgesc.controle.jsf;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -24,6 +26,7 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import com.consisti.sisgesc.comuns.AppConstantesComuns;
 import com.consisti.sisgesc.dominio.AtivoInativo;
 import com.consisti.sisgesc.entidade.AditivoEntity;
+import com.consisti.sisgesc.entidade.AlunoEntity;
 import com.consisti.sisgesc.entidade.AppBaseEntity;
 import com.consisti.sisgesc.entidade.ContratoEntity;
 import com.consisti.sisgesc.facade.IAppFacade;
@@ -33,6 +36,17 @@ import com.powerlogic.jcompany.dominio.tipo.PlcSimNao;
 @SuppressWarnings("serial")
 public class RelatorioActionPlc extends AppAction {
 
+	protected String somaValorTotalMensalidadesFormatado(List<AlunoEntity> alunos){
+		
+		BigDecimal total = new BigDecimal(0);
+		for (AlunoEntity alunoEntity : alunos) {
+			total = total.add(alunoEntity.getValorMensalidadeAluno());
+		}
+		
+		return NumberFormat.getCurrencyInstance().format( total );
+		
+	}
+	
     @Override 
     protected void trataBotoesConformeLogicaApos() throws PlcException{
         
@@ -71,7 +85,7 @@ public class RelatorioActionPlc extends AppAction {
      * @param parametros
      * @throws PlcException
      */
-     protected void geraRelatorioPlc(String nomeRelatorio, AppBaseEntity entidade, HashMap parametros) throws PlcException {
+     protected void geraRelatorio(String nomeRelatorio, AppBaseEntity entidade, HashMap parametros) throws PlcException {
          
          //declarando objetos a serem usados no relatorio
          List<AppBaseEntity> lista = new ArrayList<AppBaseEntity>();

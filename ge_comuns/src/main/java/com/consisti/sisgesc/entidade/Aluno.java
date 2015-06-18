@@ -17,6 +17,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -175,6 +176,7 @@ public abstract class Aluno extends AppBaseEntity {
 	@ForeignKey(name="FK_CONTRATO")
 	@Valid
 	@JoinColumn (name = "ID_ALUNO")
+	@OrderBy(value=" dataInicioContrato desc ")
 	private List<Contrato> contrato;
 	
 	@Column (name="HORA_ENTRADA", length=5)

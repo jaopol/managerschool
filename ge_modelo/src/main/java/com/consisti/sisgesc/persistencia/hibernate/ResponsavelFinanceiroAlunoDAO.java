@@ -16,5 +16,15 @@ public class ResponsavelFinanceiroAlunoDAO extends AppBaseDAO {
 		
 		return (ResponsavelFinanceiroAlunoEntity)cr.uniqueResult();
 	}
+	
+	public ResponsavelFinanceiroAlunoEntity recuperaNomeResponsavelFinanceiroAluno(Long idAluno) throws PlcException {
+		
+		String hql = "select new ResponsavelFinanceiroAlunoEntity(obj.id, obj.nome) " +
+				"from ResponsavelFinanceiroAlunoEntity obj " +
+				"left outer join obj.aluno al " +
+				"where al.id =:idAluno ";
+		
+		return (ResponsavelFinanceiroAlunoEntity) getSession().createQuery( hql.toString() ).setLong( "idAluno", idAluno ).uniqueResult();
+	}
 
 }

@@ -107,7 +107,7 @@ public class EstoqueAction extends RelatorioActionPlc  {
 			map.put("periodoMovimentacao", "Perído de Movimentação: "+dataIni+dataFim);
 		}
 		
-		super.geraRelatorioPlc(AppConstantesComuns.RELATORIO.ESTOQUE_ANALITICO, estoque, map);
+		super.geraRelatorio(AppConstantesComuns.RELATORIO.ESTOQUE_ANALITICO, estoque, map);
 		
 	}
 	
@@ -146,7 +146,7 @@ public class EstoqueAction extends RelatorioActionPlc  {
 		
 		somaTotais(estoque.getDadosEstoque(), estoque);
 		
-		super.geraRelatorioPlc(AppConstantesComuns.RELATORIO.ESTOQUE_SINTETICO, estoque, map);
+		super.geraRelatorio(AppConstantesComuns.RELATORIO.ESTOQUE_SINTETICO, estoque, map);
 		
 	}
 

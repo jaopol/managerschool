@@ -520,7 +520,7 @@ public class AlunoAction extends RelatorioActionPlc  {
 		HashMap map = mesAtual();
 		setAnoLetivo(aluno, map);
 		
-		super.geraRelatorioPlc(AppConstantesComuns.RELATORIO.REL_CDU001, aluno, map);
+		super.geraRelatorio(AppConstantesComuns.RELATORIO.REL_CDU001, aluno, map);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -560,7 +560,7 @@ public class AlunoAction extends RelatorioActionPlc  {
 		HashMap map = mesAtual();
 		setAnoLetivo(aluno, map);
 		
-		super.geraRelatorioPlc(AppConstantesComuns.RELATORIO.REL_FICHA_SAUDE, aluno, map);
+		super.geraRelatorio(AppConstantesComuns.RELATORIO.REL_FICHA_SAUDE, aluno, map);
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -576,7 +576,7 @@ public class AlunoAction extends RelatorioActionPlc  {
 		}
 		setAnoLetivo(aluno, map);
 		
-		super.geraRelatorioPlc(AppConstantesComuns.RELATORIO.TERMO_MATRICULA, aluno, map);
+		super.geraRelatorio(AppConstantesComuns.RELATORIO.TERMO_MATRICULA, aluno, map);
 	}
 	
 	public String setarPaiResponsavel(){
