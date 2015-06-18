@@ -52,6 +52,10 @@ public class ContaReceberAction extends AppAction  {
 			}
 		}
 		contextHelperPlc.getRequest().setAttribute( PlcConstantes.ACAO.EXIBE_BT_IMPRIMIR, "S");
+		
+		if(contextHelperPlc.getSessionAttribute("vinculadoAluno") == null){
+			contextHelperPlc.setSessionAttribute("vinculadoAluno", "S");
+		}
 	}
 	
 	/* (non-Javadoc)
@@ -64,7 +68,7 @@ public class ContaReceberAction extends AppAction  {
 		contaReceber.setDataDocumento( new Date() );
 		contaReceber.setRecebido( PlcSimNao.N);
 		contaReceber.setBoletoGerado( PlcSimNao.N);
-		
+		contextHelperPlc.setSessionAttribute("vinculadoAluno", "S");
 		return super.novoApos();
 	}
 	
@@ -82,6 +86,12 @@ public class ContaReceberAction extends AppAction  {
 		}
 		
 		return super.gravaSimplesAntes();
+	}
+	
+	@Override
+	protected String editaApos() throws PlcException {
+		contextHelperPlc.setSessionAttribute("vinculadoAluno", "S");
+		return super.editaApos();
 	}
 	
 	/**
@@ -177,15 +187,19 @@ public class ContaReceberAction extends AppAction  {
 	
 	public String recuperaValorALuno() throws PlcException{
 		
-		ContaReceberEntity contaReceber = ( ContaReceberEntity )entidadePlc;
+		if( "S".equals( contextHelperPlc.getSessionAttribute("vinculadoAluno") )){
 		
-		if(contaReceber.getAluno() != null){
-			IAppFacade fc = (IAppFacade)getServiceFacade();
-			ContaReceberEntity receber = fc.recuperaValorAlunoSetContaReceber(contaReceber.getAluno().getId());
+			ContaReceberEntity contaReceber = ( ContaReceberEntity )entidadePlc;
 			
-			contaReceber.setValorDocumento( receber.getValorDocumento() );
-			contaReceber.setValorTotal( receber.getValorDocumento() );
+			if(contaReceber.getAluno() != null){
+				IAppFacade fc = (IAppFacade)getServiceFacade();
+				ContaReceberEntity receber = fc.recuperaValorAlunoSetContaReceber(contaReceber.getAluno().getId());
+				
+				contaReceber.setValorDocumento( receber.getValorDocumento() );
+				contaReceber.setValorTotal( receber.getValorDocumento() );
+			}
 		}
+		contextHelperPlc.setSessionAttribute("vinculadoAluno", "S");
 		
 		return NAVEGACAO.IND_MESMA_PAGINA;
 	}

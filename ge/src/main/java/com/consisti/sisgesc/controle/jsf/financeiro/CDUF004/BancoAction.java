@@ -1,6 +1,5 @@
 package com.consisti.sisgesc.controle.jsf.financeiro.CDUF004;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.consisti.sisgesc.controle.jsf.AppAction;
@@ -80,4 +79,11 @@ public class BancoAction extends AppAction  {
 		}
 	}
 	
+	@Override
+	protected String pesquisaApos() throws PlcException {
+		//Utilizado para identificar aposSelecao contareceberMan
+		contextHelperPlc.setSessionAttribute("vinculadoAluno", "N");
+		
+		return super.pesquisaApos();
+	}
 }

@@ -13,7 +13,7 @@
 			<plcf:linha> 
 				<plcf:celula rendered="#{plcEntidade.id != null}"> 
 					<plcf:titulo tituloChave="label.banco"/>  
-					<plcf:vinculado id="banco" value="#{plcEntidade.banco}" propSelPop="banco" idExibe="N" idSomenteLeitura="N" autoRecuperacaoClasse="com.consisti.sisgesc.entidade.financeiro.BancoEntity" actionSel="bancosel" modal="S"  ajudaChave="ajuda.banco" onkeydown="selecionaPorTecla(event,this);" lookupTamanho="50" obrigatorio="N" /> 
+					<plcf:vinculado id="banco" value="#{plcEntidade.banco}" propSelPop="banco" idExibe="N" idSomenteLeitura="N" autoRecuperacaoClasse="com.consisti.sisgesc.entidade.financeiro.BancoEntity" actionSel="bancosel" modal="S"  ajudaChave="ajuda.banco" onkeydown="selecionaPorTecla(event,this);alert('teste');" lookupTamanho="50" obrigatorio="N"  /> 
 				</plcf:celula> 
 				<plcf:celula> 
 					<plcf:titulo tituloChave="label.numeroDocumento"/>  
@@ -101,7 +101,6 @@
 				</plcf:celula> 
 			</plcf:linha> 
 		</plcf:tabela> 
-		
 		 	<plcf:botaoAcao id="btRecuperaValorAluno" acao="recuperaValorALuno" validaForm="false" limpaForm="false" inlineStyle="display:none;"/>
 		<script avaliar="S">
 
