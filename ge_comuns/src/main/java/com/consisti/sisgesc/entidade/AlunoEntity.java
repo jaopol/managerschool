@@ -4,7 +4,6 @@ package com.consisti.sisgesc.entidade;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 

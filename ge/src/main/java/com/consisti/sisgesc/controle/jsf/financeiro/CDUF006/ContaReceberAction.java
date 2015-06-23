@@ -8,6 +8,7 @@ import org.jrimum.bopepo.Boleto;
 import org.jrimum.bopepo.view.BoletoViewer;
 
 import com.consisti.sisgesc.controle.jsf.AppAction;
+import com.consisti.sisgesc.dominio.TipoContaReceber;
 import com.consisti.sisgesc.entidade.financeiro.ContaReceberEntity;
 import com.consisti.sisgesc.facade.IAppFacade;
 import com.powerlogic.jcompany.comuns.PlcException;
@@ -69,6 +70,7 @@ public class ContaReceberAction extends AppAction  {
 		contaReceber.setRecebido( PlcSimNao.N);
 		contaReceber.setBoletoGerado( PlcSimNao.N);
 		contextHelperPlc.setSessionAttribute("vinculadoAluno", "S");
+		contaReceber.setTipoContaReceber(TipoContaReceber.M);
 		return super.novoApos();
 	}
 	
@@ -91,6 +93,12 @@ public class ContaReceberAction extends AppAction  {
 	@Override
 	protected String editaApos() throws PlcException {
 		contextHelperPlc.setSessionAttribute("vinculadoAluno", "S");
+		
+		ContaReceberEntity contaReceber = (ContaReceberEntity)entidadePlc;
+		if(contaReceber.getTipoContaReceber() == null ){
+			contaReceber.setTipoContaReceber(TipoContaReceber.M);
+		}
+		
 		return super.editaApos();
 	}
 	

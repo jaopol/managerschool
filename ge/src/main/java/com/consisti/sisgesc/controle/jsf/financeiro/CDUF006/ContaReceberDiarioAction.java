@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 import com.consisti.sisgesc.controle.jsf.AppAction;
+import com.consisti.sisgesc.dominio.TipoContaReceber;
 import com.consisti.sisgesc.entidade.financeiro.ContaReceberEntity;
 import com.consisti.sisgesc.entidade.financeiro.ProdutoVenda;
 import com.powerlogic.jcompany.comuns.PlcException;
@@ -25,6 +26,7 @@ public class ContaReceberDiarioAction extends AppAction {
 		contaReceber.setValorDocumento( contaReceber.getValorTotal() );
 		contaReceber.setDataVencimento( contaReceber.getDataRecebimento() );
 		contaReceber.setRecebido(PlcSimNao.S);
+		contaReceber.setTipoContaReceber( TipoContaReceber.D );
 		
 		return super.gravaSimplesAntes();
 	}

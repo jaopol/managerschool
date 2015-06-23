@@ -19,6 +19,7 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.ForeignKey;
 
+import com.consisti.sisgesc.dominio.TipoContaReceber;
 import com.consisti.sisgesc.entidade.Aluno;
 import com.consisti.sisgesc.entidade.AlunoEntity;
 import com.consisti.sisgesc.entidade.AppBaseEntity;
@@ -119,6 +120,10 @@ public abstract class ContaReceber extends AppBaseEntity {
 	@Enumerated(EnumType.STRING)
 	@Column (name = "REMESSA_GERADO", length=1)
 	private PlcSimNao remessaGerado;
+	
+	@Enumerated(EnumType.STRING)
+	@Column (name = "TIPO_CONTA_RECEBER", length=1)
+	private TipoContaReceber tipoContaReceber;
 	
 	public Long getId() {
 		return id;
@@ -294,6 +299,14 @@ public abstract class ContaReceber extends AppBaseEntity {
 
 	public void setContaReceberProdutoVenda(List<ContaReceberProdutoVenda> contaReceberProdutoVenda) {
 		this.contaReceberProdutoVenda=contaReceberProdutoVenda;
+	}
+
+	public TipoContaReceber getTipoContaReceber() {
+		return tipoContaReceber;
+	}
+
+	public void setTipoContaReceber(TipoContaReceber tipoContaReceber) {
+		this.tipoContaReceber = tipoContaReceber;
 	}
 
 }

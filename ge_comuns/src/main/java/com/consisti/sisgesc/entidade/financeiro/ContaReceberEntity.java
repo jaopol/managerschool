@@ -34,7 +34,7 @@ import com.consisti.sisgesc.entidade.financeiro.FormaPagamentoEntity;
 	@NamedQuery(name="ContaReceberEntity.querySel3", query="select new ContaReceberEntity(obj.id, obj.aluno.id , obj.aluno.nomeAluno, obj.formaRecebimento.id , obj.formaRecebimento.descricao, obj.valorTotal, obj.dataRecebimento, obj.dataVencimento) from ContaReceberEntity obj left outer join obj.aluno left outer join obj.formaRecebimento order by obj.id asc"),
 	@NamedQuery(name="ContaReceberEntity.querySel2", query="select new ContaReceberEntity(obj.id, obj.aluno.id , obj.aluno.nomeAluno, obj.banco.id , obj.banco.agencia, obj.valorTotal, obj.dataVencimento) from ContaReceberEntity obj left outer join obj.aluno left outer join obj.banco order by obj.id asc"),
 	@NamedQuery(name="ContaReceberEntity.queryMan", query="from ContaReceberEntity obj"),
-	@NamedQuery(name="ContaReceberEntity.querySel", query="select new ContaReceberEntity(obj.id, obj.aluno.id , obj.aluno.nomeAluno, obj.valorTotal, obj.dataVencimento, obj.dataRecebimento, obj.boletoGerado, obj.recebido) from ContaReceberEntity obj left outer join obj.aluno order by obj.dataVencimento asc, obj.aluno asc"),
+	@NamedQuery(name="ContaReceberEntity.querySel", query="select new ContaReceberEntity(obj.id, obj.aluno.id , obj.aluno.nomeAluno, obj.valorTotal, obj.dataVencimento, obj.dataRecebimento, obj.boletoGerado, obj.recebido) from ContaReceberEntity obj left outer join obj.aluno order by obj.dataVencimento desc, obj.aluno asc"),
 	@NamedQuery(name="ContaReceberEntity.querySelLookup", query="select new ContaReceberEntity (obj.id, obj.aluno) from ContaReceberEntity obj where obj.id = ? order by obj.id asc")
 })
 public class ContaReceberEntity extends ContaReceber {

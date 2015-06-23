@@ -27,6 +27,7 @@ import org.jrimum.domkee.financeiro.banco.febraban.Titulo.Aceite;
 
 import com.consisti.sisgesc.comuns.AppConstantesComuns;
 import com.consisti.sisgesc.dominio.CarteiraBanco;
+import com.consisti.sisgesc.dominio.TipoContaReceber;
 import com.consisti.sisgesc.dominio.Uf;
 import com.consisti.sisgesc.entidade.Aluno;
 import com.consisti.sisgesc.entidade.AlunoEntity;
@@ -47,6 +48,7 @@ import com.consisti.sisgesc.persistencia.hibernate.FormaPagamentoDAO;
 import com.consisti.sisgesc.persistencia.hibernate.ResponsavelFinanceiroAlunoDAO;
 import com.consisti.sisgesc.persistencia.hibernate.ServicoDAO;
 import com.powerlogic.jcompany.comuns.PlcBaseVO;
+import com.powerlogic.jcompany.comuns.PlcConstantesComuns;
 import com.powerlogic.jcompany.comuns.PlcException;
 import com.powerlogic.jcompany.dominio.tipo.PlcSimNao;
 
@@ -84,25 +86,28 @@ public class ContaReceberManager extends AppManager {
 			PlcBaseVO entidadeAnterior, String modoGravacao)
 			throws PlcException {
 		
-		ContaReceberEntity contaReceber = (ContaReceberEntity)entidadeAtual;
-		//gera nosso numero somente para mensalidade aluno
-		if( contaReceber.getContaReceberProdutoVenda() == null || contaReceber.getContaReceberProdutoVenda().isEmpty() ){
-			contaReceber.setNumeroDocumento( geraNumeroDocumento( contaReceber ) );
-		}
-		else{
-			for (ContaReceberProdutoVenda produtoVenda : contaReceber.getContaReceberProdutoVenda()) {
-				if(produtoVenda.getDataCadastro() == null ){
-					produtoVenda.setDataCadastro(new Date());
-				}
-				
-				if( "S".equals( produtoVenda.getIndExcPlc() ) ){
-					if( contaReceber.getValorTotal() != null ){
-						contaReceber.setValorTotal( contaReceber.getValorTotal().subtract( produtoVenda.getValorTotal() ) );
-						contaReceber.setValorDocumento( contaReceber.getValorTotal() );
+		if( !PlcConstantesComuns.MODOS.MODO_EXCLUSAO.equals(modoGravacao) ){
+		
+			ContaReceberEntity contaReceber = (ContaReceberEntity)entidadeAtual;
+			//gera nosso numero somente para mensalidade aluno
+			if( TipoContaReceber.M.equals( contaReceber.getTipoContaReceber() ) ){
+				contaReceber.setNumeroDocumento( geraNumeroDocumento( contaReceber ) );
+			}
+			else{
+				for (ContaReceberProdutoVenda produtoVenda : contaReceber.getContaReceberProdutoVenda()) {
+					if(produtoVenda.getDataCadastro() == null ){
+						produtoVenda.setDataCadastro(new Date());
 					}
-					else{
-						contaReceber.setValorTotal( BigDecimal.ZERO );
-						contaReceber.setValorDocumento( contaReceber.getValorTotal() );
+					
+					if( "S".equals( produtoVenda.getIndExcPlc() ) ){
+						if( contaReceber.getValorTotal() != null ){
+							contaReceber.setValorTotal( contaReceber.getValorTotal().subtract( produtoVenda.getValorTotal() ) );
+							contaReceber.setValorDocumento( contaReceber.getValorTotal() );
+						}
+						else{
+							contaReceber.setValorTotal( BigDecimal.ZERO );
+							contaReceber.setValorDocumento( contaReceber.getValorTotal() );
+						}
 					}
 				}
 			}
@@ -147,6 +152,7 @@ public class ContaReceberManager extends AppManager {
 				contaReceber.setValorDocumento( aluno.getValorTotal() );
 				contaReceber.setValorTotal( aluno.getValorTotal() );
 				contaReceber.setNumeroDocumento( numeroDocumento );
+				contaReceber.setTipoContaReceber(TipoContaReceber.M);
 				inclui(contaReceber);
 				//Encrementa o numero documento
 				int numeroInt = Integer.parseInt( numeroDocumento ) + 1;
