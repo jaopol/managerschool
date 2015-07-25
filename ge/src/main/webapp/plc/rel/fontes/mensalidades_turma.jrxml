@@ -33,7 +33,6 @@
 	<parameter name="dia" isForPrompting="false" class="java.lang.Integer"/>
 	<parameter name="REPORT_CONTEXT" isForPrompting="false" class="java.lang.String"/>
 
-	<field name="turma.descricao" class="java.lang.String"/>
 	<field name="dadosPorTurma" class="java.util.List"/>
 
 		<background>
@@ -53,7 +52,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font pdfFontName="Helvetica-Bold" size="14" isBold="true"/>
 					</textElement>
-				<text><![CDATA[Mensalidade Por Turma]]></text>
+				<text><![CDATA[Mensalidades Por Turma]]></text>
 				</staticText>
 			</band>
 		</title>
@@ -62,20 +61,6 @@
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="0"
-						y="0"
-						width="394"
-						height="19"
-						key="textField-1"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement textAlignment="Left" verticalAlignment="Middle">
-						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["Turma: "+$F{turma.descricao}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="394"
 						y="0"
 						width="369"
 						height="19"
@@ -99,7 +84,7 @@
 					<reportElement
 						x="0"
 						y="3"
-						width="782"
+						width="771"
 						height="36"
 						key="subreport-1"
 						positionType="Float"/>
@@ -113,37 +98,7 @@
 			</band>
 		</columnFooter>
 		<pageFooter>
-			<band height="25"  isSplitAllowed="true" >
-				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="672"
-						y="6"
-						width="55"
-						height="16"
-						key="textField-2"
-						positionType="Float"
-						isRemoveLineWhenBlank="true"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement verticalAlignment="Middle">
-						<font size="10"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["Página "+$V{PAGE_NUMBER}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Report" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="714"
-						y="6"
-						width="57"
-						height="16"
-						key="textField-3"
-						positionType="Float"
-						isRemoveLineWhenBlank="true"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement verticalAlignment="Middle">
-						<font size="10"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["de "+$V{PAGE_NUMBER}]]></textFieldExpression>
-				</textField>
+			<band height="0"  isSplitAllowed="true" >
 			</band>
 		</pageFooter>
 		<lastPageFooter>

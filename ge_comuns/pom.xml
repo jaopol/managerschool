@@ -21,7 +21,7 @@
 			<artifactId>jcompany_comuns</artifactId>
 		</dependency>
 		
-		 <!-- Dependências do projeto JRimum -->  
+		 <!-- Dependências do projeto JRimum  -->
 		<dependency>    
 		   <groupId>org.jrimum</groupId>    
 		   <artifactId>jrimum-bopepo</artifactId>    
@@ -32,7 +32,7 @@
 			<groupId>org.jrimum</groupId>
 			<artifactId>jrimum-texgit</artifactId>
 			<version>0.2.0-SNAPSHOT</version>
-		</dependency>
+		</dependency> 
 		
 		<dependency>
 	        <groupId>commons-lang</groupId>
@@ -47,6 +47,19 @@
 	    </dependency>    
 		
 	</dependencies>
+	
+	<repositories>
+
+		<!-- Repositório JRimum -->
+		<repository>
+		   <id>jrimum.org</id>
+		   <url>http://jrimum.org/maven/content/groups/public/</url>
+		   <snapshots>
+		      <enabled>true</enabled>
+		   </snapshots>
+		</repository>
+	
+	</repositories>
 	
 	<!-- Para a utilização no jBoss 5, descomentar os codigos abaixo -->
 	

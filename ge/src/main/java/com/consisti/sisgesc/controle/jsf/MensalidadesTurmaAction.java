@@ -30,7 +30,7 @@ public class MensalidadesTurmaAction extends RelatorioActionPlc  {
 		
 		IAppFacade fc = (IAppFacade)getServiceFacade();
 		AlunoEntity aluno = (AlunoEntity) entidadePlc;
-		List<AlunoEntity> listaDadosPorTurma = fc.recuperaDadosPorTurma(aluno.getTurma().getId());
+		List<AlunoEntity> listaDadosPorTurma = fc.recuperaDadosPorTurma(aluno.getTurma() != null ? aluno.getTurma().getId() : null);
 		
 		if (!listaDadosPorTurma.isEmpty()){
 			aluno.setDadosPorTurma(listaDadosPorTurma);
