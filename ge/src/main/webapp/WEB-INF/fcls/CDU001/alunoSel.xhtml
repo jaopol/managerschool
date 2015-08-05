@@ -7,6 +7,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets" 
 	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
 	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:c="http://java.sun.com/jstl/core"
 	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
 	<ui:composition> 
 	
@@ -16,34 +17,72 @@
 	
 	</style>
 	
-		<script type="text/javascript">//<![CDATA[
-	jQuery(function(){
-		jQuery.plc.criaSelecaoJqGrid('plc-grid', 'plc-grid-navegador', {
-			modoJanelaPlc: '${param.modoJanelaPlc}',
-			evento: '${param.evento}',
-			nomeLogica: 'aluno',
-			propAgregada: 'aluno',
-			jqGrid: {
-				height:300,
-				rowNum: '#{plcConfigUrlColaboracao.numPorPagina}',
-				caption:'Aluno(s) matriculado(s)',
-				colNames:['Matrícula',   
-						  'Nome do Aluno',   
-						  'Tipo Educação',   
-						  'Turma',   
-						  'Telefone' ,   
-						  'Responsável'],
-				colModel:[{name: 'matricula' ,index: 'matricula'},  
-						  {name: 'nomeAluno' ,index: 'nomeAluno'},  
-						  {name: 'tipoEducacaoStr' ,index: 'tipoEducacao'},  
-						  {name: 'turma' ,index: 'turma'},  
-						  {name: 'telefone' ,index: 'telefone'},  
-						  {name: 'responsavelAluno' ,index: 'responsavelAluno'}]},
-				aoSelecionar:function(id){
-					window.open('#{request.contextPath}/f/n/alunomdt?chPlc=' +id, '_top');
-				}});
-		});
-//]]> </script>  
+	<c:choose>
+		<c:when test="${param.modoJanelaPlc == 'popup'}">
+			<script type="text/javascript">//<![CDATA[
+			jQuery(function(){
+				jQuery.plc.criaSelecaoJqGrid('plc-grid', 'plc-grid-navegador', {
+					modoJanelaPlc: '${param.modoJanelaPlc}',
+					evento: '${param.evento}',
+					nomeLogica: 'aluno',
+					propAgregada: 'aluno',
+					jqGrid: {
+						height:300,
+						rowNum: '#{plcConfigUrlColaboracao.numPorPagina}',
+						caption:'Aluno(s) matriculado(s)',
+						colNames:['Matrícula',   
+								  'Nome do Aluno',   
+								  'Tipo Educação',   
+								  'Turma',   
+								  'Telefone' ,   
+								  'Responsável'],
+						colModel:[{name: 'matricula' ,index: 'matricula'},  
+								  {name: 'nomeAluno' ,index: 'nomeAluno'},  
+								  {name: 'tipoEducacaoStr' ,index: 'tipoEducacao'},  
+								  {name: 'turma' ,index: 'turma'},  
+								  {name: 'telefone' ,index: 'telefone'},  
+								  {name: 'responsavelAluno' ,index: 'responsavelAluno'}]
+					}
+				,urlEdicao: '#{request.contextPath}/f/n/alunomdt'});
+			});
+		//]]> </script> 
+		</c:when>
+		<c:otherwise>
+			<script type="text/javascript">//<![CDATA[
+			jQuery(function(){
+				jQuery.plc.criaSelecaoJqGrid('plc-grid', 'plc-grid-navegador', {
+					modoJanelaPlc: '${param.modoJanelaPlc}',
+					evento: '${param.evento}',
+					nomeLogica: 'aluno',
+					propAgregada: 'aluno',
+					jqGrid: {
+						height:300,
+						rowNum: '#{plcConfigUrlColaboracao.numPorPagina}',
+						caption:'Aluno(s) matriculado(s)',
+						colNames:['Matrícula',   
+								  'Nome do Aluno',   
+								  'Tipo Educação',   
+								  'Turma',   
+								  'Telefone' ,   
+								  'Responsável'],
+						colModel:[{name: 'matricula' ,index: 'matricula'},  
+								  {name: 'nomeAluno' ,index: 'nomeAluno'},  
+								  {name: 'tipoEducacaoStr' ,index: 'tipoEducacao'},  
+								  {name: 'turma' ,index: 'turma'},  
+								  {name: 'telefone' ,index: 'telefone'},  
+								  {name: 'responsavelAluno' ,index: 'responsavelAluno'}]},
+					aoSelecionar:function(id){
+							var modo = '${param.modoJanelaPlc}';
+							if (""==modo){
+								window.open('#{request.contextPath}/f/n/alunomdt?chPlc=' +id, '_blank');
+							}
+					}});
+				});
+			//]]> </script> 
+		</c:otherwise>
+	</c:choose>
+		
+		 
 		<table id="plc-grid" width="100%" class="scroll" cellpadding="0" cellspacing="0"/>  
 		<div id="plc-grid-navegador" class="scroll" style="text-align:center;"/> 
 	</ui:composition>  
