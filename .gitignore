@@ -3,3 +3,10 @@
 .project
 .settings/
 */target/*
+/ge/target(0)/classes
+/ge/target(0)/*.war
+/ge/target(0)/surefire-reports
+/ge/target(0)/test-classes
+/ge/target(0)/war/work
+/ge_comuns/target(1)/classes/META-INF
+/ge_comuns/target(1)
