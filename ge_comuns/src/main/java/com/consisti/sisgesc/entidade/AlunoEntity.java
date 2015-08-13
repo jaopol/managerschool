@@ -494,7 +494,9 @@ public class AlunoEntity extends Aluno {
 		this.responsavelFinanceiroStr = responsavelFinanceiroStr;
 	}
 	public String getValorMensalidadeStr() {
-		valorMensalidadeStr = NumberFormat.getCurrencyInstance().format( this.getValorMensalidadeAluno() );
+		if( this.getValorMensalidadeAluno() != null ){
+			valorMensalidadeStr = NumberFormat.getCurrencyInstance().format( this.getValorMensalidadeAluno() );
+		}
 		return valorMensalidadeStr;
 	}
 	public void setValorMensalidadeStr(String valorMensalidadeStr) {
