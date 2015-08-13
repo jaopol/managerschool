@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition> 
+
+		<plcf:tabela titulo="Contas Pagas">
+			
+			<plcf:iteracao id="contasAPagar" value="#{plcAction.contasPagar}" var="contasapagar" varStatus="pagar">
+		
+				<plcf:linha rendered="#{pagar.index == 0}">
+					<plcf:celula width="50px">
+						<plcf:titulo titulo="Nome do Favorecido"/>
+					</plcf:celula>
+					<plcf:celula width="300px">
+						<plcf:titulo titulo="Valor Pago"/>
+					</plcf:celula>
+				</plcf:linha>
+			
+				<plcf:linha styleClass="linhapar" rendered="#{pagar.index mod 2 == 0}">
+					<plcf:celula>
+						<plcf:exibe value="#{contasapagar.favorecido.nome}"/>
+					</plcf:celula>
+					<plcf:celula>
+						<plcf:exibe value="#{contasapagar.valorTotalFormatado}"/>
+					</plcf:celula>
+				</plcf:linha>
+				
+				<plcf:linha styleClass="linhaimpar" rendered="#{pagar.index mod 2 != 0}">
+					<plcf:celula>
+						<plcf:exibe value="#{contasapagar.favorecido.nome}"/>
+					</plcf:celula>
+					<plcf:celula>
+						<plcf:exibe value="#{contasapagar.valorTotalFormatado}"/>
+					</plcf:celula>
+				</plcf:linha>
+				
+				<plcf:linha rendered="#{plcAction.contasPagar.size == pagar.index + 1}">
+					<plcf:celula inlineStyle="text-align: center;" columnSpan="2">
+						<plcf:exibe value="Valor total pago no dia: #{plcAction.totalPagoStr}"/>
+					</plcf:celula>
+				</plcf:linha>
+				
+			</plcf:iteracao>
+			
+		</plcf:tabela>
+		
+		<plcf:tabela titulo="Contas Recebidas">
+			
+			<plcf:iteracao id="contasAReceber" value="#{plcAction.contasReceber}" var="contasAReceber" varStatus="receber">
+			
+				<plcf:linha rendered="#{receber.index == 0}">
+					<plcf:celula width="50px">
+						<plcf:titulo titulo="Nome do Aluno"/>
+					</plcf:celula>
+					<plcf:celula width="300px">
+						<plcf:titulo titulo="Valor Recebido"/>
+					</plcf:celula>
+				</plcf:linha>
+			
+				<plcf:linha styleClass="linhapar" rendered="#{receber.index mod 2 == 0}">
+					<plcf:celula>
+						<plcf:exibe value="#{contasAReceber.aluno.nomeAluno}"/>
+					</plcf:celula>
+					<plcf:celula>
+						<plcf:exibe value="#{contasAReceber.valorTotalFormatado}"/>
+					</plcf:celula>
+				</plcf:linha>
+				
+				<plcf:linha styleClass="linhaimpar" rendered="#{receber.index mod 2 != 0}">
+					<plcf:celula>
+						<plcf:exibe value="#{contasAReceber.aluno.nomeAluno}"/>
+					</plcf:celula>
+					<plcf:celula>
+						<plcf:exibe value="#{contasAReceber.valorTotalFormatado}"/>
+					</plcf:celula>
+				</plcf:linha>
+				
+				<plcf:linha rendered="#{plcAction.contasReceber.size == receber.index + 1}">
+					<plcf:celula inlineStyle="text-align: center;" columnSpan="2">
+						<plcf:exibe value="Valor total recebido no dia: #{plcAction.totalRecebidoStr}"/>
+					</plcf:celula>
+				</plcf:linha>
+			
+			</plcf:iteracao>
+			
+		</plcf:tabela>
+		
+		<plcf:tabela>
+		
+			<plcf:linha>
+				
+				<plcf:celula rendered="#{plcAction.entidadePlc.saldoDiaStr != null}">
+					<plcf:titulo titulo="Saldo do Dia (Valor Recebido - Valor Pago)"/>
+					<plcf:exibe id="saldoDia" value="#{plcAction.entidadePlc.saldoDiaStr}"/>
+				</plcf:celula>
+				
+				<plcf:celula rendered="#{plcAction.valorRecebidoMaiorValorPago}">
+					<plcf:titulo titulo="Valor da Retirada"/>
+					<plcf:numerico numCasas="2" id="valorRetirada" value="#{plcAction.entidadePlc.valorRetirada}"/>
+				</plcf:celula>
+				
+				<plcf:celula rendered="#{plcAction.entidadePlc.saldoTotalStr != null}">
+					<plcf:titulo titulo="Valor Em Caixa do Dia"/>
+					<plcf:exibe id="valorSaldoTotal" value="#{plcAction.entidadePlc.saldoTotalStr}"/>
+				</plcf:celula>
+				
+			</plcf:linha>
+			
+		</plcf:tabela>
+		
+	</ui:composition> 
+</html>

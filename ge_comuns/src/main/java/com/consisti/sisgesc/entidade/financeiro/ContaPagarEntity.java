@@ -1,11 +1,14 @@
 package com.consisti.sisgesc.entidade.financeiro;
 
 
+import java.text.NumberFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.AccessType;
 
@@ -25,7 +28,7 @@ import com.powerlogic.jcompany.dominio.tipo.PlcSimNao;
 @SuppressWarnings("serial")
 @NamedQueries({
 	@NamedQuery(name="ContaPagarEntity.queryMan", query="from ContaPagarEntity obj"),
-	@NamedQuery(name="ContaPagarEntity.querySel", query="select new ContaPagarEntity(obj.id, obj.favorecido.id , obj.favorecido.nome, obj.planoContas.id , obj.planoContas.descricao, obj.formaPagamento.id , obj.formaPagamento.descricao, obj.dataVencimento, obj.dataInclusao, obj.valorPagar, obj.numeroDocumento, obj.contaPaga) from ContaPagarEntity obj left outer join obj.favorecido left outer join obj.planoContas left outer join obj.formaPagamento order by obj.id asc"),
+	@NamedQuery(name="ContaPagarEntity.querySel", query="select new ContaPagarEntity(obj.id, obj.favorecido.id , obj.favorecido.nome, obj.planoContas.id , obj.planoContas.descricao, obj.formaPagamento.id , obj.formaPagamento.descricao, obj.dataVencimento, obj.dataInclusao, obj.valorPagar, obj.numeroDocumento, obj.contaPaga) from ContaPagarEntity obj left outer join obj.favorecido left outer join obj.planoContas left outer join obj.formaPagamento order by obj.dataVencimento desc"),
 	@NamedQuery(name="ContaPagarEntity.querySelLookup", query="select new ContaPagarEntity (obj.id, obj.favorecido) from ContaPagarEntity obj where obj.id = ? order by obj.id asc")
 })
 public class ContaPagarEntity extends ContaPagar {
@@ -103,5 +106,13 @@ public class ContaPagarEntity extends ContaPagar {
 	}
 	public void setContaPagaDesc(String contaPagaDesc) {
 		this.contaPagaDesc = contaPagaDesc;
+	}
+	
+	@Transient
+	public String getValorTotalFormatado(){
+		if (getValorPagar()!=null){
+			return NumberFormat.getCurrencyInstance().format(getValorPagar());
+		}
+		return "";
 	}
 }

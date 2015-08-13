@@ -28,15 +28,15 @@
 			<plcf:linha rendered="#{plcEntidade.tipoPessoa == 'J'}">
 				<plcf:celula>
 					<plcf:titulo tituloChave="label.nomeFantasia"/>
-					<plcf:texto id="nomeFantasia" value="#{plcEntidade.nomeFantasia}" tamanho="50" tamanhoMaximo="100" obrigatorio="S" ajudaChave="ajuda.nomeFantasia" />
+					<plcf:texto id="nomeFantasia" value="#{plcEntidade.nomeFantasia}" tamanho="50" tamanhoMaximo="100" ajudaChave="ajuda.nomeFantasia" />
 				</plcf:celula>
 				<plcf:celula>
 					<plcf:titulo tituloChave="label.razaoSocial"/>
-					<plcf:texto id="razaoSocial" value="#{plcEntidade.razaoSocial}" tamanho="50" tamanhoMaximo="100"  ajudaChave="ajuda.razaoSocial" />
+					<plcf:texto id="razaoSocial" value="#{plcEntidade.razaoSocial}" tamanho="50" tamanhoMaximo="100" obrigatorio="S" ajudaChave="ajuda.razaoSocial" />
 				</plcf:celula>
 				<plcf:celula>
 					<plcf:titulo tituloChave="label.cnpj"/>
-					<plcf:texto id="cnpj" value="#{plcEntidade.cnpj}" obrigatorio="S" labelAndAccessKey="CNPJ" onkeydown="mascara(this,cnpj)" tamanho="18" ajudaChave="ajuda.cnpj" tamanhoMaximo="18"/>
+					<plcf:texto id="cnpj" value="#{plcEntidade.cnpj}"  labelAndAccessKey="CNPJ" onkeydown="mascara(this,cnpj)" tamanho="18" ajudaChave="ajuda.cnpj" tamanhoMaximo="18"/>
 				</plcf:celula>
 			</plcf:linha>
 			
@@ -47,7 +47,7 @@
 				</plcf:celula>
 				<plcf:celula>
 					<plcf:titulo tituloChave="label.cpf"/>
-					<plcf:texto id="cpf" value="#{plcEntidade.cpf}" obrigatorio="S" labelAndAccessKey="CPF" onkeydown="mascara(this,cpf)" tamanho="14"  ajudaChave="ajuda.cpf" tamanhoMaximo="14"/>
+					<plcf:texto id="cpf" value="#{plcEntidade.cpf}"  labelAndAccessKey="CPF" onkeydown="mascara(this,cpf)" tamanho="14"  ajudaChave="ajuda.cpf" tamanhoMaximo="14"/>
 				</plcf:celula>
 				<plcf:celula>
 					<plcf:titulo tituloChave="label.rg"/>

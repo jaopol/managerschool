@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition> 
+		<plcf:tabela tituloChave="produtovenda.titulo"> 
+			<plcf:linha> 
+				<plcf:celula/>  
+				<plcf:celula rendered="#{empty requestScope.visualizaDocumentoPlc}"> 
+					<plcf:tituloExclusao>Exc.</plcf:tituloExclusao> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.descricao">Descrição</plcf:titulo> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.valor">Valor</plcf:titulo> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.dataCadastro">Data cadastro</plcf:titulo> 
+				</plcf:celula> 
+			</plcf:linha>  
+			<plcf:iteracao id="plcLogicaItens" value="#{plcLogicaItens.itensPlc}"> 
+				<plcf:linha> 
+					<plcf:celula styleClass="celulaFormularioContador"> 
+						<plcf:contador>1.</plcf:contador> 
+					</plcf:celula>  
+					<plcf:celula styleClass="celulaFormularioCaixaMarcacao" rendered="#{empty requestScope.visualizaDocumentoPlc}"> 
+						<plcf:caixaExclusao id="indExcPlc"/> 
+					</plcf:celula>  
+					<plcf:celula> 
+						<plcf:texto id="descricao" value="#{item.descricao}" ajudaChave="ajuda.descricao"/> 
+					</plcf:celula>  
+					<plcf:celula columnSpan="2"> 
+						<plcf:numerico id="valor" value="#{item.valor}" ajudaChave="ajuda.valor"/> 
+					</plcf:celula>  
+					<plcf:celula> 
+						<plcf:texto id="dataCadastro" value="#{item.dataCadastro}" ajudaChave="ajuda.dataCadastro" somenteLeitura="S"/> 
+					</plcf:celula> 
+				</plcf:linha> 
+			</plcf:iteracao> 
+		</plcf:tabela> 
+	</ui:composition> 
+</html>

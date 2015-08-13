@@ -15,7 +15,7 @@
 						)
 
 ,
-		comportamento = @PlcConfigComportamento(entradaEmLote=true)
+		comportamento = @PlcConfigComportamento(entradaEmLote=false)
 )
 	
 //Gerado em 17/06/2013 21:48 por jCompany Code Generator

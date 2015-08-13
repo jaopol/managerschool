@@ -2,6 +2,7 @@ package com.consisti.sisgesc.entidade.financeiro;
 
 
 import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.AccessType;
 
@@ -17,6 +19,7 @@ import com.consisti.sisgesc.entidade.AlunoEntity;
 import com.powerlogic.jcompany.comuns.anotacao.PlcIoC;
 import com.powerlogic.jcompany.dominio.tipo.PlcSimNao;
 import com.consisti.sisgesc.entidade.financeiro.BancoEntity;
+import com.consisti.sisgesc.entidade.financeiro.FormaPagamentoEntity;
 /**
  * Classe Concreta gerada a partir do assistente
  */
@@ -28,9 +31,10 @@ import com.consisti.sisgesc.entidade.financeiro.BancoEntity;
 
 @SuppressWarnings("serial")
 @NamedQueries({
+	@NamedQuery(name="ContaReceberEntity.querySel3", query="select new ContaReceberEntity(obj.id, obj.aluno.id , obj.aluno.nomeAluno, obj.formaRecebimento.id , obj.formaRecebimento.descricao, obj.valorTotal, obj.dataRecebimento, obj.dataVencimento) from ContaReceberEntity obj left outer join obj.aluno left outer join obj.formaRecebimento order by obj.id asc"),
 	@NamedQuery(name="ContaReceberEntity.querySel2", query="select new ContaReceberEntity(obj.id, obj.aluno.id , obj.aluno.nomeAluno, obj.banco.id , obj.banco.agencia, obj.valorTotal, obj.dataVencimento) from ContaReceberEntity obj left outer join obj.aluno left outer join obj.banco order by obj.id asc"),
 	@NamedQuery(name="ContaReceberEntity.queryMan", query="from ContaReceberEntity obj"),
-	@NamedQuery(name="ContaReceberEntity.querySel", query="select new ContaReceberEntity(obj.id, obj.aluno.id , obj.aluno.nomeAluno, obj.valorTotal, obj.dataVencimento, obj.dataRecebimento, obj.boletoGerado, obj.recebido) from ContaReceberEntity obj left outer join obj.aluno order by obj.dataVencimento asc, obj.aluno asc"),
+	@NamedQuery(name="ContaReceberEntity.querySel", query="select new ContaReceberEntity(obj.id, obj.aluno.id , obj.aluno.nomeAluno, obj.valorTotal, obj.dataVencimento, obj.dataRecebimento, obj.boletoGerado, obj.recebido) from ContaReceberEntity obj left outer join obj.aluno order by obj.dataVencimento desc, obj.aluno asc"),
 	@NamedQuery(name="ContaReceberEntity.querySelLookup", query="select new ContaReceberEntity (obj.id, obj.aluno) from ContaReceberEntity obj where obj.id = ? order by obj.id asc")
 })
 public class ContaReceberEntity extends ContaReceber {
@@ -139,5 +143,29 @@ public class ContaReceberEntity extends ContaReceber {
 	}
 	public void setGeraRemessa(Boolean geraRemessa) {
 		this.geraRemessa = geraRemessa;
+	}
+	
+	@Transient
+	public String getValorTotalFormatado(){
+		if (getValorTotal()!=null){
+			return NumberFormat.getCurrencyInstance().format(getValorTotal());
+		}
+		return "";
+	}
+	public ContaReceberEntity(Long id, Long alunoId, String nomeAluno, Long formaRecebimentoId, String formaRecebimentoDescricao, java.math.BigDecimal valorTotal, java.util.Date dataRecebimento, java.util.Date dataVencimento) {
+		setId(id);
+		if (getAluno() == null){
+			setAluno(new AlunoEntity());
+		}
+		getAluno().setId(alunoId);
+		getAluno().setNomeAluno(nomeAluno);
+		if (getFormaRecebimento() == null){
+			setFormaRecebimento(new FormaPagamentoEntity());
+		}
+		getFormaRecebimento().setId(formaRecebimentoId);
+		getFormaRecebimento().setDescricao(formaRecebimentoDescricao);
+		setValorTotal(valorTotal);
+		setDataRecebimento(dataRecebimento);
+		setDataVencimento(dataVencimento);
 	}
 }

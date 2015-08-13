@@ -25,17 +25,12 @@ import java.util.List;
 
 import org.jrimum.bopepo.Boleto;
 
-import com.consisti.sisgesc.comuns.AppBaseContextVO;
 import com.consisti.sisgesc.entidade.AlunoEntity;
-import com.consisti.sisgesc.entidade.BoletimFundamentalDetEntity;
-import com.consisti.sisgesc.entidade.BoletimFundamentalEntity;
 import com.consisti.sisgesc.entidade.ContratoEntity;
-import com.consisti.sisgesc.entidade.CronogramaTurma;
-import com.consisti.sisgesc.entidade.Disciplinas;
 import com.consisti.sisgesc.entidade.EnderecoEntity;
 import com.consisti.sisgesc.entidade.FornecedorEntity;
 import com.consisti.sisgesc.entidade.FuncionarioEntity;
-import com.consisti.sisgesc.entidade.RegistroNotasFundamentalEntity;
+import com.consisti.sisgesc.entidade.MovimentoDiaEntity;
 import com.consisti.sisgesc.entidade.ResponsavelFinanceiroAlunoEntity;
 import com.consisti.sisgesc.entidade.ServicoAluno;
 import com.consisti.sisgesc.entidade.ServicosEntity;
@@ -92,22 +87,6 @@ public interface IAppFacade extends IPlcFacade {
 	 * @throws PlcException
 	 */
 	List<AlunoEntity> recuperaAlunoPelaTurma( Turma turma ) throws PlcException;
-	
-	/**
-	 * Utilizado para recuperar as disciplinas do aluno
-	 * @param idAluno
-	 * @return List<Disciplinas>
-	 * @throws PlcException
-	 */
-	List<Disciplinas> recuperaDisciplinasByIdAluno( Long idAluno ) throws PlcException;
-
-	/**
-	 * Recupera lista de disciplinas do aluno
-	 * @param idTurma
-	 * @return
-	 * @throws PlcException
-	 */
-	List<CronogramaTurma> recuperaCronogramaTurma(Long idTurma) throws PlcException;
 
 	/**
 	 * @param login
@@ -123,34 +102,12 @@ public interface IAppFacade extends IPlcFacade {
 	FuncionarioEntity recuperaFuncionarioById(Long id) throws PlcException;
 
 	/**
-	 * UTilizado para montar o detalhe e sub-detalhe do registro de notas, recuperando as turmas e alunos do professor para a disciplina
-	 * @param registro
-	 * @throws PlcException 
-	 */
-	void montaDetalheSubDetalhe(RegistroNotasFundamentalEntity registro) throws PlcException;
-	
-	/**
 	 * Utilizado para recuperar a descriçao da turma pelo id
 	 * @param idTurma
 	 * @return
 	 * @throws PlcException
 	 */
 	String recuperaDescricaoTurma(Long idTurma) throws PlcException;
-
-	/**
-	 * Utilizado para montar o grafo do boletim fundamental quando for um novo registro.
-	 * Recuperando todas informaçoes pelo id do aluno
-	 * @param idAluno
-	 * @param appBaseContextVO 
-	 * @throws PlcException 
-	 */
-	PlcBaseVO montaBoletimAluno( Long idAluno, BoletimFundamentalEntity boletim, AppBaseContextVO appBaseContextVO ) throws PlcException;
-
-	/**
-	 * Utilizado para setar o registro de notas como Aberto quando for reprovado pela diretoria.
-	 * @param listBoletimDetReprovar
-	 */
-	void reprovaRegistroNotas(List<BoletimFundamentalDetEntity> listBoletimDetReprovar) throws PlcException;
 
 	Long temContratoVigente(Long idAluno, int year) throws PlcException;
 
@@ -246,8 +203,11 @@ public interface IAppFacade extends IPlcFacade {
 	List<BancoEntity> recuperaListaBanco() throws PlcException;
 
 	void excluirServicoAluno(Long id) throws PlcException;
+	void pesquisaMovimentoDia(MovimentoDiaEntity movimentoDia, Date date, BancoEntity banco)throws PlcException;
 
-	/**
+	void fecharCaixa(MovimentoDiaEntity movimentoDia)throws PlcException;
+
+	MovimentoDiaEntity recuperaMovimentoExistente(Date dataMovimento)throws PlcException;	/**
 	 * Recupera o ultimo contrato ativo do aluno
 	 * @param id
 	 * @return
@@ -257,4 +217,11 @@ public interface IAppFacade extends IPlcFacade {
 	
 	List<AlunoEntity> recuperaDadosPorTurma(Long idTurma) throws PlcException;
 	
+
+	/**
+	 * Recupera os valore do aluno
+	 * @param contaReceber
+	 * @throws PlcException
+	 */
+	public ContaReceberEntity recuperaValorAlunoSetContaReceber(Long idAluno) throws PlcException;
 }

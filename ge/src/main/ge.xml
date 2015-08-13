@@ -5,7 +5,7 @@
          path="ge" 
          privileged="true" swallowOutput="off">
 
-<!-- HOMOLOGACAO teste fac
+<!-- HOMOLOGACAO
  <Resource name="jdbc/ge" type="javax.sql.DataSource" driverClassName="org.postgresql.Driver" 
    url="jdbc:postgresql://localhost:5432/jaopol_homolog" username="postgres" password="root"
    maxActive="50" maxWait="-1" maxIdle="10" removeAbandoned="true" logAbandoned="true" />
@@ -15,9 +15,9 @@
    url="jdbc:postgresql://localhost:5432/faculdad_prod" username="faculdad_ root" password="Xfac_2013"
    maxActive="50" maxWait="-1" maxIdle="10" removeAbandoned="true" logAbandoned="true" />
  -->
-<!-- PRODUCAO -->
+<!-- PRODUCAO     -->
 <Resource name="jdbc/ge" type="javax.sql.DataSource" driverClassName="org.postgresql.Driver" 
-   url="jdbc:postgresql://localhost:5432/fac" username="postgres" password="root"
+   url="jdbc:postgresql://localhost:5432/pedacinho" username="postgres" password="root"
    maxActive="50" 
    maxWait="-1" 
    maxIdle="10" 

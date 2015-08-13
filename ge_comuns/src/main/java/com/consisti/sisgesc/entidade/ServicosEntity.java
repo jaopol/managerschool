@@ -67,6 +67,10 @@ public class ServicosEntity extends Servicos {
 		setId(id);
 	}
 
+	public ServicosEntity(BigDecimal valorServico) {
+		setValorServico(valorServico);
+	}
+
 	public String getValorServicoStr() {
 		if (this.getValorServico()!=null){
 			return NumberFormat.getCurrencyInstance().format(this.getValorServico());

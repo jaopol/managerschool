@@ -18,12 +18,6 @@
 				<plcf:celula> 
 					<plcf:titulo tituloChave="label.descricao">Descrição</plcf:titulo> 
 				</plcf:celula>  
-				<plcf:celula> 
-					<plcf:titulo tituloChave="label.idadeMinima"></plcf:titulo> 
-				</plcf:celula> 
-				<plcf:celula> 
-					<plcf:titulo tituloChave="label.idadeMaxima"></plcf:titulo> 
-				</plcf:celula> 
 			</plcf:linha>  
 			<plcf:iteracao id="plcLogicaItens" value="#{plcLogicaItens.itensPlc}"> 
 				<plcf:linha> 
@@ -36,12 +30,6 @@
 					<plcf:celula> 
 						<plcf:texto id="descricao" value="#{item.descricao}" ajudaChave="ajuda.descricao"/> 
 					</plcf:celula>  
-					<plcf:celula> 
-						<plcf:texto id="idadeMinima" value="#{item.idadeMinima}" ajudaChave="ajuda.idadeMinima" onkeydown="mascara(this,idadeTurma)"/> 
-					</plcf:celula> 
-					<plcf:celula> 
-						<plcf:texto id="idadeMaxima" value="#{item.idadeMaxima}" ajudaChave="ajuda.idadeMaxima" onkeydown="mascara(this,idadeTurma)"/> 
-					</plcf:celula> 
 				</plcf:linha> 
 			</plcf:iteracao> 
 		</plcf:tabela> 

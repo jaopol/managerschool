@@ -5,12 +5,10 @@ import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 import org.hibernate.Hibernate;
-import org.hibernate.HibernateException;
 
 import com.consisti.sisgesc.comuns.AppBaseContextVO;
 import com.consisti.sisgesc.comuns.AppConstantesComuns;
 import com.consisti.sisgesc.dominio.PeriodoServico;
-import com.consisti.sisgesc.dominio.TipoEducacao;
 import com.consisti.sisgesc.entidade.AlunoEntity;
 import com.consisti.sisgesc.entidade.CertidaoNascimento;
 import com.consisti.sisgesc.entidade.ResponsavelAlunoCasoAcidente;
@@ -58,7 +56,6 @@ public class AlunoManager extends AppManager {
 		AlunoEntity aluno = (AlunoEntity)entidadeAtual;
 		
 		if( AppConstantesComuns.CASOUSO.CDU001.equals( ((AppBaseContextVO)getContext()).getCasoUso() ) ){
-			RNE_002( aluno );
 			validaListaResponsavelAlunoCasoAcidente(aluno);
 			validaCertidaoNascimentoAluno( aluno );
 			validaServicoAluno( aluno );
@@ -118,50 +115,6 @@ public class AlunoManager extends AppManager {
 		}
 	}
 
-	/**
-	 * Utilizado para gerar a matricula do aluno
-	 * @param entidadeAtual
-	 * @throws PlcException 
-	 * @throws HibernateException 
-	 */
-	private void RNE_002(AlunoEntity aluno) throws HibernateException, PlcException {
-		
-		//Gera a matricula somente se não tiver
-		if( aluno.getMatricula() == null ){
-			//Se Educação Infantil
-			if( TipoEducacao.I.equals( aluno.getTipoEducacao() ) ){
-				String matriculaRecuperada = alunoDAO.recuperarUltimaMatriculaAluno( TipoEducacao.I );
-				aluno.setMatricula( "I" + gerarNovaMatricula( matriculaRecuperada ) );
-			}
-			//Se Ensino Fundamental
-			else{
-				String matriculaRecuperada = alunoDAO.recuperarUltimaMatriculaAluno( TipoEducacao.F );
-				aluno.setMatricula( gerarNovaMatricula( matriculaRecuperada ) );
-			}
-		}
-	}
-
-	/**
-	 * Gera a nova matricula completando com zeros a esquerda ate completar 8 caracters
-	 * @param matriculaRecuperada
-	 * @return
-	 */
-	private String gerarNovaMatricula(String matriculaRecuperada) {
-		
-		if( StringUtils.isNotBlank( matriculaRecuperada ) ){
-			String matriculaSemI = matriculaRecuperada.replace("I", "0");
-			int matriculaInt = Integer.parseInt( matriculaSemI ) + 1;
-			//retorna com completando com zeros a esquerda
-			return StringUtils.leftPad( String.valueOf( matriculaInt ) , 8, "0");
-		}
-		//Quando não existir nenhuma matricula cadastrada começa com 1
-		else{
-			int matriculaInt = 1;
-			//retorna com completando com zeros a esquerda
-			return StringUtils.leftPad( String.valueOf( matriculaInt ) , 8, "0");
-		}
-	}
-	
 	public AlunoEntity recuperarAlunoVO( Long idAluno ) throws PlcException{
 		AlunoEntity aluno = (AlunoEntity) recuperaSomenteVO( AlunoEntity.class, idAluno );
 		Hibernate.initialize( aluno.getResponsavelFinanceiroAluno() );

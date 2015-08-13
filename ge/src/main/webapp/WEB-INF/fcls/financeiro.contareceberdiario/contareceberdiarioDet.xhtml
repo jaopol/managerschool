@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:plct="http://www.powerlogic.com.br/plct" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition> 
+		<plcf:tabela tituloChave="contareceberdiario.detalhe.titulo.comp"> 
+			<plcf:linha> 
+				<plcf:celula header="true" styleClass="cabecalho"/>  
+				<plcf:celula header="true" styleClass="cabecalho" rendered="#{empty requestScope.visualizaDocumentoPlc}"> 
+					<plcf:tituloExclusao caminhoImagem="/plc/midia/form-lixeira.png">Exc.</plcf:tituloExclusao> 
+				</plcf:celula>  
+				<plcf:celula header="true" styleClass="cabecalho"> 
+					<plcf:titulo tituloChave="label.produtoVenda">Produto Venda</plcf:titulo> 
+				</plcf:celula>  
+				<plcf:celula header="true" styleClass="cabecalho" columnSpan="3"> 
+					<plcf:titulo tituloChave="label.quantidadeVendida">Quantidade</plcf:titulo> 
+				</plcf:celula>  
+				<plcf:celula header="true" styleClass="cabecalho"> 
+					<plcf:titulo tituloChave="label.valorUnitario">Valor Unitário</plcf:titulo> 
+				</plcf:celula>  
+				<plcf:celula header="true" styleClass="cabecalho"> 
+					<plcf:titulo tituloChave="label.valorTotal">Valor Total</plcf:titulo> 
+				</plcf:celula> 
+			</plcf:linha>  
+			<plcf:iteracao id="contaReceberProdutoVenda" value="#{plcEntidade.contaReceberProdutoVenda}"> 
+				<plcf:linha> 
+					<plcf:celula styleClass="celulaFormularioContador"> 
+						<plcf:contador>1.</plcf:contador> 
+					</plcf:celula>  
+					<plcf:celula styleClass="celulaFormularioCaixaMarcacao" rendered="#{empty requestScope.visualizaDocumentoPlc}"> 
+						<plcf:caixaExclusao id="indExcPlc"/> 
+					</plcf:celula>  
+					<plcf:celula> 
+						<plcf:comboDinamico id="produtoVenda" value="#{item.produtoVenda}" ajudaChave="ajuda.produtoVenda"  dominio="ProdutoVendaEntity" obrigatorio="S" exibeBranco="N" onchange="setaValorProduto(#{plcItensStatus.index});"/> 
+					</plcf:celula>  
+					<plcf:celula columnSpan="3"> 
+						<plcf:texto id="quantidadeVendida" value="#{item.quantidadeVendida}" ajudaChave="ajuda.quantidadeVendida" onchange="calculaQuantidade(#{plcItensStatus.index});"/> 
+					</plcf:celula>  
+					<plcf:celula> 
+						<plcf:numerico id="valorUnitario" value="#{item.valorUnitario}" ajudaChave="ajuda.valorUnitario" somenteLeitura="S"/> 
+					</plcf:celula>  
+					<plcf:celula> 
+						<plcf:numerico id="valorTotal" value="#{item.valorTotal}" ajudaChave="ajuda.valorTotal" somenteLeitura="S" /> 
+					</plcf:celula> 
+				</plcf:linha> 
+			</plcf:iteracao> 
+		</plcf:tabela> 
+		
+		<plcf:escondido id="indexDet" value="#{plcAction.indexDet}" />
+		<plcf:botaoAcao id="setaValorProduto" acao="setaValorProduto" partialSubmit="false" validaForm="false" limpaForm="false" inlineStyle="display:none" />
+		<plcf:botaoAcao id="setaValorTotal" acao="setaValorTotal" partialSubmit="false" validaForm="false" limpaForm="false" inlineStyle="display:none" />
+		
+		
+		
+		<script avaliar="S" type="text/javascript">
+
+		//<![CDATA[
+
+			function calculaQuantidade(index){
+
+				document.getElementById('corpo:formulario:indexDet').value = index;
+				document.getElementById('corpo:formulario:setaValorTotal').click();
+
+				//var qtde = document.getElementById('corpo:formulario:contaReceberProdutoVenda:'+index+':quantidadeVendida').value;
+				//var valorUn = document.getElementById('corpo:formulario:contaReceberProdutoVenda:'+index+':valorUnitario').value.replace(',','.');
+
+				//var total = (qtde * valorUn);
+				
+				//document.getElementById('corpo:formulario:contaReceberProdutoVenda:'+index+':valorTotal').value = total;
+			}
+
+			function setaValorProduto(index){
+				document.getElementById('corpo:formulario:indexDet').value = index;
+				document.getElementById('corpo:formulario:setaValorProduto').click();
+			}
+					
+		 //]]>
+			
+		</script>
+	
+	
+		
+		
+	</ui:composition> 
+</html>

@@ -19,7 +19,9 @@
 						@PlcConfigArgumento(propriedade="funcionario", operador=Operador.IGUAL_A, formato=Formato.STRING),
 						@PlcConfigArgumento(propriedade="planoContas", operador=Operador.IGUAL_A, formato=Formato.STRING),
 						@PlcConfigArgumento(propriedade="formaPagamento", operador=Operador.IGUAL_A, formato=Formato.STRING),
-						@PlcConfigArgumento(propriedade="dataPagamento_ArgINI", operador=Operador.MAIOR_OU_IGUAL_QUE, formato=Formato.DATE)
+						@PlcConfigArgumento(propriedade="dataPagamento_ArgINI", operador=Operador.MAIOR_OU_IGUAL_QUE, formato=Formato.DATE),
+						@PlcConfigArgumento(propriedade="dataVencimento_ArgINI", operador=Operador.MAIOR_OU_IGUAL_QUE, formato=Formato.DATE),
+						@PlcConfigArgumento(propriedade="dataVencimento_ArgFIM", operador=Operador.MENOR_OU_IGUAL_QUE, formato=Formato.DATE)
 			})
 
 ,

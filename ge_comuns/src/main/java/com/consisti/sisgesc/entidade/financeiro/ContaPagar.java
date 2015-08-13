@@ -3,26 +3,28 @@ package com.consisti.sisgesc.entidade.financeiro;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import com.consisti.sisgesc.entidade.AppBaseEntity;
-import com.consisti.sisgesc.entidade.Fornecedor;
-import com.consisti.sisgesc.entidade.Funcionario;
-import com.powerlogic.jcompany.dominio.tipo.PlcSimNao;
-import com.powerlogic.jcompany.dominio.valida.PlcValidacaoUnificada;
-import javax.persistence.ManyToOne;
-import com.consisti.sisgesc.entidade.FuncionarioEntity;
 import javax.persistence.Column;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.TemporalType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.GenerationType;
-import org.hibernate.annotations.ForeignKey;
-import com.consisti.sisgesc.entidade.FornecedorEntity;
-import javax.persistence.Temporal;
 import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.ForeignKey;
+
+import com.consisti.sisgesc.entidade.AppBaseEntity;
+import com.consisti.sisgesc.entidade.Fornecedor;
+import com.consisti.sisgesc.entidade.FornecedorEntity;
+import com.consisti.sisgesc.entidade.MovimentoDia;
+import com.consisti.sisgesc.entidade.MovimentoDiaEntity;
+import com.powerlogic.jcompany.dominio.tipo.PlcSimNao;
+import com.powerlogic.jcompany.dominio.valida.PlcValidacaoUnificada;
 
 
 @SuppressWarnings("serial")
@@ -55,7 +57,7 @@ public abstract class ContaPagar extends AppBaseEntity {
 	private FormaPagamento formaPagamento;
 	
 	@Column (name = "DATA_PAGAMENTO", nullable=true, length=11)
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Date dataPagamento;
 	
 	@Column (name = "DATA_INCLUSAO", nullable=false, length=11)

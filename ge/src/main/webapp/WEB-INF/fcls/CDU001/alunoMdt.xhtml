@@ -22,7 +22,7 @@
 							<plcf:titulo tituloChave="label.matriculaTit" inlineStyle="font-size:15px"/>
 						</plcf:celula>
 						<plcf:celula>
-							<plcf:exibe id="matriculaVazia" value="(Automático)" rendered="#{plcEntidade.id == null}" inlineStyle="font-size:15px" />
+							<plcf:texto id="matriculaVazia" value="#{plcEntidade.matricula}" rendered="#{plcEntidade.id == null}" obrigatorio="S" />
 							<plcf:exibe id="matricula" value="#{plcEntidade.matricula}" rendered="#{plcEntidade.id != null}" inlineStyle="font-size:15px" />
 						</plcf:celula>
 					</plcf:linha>
@@ -37,6 +37,10 @@
 				<plcf:celula>
 					<plcf:titulo tituloChave="label.anoLetivoAluno"/>
 					<plcf:texto id="anoLetivo" value="#{plcEntidade.anoLetivo}" ajudaChave="ajuda.anoLetivoAluno" tamanho="5" obrigatorio="S"/>
+				</plcf:celula>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.status"/>
+					<plcf:comboDinamico id="status" value="#{plcEntidade.status}" ajudaChave="ajuda.status" dominio="AtivoInativo" obrigatorio="S" exibeBranco="N"/>
 				</plcf:celula>
 			</plcf:linha>
 			
@@ -135,6 +139,10 @@
 				<plcf:titulo tituloChave="label.descontoMensalidade"/>
 				<plcf:numerico id="descontoMensalidade" value="#{plcEntidade.descontoMensalidade}"   ajudaChave="ajuda.descontoMensalidade" tamanho="10"  />
 			</plcf:celula>
+			<plcf:celula>
+				<plcf:titulo tituloChave="label.empresa"/>
+				<plcf:comboDinamico id="descontoEmpresa" value="#{plcEntidade.descontoEmpresa}" dominio="EmpresaEntity" ajudaChave="ajuda.empresa"/>
+			</plcf:celula>
 		</plcf:linha>
 		
 		<plcf:linha>
@@ -191,7 +199,6 @@
 		//<![CDATA[
 
 			function calculaDescontoMensalidade(){
-				alert('entro calcula');
 				document.getElementById('corpo:formulario:btCalculaDescontoMensalidade').click();
 			}
 			function calculaDescontoMatricula(obj){

@@ -58,9 +58,10 @@
 			<band height="107"  isSplitAllowed="true" >
 				<image  scaleImage="FillFrame" vAlign="Middle" hAlign="Center" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
+						mode="Opaque"
 						x="6"
 						y="7"
-						width="183"
+						width="126"
 						height="93"
 						key="image-1"
 						positionType="Float"/>
@@ -70,25 +71,24 @@
 				</image>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="191"
+						x="152"
 						y="6"
-						width="339"
+						width="381"
 						height="94"
 						key="textField-32"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Middle" isStyledText="true">
 						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["      Educação Infantil e Ensino Fundamental <br/>"+
-"                 Unidade I - Rua Genebra 1000 <br/>"+
-"                 Unidade II - Rua Genebra 1063 <br/>"+
-"Nova Suíssa - CEP: 30.421-121 - Belo Horizonte - MG<br/>"+
-"                          Tel.: (31) 2526-4194<br/>"]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA["      Jardim de Infância Pedacinho de Gente <br/>"+
+"                 Rua João Gualberto Filho 141 <br/>"+
+"Sagrada Família - CEP: 31.030-410 - Belo Horizonte - MG<br/>"+
+"                          Tel.: (31) 3482-6414<br/>"]]></textFieldExpression>
 				</textField>
 				<rectangle>
 					<reportElement
 						mode="Transparent"
-						x="2"
+						x="3"
 						y="4"
 						width="531"
 						height="100"

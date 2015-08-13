@@ -4,7 +4,7 @@ package com.consisti.sisgesc.dominio;
  * Enum de domínio discreto gerada automaticamente pelo assistente do jCompany.
  */
 public enum PeriodoAluno {
-    
+
 	E("ESPECIAL") /* periodoAluno.E=Especial */,
 	I("INTEGRAL") /* periodoAluno.I=Integral */,
 	M("MANHÃ") /* periodoAluno.M=Manha */,

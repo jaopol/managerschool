@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition> 
+		<plcf:tabela tituloChave="contareceberdiario.mestre.titulo.comp"> 
+			<plcf:linha> 
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.aluno"/>  
+					<plcf:vinculado id="aluno" value="#{plcEntidade.aluno}" propSelPop="aluno" idExibe="N" idSomenteLeitura="N" autoRecuperacaoClasse="com.consisti.sisgesc.entidade.AlunoEntity" actionSel="alunosel" modal="S" ajudaChave="ajuda.aluno" onkeydown="selecionaPorTecla(event,this);" lookupTamanho="50" obrigatorio="S" larg="900" alt="630"/> 
+				</plcf:celula>  
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.dataDocumento"/>  
+					<plcf:exibe id="dataDocumento" value="#{plcEntidade.dataDocumento}" ajudaChave="ajuda.dataDocumento"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.valorTotal"/>  
+					<plcf:numerico id="valorTotal" value="#{plcEntidade.valorTotal}" ajudaChave="ajuda.valorTotal" somenteLeitura="S"/> 
+				</plcf:celula> 
+			</plcf:linha>  
+			<plcf:linha> 
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.dataRecebimento"/>  
+					<plcf:data id="dataRecebimento" value="#{plcEntidade.dataRecebimento}" ajudaChave="ajuda.dataRecebimento"/> 
+				</plcf:celula>  
+				<plcf:celula columnSpan="2">
+					<plcf:titulo tituloChave="label.formaRecebimento"/>  
+					<plcf:comboDinamico id="formaRecebimento" value="#{plcEntidade.formaRecebimento}" dominio="FormaPagamentoEntity" exibeBranco="S" ajudaChave="ajuda.formaRecebimento"/> 
+				</plcf:celula> 
+			</plcf:linha>  
+			<plcf:linha> 
+				<plcf:celula columnSpan="3"> 
+					<plcf:titulo tituloChave="label.observacao"/>  
+					<plcf:area id="observacao" value="#{plcEntidade.observacao}" ajudaChave="ajuda.observacao" tamanhoMaximo="200" colunas="50" rows="4"/> 
+				</plcf:celula> 
+			</plcf:linha> 
+		</plcf:tabela> 
+	</ui:composition> 
+</html>

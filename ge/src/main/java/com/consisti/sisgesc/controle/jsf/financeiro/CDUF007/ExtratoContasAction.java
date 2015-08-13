@@ -37,9 +37,10 @@ public class ExtratoContasAction extends AppAction  {
 	
 	@Override
 	protected void trataBotoesConformeLogicaApos() throws PlcException {
+		super.trataBotoesConformeLogicaApos();
 		contextHelperPlc.getRequest().setAttribute("exibeBtPesquisarExtrato", "S");
 		contextHelperPlc.getRequest().setAttribute(PlcConstantes.ACAO.EXIBE_BT_PESQUISAR, "N");
-		super.trataBotoesConformeLogicaApos();
+		contextHelperPlc.getRequest().setAttribute(PlcConstantes.ACAO.EXIBE_BT_IMPRIMIR, "S");
 	}
 	
 	@Override
