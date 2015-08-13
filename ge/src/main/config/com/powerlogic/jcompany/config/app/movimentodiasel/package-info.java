@@ -15,7 +15,8 @@
 						),
 	selecao = @PlcConfigSelecao(
 				navegador = @PlcConfigNavegador(numPorPagina=20, dinamicoTipo=com.powerlogic.jcompany.config.controle.colaboracao.PlcConfigNavegador.DinamicoTipo.DINAMICO_PAGINA),				argumentos = {
-					@PlcConfigArgumento(propriedade="dataMovimento", operador=Operador.IGUAL_A, formato=Formato.DATE)
+					@PlcConfigArgumento(propriedade="dataMovimento", operador=Operador.IGUAL_A, formato=Formato.DATE),
+					@PlcConfigArgumento(propriedade="banco", operador=Operador.IGUAL_A, formato=Formato.STRING)
 			})
 
 )

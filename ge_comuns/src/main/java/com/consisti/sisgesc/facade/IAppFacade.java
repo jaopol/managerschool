@@ -203,7 +203,7 @@ public interface IAppFacade extends IPlcFacade {
 	List<BancoEntity> recuperaListaBanco() throws PlcException;
 
 	void excluirServicoAluno(Long id) throws PlcException;
-	void pesquisaMovimentoDia(MovimentoDiaEntity movimentoDia, Date date)throws PlcException;
+	void pesquisaMovimentoDia(MovimentoDiaEntity movimentoDia, Date date, BancoEntity banco)throws PlcException;
 
 	void fecharCaixa(MovimentoDiaEntity movimentoDia)throws PlcException;
 

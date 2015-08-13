@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.commons.collections.CollectionUtils;
 
 import com.consisti.sisgesc.entidade.MovimentoDiaEntity;
+import com.consisti.sisgesc.entidade.financeiro.BancoEntity;
 import com.consisti.sisgesc.entidade.financeiro.ContaPagar;
 import com.consisti.sisgesc.entidade.financeiro.ContaReceber;
 import com.consisti.sisgesc.persistencia.hibernate.ContaPagarDAO;
@@ -27,10 +28,10 @@ public class MovimentoDiaManager extends AppManager {
 		this.contaReceberDAO = contaReceberDAO;
 	}
 	
-	public void pesquisaMovimentoDia(MovimentoDiaEntity movimentoDia, Date date) {
+	public void pesquisaMovimentoDia(MovimentoDiaEntity movimentoDia, Date date, BancoEntity banco) {
 		
-		List<ContaPagar> recuperaListaContasAPagar = contaPagarDAO.recuperaListaContasAPagar(date);
-		List<ContaReceber> recuperaListaContasAReceber = contaReceberDAO.recuperaListaContasAReceber(date);
+		List<ContaPagar> recuperaListaContasAPagar = contaPagarDAO.recuperaListaContasAPagar(date, banco);
+		List<ContaReceber> recuperaListaContasAReceber = contaReceberDAO.recuperaListaContasAReceber(date, banco);
 		
 		movimentoDia.setContasPagar(recuperaListaContasAPagar);
 		movimentoDia.setContasReceber(recuperaListaContasAReceber);

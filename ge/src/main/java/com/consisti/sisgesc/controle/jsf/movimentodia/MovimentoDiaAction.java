@@ -15,6 +15,7 @@ import org.apache.commons.lang.StringUtils;
 import com.consisti.sisgesc.comuns.AppConstantesComuns;
 import com.consisti.sisgesc.controle.jsf.RelatorioActionPlc;
 import com.consisti.sisgesc.entidade.MovimentoDiaEntity;
+import com.consisti.sisgesc.entidade.financeiro.BancoEntity;
 import com.consisti.sisgesc.entidade.financeiro.ContaPagar;
 import com.consisti.sisgesc.entidade.financeiro.ContaReceber;
 import com.consisti.sisgesc.facade.IAppFacade;
@@ -166,6 +167,12 @@ public class MovimentoDiaAction extends RelatorioActionPlc  {
 			throw new PlcException("data.invalida.caixa");
 		}
 		
+		PlcArgVO bancoArg = listaArgumentos.get("banco");
+		BancoEntity banco = null;
+		if( bancoArg != null && bancoArg.getValorObjeto() != null ){
+			banco = (BancoEntity)bancoArg.getValorObjeto();
+		}
+		
 		MovimentoDiaEntity movimentoDia = movimentoDia = getFachada().recuperaMovimentoExistente(dataMovimento);;
 		
 		if (movimentoDia  == null){
@@ -174,7 +181,7 @@ public class MovimentoDiaAction extends RelatorioActionPlc  {
 		
 		entidadePlc = movimentoDia;
 		
-		getFachada().pesquisaMovimentoDia(movimentoDia, dataMovimento);
+		getFachada().pesquisaMovimentoDia(movimentoDia, dataMovimento, banco );
 		
 		if (movimentoDia.getContasPagar().isEmpty() && movimentoDia.getContasReceber().isEmpty()){
 			throw new PlcException("erro.pesquisa.movimento");

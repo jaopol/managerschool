@@ -5,6 +5,7 @@ package com.consisti.sisgesc.dominio;
  */
 public enum BancoSuportado {
     
+	B000( "000 - CAIXA DINHEIRO" ) /* bancoSuportado.B000=CAIXA DINHEIRO */,
 	B001( "001 - BANCO DO BRASIL" ) /* bancoSuportado.B001=BANCO DO BRASIL */,
 	B004( "004 - BANCO DO NORDESTE DO BRASIL" ) /* bancoSuportado.B004=BANCO DO NORDESTE DO BRASIL */,
 	B021( "021 - BANCO DO ESTADO DO ESPIRITO SANTO" ) /* bancoSuportado.B021=BANCO DO ESTADO DO ESPIRITO SANTO */,

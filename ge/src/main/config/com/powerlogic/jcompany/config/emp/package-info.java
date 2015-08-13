@@ -21,8 +21,8 @@
   *******************************************************************************************/
 			
 @PlcConfigEmpresa(nome = "CONSIS-TI", dominio = "www.consisti.com.br", sigla = "FAC", 
-			logotipo = "/plc/midia/login-logo-empresa.png", endereco = "Rua Paraíba, 330 / 19º andar. CEP:30130-917 - Funcionarios - Belo Horizonte/MG",
-			emailSuporte = "suporte@powerlogic.com.br",telefoneSuporte = "55 31 3555-0050")
+			logotipo = "/plc/midia/login-logo-empresa.png", endereco = "",
+			emailSuporte = "jaopol@gmail.com",telefoneSuporte = "(31)9214-7924")
 			
 @PlcConfigAparencia(pele = "azul", layout = "sistema",layoutFormato=LayoutFormato.CSS,
 					ajaxUsa = true, destacaCampoFocadoUsa = true , riaUsa="S", parcialAjaxUsa="N")

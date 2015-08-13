@@ -15,6 +15,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.AccessType;
 
+import com.consisti.sisgesc.entidade.financeiro.Banco;
 import com.consisti.sisgesc.entidade.financeiro.ContaPagar;
 import com.consisti.sisgesc.entidade.financeiro.ContaReceber;
 /**
@@ -36,6 +37,8 @@ public class MovimentoDiaEntity extends MovimentoDia {
 	private transient List<ContaPagar> contasPagar;
 	
 	private transient List<ContaReceber> contasReceber;
+	
+	private transient Banco banco;
 	
     /*
      * Construtor padrão
@@ -107,5 +110,13 @@ public class MovimentoDiaEntity extends MovimentoDia {
 	}
 	public void setContasReceber(List<ContaReceber> contasReceber) {
 		this.contasReceber = contasReceber;
+	}
+
+	public Banco getBanco() {
+		return banco;
+	}
+
+	public void setBanco(Banco banco) {
+		this.banco = banco;
 	}
 }

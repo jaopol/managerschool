@@ -209,9 +209,9 @@ public class AppFacadeImpl extends PlcFacadeImpl implements IAppFacade, IAppFaca
 	}
 
 
-	public void pesquisaMovimentoDia(MovimentoDiaEntity movimentoDia, Date date) throws PlcException {
+	public void pesquisaMovimentoDia(MovimentoDiaEntity movimentoDia, Date date, BancoEntity banco) throws PlcException {
 		MovimentoDiaManager movimentoManager = (MovimentoDiaManager)getBO(MovimentoDiaManager.class);
-		movimentoManager.pesquisaMovimentoDia(movimentoDia, date);
+		movimentoManager.pesquisaMovimentoDia(movimentoDia, date, banco);
 	}
 
 	public void fecharCaixa(MovimentoDiaEntity movimentoDia) throws PlcException {
