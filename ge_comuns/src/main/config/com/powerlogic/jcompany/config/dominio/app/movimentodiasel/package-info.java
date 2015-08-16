@@ -2,6 +2,7 @@
  *  ******************************************************************************************/
 @PlcConfigGrupoAgregacao(
 		entidade = com.consisti.sisgesc.entidade.MovimentoDiaEntity.class,
+		classesLookup = {com.consisti.sisgesc.entidade.financeiro.BancoEntity.class},
 		padrao = @PlcConfigPadrao(logica = PlcConfigPadrao.Logica.SELECAO,
 									complexidade = PlcConfigPadrao.Complexidade.SIMPLES,
 									exclusaoModo = PlcConfigPadrao.ExclusaoModo.FISICA)

@@ -27,11 +27,20 @@ public class ContaPagarDAO extends AppBaseDAO {
 		return null;
 	}
 
-	public List<ContaPagar> recuperaListaContasAPagar(Date date, BancoEntity banco) {
+	public List<ContaPagar> recuperaListaContasAPagar(Date date, Long idBanco) {
 		
 		StringBuffer str = new StringBuffer(); 
-		str.append(" from ContaPagarEntity obj where obj.dataPagamento =:data ");
-		if( banco != null ){
+		str.append(" SELECT new ContaPagarEntity( ");
+		str.append(" obj.id, ");
+		str.append(" obj.valorPagar, ");
+		str.append(" fav.nome, ");
+		str.append(" pg.descricao ) ");
+		str.append(" from ContaPagarEntity obj ");
+		str.append(" join obj.favorecido fav ");
+		str.append(" join obj.formaPagamento pg ");
+		str.append(" join obj.banco ban ");
+		str.append(" where obj.dataPagamento =:data ");
+		if( idBanco != null ){
 			str.append( " and obj.banco.id =:idBanco ");
 		}
 
@@ -40,8 +49,8 @@ public class ContaPagarDAO extends AppBaseDAO {
 			Query query = getSession().createQuery(str.toString());
 			query.setParameter("data", date);
 			
-			if( banco != null ){
-				query.setParameter("idBanco", banco.getId() );
+			if( idBanco != null ){
+				query.setParameter("idBanco", idBanco );
 			}
 		
 			return query.list();

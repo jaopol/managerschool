@@ -1,6 +1,7 @@
 package com.consisti.sisgesc.entidade.financeiro;
 
 
+import java.math.BigDecimal;
 import java.text.NumberFormat;
 
 import javax.persistence.Entity;
@@ -101,6 +102,30 @@ public class ContaPagarEntity extends ContaPagar {
 		else
 			setContaPagaDesc("NÃO");	
 	}
+	
+	/**
+	 * Utilizado em ContaPagarDAO.recuperaListaContasAPagar
+	 * @param id
+	 * @param favorecidoNome
+	 * @param formaPagamentoDescricao
+	 * @param valorPagar
+	 */
+	public ContaPagarEntity(Long id, BigDecimal valorPagar, String favorecidoNome, String formaPagamentoDescricao ) {
+		setId(id);
+		if (getFavorecido() == null){
+			setFavorecido(new FornecedorEntity());
+		}
+		getFavorecido().setNome(favorecidoNome);
+		if (getPlanoContas() == null){
+			setPlanoContas(new PlanoContasEntity());
+		}
+		if (getFormaPagamento() == null){
+			setFormaPagamento(new FormaPagamentoEntity());
+		}
+		getFormaPagamento().setDescricao(formaPagamentoDescricao);
+		setValorPagar(valorPagar);
+	}
+	
 	public String getContaPagaDesc() {
 		return contaPagaDesc;
 	}

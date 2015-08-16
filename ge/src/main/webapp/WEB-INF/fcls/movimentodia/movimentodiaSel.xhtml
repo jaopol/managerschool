@@ -15,11 +15,14 @@
 			<plcf:iteracao id="contasAPagar" value="#{plcAction.contasPagar}" var="contasapagar" varStatus="pagar">
 		
 				<plcf:linha rendered="#{pagar.index == 0}">
-					<plcf:celula width="50px">
+					<plcf:celula width="100px">
 						<plcf:titulo titulo="Nome do Favorecido"/>
 					</plcf:celula>
-					<plcf:celula width="300px">
+					<plcf:celula width="250px">
 						<plcf:titulo titulo="Valor Pago"/>
+					</plcf:celula>
+					<plcf:celula width="300px">
+						<plcf:titulo titulo="Forma Pagamento"/>
 					</plcf:celula>
 				</plcf:linha>
 			
@@ -30,6 +33,9 @@
 					<plcf:celula>
 						<plcf:exibe value="#{contasapagar.valorTotalFormatado}"/>
 					</plcf:celula>
+					<plcf:celula>
+						<plcf:exibe value="#{contasapagar.formaPagamento.descricao}"/>
+					</plcf:celula>
 				</plcf:linha>
 				
 				<plcf:linha styleClass="linhaimpar" rendered="#{pagar.index mod 2 != 0}">
@@ -38,6 +44,9 @@
 					</plcf:celula>
 					<plcf:celula>
 						<plcf:exibe value="#{contasapagar.valorTotalFormatado}"/>
+					</plcf:celula>
+					<plcf:celula>
+						<plcf:exibe value="#{contasapagar.formaPagamento.descricao}"/>
 					</plcf:celula>
 				</plcf:linha>
 				
@@ -56,11 +65,14 @@
 			<plcf:iteracao id="contasAReceber" value="#{plcAction.contasReceber}" var="contasAReceber" varStatus="receber">
 			
 				<plcf:linha rendered="#{receber.index == 0}">
-					<plcf:celula width="50px">
+					<plcf:celula width="100px">
 						<plcf:titulo titulo="Nome do Aluno"/>
 					</plcf:celula>
-					<plcf:celula width="300px">
+					<plcf:celula width="250px">
 						<plcf:titulo titulo="Valor Recebido"/>
+					</plcf:celula>
+					<plcf:celula width="300px">
+						<plcf:titulo titulo="Forma Recebimento"/>
 					</plcf:celula>
 				</plcf:linha>
 			
@@ -71,6 +83,9 @@
 					<plcf:celula>
 						<plcf:exibe value="#{contasAReceber.valorTotalFormatado}"/>
 					</plcf:celula>
+					<plcf:celula>
+						<plcf:exibe value="#{contasAReceber.formaRecebimento.descricao}"/>
+					</plcf:celula>
 				</plcf:linha>
 				
 				<plcf:linha styleClass="linhaimpar" rendered="#{receber.index mod 2 != 0}">
@@ -79,6 +94,9 @@
 					</plcf:celula>
 					<plcf:celula>
 						<plcf:exibe value="#{contasAReceber.valorTotalFormatado}"/>
+					</plcf:celula>
+					<plcf:celula>
+						<plcf:exibe value="#{contasAReceber.formaRecebimento.descricao}"/>
 					</plcf:celula>
 				</plcf:linha>
 				

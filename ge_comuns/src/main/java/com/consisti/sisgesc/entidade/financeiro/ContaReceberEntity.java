@@ -168,4 +168,25 @@ public class ContaReceberEntity extends ContaReceber {
 		setDataRecebimento(dataRecebimento);
 		setDataVencimento(dataVencimento);
 	}
+	
+	
+	/**
+	 * Utilizado em ContaReceberDAO.recuperaListaContasAReceber
+	 * @param id
+	 * @param nomeAluno
+	 * @param formaRecebimentoDescricao
+	 * @param valorTotal
+	 */
+	public ContaReceberEntity(Long id, BigDecimal valorTotal,  String nomeAluno, String formaRecebimentoDescricao ) {
+		setId(id);
+		if (getAluno() == null){
+			setAluno(new AlunoEntity());
+		}
+		getAluno().setNomeAluno(nomeAluno);
+		if (getFormaRecebimento() == null){
+			setFormaRecebimento(new FormaPagamentoEntity());
+		}
+		getFormaRecebimento().setDescricao(formaRecebimentoDescricao);
+		setValorTotal(valorTotal);
+	}
 }

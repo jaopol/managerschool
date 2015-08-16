@@ -168,12 +168,12 @@ public class MovimentoDiaAction extends RelatorioActionPlc  {
 		}
 		
 		PlcArgVO bancoArg = listaArgumentos.get("banco");
-		BancoEntity banco = null;
-		if( bancoArg != null && bancoArg.getValorObjeto() != null ){
-			banco = (BancoEntity)bancoArg.getValorObjeto();
+		Long idBanco = null;
+		if( bancoArg != null && StringUtils.isNotBlank( bancoArg.getValor() ) ){
+			idBanco = Long.parseLong( bancoArg.getValor() );
 		}
 		
-		MovimentoDiaEntity movimentoDia = movimentoDia = getFachada().recuperaMovimentoExistente(dataMovimento);;
+		MovimentoDiaEntity movimentoDia = getFachada().recuperaMovimentoExistente(dataMovimento);;
 		
 		if (movimentoDia  == null){
 			movimentoDia = new MovimentoDiaEntity();
@@ -181,9 +181,11 @@ public class MovimentoDiaAction extends RelatorioActionPlc  {
 		
 		entidadePlc = movimentoDia;
 		
-		getFachada().pesquisaMovimentoDia(movimentoDia, dataMovimento, banco );
+		getFachada().pesquisaMovimentoDia(movimentoDia, dataMovimento, idBanco );
 		
 		if (movimentoDia.getContasPagar().isEmpty() && movimentoDia.getContasReceber().isEmpty()){
+			setContasPagar(new ArrayList<ContaPagar>());
+			setContasReceber(new ArrayList<ContaReceber>());
 			throw new PlcException("erro.pesquisa.movimento");
 		}
 		

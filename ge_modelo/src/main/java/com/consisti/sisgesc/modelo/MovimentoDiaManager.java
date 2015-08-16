@@ -28,10 +28,10 @@ public class MovimentoDiaManager extends AppManager {
 		this.contaReceberDAO = contaReceberDAO;
 	}
 	
-	public void pesquisaMovimentoDia(MovimentoDiaEntity movimentoDia, Date date, BancoEntity banco) {
+	public void pesquisaMovimentoDia(MovimentoDiaEntity movimentoDia, Date date, Long idBanco) {
 		
-		List<ContaPagar> recuperaListaContasAPagar = contaPagarDAO.recuperaListaContasAPagar(date, banco);
-		List<ContaReceber> recuperaListaContasAReceber = contaReceberDAO.recuperaListaContasAReceber(date, banco);
+		List<ContaPagar> recuperaListaContasAPagar = contaPagarDAO.recuperaListaContasAPagar(date, idBanco);
+		List<ContaReceber> recuperaListaContasAReceber = contaReceberDAO.recuperaListaContasAReceber(date, idBanco);
 		
 		movimentoDia.setContasPagar(recuperaListaContasAPagar);
 		movimentoDia.setContasReceber(recuperaListaContasAReceber);

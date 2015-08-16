@@ -30,12 +30,20 @@ public class ContaReceberDAO extends AppBaseDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<ContaReceber> recuperaListaContasAReceber(Date date, BancoEntity banco) {
+	public List<ContaReceber> recuperaListaContasAReceber(Date date, Long idBanco) {
 		
 		StringBuffer str = new StringBuffer(); 
-		str.append(" from ContaReceberEntity obj where obj.dataRecebimento = :data ");
+		str.append(" SELECT new ContaReceberEntity( ");
+		str.append(" obj.id, ");
+		str.append(" obj.valorTotal, ");
+		str.append(" alu.nomeAluno, ");
+		str.append(" pg.descricao ) ");
+		str.append(" from ContaReceberEntity obj ");
+		str.append(" join obj.aluno alu ");
+		str.append(" join obj.formaRecebimento pg ");
+		str.append(" where obj.dataRecebimento =:data ");
 		
-		if(banco != null ){
+		if(idBanco != null ){
 			str.append(" and obj.banco.id =:idBanco " );
 		}
 		
@@ -43,8 +51,8 @@ public class ContaReceberDAO extends AppBaseDAO {
 			Query query = getSession().createQuery(str.toString());
 			query.setParameter("data", date);
 			
-			if( banco != null ){
-				query.setParameter("idBanco", banco.getId() );
+			if( idBanco != null ){
+				query.setParameter("idBanco", idBanco );
 			}
 			
 			return query.list();

@@ -15,6 +15,10 @@
 					<plcf:titulo titulo="Data Movimento"/>  
 					<plcf:data id="dataMovimento" obrigatorio="S" value="#{plcLogicaItens.argumentos.dataMovimento.valor}" ajudaChave="ajuda.data.movimento"/> 
 				</plcf:celula> 
+				<plcf:celula > 
+					<plcf:titulo tituloChave="label.banco"/>  
+					<plcf:comboDinamico id="banco" value="#{plcLogicaItens.argumentos.banco.valor}"  dominio="BancoEntity" ajudaChave="ajuda.banco"  exibeBranco="S" /> 
+				</plcf:celula> 
 			</plcf:linha> 
 		</plcf:tabela> 
 	</ui:composition> 

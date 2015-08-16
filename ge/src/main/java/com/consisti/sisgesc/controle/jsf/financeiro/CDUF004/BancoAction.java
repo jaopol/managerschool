@@ -33,6 +33,13 @@ public class BancoAction extends AppAction  {
 		
 		return super.gravaSimplesAntes();
 	}
+	
+	@Override
+	protected void gravaSimplesApos() throws PlcException {
+		super.gravaSimplesApos();
+		getServiceClasseLookup().recuperaUmaClasseLookupDaPersistenciaParaCache(BancoEntity.class, "obj.bancoSuportado asc", null);
+		//atualizaClassesLookupDoBanco();
+	}
 
 	/**
 	 * Utilizado para garantir que a agencia da conta tera somente numero com . e - caso necessario
@@ -86,4 +93,5 @@ public class BancoAction extends AppAction  {
 		
 		return super.pesquisaApos();
 	}
+	
 }
