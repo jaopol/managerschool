@@ -20,21 +20,34 @@
 					<plcf:titulo tituloChave="label.recebido"/>  
 					<plcf:comboDinamico id="recebido" value="#{plcLogicaItens.argumentos.recebido.valor}" dominio="PlcSimNao" ajudaChave="ajuda.recebido" exibeBranco="S"/> 
 				</plcf:celula> 
-			</plcf:linha> 
-			
-			<plcf:linha> 
-				<plcf:celula > 
+				<plcf:celula> 
 					<plcf:titulo tituloChave="label.boletoGerado"/>  
 					<plcf:comboDinamico id="boletoGerado" value="#{plcLogicaItens.argumentos.boletoGerado.valor}" dominio="PlcSimNao" ajudaChave="ajuda.boletoGerado" exibeBranco="S"/> 
 				</plcf:celula> 
-				<plcf:celula> 
-					<plcf:titulo tituloChave="label.dataVencimento"/>  
-					<plcf:data id="dataVencimento" value="#{plcLogicaItens.argumentos.dataVencimento_ArgINI.valor}" ajudaChave="ajuda.dataVencimento"/> 
-				</plcf:celula> 
-				<plcf:celula> 
-					<plcf:titulo tituloChave="label.dataRecebimento"/>  
-					<plcf:data id="dataRecebimento" value="#{plcLogicaItens.argumentos.dataRecebimento_ArgINI.valor}" ajudaChave="ajuda.dataRecebimento"/> 
-				</plcf:celula> 
+			</plcf:linha> 
+			
+			<plcf:linha> 
+					<plcf:celula columnSpan="3"> 
+					<plcf:linha>
+					<plcf:celula>
+						<plcf:titulo tituloChave="label.dataVencimentoDe"/>  
+						<plcf:data id="dataVencimento" value="#{plcLogicaItens.argumentos.dataVencimento_ArgINI.valor}" ajudaChave="ajuda.dataVencimento"/> 
+					</plcf:celula>
+					<plcf:celula width="200px"> 
+						<plcf:titulo tituloChave="label.dataVencimentoFim"/>  
+						<plcf:data id="dataVencimentoFim" value="#{plcLogicaItens.argumentos.dataVencimento_ArgFIM.valor}" ajudaChave="ajuda.dataVencimento"/> 
+					</plcf:celula> 
+					<plcf:celula></plcf:celula>
+					<plcf:celula> 
+						<plcf:titulo tituloChave="label.dataRecebimentoDe"/>  
+						<plcf:data id="dataRecebimento" value="#{plcLogicaItens.argumentos.dataRecebimento_ArgINI.valor}" ajudaChave="ajuda.dataRecebimento"/> 
+					</plcf:celula> 
+					<plcf:celula> 
+						<plcf:titulo tituloChave="label.dataRecebimentoFim"/>  
+						<plcf:data id="dataRecebimentoFim" value="#{plcLogicaItens.argumentos.dataRecebimento_ArgFIM.valor}" ajudaChave="ajuda.dataRecebimento"/>
+					</plcf:celula>	 
+					</plcf:linha>
+					</plcf:celula>
 			</plcf:linha>  
 			
 		</plcf:tabela> 

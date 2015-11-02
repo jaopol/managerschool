@@ -12,22 +12,25 @@
 		<plcf:tabela tituloChave="selecao.lista.titulo" rendered="#{not empty plcLogicaItens.itensPlc}"> 
 			<plcf:linha styleClass="ui-widget-header"> 
 				<plcf:celula header="true" styleClass="cabecalho"> 
-					<plcf:titulo tituloChave="label.aluno">Aluno</plcf:titulo> 
+					<plcf:titulo tituloChave="label.aluno" propOrdenacao="aluno.nomeAluno" ordem="1">Aluno</plcf:titulo> 
 				</plcf:celula>  
 				<plcf:celula header="true" styleClass="cabecalho"> 
 					<plcf:titulo tituloChave="label.valorTotal">Valor total</plcf:titulo> 
 				</plcf:celula>  
-				<plcf:celula header="true" styleClass="cabecalho"> 
-					<plcf:titulo tituloChave="label.dataVencimento">Data vencimento</plcf:titulo> 
+				<plcf:celula header="true" styleClass="cabecalho" > 
+					<plcf:titulo tituloChave="label.dataVencimento" propOrdenacao="dataVencimento" ordem="2">Data vencimento</plcf:titulo> 
 				</plcf:celula> 
 				<plcf:celula header="true" styleClass="cabecalho"> 
-					<plcf:titulo tituloChave="label.dataRecebimento">Data recebimento</plcf:titulo> 
+					<plcf:titulo tituloChave="label.dataRecebimento"  propOrdenacao="dataRecebimento" ordem="3">Data recebimento</plcf:titulo> 
 				</plcf:celula> 
-				<plcf:celula header="true" styleClass="cabecalho"> 
+				<plcf:celula header="true" styleClass="cabecalho" > 
 					<plcf:titulo tituloChave="label.boletoGerado">Boleto Gerado</plcf:titulo> 
 				</plcf:celula> 
 				<plcf:celula header="true" styleClass="cabecalho"> 
 					<plcf:titulo tituloChave="label.recebido">Recebido</plcf:titulo> 
+				</plcf:celula> 
+				<plcf:celula header="true" styleClass="cabecalho"> 
+					<plcf:titulo tituloChave="label.banco">banco</plcf:titulo> 
 				</plcf:celula> 
 			</plcf:linha>  
 			<plcf:iteracao id="plcLogicaItens" value="#{plcLogicaItens.itensPlc}"> 
@@ -50,8 +53,22 @@
 					<plcf:celula styleClass="campo"> 
 						<plcf:exibe value="#{item.recebidoStr}">Recebido</plcf:exibe> 
 					</plcf:celula> 
+					<plcf:celula styleClass="campo"> 
+						<plcf:exibe value="#{item.bancoSuportadoAux.descricao}">bancoSuportadoAux</plcf:exibe> 
+					</plcf:celula> 
 				</plcf:linhaSelecao> 
-			</plcf:iteracao> 
+			</plcf:iteracao>
+			
+			<plcf:linha>&nbsp;</plcf:linha>
+			<plcf:linha inlineStyle="background:#D4E0E4;">
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.totalPesquisaContaReceber"/>
+				</plcf:celula>
+				<plcf:celula columnSpan="6">
+					<plcf:exibe id="valorTotalPesquisa" value="#{plcAction.valorTotalPesquisa}" />
+				</plcf:celula>
+			</plcf:linha>
+			
 		</plcf:tabela> 
 	</ui:composition> 
 </html>

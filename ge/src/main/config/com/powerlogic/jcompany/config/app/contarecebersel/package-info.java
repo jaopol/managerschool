@@ -18,8 +18,10 @@
 						@PlcConfigArgumento(propriedade="aluno", operador=Operador.IGUAL_A, formato=Formato.STRING),
 						@PlcConfigArgumento(propriedade="recebido", operador=Operador.IGUAL_A, formato=Formato.STRING),
 						@PlcConfigArgumento(propriedade="boletoGerado", operador=Operador.IGUAL_A, formato=Formato.STRING),
-						@PlcConfigArgumento(propriedade="dataVencimento_ArgINI", operador=Operador.IGUAL_A, formato=Formato.DATE),
-						@PlcConfigArgumento(propriedade="dataRecebimento_ArgINI", operador=Operador.IGUAL_A, formato=Formato.DATE)
+						@PlcConfigArgumento(propriedade="dataVencimento_ArgINI", operador=Operador.MAIOR_OU_IGUAL_QUE, formato=Formato.DATE),
+						@PlcConfigArgumento(propriedade="dataVencimento_ArgFIM", operador=Operador.MENOR_OU_IGUAL_QUE, formato=Formato.DATE),
+						@PlcConfigArgumento(propriedade="dataRecebimento_ArgINI", operador=Operador.MAIOR_OU_IGUAL_QUE, formato=Formato.DATE),
+						@PlcConfigArgumento(propriedade="dataRecebimento_ArgFIM", operador=Operador.MENOR_OU_IGUAL_QUE, formato=Formato.DATE)
 			})
 
 )

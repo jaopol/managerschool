@@ -1,9 +1,12 @@
 package com.consisti.sisgesc.controle.jsf.financeiro.CDUF006;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.jrimum.bopepo.Boleto;
 import org.jrimum.bopepo.view.BoletoViewer;
 
@@ -11,7 +14,9 @@ import com.consisti.sisgesc.controle.jsf.AppAction;
 import com.consisti.sisgesc.dominio.TipoContaReceber;
 import com.consisti.sisgesc.entidade.financeiro.ContaReceberEntity;
 import com.consisti.sisgesc.facade.IAppFacade;
+import com.powerlogic.jcompany.comuns.PlcBaseVO;
 import com.powerlogic.jcompany.comuns.PlcException;
+import com.powerlogic.jcompany.config.comuns.PlcConstantes.IMPRESSAO;
 import com.powerlogic.jcompany.config.comuns.PlcConstantes.PlcJsfConstantes.NAVEGACAO;
 import com.powerlogic.jcompany.controle.PlcConstantes;
 import com.powerlogic.jcompany.dominio.tipo.PlcSimNao;
@@ -23,6 +28,8 @@ import com.powerlogic.jcompany.dominio.tipo.PlcSimNao;
 public class ContaReceberAction extends AppAction  {
 	
 	private SimpleDateFormat formataDataGravar = new SimpleDateFormat("dd_MM_yyyy");
+	
+	private BigDecimal valorTotalPesquisa;
 	
 	/* (non-Javadoc)
 	 * @see com.consisti.sisgesc.controle.jsf.AppAction#trataBotoesConformeLogicaApos()
@@ -231,4 +238,25 @@ public class ContaReceberAction extends AppAction  {
 		return NAVEGACAO.IND_MESMA_PAGINA;
 	}
 	
+	@Override
+	protected String pesquisaApos() throws PlcException {
+		
+		List<PlcBaseVO> itensPlc = logicaItensPlc.getItensPlc();
+		if( itensPlc != null && !itensPlc.isEmpty() ){
+			setValorTotalPesquisa(BigDecimal.ZERO);
+			for (PlcBaseVO plcBaseVO : itensPlc) {
+				setValorTotalPesquisa( getValorTotalPesquisa().add( ((ContaReceberEntity)plcBaseVO).getValorTotal() ) );
+			}
+		}
+		
+		return super.pesquisaApos();
+	}
+
+	public BigDecimal getValorTotalPesquisa() {
+		return valorTotalPesquisa;
+	}
+
+	public void setValorTotalPesquisa(BigDecimal valorTotalPesquisa) {
+		this.valorTotalPesquisa = valorTotalPesquisa;
+	}
 }
