@@ -14,6 +14,7 @@ import javax.persistence.Transient;
 
 import org.hibernate.annotations.AccessType;
 
+import com.consisti.sisgesc.dominio.BancoSuportado;
 import com.consisti.sisgesc.entidade.Aluno;
 import com.consisti.sisgesc.entidade.AlunoEntity;
 import com.powerlogic.jcompany.comuns.anotacao.PlcIoC;
@@ -34,7 +35,7 @@ import com.consisti.sisgesc.entidade.financeiro.FormaPagamentoEntity;
 	@NamedQuery(name="ContaReceberEntity.querySel3", query="select new ContaReceberEntity(obj.id, obj.aluno.id , obj.aluno.nomeAluno, obj.formaRecebimento.id , obj.formaRecebimento.descricao, obj.valorTotal, obj.dataRecebimento, obj.dataVencimento) from ContaReceberEntity obj left outer join obj.aluno left outer join obj.formaRecebimento order by obj.id asc"),
 	@NamedQuery(name="ContaReceberEntity.querySel2", query="select new ContaReceberEntity(obj.id, obj.aluno.id , obj.aluno.nomeAluno, obj.banco.id , obj.banco.agencia, obj.valorTotal, obj.dataVencimento) from ContaReceberEntity obj left outer join obj.aluno left outer join obj.banco order by obj.id asc"),
 	@NamedQuery(name="ContaReceberEntity.queryMan", query="from ContaReceberEntity obj"),
-	@NamedQuery(name="ContaReceberEntity.querySel", query="select new ContaReceberEntity(obj.id, obj.aluno.id , obj.aluno.nomeAluno, obj.valorTotal, obj.dataVencimento, obj.dataRecebimento, obj.boletoGerado, obj.recebido) from ContaReceberEntity obj left outer join obj.aluno order by obj.dataVencimento desc, obj.aluno asc"),
+	@NamedQuery(name="ContaReceberEntity.querySel", query="select new ContaReceberEntity(obj.id, obj.aluno.id , obj.aluno.nomeAluno, obj.valorTotal, obj.dataVencimento, obj.dataRecebimento, obj.boletoGerado, obj.recebido, ban.bancoSuportado) from ContaReceberEntity obj left outer join obj.aluno left join obj.banco ban order by obj.dataRecebimento, obj.aluno.nomeAluno, obj.dataVencimento "),
 	@NamedQuery(name="ContaReceberEntity.querySelLookup", query="select new ContaReceberEntity (obj.id, obj.aluno) from ContaReceberEntity obj where obj.id = ? order by obj.id asc")
 })
 public class ContaReceberEntity extends ContaReceber {
@@ -43,6 +44,8 @@ public class ContaReceberEntity extends ContaReceber {
 	private transient String recebidoStr;
 	
 	private transient Boolean geraRemessa;
+	
+	private transient BancoSuportado bancoSuportadoAux;
 	
     /*
      * Construtor padrão
@@ -108,6 +111,35 @@ public class ContaReceberEntity extends ContaReceber {
 			setRecebidoStr( "NÃO" );
 		}
 	}
+
+	//obj.id, obj.aluno.id , obj.aluno.nomeAluno, obj.valorTotal, obj.dataVencimento, obj.dataRecebimento, obj.boletoGerado, obj.recebido, obj.banco.bancoSuportado
+	public ContaReceberEntity(Long id, Long alunoId, String alunoNome, BigDecimal valorTotal, Date dataVencimento, Date dataRecebimento, PlcSimNao boletoGerado, PlcSimNao recebido, BancoSuportado bancoSuportado) {
+		setId(id);
+		if (getAluno() == null){
+			setAluno(new AlunoEntity());
+		}
+		getAluno().setId(alunoId);
+		getAluno().setNomeAluno(alunoNome);
+		setValorTotal(valorTotal);
+		setDataVencimento(dataVencimento);
+		setDataRecebimento(dataRecebimento);
+		if( PlcSimNao.S.equals( boletoGerado ) ){
+			setBoletoGeradoStr( "SIM" );
+		}
+		else{
+			setBoletoGeradoStr( "NÃO" );
+		}
+		
+		if( PlcSimNao.S.equals( recebido ) ){
+			setRecebidoStr( "SIM" );
+		}
+		else{
+			setRecebidoStr( "NÃO" );
+		}
+		setBancoSuportadoAux(bancoSuportado);
+		
+	}
+	
 	public String getBoletoGeradoStr() {
 		return boletoGeradoStr;
 	}
@@ -168,9 +200,7 @@ public class ContaReceberEntity extends ContaReceber {
 		setDataRecebimento(dataRecebimento);
 		setDataVencimento(dataVencimento);
 	}
-	
-	
-	/**
+/**
 	 * Utilizado em ContaReceberDAO.recuperaListaContasAReceber
 	 * @param id
 	 * @param nomeAluno
@@ -189,4 +219,12 @@ public class ContaReceberEntity extends ContaReceber {
 		getFormaRecebimento().setDescricao(formaRecebimentoDescricao);
 		setValorTotal(valorTotal);
 	}
+public BancoSuportado getBancoSuportadoAux() {
+		return bancoSuportadoAux;
+	}
+	public void setBancoSuportadoAux(BancoSuportado bancoSuportadoAux) {
+		this.bancoSuportadoAux = bancoSuportadoAux;
+	}
+
+
 }
