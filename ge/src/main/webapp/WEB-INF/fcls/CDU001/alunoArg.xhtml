@@ -31,8 +31,8 @@
 					<plcf:texto id="nomeAluno" value="#{plcLogicaItens.argumentos.nomeAluno.valor}"    ajudaChave="ajuda.nomeAluno" />
 				</plcf:celula>
 				<plcf:celula>
-					<plcf:titulo tituloChave="label.cpfResponsavelFinanceiro"/>
-					<plcf:texto id="cpfResponsavelFinanceiro" value="#{plcLogicaItens.argumentos.cpfResponsavelFinanceiro.valor}"    ajudaChave="ajuda.cpfResponsavelFinanceiro"  onkeydown="mascara(this,cpf)" tamanho="14" tamanhoMaximo="14"/>				
+					<plcf:titulo tituloChave="label.status"/>
+					<plcf:comboDinamico id="status" value="#{plcLogicaItens.argumentos.status.valor}"  dominio="AtivoInativo" exibeBranco="S" ajudaChave="ajuda.status" />				
 				</plcf:celula>
 			</plcf:linha>
 		</plcf:tabela>

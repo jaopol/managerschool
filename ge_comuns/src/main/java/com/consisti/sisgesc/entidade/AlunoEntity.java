@@ -34,7 +34,7 @@ import com.powerlogic.jcompany.dominio.tipo.PlcSimNao;
 
 @SuppressWarnings("serial")
 @NamedQueries({
-	@NamedQuery(name="AlunoEntity.querySel4", query="select new AlunoEntity(obj.id, obj.nomeAluno ) from AlunoEntity obj order by obj.nomeAluno asc"),
+	@NamedQuery(name="AlunoEntity.querySel4", query="select new AlunoEntity(obj.id, obj.nomeAluno ) from AlunoEntity obj where obj.status = 'A' order by obj.nomeAluno asc"),
 	@NamedQuery(name="AlunoEntity.querySel3", query="select new AlunoEntity(obj.id, obj.matricula, obj.sexo) from AlunoEntity obj order by obj.id asc"),
 	@NamedQuery(name="AlunoEntity.querySel2", query="select new AlunoEntity(obj.id, obj.matricula, obj.nomeAluno) from AlunoEntity obj where obj.tipoEducacao = 'F' order by obj.nomeAluno asc"),
 	@NamedQuery(name="AlunoEntity.queryMan", query="from AlunoEntity obj"),
