@@ -14,6 +14,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.TimeZone;
 
 import javax.faces.event.ValueChangeEvent;
@@ -41,6 +42,7 @@ import com.consisti.sisgesc.entidade.SaudeAluno;
 import com.consisti.sisgesc.entidade.ServicoAluno;
 import com.consisti.sisgesc.entidade.ServicoAlunoEntity;
 import com.consisti.sisgesc.facade.IAppFacade;
+import com.powerlogic.jcompany.comuns.PlcArgVO;
 import com.powerlogic.jcompany.comuns.PlcException;
 import com.powerlogic.jcompany.config.comuns.PlcConstantes;
 import com.powerlogic.jcompany.config.comuns.PlcConstantes.PlcJsfConstantes.NAVEGACAO;
@@ -56,13 +58,15 @@ public class AlunoAction extends RelatorioActionPlc  {
 	private UploadedFile fotoAluno;
 	private Calendar dataBaseContrato;
 	
+	private boolean popup;
+	
 	/* (non-Javadoc)
 	 * @see com.powerlogic.jcompany.controle.jsf.PlcBaseJsfAction#trataBotoesConformeLogicaApos()
 	 */
 	@Override
 	protected void trataBotoesConformeLogicaApos() throws PlcException {
-		trataBotoes();
 		super.trataBotoesConformeLogicaApos();
+		trataBotoes();
 	}
 	
 	/* (non-Javadoc)
@@ -513,6 +517,46 @@ public class AlunoAction extends RelatorioActionPlc  {
 		}
 	}
 	
+	@Override
+	protected Map<String, PlcArgVO> montaMapaArgumentosApos(
+			Map<String, PlcArgVO> argumentos) throws PlcException {
+		//utilizado quando popup
+		if( "S".equals( contextHelperPlc.getRequestParameter("alunoPopup") ) ){
+			if (argumentos != null) {
+				Collection<PlcArgVO> values = argumentos.values();
+				for (PlcArgVO plcArgVO : values) {
+					if( "status".equals( plcArgVO.getNome() ) ){
+						plcArgVO.setValorObjeto(AtivoInativo.A);
+						plcArgVO.setValor(AtivoInativo.A.getCodigo());
+						break;
+					}
+				}
+			}
+			
+		}
+		
+		return super.montaMapaArgumentosApos(argumentos);
+	}
+	
+	@Override
+	protected String limpaArgsApos() throws PlcException {
+		
+		if( "S".equals( contextHelperPlc.getRequestParameter("alunoPopup") ) ){
+			List<PlcArgVO> argumentos = montaListaArgumentosPesquisa();
+			if (argumentos != null) {
+				for (PlcArgVO plcArgVO : argumentos) {
+					if( "status".equals( plcArgVO.getNome() ) ){
+						plcArgVO.setValorObjeto(AtivoInativo.A);
+						plcArgVO.setValor(AtivoInativo.A.getCodigo());
+						break;
+					}
+				}
+			}
+		}
+		
+		return super.limpaArgsApos();
+	}
+	
 	@SuppressWarnings("unchecked")
 	public void geraRelatorioPlc() throws PlcException {
 		
@@ -745,6 +789,14 @@ public class AlunoAction extends RelatorioActionPlc  {
 
 	public void setDataBaseContrato(Calendar dataBaseContrato) {
 		this.dataBaseContrato = dataBaseContrato;
+	}
+
+	public boolean isPopup() {
+		return popup;
+	}
+
+	public void setPopup(boolean popup) {
+		this.popup = popup;
 	}
 
 }

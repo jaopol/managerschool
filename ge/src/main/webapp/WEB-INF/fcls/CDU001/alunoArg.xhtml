@@ -30,7 +30,11 @@
 					<plcf:titulo tituloChave="label.nomeAluno"/>
 					<plcf:texto id="nomeAluno" value="#{plcLogicaItens.argumentos.nomeAluno.valor}"    ajudaChave="ajuda.nomeAluno" />
 				</plcf:celula>
-			</plcf:linha>
+				
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.status"/>
+					<plcf:comboDinamico id="status" value="#{plcLogicaItens.argumentos.status.valor}"  dominio="AtivoInativo" exibeBranco="S" ajudaChave="ajuda.status" />				
+				</plcf:celula>			</plcf:linha>
 		</plcf:tabela>
 
 	</ui:composition> 

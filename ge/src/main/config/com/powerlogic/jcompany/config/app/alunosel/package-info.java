@@ -19,7 +19,7 @@
 						@PlcConfigArgumento(propriedade="tipoEducacao", operador=Operador.IGUAL_A, formato=Formato.STRING),
 						@PlcConfigArgumento(propriedade="turma", operador=Operador.IGUAL_A, formato=Formato.STRING),
 						@PlcConfigArgumento(propriedade="nomeAluno", operador=Operador.LIKE_PERC_FINAL, formato=Formato.STRING),
-						@PlcConfigArgumento(propriedade="cpfResponsavelFinanceiro", operador=Operador.IGUAL_A, formato=Formato.STRING)
+						@PlcConfigArgumento(propriedade="status", operador=Operador.IGUAL_A, formato=Formato.STRING)
 			})
 
 )
