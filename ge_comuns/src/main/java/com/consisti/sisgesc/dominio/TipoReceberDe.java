@@ -3,14 +3,14 @@ package com.consisti.sisgesc.dominio;
 /**
  * Enum de domínio discreto gerada automaticamente pelo assistente do jCompany.
  */
-public enum TipoEducacao {
+public enum TipoReceberDe {
     
-	I("INFANTIL") /* tipoEducacao.I=Infantil */,
-	F("FUNDAMENTAL")/* tipoEducacao.F=Fundamental */;
+	A("ALUNO") /* tipoReceberDe.A=Aluno */,
+	O("OUTROS") /* tipoReceberDe.O=Outros */;
 
 	private String descricao;
 	
-	TipoEducacao(String descricao){
+	TipoReceberDe(String descricao){
 		this.descricao = descricao;
 	}
 	

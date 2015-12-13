@@ -12,7 +12,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 
 import com.consisti.sisgesc.comuns.AppConstantesComuns;
@@ -28,6 +27,7 @@ import com.powerlogic.jcompany.dominio.tipo.PlcSimNao;
 /**
  * Classe de Controle gerada pelo assistente
  */
+@SuppressWarnings("serial")
 public class EstoqueAction extends RelatorioActionPlc  {
 	
 	private Date dataInicio;

@@ -2,7 +2,9 @@ package com.consisti.sisgesc.entidade.financeiro;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -14,21 +16,23 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.ForeignKey;
+import org.hibernate.validator.Valid;
 
 import com.consisti.sisgesc.dominio.TipoContaReceber;
+import com.consisti.sisgesc.dominio.TipoReceberDe;
 import com.consisti.sisgesc.entidade.Aluno;
 import com.consisti.sisgesc.entidade.AlunoEntity;
 import com.consisti.sisgesc.entidade.AppBaseEntity;
 import com.powerlogic.jcompany.dominio.tipo.PlcSimNao;
+import com.powerlogic.jcompany.dominio.valida.PlcFormatoSimples;
+import com.powerlogic.jcompany.dominio.valida.PlcValFormatoSimples;
 import com.powerlogic.jcompany.dominio.valida.PlcValidacaoUnificada;
-import java.util.List;
-import javax.persistence.OneToMany;
-import javax.persistence.CascadeType;
-import org.hibernate.validator.Valid;
+import com.powerlogic.jcompany.dominio.valida.PlcValFormatoSimples.FormatoSimples;
 
 @SuppressWarnings("serial")
 @MappedSuperclass
@@ -124,6 +128,14 @@ public abstract class ContaReceber extends AppBaseEntity {
 	@Enumerated(EnumType.STRING)
 	@Column (name = "TIPO_CONTA_RECEBER", length=1)
 	private TipoContaReceber tipoContaReceber;
+	
+	@Enumerated(EnumType.STRING)
+	@Column (name = "TIPO_RECEBER_DE", length=1)
+	private TipoReceberDe tipoReceberDe;
+	
+	@PlcValFormatoSimples(formato=FormatoSimples.MAIUSCULO)
+	@Column (name = "OUTRO", length=50)
+	private String outro;
 	
 	public Long getId() {
 		return id;
@@ -307,6 +319,22 @@ public abstract class ContaReceber extends AppBaseEntity {
 
 	public void setTipoContaReceber(TipoContaReceber tipoContaReceber) {
 		this.tipoContaReceber = tipoContaReceber;
+	}
+
+	public TipoReceberDe getTipoReceberDe() {
+		return tipoReceberDe;
+	}
+
+	public void setTipoReceberDe(TipoReceberDe tipoReceberDe) {
+		this.tipoReceberDe = tipoReceberDe;
+	}
+
+	public String getOutro() {
+		return outro;
+	}
+
+	public void setOutro(String outro) {
+		this.outro = outro;
 	}
 
 }
