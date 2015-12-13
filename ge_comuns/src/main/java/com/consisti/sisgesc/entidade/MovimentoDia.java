@@ -2,29 +2,22 @@ package com.consisti.sisgesc.entidade;
 
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.FetchType;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.hibernate.annotations.ForeignKey;
-
-import com.consisti.sisgesc.entidade.financeiro.ContaPagar;
-import com.consisti.sisgesc.entidade.financeiro.ContaPagarEntity;
-import com.consisti.sisgesc.entidade.financeiro.ContaReceber;
-import com.consisti.sisgesc.entidade.financeiro.ContaReceberEntity;
+import com.powerlogic.jcompany.dominio.tipo.PlcSimNao;
 import com.powerlogic.jcompany.dominio.valida.PlcValidacaoUnificada;
 
 
+@SuppressWarnings("serial")
 @MappedSuperclass
 @PlcValidacaoUnificada
 public abstract class MovimentoDia extends AppBaseEntity {
@@ -51,6 +44,17 @@ public abstract class MovimentoDia extends AppBaseEntity {
 	@Column (name = "DATA_MOVIMENTO", nullable=false, length=11)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataMovimento;
+	
+	@Column (name = "SALDO_DIA_ANTERIOR", length=10, precision=10, scale=2)
+	private BigDecimal saldoDiaAnterior;
+	
+	@Enumerated(EnumType.STRING)
+	@Column (name = "CAIXA_FECHADO", length=1)
+	private PlcSimNao caixaFechado;
+	
+	@Column (name = "DATA_FECHAMENTO", length=11)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataFechamento;
 	
 
 	public Long getId() {
@@ -107,6 +111,30 @@ public abstract class MovimentoDia extends AppBaseEntity {
 
 	public void setValorRetirada(BigDecimal valorRetirada) {
 		this.valorRetirada = valorRetirada;
+	}
+
+	public BigDecimal getSaldoDiaAnterior() {
+		return saldoDiaAnterior;
+	}
+
+	public void setSaldoDiaAnterior(BigDecimal saldoDiaAnterior) {
+		this.saldoDiaAnterior = saldoDiaAnterior;
+	}
+
+	public PlcSimNao getCaixaFechado() {
+		return caixaFechado;
+	}
+
+	public void setCaixaFechado(PlcSimNao caixaFechado) {
+		this.caixaFechado = caixaFechado;
+	}
+
+	public Date getDataFechamento() {
+		return dataFechamento;
+	}
+
+	public void setDataFechamento(Date dataFechamento) {
+		this.dataFechamento = dataFechamento;
 	}
 
 }

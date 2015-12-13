@@ -27,6 +27,7 @@
 
 	<field name="aluno.nomeAluno" class="java.lang.String"/>
 	<field name="valorTotalFormatado" class="java.lang.String"/>
+	<field name="outro" class="java.lang.String"/>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >
@@ -41,42 +42,14 @@
 			</band>
 		</pageHeader>
 		<columnHeader>
-			<band height="18"  isSplitAllowed="true" >
-				<staticText>
-					<reportElement
-						x="100"
-						y="0"
-						width="201"
-						height="18"
-						key="staticText-1"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement verticalAlignment="Middle">
-						<font pdfFontName="Helvetica" isItalic="false" isUnderline="true"/>
-					</textElement>
-				<text><![CDATA[Nome]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						x="301"
-						y="0"
-						width="157"
-						height="18"
-						key="staticText-2"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement verticalAlignment="Middle">
-						<font pdfFontName="Helvetica" isItalic="false" isUnderline="true"/>
-					</textElement>
-				<text><![CDATA[Valor Recebido]]></text>
-				</staticText>
+			<band height="0"  isSplitAllowed="true" >
 			</band>
 		</columnHeader>
 		<detail>
 			<band height="18"  isSplitAllowed="true" >
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="100"
+						x="1"
 						y="0"
 						width="201"
 						height="18"
@@ -85,11 +58,11 @@
 					<textElement verticalAlignment="Middle">
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{aluno.nomeAluno}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{aluno.nomeAluno} != null ? $F{aluno.nomeAluno} : $F{outro}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="301"
+						x="214"
 						y="0"
 						width="157"
 						height="18"

@@ -10,7 +10,7 @@
 		detalhes = {
 			@PlcConfigDetalhe(classe = com.consisti.sisgesc.entidade.financeiro.ContaReceberProdutoVendaEntity.class,
 								nomeColecao = "contaReceberProdutoVenda", numNovos = 4,
-								cardinalidade = "1..*", porDemanda = false,
+								cardinalidade = "0..*", porDemanda = false,
 								propReferenciaDesprezar = "produtoVenda")
 
 

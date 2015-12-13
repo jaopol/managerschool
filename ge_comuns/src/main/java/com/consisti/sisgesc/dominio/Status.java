@@ -5,8 +5,8 @@ package com.consisti.sisgesc.dominio;
  */
 public enum Status {
     
-	A("Ativo"),
-	I("Inativo");
+	A("ATIVO"),
+	I("INATIVO");
 
 	private String descricao;
 	

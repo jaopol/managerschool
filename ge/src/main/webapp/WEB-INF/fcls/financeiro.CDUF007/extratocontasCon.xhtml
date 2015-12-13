@@ -12,10 +12,60 @@
 	<plcf:tabela>
 		<plcf:linha>
 			<plcf:celula >
+				<plcf:tabela tituloChave="extratoContaReceber.titulo" >
+					<plcf:linha  styleClass="ui-widget-header">
+						<plcf:celula styleClass="cabecalho">
+							<plcf:titulo tituloChave="label.descricao"/>
+						</plcf:celula>
+						<plcf:celula styleClass="cabecalho">
+							<plcf:titulo tituloChave="label.dataVencimento"/>
+						</plcf:celula>
+						<plcf:celula styleClass="cabecalho">
+							<plcf:titulo tituloChave="label.dataRecebimento"/>
+						</plcf:celula>
+						<plcf:celula styleClass="cabecalho">
+							<plcf:titulo tituloChave="label.valorTotal"/>
+						</plcf:celula>
+					</plcf:linha>
+					<plcf:iteracao id="plcLogicaItens2" value="#{plcAction.listContaReceber}" >
+					
+						<plcf:linha styleClass="linhapar" rendered="#{plcItensStatus.index mod 2 == 0}">
+							<plcf:celula styleClass="campo">
+								<plcf:exibe value="#{item.descricaoRecebido}" inlineStyle="color:#006600;"/>
+							</plcf:celula>
+							<plcf:celula styleClass="campo">
+								<plcf:exibe value="#{item.dataVencimento}" inlineStyle="color:#006600;"/>
+							</plcf:celula>
+							<plcf:celula styleClass="campo">
+								<plcf:exibe value="#{item.dataRecebimento}" inlineStyle="color:#006600;"/>
+							</plcf:celula>
+							<plcf:celula styleClass="campo">
+								<plcf:exibe value="#{item.valorTotal}" inlineStyle="color:#006600;"/>
+							</plcf:celula>
+						</plcf:linha>
+						<plcf:linha styleClass="linhaimpar" rendered="#{plcItensStatus.index mod 2 != 0}">
+							<plcf:celula styleClass="campo">
+								<plcf:exibe value="#{item.descricaoRecebido}" inlineStyle="color:#006600;"/>
+							</plcf:celula>
+							<plcf:celula styleClass="campo">
+								<plcf:exibe value="#{item.dataVencimento}" inlineStyle="color:#006600;"/>
+							</plcf:celula>
+							<plcf:celula styleClass="campo">
+								<plcf:exibe value="#{item.dataRecebimento}" inlineStyle="color:#006600;"/>
+							</plcf:celula>
+							<plcf:celula styleClass="campo">
+								<plcf:exibe value="#{item.valorTotal}" inlineStyle="color:#006600;"/>
+							</plcf:celula>
+						</plcf:linha>
+						
+					</plcf:iteracao>
+				</plcf:tabela>
+			</plcf:celula>
+			<plcf:celula >
 				<plcf:tabela tituloChave="extratoContaPagar.titulo" >
 					<plcf:linha  styleClass="ui-widget-header">
 						<plcf:celula styleClass="cabecalho">
-							<plcf:titulo tituloChave="label.contaPagar"/>
+							<plcf:titulo tituloChave="label.descricao"/>
 						</plcf:celula>
 						<plcf:celula styleClass="cabecalho">
 							<plcf:titulo tituloChave="label.dataVencimento"/>
@@ -61,75 +111,25 @@
 					</plcf:iteracao>
 				</plcf:tabela>
 			</plcf:celula>
-			<plcf:celula >
-				<plcf:tabela tituloChave="extratoContaReceber.titulo" >
-					<plcf:linha  styleClass="ui-widget-header">
-						<plcf:celula styleClass="cabecalho">
-							<plcf:titulo tituloChave="label.contaReceber"/>
-						</plcf:celula>
-						<plcf:celula styleClass="cabecalho">
-							<plcf:titulo tituloChave="label.dataVencimento"/>
-						</plcf:celula>
-						<plcf:celula styleClass="cabecalho">
-							<plcf:titulo tituloChave="label.dataRecebimento"/>
-						</plcf:celula>
-						<plcf:celula styleClass="cabecalho">
-							<plcf:titulo tituloChave="label.valorTotal"/>
-						</plcf:celula>
-					</plcf:linha>
-					<plcf:iteracao id="plcLogicaItens2" value="#{plcAction.listContaReceber}" >
-					
-						<plcf:linha styleClass="linhapar" rendered="#{plcItensStatus.index mod 2 == 0}">
-							<plcf:celula styleClass="campo">
-								<plcf:exibe value="#{item.aluno.nomeAluno}" inlineStyle="color:#006600;"/>
-							</plcf:celula>
-							<plcf:celula styleClass="campo">
-								<plcf:exibe value="#{item.dataVencimento}" inlineStyle="color:#006600;"/>
-							</plcf:celula>
-							<plcf:celula styleClass="campo">
-								<plcf:exibe value="#{item.dataRecebimento}" inlineStyle="color:#006600;"/>
-							</plcf:celula>
-							<plcf:celula styleClass="campo">
-								<plcf:exibe value="#{item.valorTotal}" inlineStyle="color:#006600;"/>
-							</plcf:celula>
-						</plcf:linha>
-						<plcf:linha styleClass="linhaimpar" rendered="#{plcItensStatus.index mod 2 != 0}">
-							<plcf:celula styleClass="campo">
-								<plcf:exibe value="#{item.aluno.nomeAluno}" inlineStyle="color:#006600;"/>
-							</plcf:celula>
-							<plcf:celula styleClass="campo">
-								<plcf:exibe value="#{item.dataVencimento}" inlineStyle="color:#006600;"/>
-							</plcf:celula>
-							<plcf:celula styleClass="campo">
-								<plcf:exibe value="#{item.dataRecebimento}" inlineStyle="color:#006600;"/>
-							</plcf:celula>
-							<plcf:celula styleClass="campo">
-								<plcf:exibe value="#{item.valorTotal}" inlineStyle="color:#006600;"/>
-							</plcf:celula>
-						</plcf:linha>
-						
-					</plcf:iteracao>
-				</plcf:tabela>
-			</plcf:celula>
 		</plcf:linha>
 	</plcf:tabela>	
 	
 	<plcf:tabela rendered="#{not empty plcAction.listContaReceber or not empty plcAction.listContaPagar}">
-		<plcf:linha width="100%" inlineStyle="background-color:#CC0000;">
-			<plcf:celula width="30%" halign="right" >
-				<plcf:exibe value="Total Contas a Pagar" inlineStyle="color:#FFFFFF; font-size:larger;"/> 
-			</plcf:celula>
-			<plcf:celula width="70%" halign="center" >
-				<plcf:exibe value="#{plcAction.totalContaPagar}" inlineStyle="color:#FFFFFF; font-size:larger;"/>
-			</plcf:celula>
-		</plcf:linha>	
-		<plcf:linha inlineStyle="background-color:#006600;">
+		<plcf:linha width="100%" inlineStyle="background-color:#006600;">
 			<plcf:celula width="30%" halign="right" >
 				<plcf:exibe value="Total Contas a Receber" inlineStyle="color:#FFFFFF; font-size:larger;"/>
 			</plcf:celula>
 			<plcf:celula width="70%" halign="center" >	
 				<plcf:exibe value="#{plcAction.totalContaReceber}" inlineStyle="color:#FFFFFF; font-size:larger;" />
 			</plcf:celula>
+		</plcf:linha>	
+		<plcf:linha  inlineStyle="background-color:#CC0000;">
+			<plcf:celula width="30%" halign="right" >
+				<plcf:exibe value="Total Contas a Pagar" inlineStyle="color:#FFFFFF; font-size:larger;"/> 
+			</plcf:celula>
+			<plcf:celula width="70%" halign="center" >
+				<plcf:exibe value="#{plcAction.totalContaPagar}" inlineStyle="color:#FFFFFF; font-size:larger;"/>
+			</plcf:celula>			
 		</plcf:linha>
 		<plcf:linha>	
 			<plcf:celula width="30%" halign="right">

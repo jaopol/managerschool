@@ -25,6 +25,7 @@ import com.powerlogic.jcompany.comuns.PlcException;
 import com.powerlogic.jcompany.config.comuns.PlcConstantes;
 import com.powerlogic.jcompany.controle.jsf.PlcBaseLogicaArgumento;
 import com.powerlogic.jcompany.controle.jsf.helper.PlcMsgJsfHelper;
+import com.powerlogic.jcompany.dominio.tipo.PlcSimNao;
 import com.powerlogic.jcompany.dominio.valida.PlcMensagem.Cor;
 
 /**
@@ -103,9 +104,23 @@ public class MovimentoDiaAction extends RelatorioActionPlc  {
 		super.geraRelatorio(AppConstantesComuns.RELATORIO.REL_MOVIMENTO_DIA, movimentoDia, map);
 	}
 	
+	/**
+	 * Acionado pelo usuario - botao Fechar Caixa
+	 * @throws PlcException
+	 */
 	public void fecharCaixa() throws PlcException{
 		
 		MovimentoDiaEntity movimentoDia = (MovimentoDiaEntity) entidadePlc;
+		movimentoDia.setDataFechamento(new Date());
+		movimentoDia.setCaixaFechado(PlcSimNao.S);
+		
+		//TODO recuperar saldo anterior
+		
+		fechamentoCaixa(movimentoDia);
+	}
+
+	private void fechamentoCaixa(MovimentoDiaEntity movimentoDia) throws PlcException {
+		
 		
 		if (movimentoDia.getValorRetirada()==null)
 			movimentoDia.setValorRetirada(new BigDecimal(0));
@@ -133,15 +148,6 @@ public class MovimentoDiaAction extends RelatorioActionPlc  {
 		contextHelperPlc.getRequest().setAttribute( "exibir_msg_cx_fechado", null);
 	}
 	
-	private BigDecimal somaSaldoTotal(BigDecimal valorRetirada, BigDecimal saldoDoDia) {
-		if (isValorRecebidoMaiorValorPago()){
-			if (valorRetirada!=null){
-				return saldoDoDia.subtract(valorRetirada);
-			}
-		}
-		return saldoDoDia;
-	}
-
 	private IAppFacade getFachada() {
 		
 		try {
@@ -173,7 +179,7 @@ public class MovimentoDiaAction extends RelatorioActionPlc  {
 			banco = (BancoEntity)bancoArg.getValorObjeto();
 		}
 		
-		MovimentoDiaEntity movimentoDia = movimentoDia = getFachada().recuperaMovimentoExistente(dataMovimento);;
+		MovimentoDiaEntity movimentoDia = getFachada().recuperaMovimentoExistente(dataMovimento);;
 		
 		if (movimentoDia  == null){
 			movimentoDia = new MovimentoDiaEntity();
@@ -196,7 +202,7 @@ public class MovimentoDiaAction extends RelatorioActionPlc  {
 		
 		calculaTotais(movimentoDia);
 		contextHelperPlc.getRequest().setAttribute( "exibir_msg_cx_fechado", PlcConstantes.NAO_EXIBIR );
-		fecharCaixa();
+		fechamentoCaixa(movimentoDia);
 		return "";
 	}
 

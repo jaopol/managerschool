@@ -10,7 +10,7 @@
 	xmlns:tr="http://myfaces.apache.org/trinidad" 
 	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
 	<ui:composition> 
-		<plcf:tabela tituloChave="contareceberdiario.detalhe.titulo.comp"> 
+		<plcf:tabela tituloChave="contareceberdiario.detalhe.titulo.comp" rendered="#{plcEntidade.tipoReceberDe eq 'A'}"> 
 			<plcf:linha> 
 				<plcf:celula header="true" styleClass="cabecalho"/>  
 				<plcf:celula header="true" styleClass="cabecalho" rendered="#{empty requestScope.visualizaDocumentoPlc}"> 

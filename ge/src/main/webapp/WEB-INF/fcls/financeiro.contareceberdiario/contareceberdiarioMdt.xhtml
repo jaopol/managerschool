@@ -10,18 +10,30 @@
 	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
 	<ui:composition> 
 		<plcf:tabela tituloChave="contareceberdiario.mestre.titulo.comp"> 
+			<plcf:linha>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.tipoReceberDe"/>
+					<plcf:radio id="tipoContaReceber" value="#{plcEntidade.tipoReceberDe}" dominio="TipoReceberDe" ajudaChave="label.tipoReceberDe" layout="horizontal" onchange="submit();" disabled="#{plcEntidade.id != null}" />			
+				</plcf:celula>
+			</plcf:linha>
 			<plcf:linha> 
-				<plcf:celula> 
+				<plcf:celula rendered="#{plcEntidade.tipoReceberDe eq 'A'}" > 
 					<plcf:titulo tituloChave="label.aluno"/>  
-					<plcf:vinculado id="aluno" value="#{plcEntidade.aluno}" propSelPop="aluno" idExibe="N" idSomenteLeitura="N" autoRecuperacaoClasse="com.consisti.sisgesc.entidade.AlunoEntity" actionSel="alunosel" modal="S" ajudaChave="ajuda.aluno" onkeydown="selecionaPorTecla(event,this);" lookupTamanho="50" obrigatorio="S" larg="900" alt="630"/> 
-				</plcf:celula>  
+					<plcf:vinculado id="aluno" value="#{plcEntidade.aluno}" propSelPop="aluno" idExibe="N" idSomenteLeitura="N" autoRecuperacaoClasse="com.consisti.sisgesc.entidade.AlunoEntity" actionSel="alunosel" modal="S" ajudaChave="ajuda.aluno" onkeydown="selecionaPorTecla(event,this);" lookupTamanho="50" obrigatorio="S" larg="900" alt="630" /> 
+				</plcf:celula>
+				<plcf:celula rendered="#{plcEntidade.tipoReceberDe eq 'O'}" > 
+					<plcf:titulo tituloChave="label.descricao"/>  
+					<plcf:texto id="outros" value="#{plcEntidade.outro}" ajudaChave="ajuda.outros" obrigatorio="S" tamanho="50" tamanhoMaximo="50"/> 
+				</plcf:celula>
+				
 				<plcf:celula>
 					<plcf:titulo tituloChave="label.dataDocumento"/>  
 					<plcf:exibe id="dataDocumento" value="#{plcEntidade.dataDocumento}" ajudaChave="ajuda.dataDocumento"/> 
 				</plcf:celula>  
 				<plcf:celula> 
 					<plcf:titulo tituloChave="label.valorTotal"/>  
-					<plcf:numerico id="valorTotal" value="#{plcEntidade.valorTotal}" ajudaChave="ajuda.valorTotal" somenteLeitura="S"/> 
+					<plcf:numerico id="valorTotal" value="#{plcEntidade.valorTotal}" ajudaChave="ajuda.valorTotal" somenteLeitura="S" rendered="#{plcEntidade.tipoReceberDe eq 'A'}" /> 
+					<plcf:numerico id="valorTotalOutros" value="#{plcEntidade.valorTotal}" ajudaChave="ajuda.valorTotal" somenteLeitura="N" rendered="#{plcEntidade.tipoReceberDe eq 'O'}" /> 
 				</plcf:celula> 
 			</plcf:linha>  
 			<plcf:linha> 
@@ -29,13 +41,13 @@
 					<plcf:titulo tituloChave="label.dataRecebimento"/>  
 					<plcf:data id="dataRecebimento" value="#{plcEntidade.dataRecebimento}" ajudaChave="ajuda.dataRecebimento"/> 
 				</plcf:celula>  
-				<plcf:celula columnSpan="2">
+				<plcf:celula >
 					<plcf:titulo tituloChave="label.formaRecebimento"/>  
 					<plcf:comboDinamico id="formaRecebimento" value="#{plcEntidade.formaRecebimento}" dominio="FormaPagamentoEntity" exibeBranco="S" ajudaChave="ajuda.formaRecebimento"/> 
 				</plcf:celula> 
 			</plcf:linha>  
 			<plcf:linha> 
-				<plcf:celula columnSpan="3"> 
+				<plcf:celula> 
 					<plcf:titulo tituloChave="label.observacao"/>  
 					<plcf:area id="observacao" value="#{plcEntidade.observacao}" ajudaChave="ajuda.observacao" tamanhoMaximo="200" colunas="50" rows="4"/> 
 				</plcf:celula> 

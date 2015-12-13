@@ -52,6 +52,7 @@
 				com.powerlogic.jcompany.dominio.tipo.PlcSimNao.class,
 				com.consisti.sisgesc.dominio.BancoSuportado.class,
 				com.consisti.sisgesc.dominio.CarteiraBanco.class,
+				com.consisti.sisgesc.dominio.TipoReceberDe.class,
 				com.consisti.sisgesc.dominio.TipoFavorecido.class},
 	classesLookup={
 		com.consisti.sisgesc.entidade.financeiro.BancoEntity.class,

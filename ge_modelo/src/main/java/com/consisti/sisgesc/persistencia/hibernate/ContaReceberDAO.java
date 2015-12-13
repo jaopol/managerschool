@@ -23,7 +23,7 @@ public class ContaReceberDAO extends AppBaseDAO {
 	public List<ContaReceber> recuperarAllContaReceber(Date dataInicio, Date dataFim) throws PlcException{
 		
 		StringBuffer str = new StringBuffer(); 
-		str.append(" from ContaReceberEntity obj where obj.dataVencimento >=:dataInicio and obj.dataVencimento <=:dataFim order by obj.dataVencimento asc, obj.aluno asc");
+		str.append(" from ContaReceberEntity obj where obj.dataRecebimento >=:dataInicio and obj.dataRecebimento <=:dataFim order by obj.dataVencimento asc, obj.aluno asc, obj.outro asc");
 		
 		return getSession().createQuery(str.toString()).setParameter("dataInicio", dataInicio).setParameter("dataFim", dataFim).list();
 		
