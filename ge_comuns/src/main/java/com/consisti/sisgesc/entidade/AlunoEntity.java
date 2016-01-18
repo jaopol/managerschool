@@ -180,7 +180,7 @@ public class AlunoEntity extends Aluno {
 	public String getUfStr(){
 		if (this.getEndereco()!=null){
 			if (!this.getEndereco().isEmpty()){
-				return this.getEndereco().get(0).getUf().name() +" - "+Uf.valueOf(this.getEndereco().get(0).getUf().name()).getDescricao();
+				return this.getEndereco().get(0).getUf().name();
 			} else {
 				return "";
 			}

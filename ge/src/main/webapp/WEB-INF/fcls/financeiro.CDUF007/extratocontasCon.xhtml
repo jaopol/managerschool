@@ -18,6 +18,9 @@
 							<plcf:titulo tituloChave="label.descricao"/>
 						</plcf:celula>
 						<plcf:celula styleClass="cabecalho">
+							<plcf:titulo tituloChave="label.descricao"/>
+						</plcf:celula>
+						<plcf:celula styleClass="cabecalho">
 							<plcf:titulo tituloChave="label.dataVencimento"/>
 						</plcf:celula>
 						<plcf:celula styleClass="cabecalho">
@@ -34,6 +37,9 @@
 								<plcf:exibe value="#{item.descricaoRecebido}" inlineStyle="color:#006600;"/>
 							</plcf:celula>
 							<plcf:celula styleClass="campo">
+								<plcf:exibe value="#{item.descProdVenda}" inlineStyle="color:#006600;"/>
+							</plcf:celula>
+							<plcf:celula styleClass="campo">
 								<plcf:exibe value="#{item.dataVencimento}" inlineStyle="color:#006600;"/>
 							</plcf:celula>
 							<plcf:celula styleClass="campo">
@@ -48,6 +54,9 @@
 								<plcf:exibe value="#{item.descricaoRecebido}" inlineStyle="color:#006600;"/>
 							</plcf:celula>
 							<plcf:celula styleClass="campo">
+								<plcf:exibe value="#{item.descProdVenda}" inlineStyle="color:#006600;"/>
+							</plcf:celula>
+							<plcf:celula styleClass="campo">
 								<plcf:exibe value="#{item.dataVencimento}" inlineStyle="color:#006600;"/>
 							</plcf:celula>
 							<plcf:celula styleClass="campo">
@@ -60,8 +69,7 @@
 						
 					</plcf:iteracao>
 				</plcf:tabela>
-			</plcf:celula>
-			<plcf:celula >
+				
 				<plcf:tabela tituloChave="extratoContaPagar.titulo" >
 					<plcf:linha  styleClass="ui-widget-header">
 						<plcf:celula styleClass="cabecalho">

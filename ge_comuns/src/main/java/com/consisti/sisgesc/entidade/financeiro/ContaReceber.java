@@ -29,7 +29,6 @@ import com.consisti.sisgesc.entidade.Aluno;
 import com.consisti.sisgesc.entidade.AlunoEntity;
 import com.consisti.sisgesc.entidade.AppBaseEntity;
 import com.powerlogic.jcompany.dominio.tipo.PlcSimNao;
-import com.powerlogic.jcompany.dominio.valida.PlcFormatoSimples;
 import com.powerlogic.jcompany.dominio.valida.PlcValFormatoSimples;
 import com.powerlogic.jcompany.dominio.valida.PlcValidacaoUnificada;
 import com.powerlogic.jcompany.dominio.valida.PlcValFormatoSimples.FormatoSimples;

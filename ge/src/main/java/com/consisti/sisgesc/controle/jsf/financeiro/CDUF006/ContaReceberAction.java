@@ -87,7 +87,7 @@ public class ContaReceberAction extends AppAction  {
 		
 		ContaReceberEntity contaReceber = (ContaReceberEntity)entidadePlc;
 		validaDataVencimento( contaReceber.getDataVencimento() );
-
+		contaReceber.setTipoContaReceber(TipoContaReceber.M);
 		if( contaReceber.getBoleto() == null ){
 			contaReceber.setBoletoGerado( PlcSimNao.N );
 		}

@@ -1,9 +1,11 @@
 package com.consisti.sisgesc.entidade.financeiro;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class ExtratoContas {
+@SuppressWarnings("serial")
+public class ExtratoContas implements Serializable {
 	
 	private ContaPagar contaPagar;
 	private ContaReceber contaReceber;

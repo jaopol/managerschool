@@ -23,7 +23,21 @@ public class ContaReceberDAO extends AppBaseDAO {
 	public List<ContaReceber> recuperarAllContaReceber(Date dataInicio, Date dataFim) throws PlcException{
 		
 		StringBuffer str = new StringBuffer(); 
-		str.append(" from ContaReceberEntity obj where obj.dataRecebimento >=:dataInicio and obj.dataRecebimento <=:dataFim order by obj.dataVencimento asc, obj.aluno asc, obj.outro asc");
+		str.append( " Select new ContaReceberEntity ( " );
+		str.append( " aluno.nomeAluno, " );
+		str.append( " obj.outro, " );
+		str.append( " obj.valorTotal, " );
+		str.append( " prodVenda.descricao, " );
+		str.append( " obj.dataVencimento, " );
+		str.append( " obj.dataRecebimento " );
+		str.append( " ) " );
+		str.append(" from ContaReceberEntity obj " );
+		str.append(" left join obj.aluno aluno " );
+		str.append(" left join obj.contaReceberProdutoVenda venda " );
+		str.append(" left join venda.produtoVenda prodVenda " );
+		str.append(" where obj.dataRecebimento >=:dataInicio " );
+		str.append(" and obj.dataRecebimento <=:dataFim " );
+		str.append(" order by obj.dataVencimento asc, obj.aluno asc, obj.outro asc");
 		
 		return getSession().createQuery(str.toString()).setParameter("dataInicio", dataInicio).setParameter("dataFim", dataFim).list();
 		
@@ -42,6 +56,7 @@ public class ContaReceberDAO extends AppBaseDAO {
 		str.append(" join obj.aluno alu ");
 		str.append(" join obj.formaRecebimento pg ");
 		str.append(" where obj.dataRecebimento =:data ");
+		str.append(" and obj.tipoContaReceber = 'D' ");
 		
 		if(idBanco != null ){
 			str.append(" and obj.banco.id =:idBanco " );

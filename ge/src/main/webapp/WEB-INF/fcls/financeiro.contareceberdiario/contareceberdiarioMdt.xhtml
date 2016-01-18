@@ -13,7 +13,7 @@
 			<plcf:linha>
 				<plcf:celula>
 					<plcf:titulo tituloChave="label.tipoReceberDe"/>
-					<plcf:radio id="tipoContaReceber" value="#{plcEntidade.tipoReceberDe}" dominio="TipoReceberDe" ajudaChave="label.tipoReceberDe" layout="horizontal" onchange="submit();" disabled="#{plcEntidade.id != null}" />			
+					<plcf:radio id="tipoContaReceber" value="#{plcEntidade.tipoReceberDe}" dominio="TipoReceberDe" ajudaChave="label.tipoReceberDe" layout="vertical" onchange="submit();" disabled="#{plcEntidade.id != null}" />			
 				</plcf:celula>
 			</plcf:linha>
 			<plcf:linha> 
@@ -21,7 +21,7 @@
 					<plcf:titulo tituloChave="label.aluno"/>  
 					<plcf:vinculado id="aluno" value="#{plcEntidade.aluno}" propSelPop="aluno" idExibe="N" idSomenteLeitura="N" autoRecuperacaoClasse="com.consisti.sisgesc.entidade.AlunoEntity" actionSel="alunosel" modal="S" ajudaChave="ajuda.aluno" onkeydown="selecionaPorTecla(event,this);" lookupTamanho="50" obrigatorio="S" larg="900" alt="630" /> 
 				</plcf:celula>
-				<plcf:celula rendered="#{plcEntidade.tipoReceberDe eq 'O'}" > 
+				<plcf:celula rendered="#{plcEntidade.tipoReceberDe != 'A'}" > 
 					<plcf:titulo tituloChave="label.descricao"/>  
 					<plcf:texto id="outros" value="#{plcEntidade.outro}" ajudaChave="ajuda.outros" obrigatorio="S" tamanho="50" tamanhoMaximo="50"/> 
 				</plcf:celula>
@@ -33,7 +33,7 @@
 				<plcf:celula> 
 					<plcf:titulo tituloChave="label.valorTotal"/>  
 					<plcf:numerico id="valorTotal" value="#{plcEntidade.valorTotal}" ajudaChave="ajuda.valorTotal" somenteLeitura="S" rendered="#{plcEntidade.tipoReceberDe eq 'A'}" /> 
-					<plcf:numerico id="valorTotalOutros" value="#{plcEntidade.valorTotal}" ajudaChave="ajuda.valorTotal" somenteLeitura="N" rendered="#{plcEntidade.tipoReceberDe eq 'O'}" /> 
+					<plcf:numerico id="valorTotalOutros" value="#{plcEntidade.valorTotal}" ajudaChave="ajuda.valorTotal" somenteLeitura="N" rendered="#{plcEntidade.tipoReceberDe != 'A'}" /> 
 				</plcf:celula> 
 			</plcf:linha>  
 			<plcf:linha> 

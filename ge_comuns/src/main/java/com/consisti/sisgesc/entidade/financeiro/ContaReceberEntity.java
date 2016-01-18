@@ -36,7 +36,7 @@ import com.consisti.sisgesc.entidade.financeiro.FormaPagamentoEntity;
 	@NamedQuery(name="ContaReceberEntity.querySel3", query="select new ContaReceberEntity(obj.id, obj.aluno.id , obj.aluno.nomeAluno, obj.formaRecebimento.id , obj.formaRecebimento.descricao, obj.valorTotal, obj.dataRecebimento, obj.dataVencimento, obj.outro) from ContaReceberEntity obj left outer join obj.aluno left outer join obj.formaRecebimento order by obj.id asc"),
 	@NamedQuery(name="ContaReceberEntity.querySel2", query="select new ContaReceberEntity(obj.id, obj.aluno.id , obj.aluno.nomeAluno, obj.banco.id , obj.banco.agencia, obj.valorTotal, obj.dataVencimento) from ContaReceberEntity obj left outer join obj.aluno left outer join obj.banco order by obj.id asc"),
 	@NamedQuery(name="ContaReceberEntity.queryMan", query="from ContaReceberEntity obj"),
-	@NamedQuery(name="ContaReceberEntity.querySel", query="select new ContaReceberEntity(obj.id, obj.aluno.id , obj.aluno.nomeAluno, obj.valorTotal, obj.dataVencimento, obj.dataRecebimento, obj.boletoGerado, obj.recebido, ban.bancoSuportado) from ContaReceberEntity obj left outer join obj.aluno left join obj.banco ban order by obj.dataRecebimento, obj.aluno.nomeAluno, obj.dataVencimento "),
+	@NamedQuery(name="ContaReceberEntity.querySel", query="select new ContaReceberEntity(obj.id, obj.aluno.id , obj.aluno.nomeAluno, obj.valorTotal, obj.dataVencimento, obj.dataRecebimento, obj.boletoGerado, obj.recebido, ban.bancoSuportado) from ContaReceberEntity obj left outer join obj.aluno left join obj.banco ban where obj.tipoContaReceber = 'M' order by obj.dataRecebimento, obj.aluno.nomeAluno, obj.dataVencimento "),
 	@NamedQuery(name="ContaReceberEntity.querySelLookup", query="select new ContaReceberEntity (obj.id, obj.aluno) from ContaReceberEntity obj where obj.id = ? order by obj.id asc")
 })
 public class ContaReceberEntity extends ContaReceber {
@@ -49,6 +49,7 @@ public class ContaReceberEntity extends ContaReceber {
 	private transient BancoSuportado bancoSuportadoAux;
 	
 	private transient String descricaoRecebido;
+	private transient String descProdVenda;
 	
     /*
      * Construtor padrão
@@ -226,14 +227,39 @@ public class ContaReceberEntity extends ContaReceber {
 		getFormaRecebimento().setDescricao(formaRecebimentoDescricao);
 		setValorTotal(valorTotal);
 	}
-public BancoSuportado getBancoSuportadoAux() {
+	
+	/*
+	 * recuperarAllContaReceber
+	 * obj.aluno.nomeAluno, " );
+		str.append( " obj.outro, " );
+		str.append( " obj.dataVencimento, " );
+		str.append( " obj.dataRecebimento, " );
+		str.append( " obj.valorTotal, " );
+		str.append( " produtoVenda.descricao, " );
+		str.append( " produtoVenda.descricao
+	 * *\
+	 */
+	public ContaReceberEntity(String nomeAluno, String outro, BigDecimal valorTotal, String prodVenda, Date dataVencimento, Date dataRecebimento) {
+		if( getAluno() == null ){
+			setAluno(new AlunoEntity());
+		}
+		getAluno().setNomeAluno(nomeAluno);
+		setOutro(outro);
+		setValorTotal(valorTotal);
+		setDescProdVenda(prodVenda);
+		setDataVencimento(dataVencimento);
+		setDataRecebimento(dataRecebimento);
+	}
+	
+	
+	public BancoSuportado getBancoSuportadoAux() {
 		return bancoSuportadoAux;
 	}
 	public void setBancoSuportadoAux(BancoSuportado bancoSuportadoAux) {
 		this.bancoSuportadoAux = bancoSuportadoAux;
 	}
 	public String getDescricaoRecebido() {
-		if( getAluno() != null && getAluno().getId() != null ){
+		if( getAluno() != null && getAluno().getNomeAluno() != null ){
 			return getAluno().getNomeAluno();
 		}
 		else{
@@ -243,4 +269,12 @@ public BancoSuportado getBancoSuportadoAux() {
 	
 	public void setDescricaoRecebido(String descricaoRecebido) {
 		this.descricaoRecebido = descricaoRecebido;
-	}}
+	}
+	public String getDescProdVenda() {
+		return descProdVenda;
+	}
+	public void setDescProdVenda(String descProdVenda) {
+		this.descProdVenda = descProdVenda;
+	}
+	
+}

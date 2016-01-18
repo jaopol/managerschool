@@ -35,11 +35,11 @@ public abstract class Contrato extends AppBaseEntity {
 	@Column (name = "ID_CONTRATO", nullable=false, length=5)
 	private Long id;
 	
-	@Column (name="DATA_INICI0_CONTRATO", nullable=false, length=17)
+	@Column (name="DATA_INICI0_CONTRATO", nullable=false, length=11)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataInicioContrato;
 	
-	@Column (name="DATA_FIM_CONTRATO", nullable=false, length=17)
+	@Column (name="DATA_FIM_CONTRATO", nullable=false, length=11)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataFimContrato;
 	
