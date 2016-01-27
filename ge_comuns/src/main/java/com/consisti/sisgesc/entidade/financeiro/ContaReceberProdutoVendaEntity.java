@@ -58,6 +58,7 @@ public class ContaReceberProdutoVendaEntity extends ContaReceberProdutoVenda {
 		this.setId(id);
 		this.setProdutoVenda(produtoVenda);
 	}
+	
 	@Override
 	public String toString() {
 		return getProdutoVendaAux();

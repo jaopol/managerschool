@@ -8,6 +8,7 @@ import org.hibernate.Query;
 
 import com.consisti.sisgesc.entidade.financeiro.BancoEntity;
 import com.consisti.sisgesc.entidade.financeiro.ContaReceber;
+import com.consisti.sisgesc.entidade.financeiro.ContaReceberEntity;
 import com.consisti.sisgesc.persistencia.AppBaseDAO;
 import com.powerlogic.jcompany.comuns.PlcException;
 
@@ -43,6 +44,12 @@ public class ContaReceberDAO extends AppBaseDAO {
 		
 	}
 
+	/**
+	 * Recupera as contas a receber diarias dos alunos.
+	 * @param date
+	 * @param idBanco
+	 * @return
+	 */
 	@SuppressWarnings("unchecked")
 	public List<ContaReceber> recuperaListaContasAReceber(Date date, Long idBanco) {
 		
@@ -79,6 +86,49 @@ public class ContaReceberDAO extends AppBaseDAO {
 		}
 		
 		return null;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List recuperarAllContasReceberAluno(Long idAluno, Date dataInicio, Date dataFim) throws PlcException{
+		
+		StringBuffer stb = new StringBuffer();
+		stb.append( " SELECT " );
+		stb.append( "  alu.nomeAluno, " );
+		stb.append( "  pro.descricao, " );
+		stb.append( "  prodVen.quantidadeVendida, " );
+		stb.append( "  prodVen.valorUnitario, " );
+		stb.append( "  prodVen.valorTotal, " );
+		stb.append( "  obj.valorTotal, " );
+		stb.append( "  obj.tipoContaReceber " );
+		stb.append( " FROM " );
+		stb.append( " ContaReceberEntity obj " );
+		stb.append( " LEFT JOIN obj.contaReceberProdutoVenda prodVen " );
+		stb.append( " INNER JOIN obj.aluno alu " );
+		stb.append( " LEFT JOIN prodVen.produtoVenda pro " );
+		stb.append( " WHERE obj.tipoReceberDe = 'A' " );
+		if( idAluno != null ){
+			stb.append( " and alu.id =:idAluno " );
+		}
+		if( dataInicio != null ){
+			stb.append( " and obj.dataRecebimento >=:dataInicio " );
+		}
+		if( dataFim != null ){
+			stb.append( " and obj.dataRecebimento <=:dataFim " );
+		}
+		
+		Query query = getSession().createQuery(stb.toString());
+		
+		if( idAluno != null ){
+			query.setLong("idAluno", idAluno);
+		}
+		if( dataInicio != null ){
+			query.setParameter("dataInicio", dataInicio);
+		}
+		if( dataFim != null ){
+			query.setParameter("dataFim", dataFim);
+		}
+		
+		return query.list();
 		
 	}
 }

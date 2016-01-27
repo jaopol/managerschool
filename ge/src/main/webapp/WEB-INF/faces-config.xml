@@ -1079,6 +1079,24 @@
 		<redirect/> 
 	</navigation-case> 
 </navigation-rule>
+	<navigation-rule> 
+	<display-name>Seleção Extrato Aluno</display-name>  
+	<from-view-id>/n/extratoalunosel</from-view-id>  
+	<navigation-case> 
+		<from-outcome>mesmaPagina</from-outcome>  
+		<to-view-id>/n/extratoalunosel</to-view-id> 
+	</navigation-case>  
+	<navigation-case> 
+		<from-outcome>edita</from-outcome>  
+		<to-view-id>/n/extratoalunocon</to-view-id>  
+		<redirect/> 
+	</navigation-case>  
+	<navigation-case> 
+		<from-outcome>novo</from-outcome>  
+		<to-view-id>/n/extratoalunocon</to-view-id>  
+		<redirect/> 
+	</navigation-case> 
+</navigation-rule>
 	<lifecycle>
 		<phase-listener>com.consisti.sisgesc.controle.listener.AppPhaseListener</phase-listener>
 	</lifecycle>

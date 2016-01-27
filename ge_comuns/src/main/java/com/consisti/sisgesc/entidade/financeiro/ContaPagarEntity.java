@@ -29,7 +29,7 @@ import com.powerlogic.jcompany.dominio.tipo.PlcSimNao;
 @SuppressWarnings("serial")
 @NamedQueries({
 	@NamedQuery(name="ContaPagarEntity.queryMan", query="from ContaPagarEntity obj"),
-	@NamedQuery(name="ContaPagarEntity.querySel", query="select new ContaPagarEntity(obj.id, obj.favorecido.id , obj.favorecido.nome, obj.planoContas.id , obj.planoContas.descricao, obj.formaPagamento.id , obj.formaPagamento.descricao, obj.dataVencimento, obj.dataInclusao, obj.valorPagar, obj.numeroDocumento, obj.contaPaga) from ContaPagarEntity obj left outer join obj.favorecido left outer join obj.planoContas left outer join obj.formaPagamento order by obj.dataVencimento desc"),
+	@NamedQuery(name="ContaPagarEntity.querySel", query="select new ContaPagarEntity(obj.id, obj.favorecido.id , obj.favorecido.nome, obj.planoContas.id , obj.planoContas.descricao, obj.formaPagamento.id , obj.formaPagamento.descricao, obj.dataVencimento, obj.dataInclusao, obj.valorPagar, obj.numeroDocumento, obj.contaPaga, obj.favorecido.razaoSocial) from ContaPagarEntity obj left outer join obj.favorecido left outer join obj.planoContas left outer join obj.formaPagamento order by obj.dataVencimento desc"),
 	@NamedQuery(name="ContaPagarEntity.querySelLookup", query="select new ContaPagarEntity (obj.id, obj.favorecido) from ContaPagarEntity obj where obj.id = ? order by obj.id asc")
 })
 public class ContaPagarEntity extends ContaPagar {
@@ -83,6 +83,34 @@ public class ContaPagarEntity extends ContaPagar {
 		}
 		getFavorecido().setId(favorecidoId);
 		getFavorecido().setNome(favorecidoNome);
+		if (getPlanoContas() == null){
+			setPlanoContas(new PlanoContasEntity());
+		}
+		getPlanoContas().setId(planoContasId);
+		getPlanoContas().setDescricao(planoContasDescricao);
+		if (getFormaPagamento() == null){
+			setFormaPagamento(new FormaPagamentoEntity());
+		}
+		getFormaPagamento().setId(formaPagamentoId);
+		getFormaPagamento().setDescricao(formaPagamentoDescricao);
+		setDataVencimento(dataVencimento);
+		setDataInclusao(dataInclusao);
+		setValorPagar(valorPagar);
+		setNumeroDocumento(numeroDocumento);
+		if( PlcSimNao.S.equals( contaPaga ) )
+			setContaPagaDesc("SIM");
+		else
+			setContaPagaDesc("NÃO");	
+	}
+	
+	public ContaPagarEntity(Long id, Long favorecidoId, String favorecidoNome, Long planoContasId, String planoContasDescricao, Long formaPagamentoId, String formaPagamentoDescricao, java.util.Date dataVencimento, java.util.Date dataInclusao, java.math.BigDecimal valorPagar, Long numeroDocumento, PlcSimNao contaPaga, String razaoSocial) {
+		setId(id);
+		if (getFavorecido() == null){
+			setFavorecido(new FornecedorEntity());
+		}
+		getFavorecido().setId(favorecidoId);
+		getFavorecido().setNome(favorecidoNome);
+		getFavorecido().setRazaoSocial(razaoSocial);
 		if (getPlanoContas() == null){
 			setPlanoContas(new PlanoContasEntity());
 		}

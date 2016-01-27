@@ -27,7 +27,7 @@ import com.consisti.sisgesc.dominio.TipoPessoa;
 	@NamedQuery(name="FornecedorEntity.querySel2", query="select new FornecedorEntity(obj.id) from FornecedorEntity obj order by obj.id asc"),
 	@NamedQuery(name="FornecedorEntity.queryMan", query="from FornecedorEntity obj"),
 	@NamedQuery(name="FornecedorEntity.querySel", query="select new FornecedorEntity(obj.id, obj.tipoPessoa, obj.telefoneContato, obj.nome, obj.razaoSocial, obj.status) from FornecedorEntity obj order by obj.telefoneContato asc"),
-	@NamedQuery(name="FornecedorEntity.querySelLookup", query="select new FornecedorEntity (obj.id, obj.nome) from FornecedorEntity obj where obj.id = ? order by obj.id asc")
+	@NamedQuery(name="FornecedorEntity.querySelLookup", query="select new FornecedorEntity (obj.id, obj.nome, obj.razaoSocial) from FornecedorEntity obj where obj.id = ? order by obj.id asc")
 })
 public class FornecedorEntity extends Fornecedor {
  	
@@ -42,6 +42,12 @@ public class FornecedorEntity extends Fornecedor {
 		this.setId(id);
 		this.setNome(nome);
 	}
+
+	public FornecedorEntity(Long id, String nome, String razaoSocial) {
+		this.setId(id);
+		this.setNome(nome);
+		this.setRazaoSocial(razaoSocial);
+	}
 	
 	public FornecedorEntity(String cpfCnpj, Long id) {
 		this.setId(id);
@@ -50,19 +56,12 @@ public class FornecedorEntity extends Fornecedor {
 	
 	@Override
 	public String toString() {
-		if (TipoPessoa.F.equals(getTipoPessoa())){
-			if (StringUtils.isNotEmpty(getNome())){
-				return getNome();
-			}
-		} else {
-			if (StringUtils.isNotEmpty(getRazaoSocial())){
-				return getRazaoSocial();
-			} else {
-				return getNome();
-			}
-		}
 		
-		return "";
+		if (StringUtils.isNotEmpty(getRazaoSocial())){
+			return getRazaoSocial();
+		} else {
+			return getNome();
+		}
 		
 	}
 

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:plcf="http://www.powerlogic.com.br/plcf" 
+	xmlns:tr="http://myfaces.apache.org/trinidad" 
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
+	<ui:composition> 
+		<plcf:tabela tituloChave="selecao.lista.titulo" rendered="#{not empty plcAction.listExtratoAluno}"> 
+			<plcf:linha styleClass="ui-widget-header"> 
+				<plcf:celula header="true" styleClass="cabecalho"> 
+					<plcf:titulo tituloChave="label.aluno">Aluno</plcf:titulo> 
+				</plcf:celula>  
+				<plcf:celula header="true" styleClass="cabecalho"> 
+					<plcf:titulo tituloChave="label.produtoServico"></plcf:titulo> 
+				</plcf:celula>  
+				<plcf:celula header="true" styleClass="cabecalho"> 
+					<plcf:titulo tituloChave="label.quantidadeVendida"></plcf:titulo> 
+				</plcf:celula>  
+				<plcf:celula header="true" styleClass="cabecalho"> 
+					<plcf:titulo tituloChave="label.valorUnitario"></plcf:titulo> 
+				</plcf:celula> 
+				<plcf:celula header="true" styleClass="cabecalho"> 
+					<plcf:titulo tituloChave="label.valorTotal"></plcf:titulo> 
+				</plcf:celula> 
+				<plcf:celula header="true" styleClass="cabecalho"> 
+					<plcf:titulo tituloChave="label.valorMensalidade"></plcf:titulo> 
+				</plcf:celula> 
+			</plcf:linha>  
+			<plcf:iteracao id="plcLogicaItens" value="#{plcAction.listExtratoAluno}" > 
+				<plcf:linha styleClass="linhapar" rendered="#{plcItensStatus.index mod 2 == 0}"> 
+					<plcf:celula styleClass="campo"> 
+						<plcf:exibe value="#{item.nomeAluno}">aluno</plcf:exibe> 
+					</plcf:celula>  
+					<plcf:celula styleClass="campo"> 
+						<plcf:exibe value="#{item.descricaoProduto}">dataInicio</plcf:exibe> 
+					</plcf:celula>  
+					<plcf:celula styleClass="campo"> 
+						<plcf:exibe value="#{item.quantidadeVendida}">dataFim</plcf:exibe> 
+					</plcf:celula>  
+					<plcf:celula styleClass="campo"> 
+						<plcf:exibe value="#{item.valorUnitario}">contaReceber</plcf:exibe> 
+					</plcf:celula> 
+					<plcf:celula styleClass="campo"> 
+						<plcf:exibe value="#{item.valorTotal}">contaReceber</plcf:exibe> 
+					</plcf:celula> 
+					<plcf:celula styleClass="campo"> 
+						<plcf:exibe value="#{item.valorTotalMensalidade}">contaReceber</plcf:exibe> 
+					</plcf:celula> 
+				</plcf:linha> 
+				<plcf:linha styleClass="linhaimpar" rendered="#{plcItensStatus.index mod 2 != 0}"> 
+					<plcf:celula styleClass="campo"> 
+						<plcf:exibe value="#{item.nomeAluno}">aluno</plcf:exibe> 
+					</plcf:celula>  
+					<plcf:celula styleClass="campo"> 
+						<plcf:exibe value="#{item.descricaoProduto}">dataInicio</plcf:exibe> 
+					</plcf:celula>  
+					<plcf:celula styleClass="campo"> 
+						<plcf:exibe value="#{item.quantidadeVendida}">dataFim</plcf:exibe> 
+					</plcf:celula>  
+					<plcf:celula styleClass="campo"> 
+						<plcf:exibe value="#{item.valorUnitario}">contaReceber</plcf:exibe> 
+					</plcf:celula> 
+					<plcf:celula styleClass="campo"> 
+						<plcf:exibe value="#{item.valorTotal}">contaReceber</plcf:exibe> 
+					</plcf:celula> 
+					<plcf:celula styleClass="campo"> 
+						<plcf:exibe value="#{item.valorTotalMensalidade}">contaReceber</plcf:exibe> 
+					</plcf:celula> 
+				</plcf:linha> 
+			</plcf:iteracao> 
+		</plcf:tabela> 
+	</ui:composition> 
+</html>

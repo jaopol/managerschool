@@ -28,6 +28,7 @@ import org.jrimum.domkee.financeiro.banco.febraban.Titulo.Aceite;
 import com.consisti.sisgesc.comuns.AppConstantesComuns;
 import com.consisti.sisgesc.dominio.CarteiraBanco;
 import com.consisti.sisgesc.dominio.TipoContaReceber;
+import com.consisti.sisgesc.dominio.TipoReceberDe;
 import com.consisti.sisgesc.dominio.Uf;
 import com.consisti.sisgesc.entidade.Aluno;
 import com.consisti.sisgesc.entidade.AlunoEntity;
@@ -153,6 +154,7 @@ public class ContaReceberManager extends AppManager {
 				contaReceber.setValorTotal( aluno.getValorTotal() );
 				contaReceber.setNumeroDocumento( numeroDocumento );
 				contaReceber.setTipoContaReceber(TipoContaReceber.M);
+				contaReceber.setTipoReceberDe( TipoReceberDe.A );
 				inclui(contaReceber);
 				//Encrementa o numero documento
 				int numeroInt = Integer.parseInt( numeroDocumento ) + 1;

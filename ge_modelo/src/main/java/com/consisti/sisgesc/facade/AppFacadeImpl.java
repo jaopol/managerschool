@@ -42,10 +42,12 @@ import com.consisti.sisgesc.entidade.financeiro.BancoEntity;
 import com.consisti.sisgesc.entidade.financeiro.ContaPagar;
 import com.consisti.sisgesc.entidade.financeiro.ContaReceber;
 import com.consisti.sisgesc.entidade.financeiro.ContaReceberEntity;
+import com.consisti.sisgesc.entidade.financeiro.ExtratoAluno;
 import com.consisti.sisgesc.entidade.financeiro.TipoPlanoContasEntity;
 import com.consisti.sisgesc.modelo.AlunoManager;
 import com.consisti.sisgesc.modelo.ContaReceberManager;
 import com.consisti.sisgesc.modelo.ContratoManager;
+import com.consisti.sisgesc.modelo.ExtratoAlunoManager;
 import com.consisti.sisgesc.modelo.MovimentoDiaManager;
 import com.consisti.sisgesc.modelo.ServicoAlunoManager;
 import com.consisti.sisgesc.persistencia.hibernate.AlunoDAO;
@@ -240,6 +242,11 @@ public class AppFacadeImpl extends PlcFacadeImpl implements IAppFacade, IAppFaca
 	public ContaReceberEntity recuperaValorAlunoSetContaReceber(Long idAluno) throws PlcException {
 		ContaReceberManager bo = (ContaReceberManager)getBO(ContaReceberManager.class);
 		return bo.recuperaValorAlunoSetContaReceber(idAluno);
+	}
+
+	public List<ExtratoAluno> getListExtratoAluno(AlunoEntity aluno, Date dataInicio, Date dataFim) throws PlcException {
+		ExtratoAlunoManager bo = (ExtratoAlunoManager)getBO(ExtratoAlunoManager.class);
+		return bo.getListExtratoAluno(aluno, dataInicio, dataFim);
 	}
 	
 }

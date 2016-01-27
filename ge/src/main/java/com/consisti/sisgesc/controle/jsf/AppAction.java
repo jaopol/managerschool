@@ -22,6 +22,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -469,6 +471,12 @@ public class AppAction extends PlcBaseJsfAction {
 				//throw new PlcException("msg.info.dataVencimento.menor");
 			}
 		}
+	}
+	
+	public Date retornaDateByString(String dataString) throws ParseException {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Date data = sdf.parse(dataString);
+		return data;
 	}
 	
 }

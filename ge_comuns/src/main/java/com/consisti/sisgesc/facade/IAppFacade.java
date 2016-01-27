@@ -42,6 +42,7 @@ import com.consisti.sisgesc.entidade.financeiro.BancoEntity;
 import com.consisti.sisgesc.entidade.financeiro.ContaPagar;
 import com.consisti.sisgesc.entidade.financeiro.ContaReceber;
 import com.consisti.sisgesc.entidade.financeiro.ContaReceberEntity;
+import com.consisti.sisgesc.entidade.financeiro.ExtratoAluno;
 import com.consisti.sisgesc.entidade.financeiro.TipoPlanoContasEntity;
 import com.powerlogic.jcompany.comuns.PlcBaseVO;
 import com.powerlogic.jcompany.comuns.PlcException;
@@ -224,4 +225,13 @@ public interface IAppFacade extends IPlcFacade {
 	 * @throws PlcException
 	 */
 	public ContaReceberEntity recuperaValorAlunoSetContaReceber(Long idAluno) throws PlcException;
+
+	/**
+	 * Utilizado para recuperar as contas recebidas do aluno e montar o extrato
+	 * @param aluno
+	 * @param dataFim 
+	 * @param dataInicio 
+	 * @throws PlcException 
+	 */
+	List<ExtratoAluno> getListExtratoAluno(AlunoEntity aluno, Date dataInicio, Date dataFim) throws PlcException;
 }

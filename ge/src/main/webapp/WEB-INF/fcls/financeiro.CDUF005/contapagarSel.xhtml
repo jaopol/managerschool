@@ -39,7 +39,8 @@
 			<plcf:iteracao id="plcLogicaItens" value="#{plcLogicaItens.itensPlc}"> 
 				<plcf:linhaSelecao id="linhaSel" action="contapagarman" linkEdicao="#{item.linkEdicaoPlc}" propAgregada="contapagar"> 
 					<plcf:celula styleClass="campo"> 
-						<plcf:exibe value="#{item.favorecido.nome}">favorecido</plcf:exibe> 
+						<plcf:exibe value="#{item.favorecido.nome}" rendered="#{item.favorecido.nome != null}" >favorecido</plcf:exibe> 
+						<plcf:exibe value="#{item.favorecido.razaoSocial}" rendered="#{item.favorecido.razaoSocial != null}">favorecido</plcf:exibe> 
 					</plcf:celula>  
 					<plcf:celula styleClass="campo"> 
 						<plcf:exibe value="#{item.planoContas}">planoContas</plcf:exibe> 

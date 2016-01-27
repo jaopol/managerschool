@@ -45,8 +45,12 @@ public class ExtratoContasAction extends AppAction  {
 	
 	@Override
 	protected String limpaArgsApos() throws PlcException {
-		listContaPagar.clear();
-		listContaReceber.clear();
+		if( listContaPagar != null){
+			listContaPagar.clear();
+		}
+		if( listContaReceber != null ){
+			listContaReceber.clear();
+		}
 		totalContaPagar = new BigDecimal(0);
 		totalContaReceber = new BigDecimal(0);
 		saldo = new BigDecimal(0);
@@ -60,8 +64,8 @@ public class ExtratoContasAction extends AppAction  {
 		
 		IAppFacade fc = (IAppFacade)getServiceFacade();
 		//listExtratoConta = fc.recuperaTodosExtratoContas();
-		Date dataInicio = retornaDataByDate( listaArgumentos.get(0).getValor() );
-		Date dataFim = retornaDataByDate( listaArgumentos.get(1).getValor() );
+		Date dataInicio = retornaDateByString( listaArgumentos.get(0).getValor() );
+		Date dataFim = retornaDateByString( listaArgumentos.get(1).getValor() );
 		
 		listContaPagar = fc.recuperaContaPagar(dataInicio, dataFim);
 		listContaReceber = fc.recuperaContaReceber(dataInicio, dataFim);
@@ -92,8 +96,8 @@ public class ExtratoContasAction extends AppAction  {
 
 	private void verificaArgumentoInformado(List<PlcArgVO> listaArgumentos) throws PlcException, ParseException {
 		
-		Date data1 = retornaDataByDate( listaArgumentos.get(0).getValor() );
-		Date data2 = retornaDataByDate( listaArgumentos.get(1).getValor() );
+		Date data1 = retornaDateByString( listaArgumentos.get(0).getValor() );
+		Date data2 = retornaDateByString( listaArgumentos.get(1).getValor() );
 		DateTime dataInicio = new DateTime(data1);
 		DateTime dataFim = new DateTime(data2);
 		
@@ -101,12 +105,6 @@ public class ExtratoContasAction extends AppAction  {
 		if( dias > 31 ){
 			throw new PlcException("msg.periodoMaior.30dias");
 		}
-	}
-
-	private Date retornaDataByDate(String dataString) throws ParseException {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		Date data = sdf.parse(dataString);
-		return data;
 	}
 
 	public List<ContaReceber> getListContaReceber() {
