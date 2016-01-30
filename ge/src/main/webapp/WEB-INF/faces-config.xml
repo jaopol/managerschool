@@ -1097,6 +1097,37 @@
 		<redirect/> 
 	</navigation-case> 
 </navigation-rule>
+	<navigation-rule> 
+	<display-name>Manutencao Eventos</display-name>  
+	<from-view-id>/n/eventoman</from-view-id>  
+	<navigation-case> 
+		<from-outcome>mesmaPagina</from-outcome>  
+		<to-view-id>/n/eventoman</to-view-id> 
+	</navigation-case>  
+	<navigation-case> 
+		<from-outcome>abre</from-outcome>  
+		<to-view-id>/n/eventosel</to-view-id>  
+		<redirect/> 
+	</navigation-case> 
+</navigation-rule>
+	<navigation-rule> 
+	<display-name>Seleção Eventos</display-name>  
+	<from-view-id>/n/eventosel</from-view-id>  
+	<navigation-case> 
+		<from-outcome>mesmaPagina</from-outcome>  
+		<to-view-id>/n/eventosel</to-view-id> 
+	</navigation-case>  
+	<navigation-case> 
+		<from-outcome>edita</from-outcome>  
+		<to-view-id>/n/eventoman</to-view-id>  
+		<redirect/> 
+	</navigation-case>  
+	<navigation-case> 
+		<from-outcome>novo</from-outcome>  
+		<to-view-id>/n/eventoman</to-view-id>  
+		<redirect/> 
+	</navigation-case> 
+</navigation-rule>
 	<lifecycle>
 		<phase-listener>com.consisti.sisgesc.controle.listener.AppPhaseListener</phase-listener>
 	</lifecycle>
