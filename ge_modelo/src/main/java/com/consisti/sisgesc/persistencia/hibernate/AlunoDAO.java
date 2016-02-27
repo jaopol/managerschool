@@ -3,17 +3,17 @@ package com.consisti.sisgesc.persistencia.hibernate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.beanutils.BeanComparator;
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 
 import com.consisti.sisgesc.dominio.AtivoInativo;
 import com.consisti.sisgesc.dominio.TipoEducacao;
+import com.consisti.sisgesc.entidade.Aluno;
 import com.consisti.sisgesc.entidade.AlunoEntity;
 import com.consisti.sisgesc.entidade.Contrato;
 import com.consisti.sisgesc.entidade.ResponsavelFinanceiroAlunoEntity;
@@ -163,4 +163,39 @@ private ResponsavelFinanceiroAlunoDAO responsavelFinanceiroAlunoDAO;
 		return (AlunoEntity)getSession().createQuery(hql.toString()).setLong("idAluno", idAluno).uniqueResult();
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<AlunoEntity> recuperarAluno(Aluno aluno, Turma turma, TipoEducacao educacao) throws PlcException{
+		
+		StringBuilder stb = new StringBuilder();
+		
+		stb.append( " SELECT new AlunoEntity( " );
+		stb.append( " obj.id, " );
+		stb.append( " obj.nomeAluno ) " );
+		stb.append( " FROM " );
+		stb.append( " AlunoEntity obj " );
+		
+		if( aluno != null ){
+			stb.append( " obj.id =:idAluno " );
+		}
+		if( turma != null ){
+			stb.append( " obj.turma.id =: idTurma " );
+		}
+		if( educacao != null ){
+			stb.append( " obj.tipoEducacao =:educacao " );
+		}
+		
+		Query query = getSession().createQuery( stb.toString() );
+		
+		if( aluno != null ){
+			query.setParameter( "idAluno", aluno.getId() );
+		}
+		if( turma != null ){
+			query.setParameter( "idTurma", turma.getId() );
+		}
+		if( educacao != null ){
+			query.setParameter( "educacao", educacao );
+		}
+		
+		return query.list();
+	}
 }

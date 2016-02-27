@@ -1128,6 +1128,19 @@
 		<redirect/> 
 	</navigation-case> 
 </navigation-rule>
+	<navigation-rule> 
+	<display-name>Manutencao Conta receber evento</display-name>  
+	<from-view-id>/n/contarecebereventoman</from-view-id>  
+	<navigation-case> 
+		<from-outcome>mesmaPagina</from-outcome>  
+		<to-view-id>/n/contarecebereventoman</to-view-id> 
+	</navigation-case>  
+	<navigation-case> 
+		<from-outcome>abre</from-outcome>  
+		<to-view-id>/n/contarecebereventosel</to-view-id>  
+		<redirect/> 
+	</navigation-case> 
+</navigation-rule>
 	<lifecycle>
 		<phase-listener>com.consisti.sisgesc.controle.listener.AppPhaseListener</phase-listener>
 	</lifecycle>

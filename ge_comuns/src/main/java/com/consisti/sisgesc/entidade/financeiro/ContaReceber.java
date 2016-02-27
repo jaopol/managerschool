@@ -28,6 +28,8 @@ import com.consisti.sisgesc.dominio.TipoReceberDe;
 import com.consisti.sisgesc.entidade.Aluno;
 import com.consisti.sisgesc.entidade.AlunoEntity;
 import com.consisti.sisgesc.entidade.AppBaseEntity;
+import com.consisti.sisgesc.entidade.Evento;
+import com.consisti.sisgesc.entidade.EventoEntity;
 import com.powerlogic.jcompany.dominio.tipo.PlcSimNao;
 import com.powerlogic.jcompany.dominio.valida.PlcValFormatoSimples;
 import com.powerlogic.jcompany.dominio.valida.PlcValidacaoUnificada;
@@ -135,6 +137,11 @@ public abstract class ContaReceber extends AppBaseEntity {
 	@PlcValFormatoSimples(formato=FormatoSimples.MAIUSCULO)
 	@Column (name = "OUTRO", length=50)
 	private String outro;
+	
+	@ManyToOne (targetEntity = EventoEntity.class, fetch = FetchType.LAZY)
+	@ForeignKey(name="FK_CONTARECEBER_EVENTO")
+	@JoinColumn (name = "ID_EVENTO", nullable=true)
+	private Evento evento;
 	
 	public Long getId() {
 		return id;
@@ -334,6 +341,14 @@ public abstract class ContaReceber extends AppBaseEntity {
 
 	public void setOutro(String outro) {
 		this.outro = outro;
+	}
+
+	public Evento getEvento() {
+		return evento;
+	}
+
+	public void setEvento(Evento evento) {
+		this.evento = evento;
 	}
 
 }

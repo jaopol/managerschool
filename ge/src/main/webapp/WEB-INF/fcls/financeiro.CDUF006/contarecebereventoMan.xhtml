@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:plcf="http://www.powerlogic.com.br/plcf"
+	xmlns:tr="http://myfaces.apache.org/trinidad"
+	xmlns:trh="http://myfaces.apache.org/trinidad/html">
+
+
+<ui:composition>
+
+	<plcf:tabela tituloChave="selecao.argumento.titulo"> 
+		<plcf:linha> 
+			<plcf:celula> 
+				<plcf:titulo tituloChave="label.aluno" />
+				<plcf:vinculado id="aluno" value="#{plcEntidade.aluno}"
+					propSelPop="aluno" idExibe="N" idSomenteLeitura="N"
+					autoRecuperacaoClasse="com.consisti.sisgesc.entidade.AlunoEntity"
+					actionSel="alunosel" modal="S" ajudaChave="ajuda.aluno"
+					onkeydown="selecionaPorTecla(event,this);" lookupTamanho="30" alt="600" larg="900" />
+			</plcf:celula>  
+			<plcf:celula> 
+				<plcf:titulo tituloChave="label.turma"/>  
+				<plcf:comboDinamico id="turma" value="#{plcEntidade.turma}" dominio="TurmaEntity" exibeBranco="S" ajudaChave="ajuda.turma"/> 
+			</plcf:celula>  
+			<plcf:celula> 
+				<plcf:titulo tituloChave="label.tipoEducacao"/>  
+				<plcf:comboEstatico id="tipoEducacao" value="#{plcEntidade.tipoEducacao}" dominio="TipoEducacao" exibeBranco="S" ajudaChave="ajuda.tipoEducacao"/> 
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:botaoAcao id="btRecuperarAluno" acao="recuperarAluno" label="app.evt.recuperarAluno" validaForm="false" />
+			</plcf:celula> 
+		</plcf:linha> 
+	</plcf:tabela>
+	
+	<plcf:tabela tituloChave="contarecebereventoman.titulo">
+		<plcf:linha>
+			<plcf:celula>
+				<plcf:titulo tituloChave="label.evento" />
+				<plcf:comboDinamico id="evento" value="#{plcEntidade.evento}"
+					dominio="EventoEntity" exibeBranco="S" ajudaChave="ajuda.evento" />
+			</plcf:celula>
+		</plcf:linha>
+		<plcf:linha>
+			<plcf:celula>
+				<plcf:titulo tituloChave="label.dataVencimento" />
+				<plcf:data id="dataVencimento" value="#{plcEntidade.dataVencimento}"
+					ajudaChave="ajuda.dataVencimento" />
+			</plcf:celula>
+			<plcf:celula>
+				<plcf:titulo tituloChave="label.banco" />
+				<plcf:comboDinamico id="banco" value="#{plcEntidade.banco}"
+					dominio="BancoEntity" exibeBranco="S" ajudaChave="ajuda.banco" />
+			</plcf:celula>
+		</plcf:linha>
+		<plcf:linha>
+			<plcf:celula>
+				<plcf:titulo tituloChave="label.formaRecebimento" />
+				<plcf:comboDinamico id="formaRecebimento"
+					value="#{plcEntidade.formaRecebimento}"
+					dominio="FormaPagamentoEntity" exibeBranco="S"
+					ajudaChave="ajuda.formaRecebimento" />
+			</plcf:celula>
+			<plcf:celula columnSpan="2">
+				<plcf:titulo tituloChave="label.valorDocumento" />
+				<plcf:numerico id="valorDocumento"
+					value="#{plcEntidade.valorDocumento}"
+					ajudaChave="ajuda.valorDocumento" />
+			</plcf:celula>
+		</plcf:linha>
+		<plcf:linha>
+			<plcf:celula columnSpan="3">
+				<plcf:titulo tituloChave="label.valorTotal" />
+				<plcf:numerico id="valorTotal" value="#{plcEntidade.valorTotal}"
+					ajudaChave="ajuda.valorTotal" />
+			</plcf:celula>
+		</plcf:linha>
+	</plcf:tabela>
+	
+	<plcf:tabela tituloChave="contarecebereventoman.titulo">
+		<plcf:linha styleClass="ui-widget-header">
+			<plcf:celula header="true" styleClass="cabecalho"> 
+				<plcf:titulo tituloChave="label.aluno"></plcf:titulo> 
+			</plcf:celula>
+		</plcf:linha>
+		<plcf:iteracao id="alunos" value="#{plcAction.listAluno}" var="item">
+			<plcf:linha>
+				<plcf:celula styleClass="campo">
+					<plcf:exibe value="#{item.nomeAluno}"/>
+				</plcf:celula>
+			</plcf:linha>
+		</plcf:iteracao>
+	</plcf:tabela>
+	
+</ui:composition>
+
+</html>

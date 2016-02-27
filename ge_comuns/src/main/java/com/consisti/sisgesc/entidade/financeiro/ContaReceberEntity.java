@@ -15,8 +15,11 @@ import javax.persistence.Transient;
 import org.hibernate.annotations.AccessType;
 
 import com.consisti.sisgesc.dominio.BancoSuportado;
+import com.consisti.sisgesc.dominio.TipoEducacao;
 import com.consisti.sisgesc.entidade.Aluno;
 import com.consisti.sisgesc.entidade.AlunoEntity;
+import com.consisti.sisgesc.entidade.Turma;
+import com.consisti.sisgesc.entidade.TurmaEntity;
 import com.powerlogic.jcompany.comuns.anotacao.PlcIoC;
 import com.powerlogic.jcompany.dominio.tipo.PlcSimNao;
 import com.consisti.sisgesc.entidade.financeiro.BancoEntity;
@@ -50,6 +53,9 @@ public class ContaReceberEntity extends ContaReceber {
 	
 	private transient String descricaoRecebido;
 	private transient String descProdVenda;
+	
+	private transient TurmaEntity turma;
+	private transient TipoEducacao tipoEducacao;
 	
     /*
      * Construtor padrão
@@ -275,6 +281,18 @@ public class ContaReceberEntity extends ContaReceber {
 	}
 	public void setDescProdVenda(String descProdVenda) {
 		this.descProdVenda = descProdVenda;
+	}
+	public TurmaEntity getTurma() {
+		return turma;
+	}
+	public void setTurma(TurmaEntity turma) {
+		this.turma = turma;
+	}
+	public TipoEducacao getTipoEducacao() {
+		return tipoEducacao;
+	}
+	public void setTipoEducacao(TipoEducacao tipoEducacao) {
+		this.tipoEducacao = tipoEducacao;
 	}
 	
 }

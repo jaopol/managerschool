@@ -25,6 +25,8 @@ import java.util.List;
 
 import org.jrimum.bopepo.Boleto;
 
+import com.consisti.sisgesc.dominio.TipoEducacao;
+import com.consisti.sisgesc.entidade.Aluno;
 import com.consisti.sisgesc.entidade.AlunoEntity;
 import com.consisti.sisgesc.entidade.ContratoEntity;
 import com.consisti.sisgesc.entidade.EnderecoEntity;
@@ -247,6 +249,11 @@ public class AppFacadeImpl extends PlcFacadeImpl implements IAppFacade, IAppFaca
 	public List<ExtratoAluno> getListExtratoAluno(AlunoEntity aluno, Date dataInicio, Date dataFim) throws PlcException {
 		ExtratoAlunoManager bo = (ExtratoAlunoManager)getBO(ExtratoAlunoManager.class);
 		return bo.getListExtratoAluno(aluno, dataInicio, dataFim);
+	}
+	
+	public List<AlunoEntity> recuperarAluno(Aluno aluno, Turma turma, TipoEducacao educacao) throws PlcException{
+		AlunoDAO dao = (AlunoDAO) getDAO(AlunoDAO.class);
+		return dao.recuperarAluno(aluno, turma, educacao);
 	}
 	
 }
