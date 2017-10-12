@@ -29,6 +29,7 @@ import com.consisti.sisgesc.entidade.AditivoEntity;
 import com.consisti.sisgesc.entidade.AlunoEntity;
 import com.consisti.sisgesc.entidade.AppBaseEntity;
 import com.consisti.sisgesc.entidade.ContratoEntity;
+import com.consisti.sisgesc.entidade.financeiro.ContaReceberEntity;
 import com.consisti.sisgesc.facade.IAppFacade;
 import com.powerlogic.jcompany.comuns.PlcException;
 import com.powerlogic.jcompany.dominio.tipo.PlcSimNao;
@@ -124,6 +125,48 @@ public class RelatorioActionPlc extends AppAction {
 
          
      }
+     
+     /**
+      * Gera o carne do evento
+     * @param nomeRelatorio
+     * @param listContaReceberEvento
+     * @param parametros
+     * @throws PlcException
+     */
+    public void geraListaRelatorio(String nomeRelatorio, List<ContaReceberEntity> listContaReceberEvento, HashMap parametros) throws PlcException {
+ 		
+         FacesContext facesContext = FacesContext.getCurrentInstance();  
+         ServletContext servletContext = (ServletContext)facesContext.getExternalContext().getContext();  
+ 	     
+         //parametros essenciais para o relatorio 
+         parametros.put("DIR_IMAGENS", servletContext.getRealPath(File.separator+"plc"+File.separator+AppConstantesComuns.RELATORIO.PASTA_IMAGENS));
+         parametros.put("SUBREPORT_DIR", servletContext.getRealPath(File.separator+"plc"+File.separator+"rel"));
+         
+         InputStream jasperReport = contextHelperPlc.getRequest().getSession().getServletContext().getResourceAsStream(File.separator+"plc"+File.separator+AppConstantesComuns.RELATORIO.PASTA_RELATORIOS+File.separator+nomeRelatorio);
+         
+         if (jasperReport==null){
+             throw new PlcException("erro.gerar.relatorio.plc");
+         }
+ 	          
+         byte[] relatorio = montaRelatorioPlc(listContaReceberEvento, parametros, jasperReport, nomeRelatorio); 
+          
+         if (contextHelperPlc.getRequest().getSession().getAttribute("gravaContrato")!=null && entidadePlc instanceof ContratoEntity){
+        	 contextHelperPlc.getRequest().getSession().removeAttribute("gravaContrato");
+        	  gravaContrato(relatorio);
+         }
+         
+         if (contextHelperPlc.getRequest().getSession().getAttribute("gravarAditivo")!=null){
+        	 contextHelperPlc.getRequest().getSession().removeAttribute("gravarAditivo");
+        	  addAditivoContratoPlc(relatorio);
+        	  relatorio = null;
+         }
+         
+         if (relatorio!=null){
+             imprimir(relatorio, nomeRelatorio);
+         }
+         
+ 		
+ 	}
 	    
      /**
       * Vai gravar o contrato no banco,
@@ -223,16 +266,20 @@ public class RelatorioActionPlc extends AppAction {
              
              try {  
             	 saidaDoDownload.write(relatorio, 0, relatorio.length);
-            	 saidaDoDownload.flush();  
-            	 saidaDoDownload.close(); 
-            	 response.flushBuffer();
              
 	         } catch (IOException e) {
 	                 throw new PlcException(e);
 	         }
+	         finally{
+	        	 //saidaDoDownload.flush();  
+            	 //saidaDoDownload.close(); 
+            	 response.getOutputStream().flush();
+            	 response.getOutputStream().close();
+            	 //response.flushBuffer();
+	         }
     	 } catch (IOException e1) {
     		 // TODO Auto-generated catch block
     		 e1.printStackTrace();
-    	 }  
+    	 }
      }
 }

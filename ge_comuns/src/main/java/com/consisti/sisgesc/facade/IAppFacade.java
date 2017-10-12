@@ -49,6 +49,7 @@ import com.consisti.sisgesc.entidade.financeiro.TipoPlanoContasEntity;
 import com.powerlogic.jcompany.comuns.PlcBaseVO;
 import com.powerlogic.jcompany.comuns.PlcException;
 import com.powerlogic.jcompany.comuns.facade.IPlcFacade;
+import com.powerlogic.jcompany.dominio.tipo.PlcSimNao;
 
 /**
  * sisgesc . Interface de persistência.
@@ -230,12 +231,12 @@ public interface IAppFacade extends IPlcFacade {
 
 	/**
 	 * Utilizado para recuperar as contas recebidas do aluno e montar o extrato
-	 * @param aluno
+	 * @param idAluno
 	 * @param dataFim 
 	 * @param dataInicio 
 	 * @throws PlcException 
 	 */
-	List<ExtratoAluno> getListExtratoAluno(AlunoEntity aluno, Date dataInicio, Date dataFim) throws PlcException;
+	List<ExtratoAluno> getListExtratoProdutoAluno(Long idAluno, Date dataInicio, Date dataFim, PlcSimNao recebido) throws PlcException;
 	
 	
 	/**
@@ -247,4 +248,15 @@ public interface IAppFacade extends IPlcFacade {
 	 * @throws PlcException
 	 */
 	List<AlunoEntity> recuperarAluno(Aluno aluno, Turma turma, TipoEducacao educacao) throws PlcException;
+	
+	/**
+	 * @param listAluno
+	 * @param contaReceber
+	 * @return retorna a lista gravada
+	 * @throws PlcException
+	 */
+	List<ContaReceberEntity> gravarContaReceberEvento(List<AlunoEntity> listAluno, ContaReceberEntity contaReceber) throws PlcException;
+
+	String recuperaDescricaoProdutoVenda(Long id) throws PlcException;
+
 }

@@ -10,7 +10,7 @@
 	xmlns:tr="http://myfaces.apache.org/trinidad" 
 	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
 	<ui:composition> 
-		<plcf:tabela tituloChave="contareceberdiario.detalhe.titulo.comp" rendered="#{plcEntidade.tipoReceberDe eq 'A'}"> 
+		<plcf:tabela tituloChave="contareceberdiario.detalhe.titulo.comp" rendered="#{plcEntidade.tipoReceberDe eq 'A' and plcEntidade.tipoContaReceber != 'E' }"> 
 			<plcf:linha> 
 				<plcf:celula header="true" styleClass="cabecalho"/>  
 				<plcf:celula header="true" styleClass="cabecalho" rendered="#{empty requestScope.visualizaDocumentoPlc}"> 
@@ -51,8 +51,8 @@
 					</plcf:celula> 
 				</plcf:linha> 
 			</plcf:iteracao> 
-		</plcf:tabela> 
-		
+		</plcf:tabela>
+		 
 		<plcf:escondido id="indexDet" value="#{plcAction.indexDet}" />
 		<plcf:botaoAcao id="setaValorProduto" acao="setaValorProduto" partialSubmit="false" validaForm="false" limpaForm="false" inlineStyle="display:none" />
 		<plcf:botaoAcao id="setaValorTotal" acao="setaValorTotal" partialSubmit="false" validaForm="false" limpaForm="false" inlineStyle="display:none" />

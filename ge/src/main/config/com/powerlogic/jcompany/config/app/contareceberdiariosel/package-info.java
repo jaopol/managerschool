@@ -18,7 +18,10 @@
 				argumentos = {
 						@PlcConfigArgumento(propriedade="aluno", operador=Operador.IGUAL_A, formato=Formato.STRING),
 						@PlcConfigArgumento(propriedade="formaRecebimento", operador=Operador.IGUAL_A, formato=Formato.STRING),
-						@PlcConfigArgumento(propriedade="dataRecebimento_ArgINI", operador=Operador.MAIOR_OU_IGUAL_QUE, formato=Formato.DATE)
+						@PlcConfigArgumento(propriedade="dataRecebimento_ArgINI", operador=Operador.MAIOR_OU_IGUAL_QUE, formato=Formato.DATE),
+						@PlcConfigArgumento(propriedade="tipoContaReceber", operador=Operador.IGUAL_A, formato=Formato.STRING),
+						@PlcConfigArgumento(propriedade="recebido", operador=Operador.IGUAL_A, formato=Formato.STRING),
+						@PlcConfigArgumento(propriedade="numeroDocumento", operador=Operador.LIKE_PERC_INICIO, formato=Formato.STRING)
 			})
 
 )

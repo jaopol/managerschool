@@ -40,46 +40,26 @@
 			<plcf:celula>
 				<plcf:titulo tituloChave="label.evento" />
 				<plcf:comboDinamico id="evento" value="#{plcEntidade.evento}"
-					dominio="EventoEntity" exibeBranco="S" ajudaChave="ajuda.evento" />
+					dominio="EventoEntity" exibeBranco="S" ajudaChave="ajuda.evento" onchange="recuperarValor();" />
 			</plcf:celula>
-		</plcf:linha>
-		<plcf:linha>
+			<plcf:celula >
+				<plcf:titulo tituloChave="label.valorTotal" />
+				<plcf:numerico id="valorTotal" value="#{plcEntidade.valorTotal}"
+					ajudaChave="ajuda.valorTotal" somenteLeitura="S" />
+			</plcf:celula>
 			<plcf:celula>
 				<plcf:titulo tituloChave="label.dataVencimento" />
 				<plcf:data id="dataVencimento" value="#{plcEntidade.dataVencimento}"
 					ajudaChave="ajuda.dataVencimento" />
 			</plcf:celula>
 			<plcf:celula>
-				<plcf:titulo tituloChave="label.banco" />
-				<plcf:comboDinamico id="banco" value="#{plcEntidade.banco}"
-					dominio="BancoEntity" exibeBranco="S" ajudaChave="ajuda.banco" />
-			</plcf:celula>
-		</plcf:linha>
-		<plcf:linha>
-			<plcf:celula>
-				<plcf:titulo tituloChave="label.formaRecebimento" />
-				<plcf:comboDinamico id="formaRecebimento"
-					value="#{plcEntidade.formaRecebimento}"
-					dominio="FormaPagamentoEntity" exibeBranco="S"
-					ajudaChave="ajuda.formaRecebimento" />
-			</plcf:celula>
-			<plcf:celula columnSpan="2">
-				<plcf:titulo tituloChave="label.valorDocumento" />
-				<plcf:numerico id="valorDocumento"
-					value="#{plcEntidade.valorDocumento}"
-					ajudaChave="ajuda.valorDocumento" />
-			</plcf:celula>
-		</plcf:linha>
-		<plcf:linha>
-			<plcf:celula columnSpan="3">
-				<plcf:titulo tituloChave="label.valorTotal" />
-				<plcf:numerico id="valorTotal" value="#{plcEntidade.valorTotal}"
-					ajudaChave="ajuda.valorTotal" />
+				<plcf:titulo tituloChave="label.formaRecebimento"/>  
+				<plcf:comboDinamico id="formaRecebimento" value="#{plcEntidade.formaRecebimento}" dominio="FormaPagamentoEntity" exibeBranco="S" ajudaChave="ajuda.formaRecebimento"/>
 			</plcf:celula>
 		</plcf:linha>
 	</plcf:tabela>
 	
-	<plcf:tabela tituloChave="contarecebereventoman.titulo">
+	<plcf:tabela tituloChave="contarecebereventoman.aluno.titulo">
 		<plcf:linha styleClass="ui-widget-header">
 			<plcf:celula header="true" styleClass="cabecalho"> 
 				<plcf:titulo tituloChave="label.aluno"></plcf:titulo> 
@@ -93,7 +73,20 @@
 			</plcf:linha>
 		</plcf:iteracao>
 	</plcf:tabela>
+<plcf:botaoAcao id="btRecuperarValorEvento" acao="recuperarValorEvento" inlineStyle="Display:none;" validaForm="false" limpaForm="false"/>
 	
+	<script avaliar="S" type="text/javascript">
+
+		//<![CDATA[
+		
+		function recuperarValor(){
+			document.getElementById("corpo:formulario:btRecuperarValorEvento").click();
+		}
+		
+		//]]>
+		
+	</script>
+
 </ui:composition>
 
 </html>

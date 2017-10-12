@@ -1,5 +1,6 @@
 package com.consisti.sisgesc.persistencia.hibernate;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -25,6 +26,28 @@ public class MovimentoDiaDAO extends AppBaseDAO {
 		}
 		
 		return null;
+		
+	}
+	
+	/**
+	 * Recupera o ultimo saldo do caixa fechado
+	 * @return
+	 * @throws PlcException
+	 */
+	public BigDecimal recuperarUltimoSaldoTotal() throws PlcException{
+		
+		StringBuilder stb = new StringBuilder();
+		stb.append( " SELECT obj.saldoTotal FROM MovimentoDiaEntity obj " );
+		stb.append( " WHERE " );
+		stb.append( " obj.caixaFechado = 'S' " );
+		stb.append( " ORDER BY obj.id desc " );
+		
+		BigDecimal result = (BigDecimal)getSession().createQuery(stb.toString()).setMaxResults(1).uniqueResult();
+		
+		if(result == null){
+			return BigDecimal.ZERO;
+		}
+		return result;
 		
 	}
 

@@ -6,7 +6,8 @@ package com.consisti.sisgesc.dominio;
 public enum TipoContaReceber {
     
 	M /* tipoContaReceber.M=MENSALIDADE */,
-	D /* tipoContaReceber.D=DIARIO */;
+	D /* tipoContaReceber.D=DIARIO */,
+	E /* tipoContaReceber.E=EVENTO */;
 
 	
     /**

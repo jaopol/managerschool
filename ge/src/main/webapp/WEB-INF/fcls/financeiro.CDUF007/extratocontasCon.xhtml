@@ -89,7 +89,7 @@
 					
 						<plcf:linha styleClass="linhapar" rendered="#{plcItensStatus.index mod 2 == 0}">
 							<plcf:celula styleClass="campo">
-								<plcf:exibe value="#{item.favorecido.nome}" inlineStyle="color:#CC0000;"/>
+								<plcf:exibe value="#{item.descricaoFavorecido}" inlineStyle="color:#CC0000;"/>
 							</plcf:celula>
 							<plcf:celula styleClass="campo">
 								<plcf:exibe value="#{item.dataVencimento}" inlineStyle="color:#CC0000;"/>
@@ -104,7 +104,7 @@
 						
 						<plcf:linha styleClass="linhaimpar" rendered="#{plcItensStatus.index mod 2 != 0}">
 							<plcf:celula styleClass="campo">
-								<plcf:exibe value="#{item.favorecido.nome}" inlineStyle="color:#CC0000;"/>
+								<plcf:exibe value="#{item.descricaoFavorecido}" inlineStyle="color:#CC0000;"/>
 							</plcf:celula>
 							<plcf:celula styleClass="campo">
 								<plcf:exibe value="#{item.dataVencimento}" inlineStyle="color:#CC0000;"/>

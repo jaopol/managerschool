@@ -1,8 +1,11 @@
 package com.consisti.sisgesc.controle.jsf.financeiro.CDUF008;
 
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import com.consisti.sisgesc.controle.jsf.AppAction;
@@ -13,6 +16,7 @@ import com.powerlogic.jcompany.comuns.PlcArgVO;
 import com.powerlogic.jcompany.comuns.PlcException;
 import com.powerlogic.jcompany.config.comuns.PlcConstantes;
 import com.powerlogic.jcompany.controle.PlcConstantes.PlcJsfConstantes.NAVEGACAO;
+import com.powerlogic.jcompany.dominio.tipo.PlcSimNao;
 
 /**
  * Classe de Controle gerada pelo assistente
@@ -21,6 +25,9 @@ import com.powerlogic.jcompany.controle.PlcConstantes.PlcJsfConstantes.NAVEGACAO
 public class ExtratoAlunoAction extends AppAction  {
 	
 	private List<ExtratoAluno> listExtratoAluno;
+	
+	private BigDecimal valorTotal;
+	private BigDecimal totalMensalidade;
 	
 	@Override
 	protected void trataBotoesConformeLogicaApos() throws PlcException {
@@ -44,13 +51,14 @@ public class ExtratoAlunoAction extends AppAction  {
 		
 		List<PlcArgVO> listaArgumentos 	= montaListaArgumentosPesquisa();
 		
-		AlunoEntity aluno = null;
+		String idAluno = null;
 		Date dataInicio = null;
-		Date dataFim = null; 
+		Date dataFim = null;
+		PlcSimNao recebido = null;
 		if( listaArgumentos != null && !listaArgumentos.isEmpty() ){
 			for (int i = 0; i < listaArgumentos.size(); i++) {
 				if( "aluno".equals( listaArgumentos.get(i).getNome() ) ){
-					aluno = (AlunoEntity)listaArgumentos.get(i).getValorObjeto();
+					idAluno = listaArgumentos.get(i).getValor();
 				}
 				else if( "dataInicio".equals( listaArgumentos.get(i).getNome() ) ){
 					dataInicio = retornaDateByString( listaArgumentos.get(i).getValor() );
@@ -58,10 +66,19 @@ public class ExtratoAlunoAction extends AppAction  {
 				else if( "dataFim".equals( listaArgumentos.get(i).getNome() ) ){
 					dataFim = retornaDateByString( listaArgumentos.get(i).getValor() );
 				}
+				else if( "recebido".equals( listaArgumentos.get(i).getNome() ) ){
+					recebido = PlcSimNao.valueOf( (String)listaArgumentos.get(i).getValor() );
+				}
 			}
 		}
+		
+		if( recebido != null && PlcSimNao.N.equals(recebido) ){
+			dataInicio = null;
+			dataFim = null;
+		}
+		
 		IAppFacade facade = (IAppFacade)getServiceFacade(); 
-		listExtratoAluno = facade.getListExtratoAluno(aluno, dataInicio, dataFim);
+		listExtratoAluno = facade.getListExtratoProdutoAluno(new Long(idAluno), dataInicio, dataFim, recebido);
 		
 	}
 
@@ -77,5 +94,21 @@ public class ExtratoAlunoAction extends AppAction  {
 
 	public void setListExtratoAluno(List<ExtratoAluno> listExtratoAluno) {
 		this.listExtratoAluno = listExtratoAluno;
+	}
+
+	public BigDecimal getValorTotal() {
+		return valorTotal;
+	}
+
+	public void setValorTotal(BigDecimal valorTotal) {
+		this.valorTotal = valorTotal;
+	}
+
+	public BigDecimal getTotalMensalidade() {
+		return totalMensalidade;
+	}
+
+	public void setTotalMensalidade(BigDecimal totalMensalidade) {
+		this.totalMensalidade = totalMensalidade;
 	}
 }

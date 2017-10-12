@@ -3,25 +3,60 @@ package com.consisti.sisgesc.controle.jsf.financeiro.CDUF006;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 
-import com.consisti.sisgesc.controle.jsf.AppAction;
+import org.apache.commons.lang.StringUtils;
+
+import com.consisti.sisgesc.comuns.AppConstantesComuns;
+import com.consisti.sisgesc.controle.jsf.RelatorioActionPlc;
 import com.consisti.sisgesc.dominio.TipoContaReceber;
 import com.consisti.sisgesc.dominio.TipoReceberDe;
 import com.consisti.sisgesc.entidade.AlunoEntity;
 import com.consisti.sisgesc.entidade.financeiro.ContaReceberEntity;
 import com.consisti.sisgesc.entidade.financeiro.ContaReceberProdutoVenda;
 import com.consisti.sisgesc.entidade.financeiro.ProdutoVenda;
+import com.consisti.sisgesc.facade.IAppFacade;
 import com.powerlogic.jcompany.comuns.PlcException;
+import com.powerlogic.jcompany.controle.PlcConstantes;
 import com.powerlogic.jcompany.controle.PlcConstantes.PlcJsfConstantes.NAVEGACAO;
 import com.powerlogic.jcompany.dominio.tipo.PlcSimNao;
 
 @SuppressWarnings("serial")
-public class ContaReceberDiarioAction extends AppAction {
+public class ContaReceberDiarioAction extends RelatorioActionPlc {
 
 	//utilizado para identificar a linha editada
 	private int indexDet;
 	//Usado na edicao devido o campo desabilitado perder o valor na gravacao
 	private TipoReceberDe tipoReceberDeAuxEdit;
+	
+	@Override
+	protected void trataBotoesConformeLogicaApos() throws PlcException {
+		super.trataBotoesConformeLogicaApos();
+		
+		if( entidadePlc != null && entidadePlc.getId() != null ){
+			
+			//Se o titulo estiver quitado
+			if( PlcSimNao.S.equals( ((ContaReceberEntity)entidadePlc ).getRecebido() ) ){
+				contextHelperPlc.getRequest().setAttribute("exibeLiquidaTitulo", "N");
+				contextHelperPlc.getRequest().setAttribute( PlcConstantes.ACAO.EXIBE_BT_GRAVAR, "N");
+				contextHelperPlc.getRequest().setAttribute( PlcConstantes.ACAO.EXIBE_BT_EXCLUIR, "N");
+			}
+			//Se o titulo não estiver quitado
+			else{
+				contextHelperPlc.getRequest().setAttribute("exibeLiquidaTitulo", "S");
+			}
+			
+			//gera carne somente para aluno
+			if( StringUtils.isBlank( ((ContaReceberEntity)entidadePlc).getOutro() ) ){
+				contextHelperPlc.getRequest().setAttribute("exibeGerarCarne", "S");
+			}
+			else{
+				contextHelperPlc.getRequest().setAttribute("exibeGerarCarne", "N");	
+			}
+		}
+		contextHelperPlc.getRequest().setAttribute( PlcConstantes.ACAO.EXIBE_BT_IMPRIMIR, PlcConstantes.EXIBIR );
+	}
 	
 	@Override
 	protected boolean gravaSimplesAntes() throws PlcException {
@@ -34,7 +69,6 @@ public class ContaReceberDiarioAction extends AppAction {
 		
 		setValorPadrao(contaReceber);
 		
-		
 		return super.gravaSimplesAntes();
 	}
 	
@@ -45,6 +79,7 @@ public class ContaReceberDiarioAction extends AppAction {
 		if(TipoReceberDe.O.equals( contaReceber.getTipoReceberDe() ) ){
 			contaReceber.setAluno(new AlunoEntity());
 		}
+		setTipoReceberDeAuxEdit( contaReceber.getTipoReceberDe() );
 		
 		return super.gravaApos();
 	}
@@ -56,17 +91,18 @@ public class ContaReceberDiarioAction extends AppAction {
 		
 		contaReceber.setBoletoGerado(PlcSimNao.N);
 		contaReceber.setValorDocumento( contaReceber.getValorTotal() );
-		contaReceber.setDataVencimento( contaReceber.getDataRecebimento() );
-		contaReceber.setRecebido(PlcSimNao.S);
+		if( contaReceber.getDataVencimento() == null ){
+			contaReceber.setDataVencimento( contaReceber.getDataRecebimento() );
+		}
 		contaReceber.setTipoContaReceber( TipoContaReceber.D );
 		
 		if( TipoReceberDe.O.equals( contaReceber.getTipoReceberDe() ) ){
 			contaReceber.setContaReceberProdutoVenda( new ArrayList<ContaReceberProdutoVenda>() );
+			contaReceber.setAluno(null);
 		}
 		else{
 			contaReceber.setOutro(null);
 		}
-		
 	}
 
 	@Override
@@ -75,8 +111,8 @@ public class ContaReceberDiarioAction extends AppAction {
 		ContaReceberEntity contaReceber = (ContaReceberEntity)entidadePlc;
 		
 		contaReceber.setDataDocumento( new Date() );
-		contaReceber.setDataRecebimento( new Date() );
 		contaReceber.setTipoReceberDe( TipoReceberDe.A );
+		contaReceber.setRecebido(PlcSimNao.N);
 		
 		return super.novoApos();
 	}
@@ -138,6 +174,29 @@ public class ContaReceberDiarioAction extends AppAction {
 		return NAVEGACAO.IND_MESMA_PAGINA;
 	}
 	
+	/**
+	 * Seta o titulo como recebido
+	 * @return
+	 * @throws PlcException
+	 */
+	public String liquidaTitulo() throws PlcException{
+		
+		ContaReceberEntity contaReceber = (ContaReceberEntity)entidadePlc;
+		
+		if( PlcSimNao.S.equals( contaReceber.getRecebido() ) ){
+			throw new PlcException("msg.info.tituloLiquidado");
+		}
+		
+		contaReceber.setRecebido( PlcSimNao.S );
+
+		if( contaReceber.getDataRecebimento() == null ){
+			contaReceber.setDataRecebimento( new Date() );
+		}
+		
+		grava();
+		
+		return NAVEGACAO.IND_MESMA_PAGINA;
+	}
 	
 	/**
 	 * Seta o valor total do contas a receber
@@ -151,6 +210,50 @@ public class ContaReceberDiarioAction extends AppAction {
 			contaReceber.setValorTotal( BigDecimal.ZERO );
 		}
 		contaReceber.setValorTotal( contaReceber.getValorTotal().add( valorTotalProduto ) );
+		
+	}
+	
+	/**
+	 * Utilizado para gerar o Carnê
+	 * @return
+	 * @throws PlcException
+	 */
+	public String gerarCarne() throws PlcException{
+		
+		ContaReceberEntity contaReceber = (ContaReceberEntity)entidadePlc;
+		
+		if( contaReceber.getContaReceberProdutoVenda() != null && !contaReceber.getContaReceberProdutoVenda().isEmpty() ){
+			IAppFacade fc = (IAppFacade)getServiceFacade();
+			for (ContaReceberProdutoVenda produtoVenda : contaReceber.getContaReceberProdutoVenda() ) {
+				
+				String desricaoProduto = "";
+				if( StringUtils.isBlank( produtoVenda.getProdutoVenda().getDescricao() ) ){
+					desricaoProduto = fc.recuperaDescricaoProdutoVenda( produtoVenda.getProdutoVenda().getId() );
+				}
+				else{
+					desricaoProduto = produtoVenda.getProdutoVenda().getDescricao();
+				}
+				
+				if( StringUtils.isBlank( contaReceber.getDescricaoCarne() ) ){
+					contaReceber.setDescricaoCarne( desricaoProduto );
+				}
+				else{
+					contaReceber.setDescricaoCarne( contaReceber.getDescricaoCarne() +", "+ desricaoProduto );
+				}
+			}
+		}
+		else{
+			contaReceber.setDescricaoCarne( contaReceber.getEvento().getDescricao() );
+		}
+		
+		List<ContaReceberEntity> listContaReceberEvento = new ArrayList<ContaReceberEntity>();
+		listContaReceberEvento.add( contaReceber );
+		if(listContaReceberEvento != null ){
+			HashMap<String , String> map = new HashMap<String, String>();
+			geraListaRelatorio(AppConstantesComuns.RELATORIO.CARNE_EVENTO_ALUNO, listContaReceberEvento,map);
+		}
+		
+		return NAVEGACAO.IND_MESMA_PAGINA;
 		
 	}
 

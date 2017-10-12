@@ -1,0 +1,683 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cabecalho" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="587a4c9e-d49c-4fe5-8186-239fc2e35bee">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="332"/>
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="454" splitType="Prevent">
+			<image hAlign="Center">
+				<reportElement key="image" positionType="Float" mode="Transparent" x="38" y="6" width="86" height="79" uuid="9347bc2a-6b80-4414-8e96-d4ca5764eda4"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<imageExpression><![CDATA["C:\\powerlogic\\jcompany55\\meus_projetos\\ge\\ge\\src\\main\\webapp\\plc\\midia\\LOGO_FINAL.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement key="staticText" x="147" y="12" width="265" height="16" uuid="481e11c0-311d-40be-aa21-90ea145563ad"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[JARDIM DE INFÂNCIA PEDACINHO DE GENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="147" y="29" width="265" height="10" uuid="fc883875-a8ca-4451-af8e-da5d9a2a7b53"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<text><![CDATA[Educação Infantil – Aut. – Port. S.M.D.E. n. 143/2009]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="147" y="39" width="265" height="10" uuid="f4aca3c1-be33-41ec-8008-b52256da73ec"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<text><![CDATA[Ensino Fundamental – Aut. – Port. S.E.E. n. 770 de 11/09/2008]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="147" y="49" width="265" height="10" uuid="b2e0b459-e290-49a3-9f1c-f5bcd1dc62a8"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<text><![CDATA[Rua João Gualberto Filho, n. 141 - Sagrada Família]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="147" y="60" width="265" height="10" uuid="7b556d20-26af-4907-8a3d-e45b902f111b"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<text><![CDATA[CEP 31030-410 Belo Horizonte/MG – (31) 3482-6414]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="147" y="71" width="265" height="10" uuid="e0d307f3-65c0-4e09-baa7-2fed594f4a41"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<text><![CDATA[CNPJ: 19.967.371/0001-75]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="2" y="88" width="551" height="17" uuid="1fef066f-01a1-43fe-939c-76f70bb80114"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="11" isBold="true" isUnderline="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[CONTRATO DE PRESTAÇÃO DE SERVIÇOS EDUCACIONAIS]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+				<reportElement key="textField-1" positionType="Float" x="2" y="105" width="551" height="40" uuid="c92d08c3-7628-48a9-ab15-9b50e1e1b85d"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Middle" markup="styled">
+					<font fontName="Tahoma" size="8" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["O <style isBold='true' pdfFontName='Helvetica-Bold'>Jardim de Infância Pedacinho de Gente Ltda.</style>,  inscrito no CNPJ sob o n. 19.967.371/0001-75, instituição de ensino com sede na Rua João Gualberto Filho, n. 141, bairro Sagrada Família, na cidade de Belo Horizonte/MG, doravante denominada simplesmente <style isBold='true' pdfFontName='Helvetica-Bold'>CONTRATADA</style> e de outro lado os <style isBold='true' pdfFontName='Helvetica-Bold'>CONTRATANTES</style>, abaixo qualificados:"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+				<reportElement key="textField-2" positionType="Float" x="3" y="145" width="528" height="15" uuid="c43198a8-7fbb-446e-b1dd-3b095b4a042d"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Bottom" markup="styled">
+					<font fontName="Tahoma" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA["IDENTIFICAÇÃO DOS CONTRATANTES"]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement key="line-1" x="2" y="165" width="551" height="1" uuid="cd438f58-3bb6-4414-8987-a0f677e60236"/>
+			</line>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+				<reportElement key="textField-3" positionType="Float" x="4" y="166" width="257" height="11" uuid="1200b63d-5e64-4642-ad12-72ece94c4f6a"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Top" markup="styled">
+					<font fontName="Tahoma" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA["1 Contratante"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+				<reportElement key="textField-4" positionType="Float" x="271" y="166" width="266" height="11" uuid="9ca087bc-cd1d-4296-819b-f0e834e7ea24"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Top" markup="styled">
+					<font fontName="Tahoma" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA["2 Contratante"]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement key="line-2" x="2" y="193" width="551" height="1" uuid="9df09ff4-6080-4075-8cba-ffd448acdded"/>
+			</line>
+			<line>
+				<reportElement key="line-3" x="2" y="212" width="550" height="2" uuid="21e6faea-5091-459a-8d28-c8135b5862d6"/>
+			</line>
+			<line>
+				<reportElement key="line-4" x="269" y="166" width="1" height="165" uuid="87c076b7-9065-4538-b3fa-2f3dd8357266"/>
+			</line>
+			<staticText>
+				<reportElement key="staticText-1" x="4" y="177" width="27" height="16" uuid="b6f26cd1-2dec-4408-b633-4c06c4b09320"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<text><![CDATA[Nome:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-2" x="4" y="195" width="46" height="16" uuid="a719ac53-bdf0-4db6-8e55-6ad9cfa0d2c4"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<text><![CDATA[Nacionalidade:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-3" x="144" y="195" width="41" height="16" uuid="97bc3123-8ad4-4c43-b088-3aec583814a3"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<text><![CDATA[Estado Civil:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-4" x="272" y="177" width="27" height="16" uuid="21e03b18-0acb-4f15-b91c-5173cfb7d697"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<text><![CDATA[Nome:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-5" x="272" y="195" width="52" height="16" uuid="621f97e9-8ea4-4ac7-bae6-04c38f20f1e3"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<text><![CDATA[Nacionalidade:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-6" x="411" y="195" width="42" height="16" uuid="4e185a8e-d96d-4b70-95de-d4c1643352b4"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<text><![CDATA[Estado Civil:]]></text>
+			</staticText>
+			<line>
+				<reportElement key="line-5" x="3" y="231" width="550" height="2" uuid="cbf48d24-5545-4f17-9397-1b4b7a31cfae"/>
+			</line>
+			<line>
+				<reportElement key="line-6" x="3" y="250" width="550" height="2" uuid="56545f99-a30f-4b06-abcb-bf332d7c6d13"/>
+			</line>
+			<line>
+				<reportElement key="line-7" x="2" y="270" width="550" height="2" uuid="f754f075-6a13-43d5-8709-c010a44650d1"/>
+			</line>
+			<line>
+				<reportElement key="line-8" x="3" y="290" width="550" height="2" uuid="18a940d7-fda4-4910-9136-f7ba155186c2"/>
+			</line>
+			<line>
+				<reportElement key="line-9" x="3" y="310" width="550" height="2" uuid="9629de64-8f31-4198-9161-0f8e26930c84"/>
+			</line>
+			<line>
+				<reportElement key="line-10" x="3" y="330" width="550" height="2" uuid="3fb00f72-2e14-4aa8-97e2-4baedbacbe79"/>
+			</line>
+			<staticText>
+				<reportElement key="staticText-7" x="4" y="214" width="33" height="16" uuid="f252c685-79ed-4c4f-a753-169f8c211ad4"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<text><![CDATA[Profissão:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-8" x="4" y="233" width="21" height="16" uuid="c4352a06-7f18-4f91-a19e-c83690591c37"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<text><![CDATA[CPF:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-9" x="4" y="253" width="46" height="16" uuid="5593f59b-de64-4260-b094-131b179cf39a"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<text><![CDATA[Residente na:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-10" x="4" y="273" width="21" height="16" uuid="6308f1db-0b16-4b16-bbe0-39e44d265cf0"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<text><![CDATA[N.:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-11" x="4" y="293" width="51" height="16" uuid="baab4e16-f6b9-4085-bad8-c0de0fed3ff6"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<text><![CDATA[Cidade/Estado:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-12" x="4" y="312" width="33" height="16" uuid="a6ca1d7c-68ef-49c0-b385-8797cec45399"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<text><![CDATA[Telefone:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-13" x="169" y="214" width="15" height="16" uuid="4719f7ee-a33e-4a56-9d37-8fcbbcfe1caa"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<text><![CDATA[RG:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-14" x="70" y="272" width="26" height="16" uuid="d3e137e1-f59c-4fe0-bd89-10dffb0bb745"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<text><![CDATA[Compl.:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-15" x="148" y="273" width="24" height="16" uuid="5c62e917-cc8d-42dc-a457-1bdda239fc88"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<text><![CDATA[Bairro:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-16" x="105" y="313" width="26" height="16" uuid="0ee88de1-0edd-4ba3-bb89-d91f3f874c13"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<text><![CDATA[E-mail:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-17" x="273" y="214" width="33" height="16" uuid="f69c9d05-3cd2-4b77-8879-69eb3067e430"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<text><![CDATA[Profissão:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-18" x="438" y="214" width="15" height="16" uuid="57ef88dd-48f5-44dc-a274-d635ca90f71a"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<text><![CDATA[RG:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-19" x="273" y="233" width="21" height="16" uuid="0cbc04bd-9c66-48dc-b2b8-6dcbdecf1a67"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<text><![CDATA[CPF:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-20" x="273" y="253" width="46" height="16" uuid="cab164b8-449f-4520-939a-677502d2348e"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<text><![CDATA[Residente na:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-21" x="339" y="272" width="26" height="16" uuid="4b27615b-3702-46ed-a4a1-5c74d8f74d3b"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<text><![CDATA[Compl.:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-22" x="417" y="273" width="24" height="16" uuid="c4bf5d5d-52d3-48d2-9fec-f7afba955e88"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<text><![CDATA[Bairro:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-23" x="273" y="273" width="21" height="16" uuid="2eecba02-066d-4da9-9192-7a848082a5f9"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<text><![CDATA[N.:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-24" x="273" y="293" width="51" height="16" uuid="7f2ff20e-c2ec-439c-88e7-23cf23c32962"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<text><![CDATA[Cidade/Estado:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-25" x="273" y="312" width="33" height="16" uuid="f5ecc8a0-305c-42d6-b6e5-75e4f8b28c8f"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<text><![CDATA[Telefone:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-26" x="374" y="313" width="26" height="16" uuid="fe7b64de-497b-479f-b437-9031570df0a0"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<text><![CDATA[E-mail:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-5" x="2" y="335" width="551" height="25" uuid="77654c1a-9cf3-4563-833c-42869675d0ac"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Justified">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["CLÁUSULA 1ª - Beneficiário dos Serviços de Educação Escolar. Os serviços de educação escolar contratados serão prestados durante o ano de ??2016?? ao(à) BENEFICIÁRIO(A) a seguir indicado, filho(a) (ou dependente) dos CONTRATANTES acima qualificados:"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-27" x="4" y="360" width="527" height="14" uuid="c5103de8-340b-45fa-8f64-e5e1ac4e6128"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Tahoma" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[IDENTIFICAÇÃO DO(A) BENEFICIÁRIO(A)]]></text>
+			</staticText>
+			<line>
+				<reportElement key="line-11" x="2" y="376" width="550" height="1" uuid="0a776b64-97ef-4004-972e-d8f84cfe1e0e"/>
+			</line>
+			<line>
+				<reportElement key="line-12" x="2" y="396" width="550" height="1" uuid="02d5c7fd-2a3a-433f-87ed-48a67e202440"/>
+			</line>
+			<line>
+				<reportElement key="line-13" x="2" y="417" width="550" height="1" uuid="0db2e948-2c46-406b-b5b5-68dbce17e989"/>
+			</line>
+			<staticText>
+				<reportElement key="staticText-28" x="3" y="379" width="24" height="16" uuid="a90954a4-2bec-4226-8d50-d389e2f5fcc4"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[Nome:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-29" x="333" y="379" width="81" height="16" uuid="5e43ab29-736d-4f17-ae9b-c5644bc66f83"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[Data de Nascimento:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-30" x="3" y="399" width="96" height="16" uuid="8bd7d053-cfd8-440b-a59e-032025d1882d"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[Período de permanência: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-31" x="171" y="399" width="49" height="16" uuid="a96ebe02-58cc-4ff8-9ac5-d44afd5b9007"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[Matrícula Nº:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-32" x="289" y="399" width="51" height="16" uuid="96e34f33-ad2f-4a74-a690-d2154732d264"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[Série/Turma:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-33" x="407" y="399" width="31" height="16" uuid="0d2dcdf0-351a-4b8c-b5ab-005f047ff697"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[Turno:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-34" x="2" y="421" width="550" height="32" uuid="0a76a29f-749b-4991-baea-062a2dcd5725"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Justified">
+					<font fontName="Tahoma" size="8" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[CLÁUSULA 2ª - Objeto. O objeto do presente contrato é a prestação, pela CONTRATADA, de serviços de educação escolar ao  BENEFICIÁRIO(A) indicado(a) na Cláusula 1ª, conforme calendário escolar, regimento interno e projeto pedagógico da instituição de ensino, resultante do deferimento de requerimento de matrícula e apresentação dos demais documentos necessários à sua efetivação. ]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

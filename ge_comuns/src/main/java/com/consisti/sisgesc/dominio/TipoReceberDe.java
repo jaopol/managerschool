@@ -6,8 +6,7 @@ package com.consisti.sisgesc.dominio;
 public enum TipoReceberDe {
     
 	A("ALUNO") /* tipoReceberDe.A=Aluno */,
-	O("OUTROS") /* tipoReceberDe.O=Outros */,
-	E("EVENTOS") /* tipoReceberDe.E=Eventos */;
+	O("OUTROS") /* tipoReceberDe.O=Outros */;
 
 	private String descricao;
 	

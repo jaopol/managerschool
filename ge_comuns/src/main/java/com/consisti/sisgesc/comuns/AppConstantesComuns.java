@@ -45,6 +45,7 @@ public interface AppConstantesComuns extends PlcConstantesComuns {
     	String ESTOQUE_ANALITICO = "estoque_analitico.jasper";
     	String TERMO_MATRICULA = "termo_matricula.jasper";
     	String REL_MOVIMENTO_DIA = "movimento_dia.jasper";
+    	String CARNE_EVENTO_ALUNO = "carne_evento_aluno.jasper";
     	
     }
     

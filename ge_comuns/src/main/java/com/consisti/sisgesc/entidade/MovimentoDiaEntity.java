@@ -40,6 +40,8 @@ public class MovimentoDiaEntity extends MovimentoDia {
 	
 	private transient Banco banco;
 	
+	private transient String saldoDiaAnteriorStr;
+	
     /*
      * Construtor padrão
      */
@@ -119,4 +121,12 @@ public class MovimentoDiaEntity extends MovimentoDia {
 	public void setBanco(Banco banco) {
 		this.banco = banco;
 	}
+
+	public String getSaldoDiaAnteriorStr() {
+	   if (getSaldoDiaAnterior() != null) 
+	        return NumberFormat.getCurrencyInstance().format(getSaldoDiaAnterior());
+       else
+           return "";
+	}
+
 }

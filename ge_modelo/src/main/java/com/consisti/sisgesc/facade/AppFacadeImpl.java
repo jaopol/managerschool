@@ -45,6 +45,7 @@ import com.consisti.sisgesc.entidade.financeiro.ContaPagar;
 import com.consisti.sisgesc.entidade.financeiro.ContaReceber;
 import com.consisti.sisgesc.entidade.financeiro.ContaReceberEntity;
 import com.consisti.sisgesc.entidade.financeiro.ExtratoAluno;
+import com.consisti.sisgesc.entidade.financeiro.ProdutoVendaEntity;
 import com.consisti.sisgesc.entidade.financeiro.TipoPlanoContasEntity;
 import com.consisti.sisgesc.modelo.AlunoManager;
 import com.consisti.sisgesc.modelo.ContaReceberManager;
@@ -61,6 +62,8 @@ import com.consisti.sisgesc.persistencia.hibernate.EnderecoDAO;
 import com.consisti.sisgesc.persistencia.hibernate.FornecedorDAO;
 import com.consisti.sisgesc.persistencia.hibernate.FuncionarioDAO;
 import com.consisti.sisgesc.persistencia.hibernate.MovimentoDiaDAO;
+import com.consisti.sisgesc.persistencia.hibernate.ProdutoMaterialDAO;
+import com.consisti.sisgesc.persistencia.hibernate.ProdutoVendaDAO;
 import com.consisti.sisgesc.persistencia.hibernate.ResponsavelFinanceiroAlunoDAO;
 import com.consisti.sisgesc.persistencia.hibernate.ServicoAlunoDAO;
 import com.consisti.sisgesc.persistencia.hibernate.ServicoDAO;
@@ -71,6 +74,7 @@ import com.consisti.sisgesc.persistencia.hibernate.autenticacao.PerfilDAO;
 import com.consisti.sisgesc.persistencia.hibernate.autenticacao.UsuarioDAO;
 import com.powerlogic.jcompany.comuns.PlcBaseVO;
 import com.powerlogic.jcompany.comuns.PlcException;
+import com.powerlogic.jcompany.dominio.tipo.PlcSimNao;
 import com.powerlogic.jcompany.facade.PlcFacadeImpl;
 
 /**
@@ -246,14 +250,25 @@ public class AppFacadeImpl extends PlcFacadeImpl implements IAppFacade, IAppFaca
 		return bo.recuperaValorAlunoSetContaReceber(idAluno);
 	}
 
-	public List<ExtratoAluno> getListExtratoAluno(AlunoEntity aluno, Date dataInicio, Date dataFim) throws PlcException {
+	public List<ExtratoAluno> getListExtratoProdutoAluno(Long idAluno, Date dataInicio, Date dataFim, PlcSimNao recebido) throws PlcException {
 		ExtratoAlunoManager bo = (ExtratoAlunoManager)getBO(ExtratoAlunoManager.class);
-		return bo.getListExtratoAluno(aluno, dataInicio, dataFim);
+		return bo.getListExtratoProdutoAluno(idAluno, dataInicio, dataFim, recebido);
 	}
 	
 	public List<AlunoEntity> recuperarAluno(Aluno aluno, Turma turma, TipoEducacao educacao) throws PlcException{
 		AlunoDAO dao = (AlunoDAO) getDAO(AlunoDAO.class);
 		return dao.recuperarAluno(aluno, turma, educacao);
 	}
-	
+
+	public List<ContaReceberEntity> gravarContaReceberEvento(List<AlunoEntity> listAluno,
+			ContaReceberEntity contaReceber) throws PlcException {
+		ContaReceberManager bo = (ContaReceberManager)getBO(ContaReceberManager.class);
+		return bo.gravarContaReceberEvento(listAluno, contaReceber);
+	}
+
+	public String recuperaDescricaoProdutoVenda(Long id) throws PlcException {
+		ProdutoVendaDAO dao = (ProdutoVendaDAO)getDAO(ProdutoVendaDAO.class);
+		return dao.recuperarDescricaoProdutoVenda(id);
+	}
+
 }

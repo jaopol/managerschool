@@ -11,7 +11,7 @@
 	<ui:composition> 
 		<plcf:tabela tituloChave="selecao.argumento.titulo"> 
 			<plcf:linha> 
-				<plcf:celula> 
+				<plcf:celula columnSpan="2"> 
 					<plcf:titulo tituloChave="label.favorecido"/>  
 					<plcf:vinculado id="fornecedor" value="#{plcLogicaItens.argumentos.favorecido.valor}" propSelPop="fornecedor" idExibe="N" idSomenteLeitura="N" autoRecuperacaoClasse="com.consisti.sisgesc.entidade.FornecedorEntity" actionSel="fornecedorsel" modal="S" ajudaChave="ajuda.favorecido" onkeydown="selecionaPorTecla(event,this);" lookupTamanho="50"/> 
 				</plcf:celula>
@@ -33,7 +33,11 @@
 			<plcf:linha> 
 				<plcf:celula> 
 					<plcf:titulo tituloChave="label.planoContas"/>  
-					<plcf:comboDinamico id="planoContas" value="#{plcLogicaItens.argumentos.planoContas.valor}"  dominio="PlanoContasEntity" exibeBranco="S" ajudaChave="ajuda.planoContas" /> 
+					<plcf:comboDinamico id="planoContas" value="#{plcLogicaItens.argumentos.planoContas.valor}"  dominio="PlanoContasEntity" exibeBranco="S" ajudaChave="ajuda.planoContas" onchange="montaComboTipoPlanoContas();"/> 
+				</plcf:celula>  
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.tipoPlanoContas"/>  
+					<plcf:comboDinamico id="tipoPlanoContas" value="#{plcLogicaItens.argumentos.tipoPlanoContas.valor}"  dominio="#{plcAction.listaTipoPlanoContas}" exibeBranco="S" ajudaChave="ajuda.planoContas" /> 
 				</plcf:celula>  
 				<plcf:celula> 
 					<plcf:titulo tituloChave="label.formaPagamento"/>  
@@ -45,5 +49,21 @@
 				</plcf:celula> 
 			</plcf:linha> 
 		</plcf:tabela> 
+		
+		<plcf:botaoAcao id="btMontaComboTipoPlanoContas" acao="montaComboTipoPlanoContas"  validaForm="false" limpaForm="false" inlineStyle="display:none;" blocking="true" />
+	
+	<script avaliar="S">
+
+		//<![CDATA[
+			
+			function montaComboTipoPlanoContas(){
+				document.getElementById('corpo:formulario:btMontaComboTipoPlanoContas').click();
+			}
+			
+		 //]]>
+			
+	</script>
+		
+		
 	</ui:composition> 
 </html>

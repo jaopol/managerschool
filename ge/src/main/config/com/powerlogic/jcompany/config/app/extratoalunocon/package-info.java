@@ -17,7 +17,8 @@
 				navegador = @PlcConfigNavegador(numPorPagina=20, dinamicoTipo=com.powerlogic.jcompany.config.controle.colaboracao.PlcConfigNavegador.DinamicoTipo.DINAMICO_PAGINA),				argumentos = {
 						@PlcConfigArgumento(propriedade="aluno", operador=Operador.IGUAL_A, formato=Formato.STRING),
 						@PlcConfigArgumento(propriedade="dataInicio_ArgINI", operador=Operador.MAIOR_OU_IGUAL_QUE, formato=Formato.DATE),
-						@PlcConfigArgumento(propriedade="dataFim_ArgINI", operador=Operador.MAIOR_OU_IGUAL_QUE, formato=Formato.DATE)
+						@PlcConfigArgumento(propriedade="dataFim_ArgINI", operador=Operador.MAIOR_OU_IGUAL_QUE, formato=Formato.DATE),
+						@PlcConfigArgumento(propriedade="recebido", operador=Operador.IGUAL_A, formato=Formato.STRING)
 			})
 
 )

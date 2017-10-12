@@ -11,6 +11,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.apache.commons.lang.StringUtils;
 import org.hibernate.annotations.AccessType;
 
 import com.consisti.sisgesc.entidade.Fornecedor;
@@ -35,6 +36,9 @@ import com.powerlogic.jcompany.dominio.tipo.PlcSimNao;
 public class ContaPagarEntity extends ContaPagar {
  	
 	private transient String contaPagaDesc;
+	
+	private transient String descricaoFavorecido;
+	
 	
     /*
      * Construtor padrão
@@ -167,5 +171,25 @@ public class ContaPagarEntity extends ContaPagar {
 			return NumberFormat.getCurrencyInstance().format(getValorPagar());
 		}
 		return "";
+	}
+	
+	public String getDescricaoFavorecido() {
+		if( getFavorecido() != null ){
+			if( StringUtils.isNotBlank( getFavorecido().getNome() ) ){
+				return getFavorecido().getNome();
+			}
+			else if( StringUtils.isNotBlank( getFavorecido().getNomeFantasia() ) ){
+				return getFavorecido().getNomeFantasia();
+			}
+			else if( StringUtils.isNotBlank( getFavorecido().getRazaoSocial() ) ){
+				return getFavorecido().getRazaoSocial();
+			}
+		}
+		
+		return "";
+	}
+	
+	public void setDescricaoFavorecido(String descricaoFavorecido) {
+		this.descricaoFavorecido = descricaoFavorecido;
 	}
 }

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rodapeContrato" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="5648bfc4-08f7-4fb4-a371-00575193ac36">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="209"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="468" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="3" y="2" width="549" height="12" uuid="b6b28660-6f53-45b5-a6b1-6e9cb15d89e9"/>
+				<textElement textAlignment="Justified" markup="none">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[CLÁUSULA 7ª - Rescisão. O presente contrato poderá ser rescindido:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="12" y="14" width="24" height="23" uuid="3c49e084-64cb-499b-afe5-a1cf7f4ea456"/>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[a)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="36" y="14" width="515" height="23" uuid="a18436c5-313c-40ff-9855-a2a27357c43d"/>
+				<textElement textAlignment="Justified" markup="none">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[Pela Escola CONTRATADA, por motivo disciplinar dado pelo(a) BENEFICIÁRIO(A), ou outro previsto no Regimento Escolar, ou por incompatibilidade ou desarmonia do(a) BENEFICIÁRIO(A), ou seu responsável, com regime ou filosofia da Escola;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="12" y="37" width="24" height="14" uuid="4fff6ad4-695d-4157-8d53-ef4fc335f023"/>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[b)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="36" y="37" width="515" height="14" uuid="191e2868-2d9d-4f0b-a747-daf4f7ae3348"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[Pelos CONTRATANTES, a qualquer tempo, observando as condições da Cláusula 6ª;
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="50" width="22" height="14" uuid="a5956f79-f5fb-4d62-bc09-228f94625d6f"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[c)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="36" y="50" width="515" height="14" uuid="071c87b4-b5c6-41d7-9201-873f0929f663"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[Por acordo entre as partes;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="64" width="22" height="14" uuid="02b2fd35-8a15-48f5-99f2-2ebb3b39bb92"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[d)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="36" y="64" width="515" height="14" uuid="bbb28ffc-fa5a-4557-a014-ed5e4b0320eb"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[Em razão do descumprimento de quaisquer obrigações prevista neste instrumento.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="78" width="547" height="30" uuid="dfc48c60-c13e-4919-887d-88f5d64d3da2"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[CLÁUSULA 8ª - Compromisso. Os CONTRATANTES ao firmarem o presente contrato obrigam-se a fazer com que o BENEFICIÁRIO(A) seja frequente às aulas, cumpra o calendário escolar e horário estabelecido pela CONTRATADA, assumindo total responsabilidade pelos problemas advindos da não observância destes.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="108" width="547" height="30" uuid="fb9352d4-bd60-413c-9e3f-7f4ca3c8dedb"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[Parágrafo Único: Os CONTRATANTES comprometem-se, ainda, a comunicar expressamente à CONTRATADA sobre existência e o teor de decisões judiciais que venham a alterar o regime de guarda do BENEFICIÁRIO(A), não se responsabilizando a CONTRATADA por quaisquer fatos que resultem da não observância do presente parágrafo. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="139" width="547" height="12" uuid="13cbdf3b-3344-4b1e-ae82-5bf8ae7e8d61"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[CLÁUSULA 9ª - Mudança de Endereço. Os CONTRATANTES obrigam-se a comunicar à Escola CONTRATADA seu novo domicílio, bem como]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="150" width="537" height="12" uuid="429a4ad9-13d9-4ee4-b599-d558ee8b4258"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[o número de telefone e e-mail, sempre que houver alteração dos mesmos, sob pena dos atos se desenrolarem com a revelia dos mesmos.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="162" width="547" height="12" uuid="51ab81b6-58d3-4669-a5aa-c1d616fcdbd8"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[CLÁUSULA 10ª - Documentação. Os CONTRATANTES assumem total responsabilidade quanto às declarações neste contrato e na ficha de ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="174" width="537" height="12" uuid="3db34f38-b32e-4ef2-992a-8af8879482d7"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[matricula, obrigando-se a entregar, no prazo estabelecido pela legislação escolar vigente, os seguintes documentos: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="12" y="186" width="24" height="12" uuid="76301139-b7ea-494e-9798-7c4162554bf1"/>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[a)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="36" y="186" width="515" height="12" uuid="816c1a80-4146-4bea-b052-919d8b5616ee"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[Do BENEFICIÁRIO(A): Cópia da Certidão de Nascimento; Cópia do Cartão de Vacina; 4 (quatro) fotos 3x4; Atestado médico.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="12" y="198" width="24" height="12" uuid="efbabd35-ff62-4b2f-80c9-cfcb2a7070f7"/>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[b)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="36" y="198" width="515" height="12" uuid="a8bad839-b80c-4eff-b9ae-3ea7d11e0db6"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[Dos CONTRATANTES: Cópia do comprovante de endereço; Cópia do CPF; Cópia do RG.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="5" y="211" width="24" height="41" uuid="3e781ecf-2437-49fc-83ed-d541ecdc574a"/>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[I.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="36" y="210" width="515" height="42" uuid="aadd2f4a-7fdd-470b-8f10-5387f801add6"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[Recebida a documentação a CONTRATADA terá 30 (trinta) dias para aferir a sua regularidade. Caso a documentação não preencha os requisitos legais para a matrícula do BENEFICIÁRIO(A), o fato acarretará a rescisão deste contrato, com o cancelamento da vaga, perdendo os CONTRATANTES o valor da primeira parcela paga à título de sinal, ou, caso o pagamento total da anuidade tenha sido realizado à vista, o valor correspondente à uma parcela.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="252" width="547" height="12" uuid="9e526820-66b7-474d-9602-ed8dee83b2b8"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[CLÁUSULA 11ª - Foro. Para dirimir quaisquer dúvidas provenientes deste contrato, o foro é o constante do domicílio dos CONTRATANTES, ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="264" width="537" height="12" uuid="163a4185-b7d0-4ee6-bedf-8020659db509"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[conforme indicado no cabeçalho deste instrumento.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="278" width="537" height="12" uuid="10c6a137-d438-4cb2-862d-ace1f5421997"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[E, por estarem assim justos e contratados, assinam o presente, em duas vias de igual teor, também assinadas por duas testemunhas.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="299" width="545" height="12" uuid="be65bc5d-ad77-450d-803e-1871492d71f7"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[Belo Horizonte, xx de xxxxxxx de xxxx]]></text>
+			</staticText>
+			<line>
+				<reportElement x="188" y="345" width="172" height="1" uuid="56c7568e-0593-4dc7-a365-0b9c53081d0a"/>
+			</line>
+			<staticText>
+				<reportElement x="201" y="347" width="145" height="12" uuid="7ff2c968-35cf-4109-ac77-5b1bba945fde"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[CONTRATADA]]></text>
+			</staticText>
+			<line>
+				<reportElement x="48" y="396" width="172" height="1" uuid="d98bb1cc-9f02-4412-8f12-61e7e4a9fce3"/>
+			</line>
+			<line>
+				<reportElement x="328" y="396" width="172" height="1" uuid="b22b41e4-0e12-4811-8868-00e727be3914"/>
+			</line>
+			<line>
+				<reportElement x="48" y="446" width="172" height="1" uuid="50ce910e-41c0-4b02-bb1d-ad72bd0c1e44"/>
+			</line>
+			<line>
+				<reportElement x="328" y="446" width="172" height="1" uuid="186bf69d-556c-4743-b727-131b07b50d2e"/>
+			</line>
+			<staticText>
+				<reportElement x="61" y="397" width="145" height="12" uuid="b57c49c3-6078-43a8-a767-0d5967cb1198"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[NOME PAI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="342" y="397" width="145" height="12" uuid="b8a52ff4-2e78-4eec-a63a-0aed54d152b3"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[NOME MAE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="61" y="448" width="145" height="12" uuid="3a73b996-1075-4586-8f53-efa0f048bd43"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[RAFAELA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="341" y="448" width="145" height="12" uuid="49869817-1cca-4d5f-b586-4cd5a43b1f23"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[2ª TESTEMUNHA]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -23,7 +23,7 @@ import javax.persistence.Entity;
 @SuppressWarnings("serial")
 @NamedQueries({
 	@NamedQuery(name="FormaPagamentoEntity.queryMan", query="from FormaPagamentoEntity obj"),
-	@NamedQuery(name="FormaPagamentoEntity.querySelLookup", query="select new FormaPagamentoEntity (obj.id, obj.descricao) from FormaPagamentoEntity obj where obj.id = ? order by obj.id asc")
+	@NamedQuery(name="FormaPagamentoEntity.querySelLookup", query="select new FormaPagamentoEntity (obj.id, obj.descricao) from FormaPagamentoEntity obj where obj.id = ? order by obj.descricao asc")
 })
 public class FormaPagamentoEntity extends FormaPagamento {
  	

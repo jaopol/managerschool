@@ -26,6 +26,9 @@
 	<parameter name="DIR_IMAGENS" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="REPORT_CONTEXT" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="dataBaseContrato" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" isForPrompting="true" class="java.lang.String">
+		<defaultValueExpression ><![CDATA["C:\\powerlogic\\jcompany55\\meus_projetos\\ge\\ge\\src\\main\\webapp\\plc\\rel\\"]]></defaultValueExpression>
+	</parameter>
 
 	<field name="aluno.nomeRespFinanceiroStr" class="java.lang.String"/>
 	<field name="aluno.dataNascimentoStr" class="java.lang.String"/>
@@ -65,339 +68,33 @@
 		</columnHeader>
 		<detail>
 			<band height="505"  isSplitAllowed="true" >
-				<image  scaleImage="FillFrame" vAlign="Middle" hAlign="Center" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="7"
-						y="12"
-						width="183"
-						height="93"
-						key="image-1"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<graphicElement stretchType="NoStretch"/>
-					<imageExpression class="java.lang.String"><![CDATA[$P{DIR_IMAGENS}+"/LOGO_FINAL.jpg"]]></imageExpression>
-				</image>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="0"
 						y="131"
 						width="535"
-						height="16"
+						height="25"
 						key="textField-1"
 						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Middle" isStyledText="true">
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["      O <style isBold='true' pdfFontName='Helvetica-Bold'>INSTITUTO EDUCACIONAL FACULDADE DA CRIANÇA</style>, instituição de ensino e unidade educacional, onde serão prestados os serviços objeto do presente, situada na rua Genebra, 1000/1063 – bairro Nova Suíça, na cidade de Belo Horizonte/MG, inscrita no CNPJ/MF sob o nº 07.797.977/0001-20, doravante denominada simplesmente <style isBold='true' pdfFontName='Helvetica-Bold'>CONTRATADA</style>."]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA["      O <style isBold='true' pdfFontName='Helvetica-Bold'>Jardim de Infância Pedacinho de Gente Ltda.</style>,  inscrito no CNPJ sob o n. 19.967.371/0001-75, instituição de ensino com sede na Rua João Gualberto Filho, n. 141, bairro Sagrada Família, na cidade de Belo Horizonte/MG, doravante denominada simplesmente <style isBold='true' pdfFontName='Helvetica-Bold'>CONTRATADA</style> e de outro lado os <style isBold='true' pdfFontName='Helvetica-Bold'>CONTRATANTES</style>, abaixo qualificados:"]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="0"
-						y="147"
-						width="257"
+						x="34"
+						y="184"
+						width="217"
 						height="19"
 						key="textField-2"
 						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Middle" isStyledText="true">
-						<font/>
+						<font size="8"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{aluno.nomeRespFinanceiroStr} == "" ? "<style isBold='true' pdfFontName='Helvetica-Bold'>Contratante:</style>" : "<style isBold='true' pdfFontName='Helvetica-Bold'>Contratante:</style> "+$F{aluno.nomeRespFinanceiroStr}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="0"
-						y="147"
-						width="257"
-						height="19"
-						key="textField-2"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement verticalAlignment="Middle" isStyledText="true">
-						<font/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{aluno.nomeRespFinanceiroStr} == "" ? "<style isBold='true' pdfFontName='Helvetica-Bold'>Contratante:</style>" : "<style isBold='true' pdfFontName='Helvetica-Bold'>Contratante:</style> "+$F{aluno.nomeRespFinanceiroStr}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="0"
-						y="165"
-						width="257"
-						height="19"
-						key="textField-3"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement verticalAlignment="Middle" isStyledText="true">
-						<font/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{aluno.nacionalidadeStr} == "" ? "<style isBold='true' pdfFontName='Helvetica-Bold'>Nacionalidade:</style>" : "<style isBold='true' pdfFontName='Helvetica-Bold'>Nacionalidade:</style> "+$F{aluno.nacionalidadeStr}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="0"
-						y="183"
-						width="257"
-						height="19"
-						key="textField-4"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement verticalAlignment="Middle" isStyledText="true">
-						<font/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{aluno.profissaoStr} == "" ? "<style isBold='true' pdfFontName='Helvetica-Bold'>Profissão:</style>" : "<style isBold='true' pdfFontName='Helvetica-Bold'>Profissão:</style> "+$F{aluno.profissaoStr}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="0"
-						y="201"
-						width="257"
-						height="19"
-						key="textField-5"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement verticalAlignment="Middle" isStyledText="true">
-						<font/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{aluno.telefoneStr} == "" ? "<style isBold='true' pdfFontName='Helvetica-Bold'>Fones:</style>" : "<style isBold='true' pdfFontName='Helvetica-Bold'>Fones:</style> "+$F{aluno.telefoneStr}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="0"
-						y="219"
-						width="257"
-						height="19"
-						key="textField-6"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement verticalAlignment="Middle" isStyledText="true">
-						<font/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{aluno.rgStr} == null ? "<style isBold='true' pdfFontName='Helvetica-Bold'>RG:</style>" : "<style isBold='true' pdfFontName='Helvetica-Bold'>RG:</style> "+$F{aluno.rgStr}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="0"
-						y="237"
-						width="210"
-						height="19"
-						key="textField-7"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement verticalAlignment="Middle" isStyledText="true">
-						<font/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["<style isBold='true' pdfFontName='Helvetica-Bold'>Endereço:</style> "+$F{aluno.rua}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="0"
-						y="255"
-						width="183"
-						height="19"
-						key="textField-8"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement verticalAlignment="Middle" isStyledText="true">
-						<font/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["<style isBold='true' pdfFontName='Helvetica-Bold'>Bairro:</style> "+$F{aluno.bairro}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="256"
-						y="147"
-						width="279"
-						height="19"
-						key="textField-9"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement verticalAlignment="Middle" isStyledText="true">
-						<font/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{aluno.dataNascimentoStr} == "" ? "<style isBold='true' pdfFontName='Helvetica-Bold'>Data de Nascimento:</style>" : "<style isBold='true' pdfFontName='Helvetica-Bold'>Data de Nascimento:</style> "+$F{aluno.dataNascimentoStr}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="256"
-						y="165"
-						width="279"
-						height="19"
-						key="textField-10"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement verticalAlignment="Middle" isStyledText="true">
-						<font/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{aluno.estadoCivilStr} == "" ? "<style isBold='true' pdfFontName='Helvetica-Bold'>Estado Civil:</style>" : "<style isBold='true' pdfFontName='Helvetica-Bold'>Estado Civil:</style> "+$F{aluno.estadoCivilStr}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="256"
-						y="183"
-						width="279"
-						height="19"
-						key="textField-11"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement verticalAlignment="Middle" isStyledText="true">
-						<font/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{aluno.localTrabalhoStr} == "" ? "<style isBold='true' pdfFontName='Helvetica-Bold'>Local de Trabalho:</style>" : "<style isBold='true' pdfFontName='Helvetica-Bold'>Local de Trabalho:</style> "+$F{aluno.localTrabalhoStr}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="257"
-						y="219"
-						width="238"
-						height="19"
-						key="textField-12"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement verticalAlignment="Middle" isStyledText="true">
-						<font/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["<style isBold='true' pdfFontName='Helvetica-Bold'>CPF/MG:</style> "+$F{aluno.cpfStr}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="209"
-						y="237"
-						width="53"
-						height="19"
-						key="textField-13"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement verticalAlignment="Middle" isStyledText="true">
-						<font/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["<style isBold='true' pdfFontName='Helvetica-Bold'>N°:</style> "+$F{aluno.numero}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="262"
-						y="237"
-						width="165"
-						height="19"
-						key="textField-14"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement verticalAlignment="Middle" isStyledText="true">
-						<font/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{aluno.complemento} == null ? "<style isBold='true' pdfFontName='Helvetica-Bold'>Complemento:</style>" : "<style isBold='true' pdfFontName='Helvetica-Bold'>Complemento:</style>" +$F{aluno.complemento}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="426"
-						y="237"
-						width="109"
-						height="19"
-						key="textField-15"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement verticalAlignment="Middle" isStyledText="true">
-						<font/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["<style isBold='true' pdfFontName='Helvetica-Bold'>Bloco:</style>"]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="182"
-						y="255"
-						width="149"
-						height="19"
-						key="textField-16"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement verticalAlignment="Middle" isStyledText="true">
-						<font/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["<style isBold='true' pdfFontName='Helvetica-Bold'>Cidade:</style> "+$F{aluno.cidadeStr}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="330"
-						y="255"
-						width="97"
-						height="19"
-						key="textField-17"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement verticalAlignment="Middle" isStyledText="true">
-						<font/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["<style isBold='true' pdfFontName='Helvetica-Bold'>CEP:</style> "+$F{aluno.cep}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="426"
-						y="255"
-						width="109"
-						height="19"
-						key="textField-18"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement verticalAlignment="Middle" isStyledText="true">
-						<font/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["<style isBold='true' pdfFontName='Helvetica-Bold'>UF:</style> "+$F{aluno.ufStr}]]></textFieldExpression>
-				</textField>
-				<staticText>
-					<reportElement
-						x="0"
-						y="273"
-						width="535"
-						height="17"
-						key="staticText-1"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement verticalAlignment="Middle" isStyledText="true">
-						<font/>
-					</textElement>
-				<text><![CDATA[Em favor de]]></text>
-				</staticText>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="0"
-						y="291"
-						width="257"
-						height="37"
-						key="textField-19"
-						positionType="Float"/>
-					<box topBorder="1Point" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
-					<textElement verticalAlignment="Middle" isStyledText="true">
-						<font/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{aluno.nomeAluno} == null ? "<style isBold='true' pdfFontName='Helvetica-Bold'> ALUNO (A):</style> " : "<style isBold='true' pdfFontName='Helvetica-Bold'> ALUNO (A):</style> "+$F{aluno.nomeAluno}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="256"
-						y="285"
-						width="279"
-						height="19"
-						key="textField-20"
-						positionType="Float"/>
-					<box topBorder="1Point" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement verticalAlignment="Middle" isStyledText="true">
-						<font/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{aluno.turma.descricao} == null ? "<style isBold='true' pdfFontName='Helvetica-Bold'> TURMA:</style>" : "<style isBold='true' pdfFontName='Helvetica-Bold'> TURMA:</style> "+$F{aluno.turma.descricao}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="256"
-						y="303"
-						width="279"
-						height="19"
-						key="textField-21"
-						positionType="Float"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="1Point" leftBorderColor="#000000" rightBorder="1Point" rightBorderColor="#000000" bottomBorder="1Point" bottomBorderColor="#000000"/>
-					<textElement verticalAlignment="Middle" isStyledText="true">
-						<font/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{aluno.periodoAluno.descricao} == null ? "<style isBold='true' pdfFontName='Helvetica-Bold'> TURNO:</style>" : "<style isBold='true' pdfFontName='Helvetica-Bold'> TURNO:</style> "+$F{aluno.periodoAluno.descricao}]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement
@@ -409,7 +106,7 @@
 						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font pdfFontName="Helvetica-Bold" size="12" isBold="true" isItalic="false"/>
+						<font pdfFontName="Helvetica-Bold" size="12" isBold="true" isItalic="false" isUnderline="true" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[CONTRATO DE PRESTAÇÃO DE SERVIÇOS EDUCACIONAIS]]></text>
 				</staticText>
@@ -553,47 +250,737 @@
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA["      O fornecimento de segundas vias de documentos escolares, como também aqueles que integram a rotina da vida acadêmica e boletos serão cobrados, quando disponíveis os serviços aqui mencionados."]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+				<image  scaleImage="FillFrame" vAlign="Middle" hAlign="Center" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="0"
-						y="327"
-						width="535"
-						height="16"
-						key="textField-33"
+						mode="Transparent"
+						x="42"
+						y="11"
+						width="121"
+						height="93"
+						key="image-1"
 						positionType="Float"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement verticalAlignment="Middle" isStyledText="true">
-						<font/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["                    As partes acima qualificadas celebram entre si o presente <style isBold='true' pdfFontName='Helvetica-Bold'>CONTRATO DE PRESTAÇÃO DE SERVIÇOS EDUCACIONAIS</style>, para o ano letivo de "+$P{dataBaseContrato}+", mediante as cláusulas específicas que as partes obrigam a cumprir e respeitar."]]></textFieldExpression>
-				</textField>
+					<graphicElement stretchType="NoStretch"/>
+					<imageExpression class="java.lang.String"><![CDATA[$P{DIR_IMAGENS}+"/LOGO_FINAL.jpg"]]></imageExpression>
+				</image>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="192"
-						y="11"
-						width="339"
-						height="98"
+						x="175"
+						y="10"
+						width="340"
+						height="23"
 						key="textField-34"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement verticalAlignment="Middle" isStyledText="true">
+					<textElement textAlignment="Center" verticalAlignment="Middle" isStyledText="true">
 						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["      Educação Infantil e Ensino Fundamental <br/>"+
-"                 Unidade I - Rua Genebra 1000 <br/>"+
-"                 Unidade II - Rua Genebra 1063 <br/>"+
-"Nova Suíssa - CEP: 30.421-121 - Belo Horizonte - MG<br/>"+
-"                          Tel.: (31) 2526-4194<br/>"]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA["JARDIM DE INFÂNCIA PEDACINHO DE GENTE"]]></textFieldExpression>
 				</textField>
 				<rectangle>
 					<reportElement
 						mode="Transparent"
-						x="3"
+						x="7"
 						y="9"
-						width="531"
-						height="100"
-						key="rectangle-1"/>
+						width="522"
+						height="97"
+						key="rectangle-1"
+						positionType="Float"/>
 					<graphicElement stretchType="NoStretch"/>
 				</rectangle>
+				<staticText>
+					<reportElement
+						x="176"
+						y="33"
+						width="339"
+						height="14"
+						key="staticText-3"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA["Educação Infantil – Aut. – Port. S.M.D.E. n. 143/2009"]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="176"
+						y="47"
+						width="339"
+						height="14"
+						key="staticText-4"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA["Ensino Fundamental – Aut. – Port. S.E.E. n. 770 de 11/09/2008"]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="176"
+						y="61"
+						width="339"
+						height="14"
+						key="staticText-5"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA["Rua João Gualberto Filho, n. 141 - Sagrada Família"]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="176"
+						y="75"
+						width="339"
+						height="14"
+						key="staticText-6"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA["CEP 31030-410 Belo Horizonte/MG – (31) 3482-6414"]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="176"
+						y="88"
+						width="339"
+						height="14"
+						key="staticText-7"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA["CNPJ: 19.967.371/0001-75"]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="2"
+						y="156"
+						width="528"
+						height="16"
+						key="textField-35"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["IDENTIFICAÇÃO DOS CONTRATANTES"]]></textFieldExpression>
+				</textField>
+				<line direction="TopDown">
+					<reportElement
+						x="0"
+						y="173"
+						width="534"
+						height="0"
+						key="line-1"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="3"
+						y="173"
+						width="257"
+						height="13"
+						key="textField-36"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font pdfFontName="Helvetica-Bold" size="8" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["1 Contratante"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="264"
+						y="173"
+						width="266"
+						height="13"
+						key="textField-37"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font pdfFontName="Helvetica-Bold" size="8" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["2 Contratante"]]></textFieldExpression>
+				</textField>
+				<line direction="TopDown">
+					<reportElement
+						x="0"
+						y="203"
+						width="534"
+						height="0"
+						key="line-2"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="1"
+						y="224"
+						width="534"
+						height="0"
+						key="line-3"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="1"
+						y="244"
+						width="534"
+						height="0"
+						key="line-4"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="1"
+						y="264"
+						width="534"
+						height="0"
+						key="line-5"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="3"
+						y="283"
+						width="534"
+						height="0"
+						key="line-6"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="1"
+						y="302"
+						width="534"
+						height="0"
+						key="line-7"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="1"
+						y="321"
+						width="534"
+						height="0"
+						key="line-8"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="-1"
+						y="342"
+						width="534"
+						height="0"
+						key="line-9"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="262"
+						y="174"
+						width="0"
+						height="168"
+						key="line-10"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<staticText>
+					<reportElement
+						x="3"
+						y="186"
+						width="31"
+						height="16"
+						key="staticText-8"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Nome:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="3"
+						y="247"
+						width="22"
+						height="16"
+						key="staticText-9"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[CPF:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="3"
+						y="227"
+						width="39"
+						height="16"
+						key="staticText-10"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Profissão:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="3"
+						y="207"
+						width="59"
+						height="16"
+						key="staticText-11"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Nacionalidade:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="3"
+						y="267"
+						width="52"
+						height="16"
+						key="staticText-12"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Residente na:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="3"
+						y="286"
+						width="13"
+						height="16"
+						key="staticText-13"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[N.:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="3"
+						y="305"
+						width="58"
+						height="16"
+						key="staticText-14"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Cidade/Estado:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="3"
+						y="325"
+						width="36"
+						height="16"
+						key="staticText-15"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Telefone:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="137"
+						y="206"
+						width="47"
+						height="16"
+						key="staticText-16"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Estado Civil:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="168"
+						y="226"
+						width="16"
+						height="16"
+						key="staticText-17"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[RG:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="60"
+						y="285"
+						width="32"
+						height="16"
+						key="staticText-18"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Compl.:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="135"
+						y="285"
+						width="27"
+						height="16"
+						key="staticText-19"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Bairro:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="162"
+						y="304"
+						width="21"
+						height="16"
+						key="staticText-20"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[CEP:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="108"
+						y="324"
+						width="30"
+						height="16"
+						key="staticText-21"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[E-mail:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="265"
+						y="185"
+						width="31"
+						height="16"
+						key="staticText-22"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Nome:]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="296"
+						y="184"
+						width="217"
+						height="19"
+						key="textField-48"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{aluno.nomeRespFinanceiroStr} == "" ? "<style isBold='true' pdfFontName='Helvetica-Bold'>Contratante:</style>" : "<style isBold='true' pdfFontName='Helvetica-Bold'>Contratante:</style> "+$F{aluno.nomeRespFinanceiroStr}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="265"
+						y="206"
+						width="59"
+						height="16"
+						key="staticText-23"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Nacionalidade:]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="323"
+						y="204"
+						width="75"
+						height="19"
+						key="textField-49"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{aluno.nomeRespFinanceiroStr} == "" ? "<style isBold='true' pdfFontName='Helvetica-Bold'>Contratante:</style>" : "<style isBold='true' pdfFontName='Helvetica-Bold'>Contratante:</style> "+$F{aluno.nomeRespFinanceiroStr}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="399"
+						y="206"
+						width="47"
+						height="16"
+						key="staticText-24"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Estado Civil:]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="446"
+						y="203"
+						width="76"
+						height="19"
+						key="textField-50"
+						positionType="Float"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle" isStyledText="true">
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{aluno.nomeRespFinanceiroStr} == "" ? "<style isBold='true' pdfFontName='Helvetica-Bold'>Contratante:</style>" : "<style isBold='true' pdfFontName='Helvetica-Bold'>Contratante:</style> "+$F{aluno.nomeRespFinanceiroStr}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="430"
+						y="226"
+						width="16"
+						height="16"
+						key="staticText-25"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[RG:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="265"
+						y="226"
+						width="39"
+						height="16"
+						key="staticText-26"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Profissão:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="265"
+						y="246"
+						width="22"
+						height="16"
+						key="staticText-27"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[CPF:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="265"
+						y="266"
+						width="52"
+						height="16"
+						key="staticText-28"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Residente na:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="265"
+						y="285"
+						width="13"
+						height="16"
+						key="staticText-29"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[N.:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="322"
+						y="285"
+						width="32"
+						height="16"
+						key="staticText-30"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Compl.:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="397"
+						y="285"
+						width="32"
+						height="16"
+						key="staticText-31"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Compl.:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="265"
+						y="304"
+						width="58"
+						height="16"
+						key="staticText-32"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Cidade/Estado:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="265"
+						y="324"
+						width="36"
+						height="16"
+						key="staticText-33"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Telefone:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="370"
+						y="324"
+						width="30"
+						height="16"
+						key="staticText-34"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[E-mail:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="424"
+						y="304"
+						width="21"
+						height="16"
+						key="staticText-35"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[CEP:]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="39"
+						y="326"
+						width="66"
+						height="12"
+						key="textField"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{aluno.telefoneStr}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="185"
+						y="208"
+						width="66"
+						height="12"
+						key="textField"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{aluno.estadoCivilStr}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="62"
+						y="208"
+						width="66"
+						height="12"
+						key="textField"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{aluno.nacionalidadeStr}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="42"
+						y="228"
+						width="120"
+						height="12"
+						key="textField"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{aluno.profissaoStr}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="25"
+						y="248"
+						width="83"
+						height="12"
+						key="textField"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{aluno.cpfStr}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="162"
+						y="287"
+						width="66"
+						height="12"
+						key="textField"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{aluno.bairro}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="184"
+						y="306"
+						width="66"
+						height="12"
+						key="textField"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{aluno.cep}]]></textFieldExpression>
+				</textField>
 			</band>
 		</detail>
 		<columnFooter>

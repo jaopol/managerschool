@@ -6,11 +6,10 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-import com.consisti.sisgesc.dominio.TipoContaReceber;
-import com.consisti.sisgesc.entidade.AlunoEntity;
 import com.consisti.sisgesc.entidade.financeiro.ExtratoAluno;
 import com.consisti.sisgesc.persistencia.hibernate.ContaReceberDAO;
 import com.powerlogic.jcompany.comuns.PlcException;
+import com.powerlogic.jcompany.dominio.tipo.PlcSimNao;
 
 
 /**
@@ -25,24 +24,78 @@ public class ExtratoAlunoManager extends AppManager {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<ExtratoAluno> getListExtratoAluno(AlunoEntity aluno, Date dataInicio, Date dataFim) throws PlcException {
+	public List<ExtratoAluno> getListExtratoProdutoAluno(Long idAluno, Date dataInicio, Date dataFim, PlcSimNao recebido) throws PlcException {
+		List<ExtratoAluno> listExtrato = new ArrayList<ExtratoAluno>();
 		
-		Long idAluno = null;
-		if(aluno != null){
-			idAluno = aluno.getId();
-		}
-		List contasReceberAluno = contaReceberDAO.recuperarAllContasReceberAluno(idAluno, dataInicio, dataFim);
+		List<Long> idProdContasReceber = contaReceberDAO.recuperarIdProdContasReceberDiarioAluno(idAluno, dataInicio, dataFim, recebido);
 		
-		if( contasReceberAluno != null && !contasReceberAluno.isEmpty() ){
-			List<ExtratoAluno> listExtrato = new ArrayList<ExtratoAluno>();
-			
-			for (Iterator iterator = contasReceberAluno.iterator(); iterator.hasNext();) {
-				Object[] object = (Object[]) iterator.next();
-				listExtrato.add(new ExtratoAluno( (String)object[0], (String)object[1], (Integer)object[2], (BigDecimal)object[3], (BigDecimal)object[4], (BigDecimal)object[5], (TipoContaReceber)object[6] ) );
+		if( idProdContasReceber != null && !idProdContasReceber.isEmpty() ){
+			for (Long idProd : idProdContasReceber) {
+				ExtratoAluno extratoAluno = new ExtratoAluno();
+				extratoAluno.setValorTotalLista( BigDecimal.ZERO );
+				
+				List contasReceberDiarioAluno = contaReceberDAO.recuperarAllContasReceberDiarioAluno(idAluno, dataInicio, dataFim, recebido, idProd);
+				
+				if( contasReceberDiarioAluno != null && !contasReceberDiarioAluno.isEmpty() ){
+					
+					for (Iterator iterator = contasReceberDiarioAluno.iterator(); iterator.hasNext();) {
+						Object[] object = (Object[]) iterator.next();
+						
+						ExtratoAluno extratoAlunoAux = new ExtratoAluno( (String)object[0], (Long)object[1], (String)object[2], (Integer)object[3], (BigDecimal)object[4], (BigDecimal)object[5], (Date)object[6]); 
+						
+						extratoAluno.setValorTotalLista( extratoAluno.getValorTotalLista().add( extratoAlunoAux.getValorTotal() ) );
+						
+						if( extratoAluno.getListExtrato() == null ){
+							extratoAluno.setListExtrato( new ArrayList<ExtratoAluno>() );
+						}
+						extratoAluno.getListExtrato().add(extratoAlunoAux);
+					}
+					listExtrato.add(extratoAluno);
+				}
 			}
-			return listExtrato;
 		}
-		return null;
+		
+		List contasReceberMensalidadeAluno = contaReceberDAO.recuperarAllContasReceberMensalidadeAluno(idAluno, dataInicio, dataFim, recebido);
+		
+		if( contasReceberMensalidadeAluno != null && !contasReceberMensalidadeAluno.isEmpty() ){
+			ExtratoAluno extratoAluno = new ExtratoAluno();
+			extratoAluno.setValorTotalLista( BigDecimal.ZERO );
+			for (Iterator iterator = contasReceberMensalidadeAluno.iterator(); iterator.hasNext();) {
+				Object[] object = (Object[]) iterator.next();
+				
+				ExtratoAluno extratoAlunoAux = new ExtratoAluno( (String)object[0], (BigDecimal)object[1], (Date)object[2] ); 
+				
+				extratoAluno.setValorTotalLista( extratoAluno.getValorTotalLista().add( extratoAlunoAux.getValorTotalMensalidade() ) );
+				
+				if( extratoAluno.getListExtrato() == null ){
+					extratoAluno.setListExtrato( new ArrayList<ExtratoAluno>() );
+				}
+				extratoAluno.getListExtrato().add(extratoAlunoAux);
+			}
+			listExtrato.add( extratoAluno );
+		}
+		
+		List contasReceberEventoAluno = contaReceberDAO.recuperarAllContasReceberEventoAluno(idAluno, dataInicio, dataFim, recebido);
+		
+		if( contasReceberEventoAluno != null && !contasReceberEventoAluno.isEmpty() ){
+			ExtratoAluno extratoAluno = new ExtratoAluno();
+			extratoAluno.setValorTotalLista( BigDecimal.ZERO );
+			for (Iterator iterator = contasReceberEventoAluno.iterator(); iterator.hasNext();) {
+				Object[] object = (Object[]) iterator.next();
+				
+				ExtratoAluno extratoAlunoAux = new ExtratoAluno( (String)object[0], (String)object[1], (BigDecimal)object[2], (Date)object[3] ); 
+				
+				extratoAluno.setValorTotalLista( extratoAluno.getValorTotalLista().add( extratoAlunoAux.getValorTotal() ) );
+				
+				if( extratoAluno.getListExtrato() == null ){
+					extratoAluno.setListExtrato( new ArrayList<ExtratoAluno>() );
+				}
+				extratoAluno.getListExtrato().add(extratoAlunoAux);
+			}
+			listExtrato.add( extratoAluno );
+		}
+		
+		return listExtrato;
 	}
 
 }

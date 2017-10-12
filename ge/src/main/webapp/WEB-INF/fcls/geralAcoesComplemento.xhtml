@@ -51,6 +51,8 @@
 				<plcf:botaoAcao id="botaoAcaoLiquidar" acao="liquidaTitulo" label="app.evt.liquida" botaoArrayID="LIQUIDA" rendered="#{requestScope.exibeLiquidaTitulo eq 'S'}"  blocking="true"/>
 				<plcf:botaoAcao id="botaoAcaoGravarContasReceber" acao="gravarContaReceber" label="app.evt.gerarContaReceber" botaoArrayID="GRAVAR_CONTA_RECEBER" rendered="#{requestScope.exibeGravarContaReceber eq 'S'}" validaForm="true" blocking="true"/>
 				
+				<plcf:botaoAcao id="botaoAcaoGerarCarne" acao="gerarCarne" label="app.evt.gerarCarne" botaoArrayID="CARNE" rendered="#{requestScope.exibeGerarCarne eq 'S'}"  blocking="true"/>
+				
 				<!-- Gerar remessa -->
 				<plcf:botaoAcao id="botaoGerarArquivoRemessa" acao="gerarArquivoRemessa" label="app.evt.gerar.remessa" botaoArrayID="GERAR_REMESSA" rendered="#{requestScope.exibeGerarRemessa eq 'S'}"  blocking="true"/>
 				

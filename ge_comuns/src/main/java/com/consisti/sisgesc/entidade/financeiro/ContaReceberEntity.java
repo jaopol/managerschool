@@ -3,6 +3,7 @@ package com.consisti.sisgesc.entidade.financeiro;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -10,7 +11,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import org.hibernate.annotations.AccessType;
 
@@ -18,12 +18,9 @@ import com.consisti.sisgesc.dominio.BancoSuportado;
 import com.consisti.sisgesc.dominio.TipoEducacao;
 import com.consisti.sisgesc.entidade.Aluno;
 import com.consisti.sisgesc.entidade.AlunoEntity;
-import com.consisti.sisgesc.entidade.Turma;
 import com.consisti.sisgesc.entidade.TurmaEntity;
 import com.powerlogic.jcompany.comuns.anotacao.PlcIoC;
 import com.powerlogic.jcompany.dominio.tipo.PlcSimNao;
-import com.consisti.sisgesc.entidade.financeiro.BancoEntity;
-import com.consisti.sisgesc.entidade.financeiro.FormaPagamentoEntity;
 /**
  * Classe Concreta gerada a partir do assistente
  */
@@ -36,13 +33,15 @@ import com.consisti.sisgesc.entidade.financeiro.FormaPagamentoEntity;
 @SuppressWarnings("serial")
 @NamedQueries({
 
-	@NamedQuery(name="ContaReceberEntity.querySel3", query="select new ContaReceberEntity(obj.id, obj.aluno.id , obj.aluno.nomeAluno, obj.formaRecebimento.id , obj.formaRecebimento.descricao, obj.valorTotal, obj.dataRecebimento, obj.dataVencimento, obj.outro) from ContaReceberEntity obj left outer join obj.aluno left outer join obj.formaRecebimento order by obj.id asc"),
+	@NamedQuery(name="ContaReceberEntity.querySel3", query="select new ContaReceberEntity(obj.id, obj.aluno.id , obj.aluno.nomeAluno, obj.formaRecebimento.id , obj.formaRecebimento.descricao, obj.valorTotal, obj.dataRecebimento, obj.dataVencimento, obj.outro, obj.numeroDocumento) from ContaReceberEntity obj left outer join obj.aluno left outer join obj.formaRecebimento order by obj.dataVencimento desc"),
 	@NamedQuery(name="ContaReceberEntity.querySel2", query="select new ContaReceberEntity(obj.id, obj.aluno.id , obj.aluno.nomeAluno, obj.banco.id , obj.banco.agencia, obj.valorTotal, obj.dataVencimento) from ContaReceberEntity obj left outer join obj.aluno left outer join obj.banco order by obj.id asc"),
 	@NamedQuery(name="ContaReceberEntity.queryMan", query="from ContaReceberEntity obj"),
 	@NamedQuery(name="ContaReceberEntity.querySel", query="select new ContaReceberEntity(obj.id, obj.aluno.id , obj.aluno.nomeAluno, obj.valorTotal, obj.dataVencimento, obj.dataRecebimento, obj.boletoGerado, obj.recebido, ban.bancoSuportado) from ContaReceberEntity obj left outer join obj.aluno left join obj.banco ban where obj.tipoContaReceber = 'M' order by obj.dataRecebimento, obj.aluno.nomeAluno, obj.dataVencimento "),
 	@NamedQuery(name="ContaReceberEntity.querySelLookup", query="select new ContaReceberEntity (obj.id, obj.aluno) from ContaReceberEntity obj where obj.id = ? order by obj.id asc")
 })
 public class ContaReceberEntity extends ContaReceber {
+	
+	final transient SimpleDateFormat sdf_ddMMyyyy = new SimpleDateFormat("dd/MM/yyyy");
  	
 	private transient String boletoGeradoStr;
 	private transient String recebidoStr;
@@ -56,6 +55,12 @@ public class ContaReceberEntity extends ContaReceber {
 	
 	private transient TurmaEntity turma;
 	private transient TipoEducacao tipoEducacao;
+	
+	//usado pelo relatorio
+	private transient String dataEmissaoStr;
+	private transient String dataVencimentoStr;
+	private transient String valorTotalFormatado;
+	private transient String descricaoCarne;
 	
     /*
      * Construtor padrão
@@ -187,16 +192,15 @@ public class ContaReceberEntity extends ContaReceber {
 		this.geraRemessa = geraRemessa;
 	}
 	
-	@Transient
 	public String getValorTotalFormatado(){
 		if (getValorTotal()!=null){
 			return NumberFormat.getCurrencyInstance().format(getValorTotal());
 		}
-		return "";
+		return valorTotalFormatado;
 	}
 
 	//querysel3
-	public ContaReceberEntity(Long id, Long alunoId, String nomeAluno, Long formaRecebimentoId, String formaRecebimentoDescricao, java.math.BigDecimal valorTotal, java.util.Date dataRecebimento, java.util.Date dataVencimento, String outro) {
+	public ContaReceberEntity(Long id, Long alunoId, String nomeAluno, Long formaRecebimentoId, String formaRecebimentoDescricao, java.math.BigDecimal valorTotal, java.util.Date dataRecebimento, java.util.Date dataVencimento, String outro, String numeroDocumento) {
 		setId(id);
 		if (getAluno() == null){
 			setAluno(new AlunoEntity());
@@ -212,6 +216,7 @@ public class ContaReceberEntity extends ContaReceber {
 		setDataRecebimento(dataRecebimento);
 		setDataVencimento(dataVencimento);
 		setOutro(outro);
+		setNumeroDocumento(numeroDocumento);
 	}
 
 /**
@@ -221,7 +226,7 @@ public class ContaReceberEntity extends ContaReceber {
 	 * @param formaRecebimentoDescricao
 	 * @param valorTotal
 	 */
-	public ContaReceberEntity(Long id, BigDecimal valorTotal,  String nomeAluno, String formaRecebimentoDescricao ) {
+	public ContaReceberEntity(Long id, BigDecimal valorTotal,  String nomeAluno, String formaRecebimentoDescricao, String outro ) {
 		setId(id);
 		if (getAluno() == null){
 			setAluno(new AlunoEntity());
@@ -232,6 +237,7 @@ public class ContaReceberEntity extends ContaReceber {
 		}
 		getFormaRecebimento().setDescricao(formaRecebimentoDescricao);
 		setValorTotal(valorTotal);
+		setOutro(outro);
 	}
 	
 	/*
@@ -242,16 +248,21 @@ public class ContaReceberEntity extends ContaReceber {
 		str.append( " obj.dataRecebimento, " );
 		str.append( " obj.valorTotal, " );
 		str.append( " produtoVenda.descricao, " );
-		str.append( " produtoVenda.descricao
+		str.append( " produtoVenda.descricao,
+		str.append( " venda.valorTotal " );
 	 * *\
 	 */
-	public ContaReceberEntity(String nomeAluno, String outro, BigDecimal valorTotal, String prodVenda, Date dataVencimento, Date dataRecebimento) {
+	public ContaReceberEntity(String nomeAluno, String outro, BigDecimal valorTotal, String prodVenda, Date dataVencimento, Date dataRecebimento, BigDecimal valorTotalVenda) {
 		if( getAluno() == null ){
 			setAluno(new AlunoEntity());
 		}
 		getAluno().setNomeAluno(nomeAluno);
 		setOutro(outro);
-		setValorTotal(valorTotal);
+		if( valorTotalVenda == null ){
+			setValorTotal(valorTotal);
+		}else{
+			setValorTotal(valorTotalVenda);
+		}
 		setDescProdVenda(prodVenda);
 		setDataVencimento(dataVencimento);
 		setDataRecebimento(dataRecebimento);
@@ -293,6 +304,30 @@ public class ContaReceberEntity extends ContaReceber {
 	}
 	public void setTipoEducacao(TipoEducacao tipoEducacao) {
 		this.tipoEducacao = tipoEducacao;
+	}
+	public String getDataEmissaoStr() {
+		if( getDataDocumento() != null ){
+			return sdf_ddMMyyyy.format(getDataDocumento());
+		}
+		return dataEmissaoStr;
+	}
+	public void setDataEmissaoStr(String dataEmissaoStr) {
+		this.dataEmissaoStr = dataEmissaoStr;
+	}
+	public String getDataVencimentoStr() {
+		if(getDataVencimento() != null ){
+			return sdf_ddMMyyyy.format( getDataVencimento() );
+		}
+		return dataVencimentoStr;
+	}
+	public void setDataVencimentoStr(String dataVencimentoStr) {
+		this.dataVencimentoStr = dataVencimentoStr;
+	}
+	public String getDescricaoCarne() {
+		return descricaoCarne;
+	}
+	public void setDescricaoCarne(String descricaoCarne) {
+		this.descricaoCarne = descricaoCarne;
 	}
 	
 }

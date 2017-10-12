@@ -11,9 +11,14 @@
 	<ui:composition> 
 		<plcf:tabela tituloChave="contareceberdiario.mestre.titulo.comp"> 
 			<plcf:linha>
-				<plcf:celula>
+				<plcf:celula columnSpan="2">
 					<plcf:titulo tituloChave="label.tipoReceberDe"/>
 					<plcf:radio id="tipoContaReceber" value="#{plcEntidade.tipoReceberDe}" dominio="TipoReceberDe" ajudaChave="label.tipoReceberDe" layout="vertical" onchange="submit();" disabled="#{plcEntidade.id != null}" />			
+				</plcf:celula>
+				
+				<plcf:celula rendered="#{plcEntidade.numeroDocumento != null}" >
+					<plcf:titulo tituloChave="label.numeroDocumento"/>
+					<plcf:exibe id="numeroDocumento" value="#{plcEntidade.numeroDocumento}" />			
 				</plcf:celula>
 			</plcf:linha>
 			<plcf:linha> 
@@ -25,7 +30,6 @@
 					<plcf:titulo tituloChave="label.descricao"/>  
 					<plcf:texto id="outros" value="#{plcEntidade.outro}" ajudaChave="ajuda.outros" obrigatorio="S" tamanho="50" tamanhoMaximo="50"/> 
 				</plcf:celula>
-				
 				<plcf:celula>
 					<plcf:titulo tituloChave="label.dataDocumento"/>  
 					<plcf:exibe id="dataDocumento" value="#{plcEntidade.dataDocumento}" ajudaChave="ajuda.dataDocumento"/> 
@@ -38,13 +42,23 @@
 			</plcf:linha>  
 			<plcf:linha> 
 				<plcf:celula> 
-					<plcf:titulo tituloChave="label.dataRecebimento"/>  
-					<plcf:data id="dataRecebimento" value="#{plcEntidade.dataRecebimento}" ajudaChave="ajuda.dataRecebimento"/> 
-				</plcf:celula>  
+					<plcf:titulo tituloChave="label.dataVencimento"/>  
+					<plcf:data id="dataVencimento" value="#{plcEntidade.dataVencimento}" ajudaChave="ajuda.dataVencimento"/> 
+				</plcf:celula> 
 				<plcf:celula >
 					<plcf:titulo tituloChave="label.formaRecebimento"/>  
 					<plcf:comboDinamico id="formaRecebimento" value="#{plcEntidade.formaRecebimento}" dominio="FormaPagamentoEntity" exibeBranco="S" ajudaChave="ajuda.formaRecebimento"/> 
 				</plcf:celula> 
+			</plcf:linha>
+			<plcf:linha>
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.recebido"/>  
+					<plcf:comboDinamico id="recebido" value="#{plcEntidade.recebido}" dominio="PlcSimNao" exibeBranco="S" ajudaChave="ajuda.recebido" somenteLeitura="S"/> 
+				</plcf:celula>
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.dataRecebimento"/>  
+					<plcf:data id="dataRecebimento" value="#{plcEntidade.dataRecebimento}" ajudaChave="ajuda.dataRecebimento"/> 
+				</plcf:celula>  
 			</plcf:linha>  
 			<plcf:linha> 
 				<plcf:celula> 
@@ -52,6 +66,17 @@
 					<plcf:area id="observacao" value="#{plcEntidade.observacao}" ajudaChave="ajuda.observacao" tamanhoMaximo="200" colunas="50" rows="4"/> 
 				</plcf:celula> 
 			</plcf:linha> 
+		</plcf:tabela>
+		
+		<!-- ########### PARA EXIBIR EVENTO ##########-->
+		<plcf:tabela tituloChave="contareceberdiario.detalhe.titulo.evento" rendered="#{plcEntidade.tipoReceberDe eq 'A' and plcEntidade.tipoContaReceber eq 'E' }"> 
+			<plcf:linha> 
+				<plcf:celula>
+					<plcf:exibe value="#{plcEntidade.evento.descricao}"/>
+				</plcf:celula>
+			</plcf:linha>
 		</plcf:tabela> 
+<!-- ########### PARA EXIBIR EVENTO ##########-->	 
 	</ui:composition> 
+	<plcf:escondido id="teste" value="#{plcAction.tipoReceberDeAuxEdit}"/>
 </html>

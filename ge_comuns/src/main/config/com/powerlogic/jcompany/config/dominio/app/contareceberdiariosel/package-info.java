@@ -2,7 +2,9 @@
  *  ******************************************************************************************/
 @PlcConfigGrupoAgregacao(
 		entidade = com.consisti.sisgesc.entidade.financeiro.ContaReceberEntity.class,
-		classesLookup = {com.consisti.sisgesc.entidade.AlunoEntity.class,com.consisti.sisgesc.entidade.financeiro.FormaPagamentoEntity.class},
+		classesLookup = {com.consisti.sisgesc.entidade.AlunoEntity.class,
+			com.consisti.sisgesc.entidade.financeiro.FormaPagamentoEntity.class,
+			com.consisti.sisgesc.dominio.TipoContaReceber.class},
 		padrao = @PlcConfigPadrao(logica = PlcConfigPadrao.Logica.SELECAO,
 									complexidade = PlcConfigPadrao.Complexidade.SIMPLES,
 									exclusaoModo = PlcConfigPadrao.ExclusaoModo.FISICA)

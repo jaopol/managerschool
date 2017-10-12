@@ -2,6 +2,7 @@ package com.consisti.sisgesc.modelo;
 
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -26,6 +27,7 @@ import org.jrimum.domkee.financeiro.banco.febraban.Titulo;
 import org.jrimum.domkee.financeiro.banco.febraban.Titulo.Aceite;
 
 import com.consisti.sisgesc.comuns.AppConstantesComuns;
+import com.consisti.sisgesc.dominio.BancoSuportado;
 import com.consisti.sisgesc.dominio.CarteiraBanco;
 import com.consisti.sisgesc.dominio.TipoContaReceber;
 import com.consisti.sisgesc.dominio.TipoReceberDe;
@@ -34,7 +36,6 @@ import com.consisti.sisgesc.entidade.Aluno;
 import com.consisti.sisgesc.entidade.AlunoEntity;
 import com.consisti.sisgesc.entidade.EnderecoEntity;
 import com.consisti.sisgesc.entidade.ResponsavelFinanceiroAlunoEntity;
-import com.consisti.sisgesc.entidade.ServicoAlunoEntity;
 import com.consisti.sisgesc.entidade.Servicos;
 import com.consisti.sisgesc.entidade.financeiro.BancoEntity;
 import com.consisti.sisgesc.entidade.financeiro.ContaReceberEntity;
@@ -91,28 +92,35 @@ public class ContaReceberManager extends AppManager {
 		
 			ContaReceberEntity contaReceber = (ContaReceberEntity)entidadeAtual;
 			//gera nosso numero somente para mensalidade aluno
-			if( TipoContaReceber.M.equals( contaReceber.getTipoContaReceber() ) ){
+			//if( TipoContaReceber.M.equals( contaReceber.getTipoContaReceber() ) ){
 				contaReceber.setNumeroDocumento( geraNumeroDocumento( contaReceber ) );
-			}
-			else{
-				for (ContaReceberProdutoVenda produtoVenda : contaReceber.getContaReceberProdutoVenda()) {
-					if(produtoVenda.getDataCadastro() == null ){
-						produtoVenda.setDataCadastro(new Date());
-					}
-					
-					if( "S".equals( produtoVenda.getIndExcPlc() ) ){
-						if( contaReceber.getValorTotal() != null ){
-							contaReceber.setValorTotal( contaReceber.getValorTotal().subtract( produtoVenda.getValorTotal() ) );
-							contaReceber.setValorDocumento( contaReceber.getValorTotal() );
+			/*}
+			else{*/
+				if( contaReceber.getContaReceberProdutoVenda() != null ){
+					for (ContaReceberProdutoVenda produtoVenda : contaReceber.getContaReceberProdutoVenda()) {
+						if(produtoVenda.getDataCadastro() == null ){
+							produtoVenda.setDataCadastro(new Date());
 						}
-						else{
-							contaReceber.setValorTotal( BigDecimal.ZERO );
-							contaReceber.setValorDocumento( contaReceber.getValorTotal() );
+						
+						if( "S".equals( produtoVenda.getIndExcPlc() ) ){
+							if( contaReceber.getValorTotal() != null ){
+								contaReceber.setValorTotal( contaReceber.getValorTotal().subtract( produtoVenda.getValorTotal() ) );
+								contaReceber.setValorDocumento( contaReceber.getValorTotal() );
+							}
+							else{
+								contaReceber.setValorTotal( BigDecimal.ZERO );
+								contaReceber.setValorDocumento( contaReceber.getValorTotal() );
+							}
 						}
 					}
 				}
+				//Lancamento diario e evento quando o banco nao estiver informado informar caixa dinheiro
+				if( contaReceber.getBanco() == null && 
+						!TipoContaReceber.M.equals( contaReceber.getTipoContaReceber() ) ){
+					contaReceber.setBanco( bancoDAO.recuperarBancoByBancoSuportado( BancoSuportado.B000 ) );
+				}
 			}
-		}
+		//}
 		
 		super.antesPersistencia(entidadeAtual, entidadeAnterior, modoGravacao);
 	}
@@ -648,6 +656,47 @@ public class ContaReceberManager extends AppManager {
 			}
 		}
 		return contaReceber;
+	}
+	
+	/**
+	 * @param listAluno
+	 * @param contaReceber
+	 * @return retorna a lista gravada
+	 * @throws PlcException
+	 */
+	public List<ContaReceberEntity> gravarContaReceberEvento(List<AlunoEntity> listAluno, ContaReceberEntity contaReceber) throws PlcException{
+		
+		/*contaReceberEvento.setTipoContaReceber(TipoContaReceber.E);
+		contaReceberEvento.setTipoReceberDe( TipoReceberDe.A );
+		contaReceberEvento.setRecebido(PlcSimNao.N);
+		contaReceberEvento.setDataDocumento( new Date() );
+		contaReceberEvento.setValorDocumento( contaReceberEvento.getValorTotal() );
+		contaReceberEvento.setRemessaGerado(PlcSimNao.N);*/
+		List<ContaReceberEntity> listContaReceberGravado = new ArrayList<ContaReceberEntity>();
+		if( listAluno != null ){
+			for (Aluno aluno : listAluno) {
+				ContaReceberEntity contaReceberEvento = new ContaReceberEntity();
+				contaReceberEvento.setTipoContaReceber(TipoContaReceber.E);
+				contaReceberEvento.setTipoReceberDe( TipoReceberDe.A );
+				contaReceberEvento.setRecebido(PlcSimNao.N);
+				contaReceberEvento.setDataDocumento( new Date() );
+				contaReceberEvento.setValorDocumento( contaReceber.getValorTotal() );
+				contaReceberEvento.setValorTotal( contaReceber.getValorTotal() );
+				contaReceberEvento.setRemessaGerado(PlcSimNao.N);
+				contaReceberEvento.setBoletoGerado(PlcSimNao.N);
+				contaReceberEvento.setDataVencimento( contaReceber.getDataVencimento() );
+				contaReceberEvento.setFormaRecebimento( contaReceber.getFormaRecebimento() );
+				contaReceberEvento.setNumeroDocumento(geraNumeroDocumento(contaReceber));
+				contaReceberEvento.setEvento(contaReceber.getEvento());
+				contaReceberEvento.setAluno(aluno);
+				
+				inclui(contaReceberEvento);
+				getDAOPadrao().enviaCacheComandos();
+				listContaReceberGravado.add(contaReceberEvento);
+			}
+		}
+		return listContaReceberGravado;
+		
 	}
 
 }

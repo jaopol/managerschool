@@ -1,7 +1,9 @@
 package com.consisti.sisgesc.persistencia.hibernate;
 
 import com.consisti.sisgesc.entidade.estoque.ProdutoMaterialEntity;
+import com.consisti.sisgesc.entidade.financeiro.ProdutoVendaEntity;
 import com.consisti.sisgesc.persistencia.AppBaseDAO;
+import com.powerlogic.jcompany.comuns.PlcBaseVO;
 import com.powerlogic.jcompany.comuns.PlcException;
 
 public class ProdutoMaterialDAO extends AppBaseDAO {

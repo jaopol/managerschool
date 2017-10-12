@@ -173,15 +173,17 @@ private ResponsavelFinanceiroAlunoDAO responsavelFinanceiroAlunoDAO;
 		stb.append( " obj.nomeAluno ) " );
 		stb.append( " FROM " );
 		stb.append( " AlunoEntity obj " );
+		stb.append( " WHERE 1 = 1 " );
+		
 		
 		if( aluno != null ){
-			stb.append( " obj.id =:idAluno " );
+			stb.append( " AND obj.id =:idAluno " );
 		}
 		if( turma != null ){
-			stb.append( " obj.turma.id =: idTurma " );
+			stb.append( " AND obj.turma.id =:idTurma " );
 		}
 		if( educacao != null ){
-			stb.append( " obj.tipoEducacao =:educacao " );
+			stb.append( " AND obj.tipoEducacao =:educacao " );
 		}
 		
 		Query query = getSession().createQuery( stb.toString() );

@@ -65,6 +65,14 @@
 					</plcf:celula> 
 				</plcf:linhaSelecao> 
 			</plcf:iteracao> 
+			<plcf:linha>
+				<plcf:celula>
+					<plcf:titulo tituloChave="label.totalPesquisaContaReceber">total</plcf:titulo> 
+				</plcf:celula>
+				<plcf:celula columnSpan="4" halign="right">
+					<plcf:exibe id="valorTotal" value="#{plcAction.valorTotalSel}" />
+				</plcf:celula>
+			</plcf:linha>
 		</plcf:tabela> 
 	</ui:composition> 
 </html>

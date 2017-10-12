@@ -53,15 +53,17 @@
 				com.consisti.sisgesc.dominio.BancoSuportado.class,
 				com.consisti.sisgesc.dominio.CarteiraBanco.class,
 				com.consisti.sisgesc.dominio.TipoReceberDe.class,
-				com.consisti.sisgesc.dominio.TipoFavorecido.class},
-	classesLookup={com.consisti.sisgesc.entidade.EventoEntity.class,com.consisti.sisgesc.entidade.financeiro.ContaReceberEntity.class,
+				com.consisti.sisgesc.dominio.TipoFavorecido.class,
+				com.consisti.sisgesc.dominio.TipoContaReceber.class},
+	classesLookup={
 		com.consisti.sisgesc.entidade.financeiro.BancoEntity.class,
 		com.consisti.sisgesc.entidade.financeiro.ProdutoVendaEntity.class,
 		com.consisti.sisgesc.entidade.FornecedorEntity.class,
 		com.consisti.sisgesc.entidade.financeiro.FormaPagamentoEntity.class,
 		com.consisti.sisgesc.entidade.financeiro.PlanoContasEntity.class,
 		com.consisti.sisgesc.entidade.EmpresaEntity.class,
-		com.consisti.sisgesc.entidade.TurmaEntity.class}
+		com.consisti.sisgesc.entidade.TurmaEntity.class,
+		com.consisti.sisgesc.entidade.EventoEntity.class}
 )
 
 @PlcConfigOtimizacao(javascriptEspecificoUsa=true, cssEspecificoUsa=false)

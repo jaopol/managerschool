@@ -10,10 +10,18 @@
 	xmlns:trh="http://myfaces.apache.org/trinidad/html">  
 	<ui:composition> 
 
+		<plcf:tabela>
+			<plcf:linha>
+				<plcf:celula></plcf:celula>
+				<plcf:celula columnSpan="2" rendered="#{plcAction.entidadePlc.saldoDiaAnterior != null}" inlineStyle="" >
+					<plcf:titulo titulo="Saldo do Dia Anterior" inlineStyle="color:#2D2B2B; font-size: medium;"/>
+					<plcf:exibe id="saldoDiaAnterior" value="#{plcAction.entidadePlc.saldoDiaAnteriorStr}" inlineStyle="color:#2D2B2B; font-size: medium;"/>
+				</plcf:celula>
+			</plcf:linha>
+		</plcf:tabela>
 	
 		<plcf:tabela titulo="Contas Recebidas">
 			
-
 			<plcf:iteracao id="contasAReceber" value="#{plcAction.contasReceber}" var="contasAReceber" varStatus="receber">
 			
 				<plcf:linha rendered="#{receber.index == 0}">
@@ -144,8 +152,8 @@
 			<plcf:linha>
 				
 				<plcf:celula rendered="#{plcAction.entidadePlc.saldoDiaStr != null}">
-					<plcf:titulo titulo="Saldo do Dia (Valor Recebido - Valor Pago)"/>
-					<plcf:exibe id="saldoDia" value="#{plcAction.entidadePlc.saldoDiaStr}"/>
+					<plcf:titulo titulo="Saldo do Dia atual (Saldo Dia Anterior + Valor Recebido - Valor Pago)"/>
+					<plcf:exibe id="saldoDiaAtual" value="#{plcAction.entidadePlc.saldoDiaStr}"/>
 				</plcf:celula>
 				
 				<plcf:celula rendered="#{plcAction.valorRecebidoMaiorValorPago}">

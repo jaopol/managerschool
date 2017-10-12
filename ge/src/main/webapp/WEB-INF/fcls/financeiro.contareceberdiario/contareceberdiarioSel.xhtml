@@ -11,6 +11,9 @@
 	<ui:composition> 
 		<plcf:tabela tituloChave="selecao.lista.titulo" rendered="#{not empty plcLogicaItens.itensPlc}"> 
 			<plcf:linha styleClass="ui-widget-header"> 
+				<plcf:celula header="true" styleClass="cabecalho">
+					<plcf:titulo tituloChave="label.numeroDocumento">Aluno</plcf:titulo> 
+				</plcf:celula>  
 				<plcf:celula header="true" styleClass="cabecalho"> 
 					<plcf:titulo tituloChave="label.aluno">Aluno</plcf:titulo> 
 				</plcf:celula>  
@@ -29,6 +32,9 @@
 			</plcf:linha>  
 			<plcf:iteracao id="plcLogicaItens" value="#{plcLogicaItens.itensPlc}"> 
 				<plcf:linhaSelecao id="linhaSel" action="${sessionScope.actionUltManPlc}" linkEdicao="#{item.linkEdicaoPlc}" propAgregada="contareceberdiario"> 
+					<plcf:celula styleClass="campo"> 
+						<plcf:exibe value="#{item.numeroDocumento}">numeroDocumento</plcf:exibe> 
+					</plcf:celula>  
 					<plcf:celula styleClass="campo"> 
 						<plcf:exibe value="#{item.descricaoRecebido}">aluno</plcf:exibe> 
 					</plcf:celula>  

@@ -23,6 +23,7 @@ import com.powerlogic.jcompany.comuns.PlcArgVO;
 import com.powerlogic.jcompany.comuns.PlcBaseVO;
 import com.powerlogic.jcompany.comuns.PlcException;
 import com.powerlogic.jcompany.config.comuns.PlcConstantes;
+import com.powerlogic.jcompany.controle.PlcConstantes.PlcJsfConstantes.NAVEGACAO;
 import com.powerlogic.jcompany.controle.jsf.PlcBaseLogicaArgumento;
 import com.powerlogic.jcompany.controle.jsf.helper.PlcMsgJsfHelper;
 import com.powerlogic.jcompany.dominio.tipo.PlcSimNao;
@@ -46,12 +47,7 @@ public class MovimentoDiaAction extends RelatorioActionPlc  {
 		
 		MovimentoDiaEntity movimentoDia = (MovimentoDiaEntity) entidadePlc;
 		
-		if (isValorRecebidoMaiorValorPago()){
-			contextHelperPlc.getRequest().setAttribute( "fecharCaixa", PlcConstantes.EXIBIR );
-		}
-			
-		Map<String, PlcArgVO> listaArgumentos = ((PlcBaseLogicaArgumento) this.logicaItensPlc).getArgumentos();
-		PlcArgVO plcArgVO = listaArgumentos.get("dataMovimento");
+		PlcArgVO plcArgVO = getDataArgumento();
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy  HH:mm:ss");
 		if (StringUtils.isEmpty(plcArgVO.getValor())){
@@ -77,17 +73,31 @@ public class MovimentoDiaAction extends RelatorioActionPlc  {
 				
 			}
 			
-			if (movimentoDia!=null && movimentoDia.getId()!=null){
+			/*if (movimentoDia!=null && movimentoDia.getId()!=null){
 				contextHelperPlc.getRequest().setAttribute( "imitir_livro_caixa", PlcConstantes.EXIBIR );
 			} else {
 				contextHelperPlc.getRequest().setAttribute( "imitir_livro_caixa", PlcConstantes.NAO_EXIBIR );
-			}
-			
+			}*/
+			contextHelperPlc.getRequest().setAttribute( "imitir_livro_caixa", PlcConstantes.EXIBIR );
 		}
 		
 		contextHelperPlc.getRequest().setAttribute( PlcConstantes.ACAO.EXIBE_BT_LIMPAR, PlcConstantes.NAO_EXIBIR );
 		contextHelperPlc.getRequest().setAttribute( PlcConstantes.ACAO.EXIBE_BT_INCLUIR, PlcConstantes.NAO_EXIBIR );
 		
+		if( (movimentoDia != null && ( PlcSimNao.N.equals( movimentoDia.getCaixaFechado() ) || movimentoDia.getCaixaFechado() == null) ) &&
+				isValorRecebidoMaiorValorPago() ){
+			contextHelperPlc.getRequest().setAttribute( "fecharCaixa", PlcConstantes.EXIBIR );
+		}
+		else{
+			contextHelperPlc.getRequest().setAttribute( "fecharCaixa", PlcConstantes.NAO_EXIBIR );
+		}
+		
+	}
+
+	private PlcArgVO getDataArgumento() {
+		Map<String, PlcArgVO> listaArgumentos = ((PlcBaseLogicaArgumento) this.logicaItensPlc).getArgumentos();
+		PlcArgVO plcArgVO = listaArgumentos.get("dataMovimento");
+		return plcArgVO;
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -98,8 +108,17 @@ public class MovimentoDiaAction extends RelatorioActionPlc  {
 		map.put("totalPagoStr", getTotalPagoStr());
 		map.put("totalRecebidoStr", getTotalRecebidoStr());
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		map.put("dataMovimento", sdf.format(movimentoDia.getDataMovimento()));
-		map.put("valorRetirada", NumberFormat.getCurrencyInstance().format(movimentoDia.getValorRetirada()));
+		try {
+			Date date = sdf.parse( getDataArgumento().getValor() );
+			map.put("dataMovimento", sdf.format( date ) );
+			if(movimentoDia.getValorRetirada() == null){
+				movimentoDia.setValorRetirada(BigDecimal.ZERO);
+			}
+			map.put("valorRetirada", NumberFormat.getCurrencyInstance().format(movimentoDia.getValorRetirada()));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		super.geraRelatorio(AppConstantesComuns.RELATORIO.REL_MOVIMENTO_DIA, movimentoDia, map);
 	}
@@ -129,8 +148,7 @@ public class MovimentoDiaAction extends RelatorioActionPlc  {
 			throw new PlcException("erro");
 		}
 		
-		Map<String, PlcArgVO> listaArgumentos = ((PlcBaseLogicaArgumento) this.logicaItensPlc).getArgumentos();
-		PlcArgVO plcArgVO = listaArgumentos.get("dataMovimento");
+		PlcArgVO plcArgVO = getDataArgumento();
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		
@@ -139,7 +157,7 @@ public class MovimentoDiaAction extends RelatorioActionPlc  {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		movimentoDia.setSaldoTotal(movimentoDia.getSaldoDia().subtract(movimentoDia.getValorRetirada()));
+		movimentoDia.setSaldoTotal( movimentoDia.getSaldoDia().subtract(movimentoDia.getValorRetirada()) );
 		getFachada().fecharCaixa(movimentoDia);
 		if (contextHelperPlc.getRequest().getAttribute( "exibir_msg_cx_fechado")==null){
 			PlcMsgJsfHelper.getInstance().msg("msg.infor.cx.fechado", Cor.msgAzulPlc.toString());
@@ -163,8 +181,7 @@ public class MovimentoDiaAction extends RelatorioActionPlc  {
 	@Override
 	public String pesquisa() throws PlcException {
 		
-		Map<String, PlcArgVO> listaArgumentos = ((PlcBaseLogicaArgumento) this.logicaItensPlc).getArgumentos();
-		PlcArgVO plcArgVO = listaArgumentos.get("dataMovimento");
+		PlcArgVO plcArgVO = getDataArgumento();
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date dataMovimento = null;
 		try {
@@ -172,27 +189,38 @@ public class MovimentoDiaAction extends RelatorioActionPlc  {
 		} catch (ParseException e) {
 			throw new PlcException("data.invalida.caixa");
 		}
-		
+		Map<String, PlcArgVO> listaArgumentos = ((PlcBaseLogicaArgumento) this.logicaItensPlc).getArgumentos();
 		PlcArgVO bancoArg = listaArgumentos.get("banco");
 		Long idBanco = null;
 		if( bancoArg != null && StringUtils.isNotBlank( bancoArg.getValor() ) ){
 			idBanco = Long.parseLong( bancoArg.getValor() );
 		}
-		
-		MovimentoDiaEntity movimentoDia = getFachada().recuperaMovimentoExistente(dataMovimento);;
+		MovimentoDiaEntity movimentoDia = getFachada().recuperaMovimentoExistente(dataMovimento);
 		
 		if (movimentoDia  == null){
 			movimentoDia = new MovimentoDiaEntity();
-		} 
-		
-		entidadePlc = movimentoDia;
-		
+		}
+      
+		entidadePlc = movimentoDia; 
 		getFachada().pesquisaMovimentoDia(movimentoDia, dataMovimento, idBanco );
 		
 		if (movimentoDia.getContasPagar().isEmpty() && movimentoDia.getContasReceber().isEmpty()){
 			setContasPagar(new ArrayList<ContaPagar>());
 			setContasReceber(new ArrayList<ContaReceber>());
-			throw new PlcException("erro.pesquisa.movimento");
+			movimentoDia.setTotalEntrada(null);
+			setTotalRecebido(null);
+			setTotalPago(null);
+			movimentoDia.setTotalSaida(null);
+			movimentoDia.setSaldoDia( null );
+			movimentoDia.setSaldoDiaStr( null );
+			movimentoDia.setSaldoTotal(null);
+			//throw new PlcException("erro.pesquisa.movimento");
+			if( movimentoDia.getSaldoDiaAnterior() != null && movimentoDia.getSaldoDiaAnterior().compareTo(BigDecimal.ZERO) > 0 ){
+				setValorRecebidoMaiorValorPago(true);
+			}
+			helperMsgJsfPlc.msg("erro.pesquisa.movimento", Cor.msgVermelhoPlc.toString());
+			contextHelperPlc.getRequest().setAttribute( "exibir_msg_cx_fechado", PlcConstantes.NAO_EXIBIR );
+			return NAVEGACAO.IND_MESMA_PAGINA;
 		}
 		
 		List<PlcBaseVO> itensPlc = new ArrayList<PlcBaseVO>();
@@ -201,11 +229,24 @@ public class MovimentoDiaAction extends RelatorioActionPlc  {
 		
 		setContasPagar(movimentoDia.getContasPagar());
 		setContasReceber(movimentoDia.getContasReceber());
+
+		if( movimentoDia.getCaixaFechado() == null || PlcSimNao.N.equals( movimentoDia.getCaixaFechado() ) ){
+			
+			calculaTotais(movimentoDia);
+		}
+		else{
+			helperMsgJsfPlc.msg("msg.informativo.caixaFechado", Cor.msgAzulPlc.toString());
+		}
 		
-		calculaTotais(movimentoDia);
-		contextHelperPlc.getRequest().setAttribute( "exibir_msg_cx_fechado", PlcConstantes.NAO_EXIBIR );
-		fechamentoCaixa(movimentoDia);
-		return "";
+		//fechamentoCaixa(movimentoDia);
+		
+		/*if (movimentoDia != null && PlcSimNao.S.equals( movimentoDia.getCaixaFechado() ) ){
+			setValorRecebidoMaiorValorPago(false);
+			throw new PlcException("msg.informativo.caixaFechado");
+		} */
+		//contextHelperPlc.getRequest().setAttribute( "exibir_msg_cx_fechado", PlcConstantes.NAO_EXIBIR );
+		
+		return NAVEGACAO.IND_MESMA_PAGINA;
 	}
 
 	private void calculaTotais(MovimentoDiaEntity movimentoDia) {
@@ -228,7 +269,8 @@ public class MovimentoDiaAction extends RelatorioActionPlc  {
 		movimentoDia.setTotalEntrada(totalContasRecebidas);
 		setTotalPago(totalContaPagas);
 		movimentoDia.setTotalSaida(totalContaPagas);
-		movimentoDia.setSaldoDia(totalContasRecebidas.subtract(totalContaPagas));
+		movimentoDia.setSaldoDia( movimentoDia.getSaldoDiaAnterior().add(movimentoDia.getTotalEntrada()).subtract(movimentoDia.getTotalSaida()) );
+		
 	}
 
 	public boolean isValorRecebidoMaiorValorPago() {

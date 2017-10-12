@@ -11,9 +11,11 @@
 	<ui:composition> 
 		<plcf:tabela tituloChave="selecao.argumento.titulo"> 
 			<plcf:linha> 
-				<plcf:celula> 
+				<plcf:celula columnSpan="2"> 
 					<plcf:titulo tituloChave="label.aluno"/>  
-					<plcf:vinculado id="aluno" value="#{plcLogicaItens.argumentos.aluno.valor}" propSelPop="aluno" idExibe="N" idSomenteLeitura="N" autoRecuperacaoClasse="com.consisti.sisgesc.entidade.AlunoEntity" actionSel="alunosel" modal="S" ajudaChave="ajuda.aluno" onkeydown="selecionaPorTecla(event,this);" lookupTamanho="50" larg="980" alt="640" /> 
+					<plcf:vinculado id="aluno" value="#{plcLogicaItens.argumentos.aluno.valor}" propSelPop="aluno" idExibe="N" idSomenteLeitura="N" 
+									autoRecuperacaoClasse="com.consisti.sisgesc.entidade.AlunoEntity" actionSel="alunosel" obrigatorio="S"
+									ajudaChave="ajuda.aluno"  onkeydown="selecionaPorTecla(event,this);" lookupTamanho="50" larg="980" alt="640"/> 
 				</plcf:celula> 
 			</plcf:linha>  
 			<plcf:linha> 
@@ -24,6 +26,10 @@
 				<plcf:celula> 
 					<plcf:titulo tituloChave="label.dataFim"/>  
 					<plcf:data id="dataFim" value="#{plcLogicaItens.argumentos.dataFim_ArgINI.valor}" ajudaChave="ajuda.dataFim" tamanho="10"/> 
+				</plcf:celula> 
+				<plcf:celula> 
+					<plcf:titulo tituloChave="label.recebido"/>  
+					<plcf:comboDinamico id="recebido" value="#{plcLogicaItens.argumentos.recebido.valor}" dominio="PlcSimNao" exibeBranco="S" ajudaChave="ajuda.recebido" /> 
 				</plcf:celula> 
 			</plcf:linha> 
 		</plcf:tabela> 

@@ -1,12 +1,17 @@
 package com.consisti.sisgesc.controle.jsf.financeiro.CDUF005;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 import com.consisti.sisgesc.controle.jsf.AppAction;
 import com.consisti.sisgesc.entidade.financeiro.ContaPagarEntity;
 import com.consisti.sisgesc.entidade.financeiro.TipoPlanoContasEntity;
 import com.consisti.sisgesc.facade.IAppFacade;
+import com.powerlogic.jcompany.comuns.PlcArgVO;
+import com.powerlogic.jcompany.comuns.PlcBaseVO;
 import com.powerlogic.jcompany.comuns.PlcException;
 import com.powerlogic.jcompany.config.comuns.PlcConstantes.PlcJsfConstantes.NAVEGACAO;
 import com.powerlogic.jcompany.controle.PlcConstantes;
@@ -19,12 +24,14 @@ import com.powerlogic.jcompany.dominio.tipo.PlcSimNao;
 public class ContaPagarAction extends AppAction  {
 	
 	private ArrayList<TipoPlanoContasEntity> listaTipoPlanoContas = new ArrayList<TipoPlanoContasEntity>();
+	
+	private transient BigDecimal valorTotalSel;
 
 	@Override
 	protected void trataBotoesConformeLogicaApos() throws PlcException {
 		
-		trataBotoes();
 		super.trataBotoesConformeLogicaApos();
+		trataBotoes();
 	}
 
 	private void trataBotoes() {
@@ -41,6 +48,7 @@ public class ContaPagarAction extends AppAction  {
 				contextHelperPlc.getRequest().setAttribute("exibeLiquidaTitulo", "S");
 			}
 		}
+		contextHelperPlc.getRequest().setAttribute( PlcConstantes.ACAO.EXIBE_BT_IMPRIMIR, PlcConstantes.EXIBIR );
 	}
 	
 	/* (non-Javadoc)
@@ -80,6 +88,27 @@ public class ContaPagarAction extends AppAction  {
 		
 		return super.editaApos();
 	}
+	
+	@Override
+	protected String pesquisaApos() throws PlcException {
+		
+		ContaPagarEntity contaPagar = (ContaPagarEntity)entidadePlc;
+		
+		List<PlcBaseVO> itensPlc = logicaItensPlc.getItensPlc();
+		if( itensPlc != null ){
+			BigDecimal soma = BigDecimal.ZERO;
+			for (Iterator iterator = itensPlc.iterator(); iterator.hasNext();) {
+				ContaPagarEntity plcBaseVO = (ContaPagarEntity) iterator.next();
+				soma = soma.add( plcBaseVO.getValorPagar() );
+			}
+			
+			if( soma.compareTo(BigDecimal.ZERO) > 0  ){
+				setValorTotalSel(soma);
+			}
+		}
+		
+		return super.pesquisaApos();
+	}
 
 	/**
 	 * Monta o combo tipo plano de contas de acordo com o plano de contas selecionado
@@ -89,10 +118,27 @@ public class ContaPagarAction extends AppAction  {
 	public String montaComboTipoPlanoContas() throws PlcException{
 		
 		ContaPagarEntity contaPagar = (ContaPagarEntity)entidadePlc;
-		
-		if( contaPagar.getPlanoContas() != null ){
-			IAppFacade facade = (IAppFacade)getServiceFacade();
-			setListaTipoPlanoContas( facade.recuperaListaTipoPlanoContaByIdPlanoConta( contaPagar.getPlanoContas().getId() ) );
+
+		IAppFacade facade = (IAppFacade)getServiceFacade();
+		if( contaPagar != null ){
+			if( contaPagar.getPlanoContas() != null ){
+				setListaTipoPlanoContas( facade.recuperaListaTipoPlanoContaByIdPlanoConta( contaPagar.getPlanoContas().getId() ) );
+			}
+		}else{
+			List<PlcArgVO> arg = montaListaArgumentosPesquisa();
+			if( arg != null ){
+				String idAux = null;
+				for (PlcArgVO plcArgVO : arg) {
+					if( "planoContas".equals( plcArgVO.getNome() ) ){
+						idAux = plcArgVO.getValor();
+						break;
+					}
+				}
+				
+				if(idAux != null){
+					setListaTipoPlanoContas( facade.recuperaListaTipoPlanoContaByIdPlanoConta( new Long(idAux) ) );
+				}
+			}
 		}
 		
 		return NAVEGACAO.IND_MESMA_PAGINA;
@@ -137,6 +183,14 @@ public class ContaPagarAction extends AppAction  {
 	public void setListaTipoPlanoContas(
 			ArrayList<TipoPlanoContasEntity> listaTipoPlanoContas) {
 		this.listaTipoPlanoContas = listaTipoPlanoContas;
+	}
+
+	public BigDecimal getValorTotalSel() {
+		return valorTotalSel;
+	}
+
+	public void setValorTotalSel(BigDecimal valorTotalSel) {
+		this.valorTotalSel = valorTotalSel;
 	}
 	
 }
