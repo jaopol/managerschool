@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +16,6 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.ForeignKey;
 import org.hibernate.validator.Valid;
 
-import com.consisti.sisgesc.dominio.PeriodoAluno;
 import com.powerlogic.jcompany.dominio.valida.PlcValFormatoSimples;
 import com.powerlogic.jcompany.dominio.valida.PlcValidacaoUnificada;
 import com.powerlogic.jcompany.dominio.valida.PlcValFormatoSimples.FormatoSimples;
@@ -51,6 +48,10 @@ public abstract class TabelaPreco extends AppBaseEntity {
 	@PlcValFormatoSimples(formato=FormatoSimples.MAIUSCULO)
 	@Column (name = "OBSERVACAO", length=200)
 	private String observacao;
+	
+	@Column (name = "ANO_LETIVO", length=4 )
+	private Integer anoLetivo;
+	
 	
 	public Long getId() {
 		return id;
@@ -90,6 +91,14 @@ public abstract class TabelaPreco extends AppBaseEntity {
 
 	public void setTabelaPrecoDet(List<TabelaPrecoDet> tabelaPrecoDet) {
 		this.tabelaPrecoDet=tabelaPrecoDet;
+	}
+
+	public Integer getAnoLetivo() {
+		return anoLetivo;
+	}
+
+	public void setAnoLetivo(Integer anoLetivo) {
+		this.anoLetivo = anoLetivo;
 	}
 
 }

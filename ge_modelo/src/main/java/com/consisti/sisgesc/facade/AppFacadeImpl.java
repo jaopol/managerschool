@@ -128,14 +128,14 @@ public class AppFacadeImpl extends PlcFacadeImpl implements IAppFacade, IAppFaca
 		return dao.recuperaContrato(idContrato);
 	}
 
-	public boolean validaTabelaDuplicada(Long idTurma, Long idTabela) throws PlcException {
+	public boolean validaTabelaDuplicada(Long idTurma, Integer anoLetivo) throws PlcException {
 		TabelaPrecoDAO dao = (TabelaPrecoDAO) getDAO(TabelaPrecoDAO.class);
-		return dao.validaTabelaDuplicada(idTurma, idTabela);
+		return dao.validaTabelaDuplicada(idTurma, anoLetivo);
 	}
 	
-	public BigDecimal recuperaValorMensalidade( Long idTurma, String cargaHoraria ) throws PlcException{
+	public BigDecimal recuperaValorMensalidade( Long idTurma, String cargaHoraria, Integer anoLetivo ) throws PlcException{
 		TabelaPrecoDAO dao = (TabelaPrecoDAO) getDAO( TabelaPrecoDAO.class );
-		return dao.recuperaValorMensalidade(idTurma, cargaHoraria);
+		return dao.recuperaValorMensalidade(idTurma, cargaHoraria, anoLetivo);
 	}
 
 	public TurmaEntity recuperaIdadePermitida(Long idTurma) throws PlcException {

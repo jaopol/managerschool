@@ -33,10 +33,10 @@ import com.powerlogic.jcompany.dominio.tipo.PlcSimNao;
 @SuppressWarnings("serial")
 @NamedQueries({
 
-	@NamedQuery(name="ContaReceberEntity.querySel3", query="select new ContaReceberEntity(obj.id, obj.aluno.id , obj.aluno.nomeAluno, obj.formaRecebimento.id , obj.formaRecebimento.descricao, obj.valorTotal, obj.dataRecebimento, obj.dataVencimento, obj.outro, obj.numeroDocumento) from ContaReceberEntity obj left outer join obj.aluno left outer join obj.formaRecebimento order by obj.dataVencimento desc"),
+	@NamedQuery(name="ContaReceberEntity.querySel3", query="select new ContaReceberEntity(obj.id, obj.aluno.id , obj.aluno.nomeAluno, obj.formaRecebimento.id , obj.formaRecebimento.descricao, obj.valorTotal, obj.dataRecebimento, obj.dataVencimento, obj.outro, obj.numeroDocumento) from ContaReceberEntity obj left outer join obj.aluno left outer join obj.formaRecebimento where obj.tipoContaReceber <> 'M' order by obj.dataVencimento desc"),
 	@NamedQuery(name="ContaReceberEntity.querySel2", query="select new ContaReceberEntity(obj.id, obj.aluno.id , obj.aluno.nomeAluno, obj.banco.id , obj.banco.agencia, obj.valorTotal, obj.dataVencimento) from ContaReceberEntity obj left outer join obj.aluno left outer join obj.banco order by obj.id asc"),
 	@NamedQuery(name="ContaReceberEntity.queryMan", query="from ContaReceberEntity obj"),
-	@NamedQuery(name="ContaReceberEntity.querySel", query="select new ContaReceberEntity(obj.id, obj.aluno.id , obj.aluno.nomeAluno, obj.valorTotal, obj.dataVencimento, obj.dataRecebimento, obj.boletoGerado, obj.recebido, ban.bancoSuportado) from ContaReceberEntity obj left outer join obj.aluno left join obj.banco ban where obj.tipoContaReceber = 'M' order by obj.dataRecebimento, obj.aluno.nomeAluno, obj.dataVencimento "),
+	@NamedQuery(name="ContaReceberEntity.querySel", query="select new ContaReceberEntity(obj.id, obj.aluno.id , obj.aluno.nomeAluno, obj.valorTotal, obj.dataVencimento, obj.dataRecebimento, obj.boletoGerado, obj.recebido, ban.bancoSuportado, obj.numeroDocumento) from ContaReceberEntity obj left outer join obj.aluno left join obj.banco ban where obj.tipoContaReceber = 'M' order by obj.dataRecebimento, obj.aluno.nomeAluno, obj.dataVencimento "),
 	@NamedQuery(name="ContaReceberEntity.querySelLookup", query="select new ContaReceberEntity (obj.id, obj.aluno) from ContaReceberEntity obj where obj.id = ? order by obj.id asc")
 })
 public class ContaReceberEntity extends ContaReceber {
@@ -127,8 +127,8 @@ public class ContaReceberEntity extends ContaReceber {
 		}
 	}
 
-	//obj.id, obj.aluno.id , obj.aluno.nomeAluno, obj.valorTotal, obj.dataVencimento, obj.dataRecebimento, obj.boletoGerado, obj.recebido, obj.banco.bancoSuportado
-	public ContaReceberEntity(Long id, Long alunoId, String alunoNome, BigDecimal valorTotal, Date dataVencimento, Date dataRecebimento, PlcSimNao boletoGerado, PlcSimNao recebido, BancoSuportado bancoSuportado) {
+	//obj.id, obj.aluno.id , obj.aluno.nomeAluno, obj.valorTotal, obj.dataVencimento, obj.dataRecebimento, obj.boletoGerado, obj.recebido, obj.banco.bancoSuportado, obj.numeroDocumento
+	public ContaReceberEntity(Long id, Long alunoId, String alunoNome, BigDecimal valorTotal, Date dataVencimento, Date dataRecebimento, PlcSimNao boletoGerado, PlcSimNao recebido, BancoSuportado bancoSuportado, String numeroDocumento) {
 		setId(id);
 		if (getAluno() == null){
 			setAluno(new AlunoEntity());
@@ -152,6 +152,7 @@ public class ContaReceberEntity extends ContaReceber {
 			setRecebidoStr( "NÃO" );
 		}
 		setBancoSuportadoAux(bancoSuportado);
+		setNumeroDocumento(numeroDocumento);
 		
 	}
 	

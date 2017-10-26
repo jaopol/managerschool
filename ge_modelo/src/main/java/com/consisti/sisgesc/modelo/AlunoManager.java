@@ -42,6 +42,7 @@ public class AlunoManager extends AppManager {
 		Hibernate.initialize(aluno.getEndereco());
 		Hibernate.initialize(aluno.getFiliacaoMae());
 		Hibernate.initialize(aluno.getFiliacaoPai());
+		Hibernate.initialize(aluno.getContrato());
 		
 		super.recuperaApos(classe, id, entidade);
 	}

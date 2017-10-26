@@ -455,7 +455,7 @@ public class AlunoAction extends RelatorioActionPlc  {
 		 if ( StringUtils.isNotBlank( aluno.getCargaHoraria() ) && aluno.getTurma() != null ){
 			 
 			 IAppFacade fc = (IAppFacade)getServiceFacade();
-			 BigDecimal valorMensalidade = fc.recuperaValorMensalidade( aluno.getTurma().getId(), aluno.getCargaHoraria() ) ;
+			 BigDecimal valorMensalidade = fc.recuperaValorMensalidade( aluno.getTurma().getId(), aluno.getCargaHoraria(), Integer.parseInt(aluno.getAnoLetivo()) ) ;
 			 
 			 if( valorMensalidade != null ){
 				 aluno.setValorMensalidadeAluno( valorMensalidade );

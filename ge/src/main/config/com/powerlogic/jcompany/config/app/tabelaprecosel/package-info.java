@@ -16,6 +16,7 @@
 	selecao = @PlcConfigSelecao(
 				navegador = @PlcConfigNavegador(numPorPagina=20, dinamicoTipo=com.powerlogic.jcompany.config.controle.colaboracao.PlcConfigNavegador.DinamicoTipo.DINAMICO_PAGINA),				argumentos = {
 						@PlcConfigArgumento(propriedade="descricao", operador=Operador.LIKE_PERC_FINAL, formato=Formato.STRING),
+						@PlcConfigArgumento(propriedade="anoLetivo", operador=Operador.IGUAL_A, formato=Formato.LONG),
 						@PlcConfigArgumento(propriedade="turma", operador=Operador.IGUAL_A, formato=Formato.STRING)
 			})
 

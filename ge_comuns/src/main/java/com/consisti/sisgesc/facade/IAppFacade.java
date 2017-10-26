@@ -117,17 +117,18 @@ public interface IAppFacade extends IPlcFacade {
 
 	byte[] recuperaContratoAluno(Long idContrato) throws PlcException;
 
-	boolean validaTabelaDuplicada(Long idTurma, Long idTabela) throws PlcException;
+	boolean validaTabelaDuplicada(Long idTurma, Integer anoLetivo) throws PlcException;
 	
 	/**
 	 * Recupera o valor da mensalidade pela turma e carga horaria
 	 * @param idTurma
 	 * @param cargaHoraria
+	 * @param anoLetivo 
 	 * @return
 	 * @throws PlcException 
 	 * @throws PlcException
 	 */
-	BigDecimal recuperaValorMensalidade( Long idTurma, String cargaHoraria ) throws PlcException;
+	BigDecimal recuperaValorMensalidade( Long idTurma, String cargaHoraria, Integer anoLetivo ) throws PlcException;
 	
 	/**
 	 * Recupera a idade maxima e minima permitida

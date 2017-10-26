@@ -17,25 +17,21 @@ public class TabelaPrecoDAO extends AppBaseDAO {
 	 * @author douglas.mendes
 	 * @param idTurma
 	 * @param periodo
-	 * @param idTabela 
+	 * @param anoLetivo 
 	 * @return
 	 * @throws PlcException 
 	 */
-	public boolean validaTabelaDuplicada(Long idTurma, Long idTabela) throws PlcException {
+	public boolean validaTabelaDuplicada(Long idTurma, Integer anoLetivo) throws PlcException {
 		
 		Session sess = getSession();
 		
-		String hql = "select obj.id from TabelaPrecoEntity obj where obj.turma.id= :IDTURMA and obj.id <> :IDTABELA";
+		StringBuffer hql = new StringBuffer();
+		hql.append( "select obj.id from TabelaPrecoEntity obj where obj.turma.id= :idTurma and obj.anoLetivo =:anoLetivo " );
 		
-		if (idTabela==null){
-			hql = hql.replace("and obj.id <> :IDTABELA", "");
-		}
-		
-		Query query = sess.createQuery(hql);
-		query.setLong("IDTURMA", idTurma);
-		if (idTabela!=null){
-			query.setLong("IDTABELA", idTabela);
-		}
+		Query query = sess.createQuery(hql.toString());
+		query.setLong("idTurma", idTurma);
+		query.setLong("anoLetivo", anoLetivo);
+
 		return query.uniqueResult()!=null ? true : false;
 	}
 
@@ -47,14 +43,18 @@ public class TabelaPrecoDAO extends AppBaseDAO {
 	 * @return
 	 * @throws PlcException
 	 */
-	public BigDecimal recuperaValorMensalidade( Long idTurma, String cargaHoraria ) throws PlcException{
+	public BigDecimal recuperaValorMensalidade( Long idTurma, String cargaHoraria, Integer anoLetivo ) throws PlcException{
 		
 		StringBuilder hql = new StringBuilder(); 
 		hql.append( " select obj.valor " );
 		hql.append( " from TabelaPrecoDetEntity obj " );
 		hql.append( " join obj.tabelaPreco tab " );
-		hql.append( " where tab.turma.id= :idTurma and obj.tempoHrs = :cargaHoraria " );
+		hql.append( " where tab.turma.id= :idTurma " );
+		hql.append(	" and obj.tempoHrs = :cargaHoraria " );
+		hql.append(	" and tab.anoLetivo = :anoLetivo " );
 		
-		return (BigDecimal) getSession().createQuery( hql.toString() ).setLong( "idTurma", idTurma).setString( "cargaHoraria", cargaHoraria ).uniqueResult();
+		return (BigDecimal) getSession().createQuery( hql.toString() )
+			.setLong( "idTurma", idTurma).setString( "cargaHoraria", cargaHoraria )
+			.setInteger("anoLetivo", anoLetivo).uniqueResult();
 	}
 }

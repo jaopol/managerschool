@@ -12,6 +12,9 @@
 		<plcf:tabela tituloChave="selecao.lista.titulo" rendered="#{not empty plcLogicaItens.itensPlc}"> 
 			<plcf:linha styleClass="ui-widget-header"> 
 				<plcf:celula header="true" styleClass="cabecalho"> 
+					<plcf:titulo tituloChave="label.numeroDocumento">Aluno</plcf:titulo> 
+				</plcf:celula>  
+				<plcf:celula header="true" styleClass="cabecalho"> 
 					<plcf:titulo tituloChave="label.aluno" propOrdenacao="aluno.nomeAluno" ordem="1">Aluno</plcf:titulo> 
 				</plcf:celula>  
 				<plcf:celula header="true" styleClass="cabecalho"> 
@@ -35,6 +38,9 @@
 			</plcf:linha>  
 			<plcf:iteracao id="plcLogicaItens" value="#{plcLogicaItens.itensPlc}"> 
 				<plcf:linhaSelecao id="linhaSel" action="contareceberman" linkEdicao="#{item.linkEdicaoPlc}" propAgregada="extratocontas"> 
+					<plcf:celula styleClass="campo"> 
+						<plcf:exibe value="#{item.numeroDocumento}">numeroDocumento</plcf:exibe> 
+					</plcf:celula>  
 					<plcf:celula styleClass="campo"> 
 						<plcf:exibe value="#{item.aluno}">aluno</plcf:exibe> 
 					</plcf:celula>  
@@ -62,10 +68,11 @@
 			<plcf:linha>&nbsp;</plcf:linha>
 			<plcf:linha inlineStyle="background:#D4E0E4;">
 				<plcf:celula>
-					<plcf:titulo tituloChave="label.totalPesquisaContaReceber"/>
+					<plcf:titulo tituloChave="label.totalPesquisaContaReceber" inlineStyle="color: black;"/>
 				</plcf:celula>
+				<plcf:celula>&nbsp;</plcf:celula>
 				<plcf:celula columnSpan="6">
-					<plcf:exibe id="valorTotalPesquisa" value="#{plcAction.valorTotalPesquisa}" />
+					<plcf:exibe id="valorTotalPesquisa" value="#{plcAction.valorTotalPesquisa}" inlineStyle="color: black;" />
 				</plcf:celula>
 			</plcf:linha>
 			

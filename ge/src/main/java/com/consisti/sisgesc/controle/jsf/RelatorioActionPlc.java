@@ -256,23 +256,28 @@ public class RelatorioActionPlc extends AppAction {
          
          
     	 try {
-        	 HttpServletResponse response = (HttpServletResponse) contextHelperPlc.getResponse();
+    		 FacesContext context = FacesContext.getCurrentInstance();
+    		 
+        	 HttpServletResponse response = (HttpServletResponse) context.getExternalContext().getResponse();
         	 response.setContentType("application/pdf");  
         	 response.setContentLength(relatorio.length);  
-        	 response.setHeader("Content-Disposition",   
-                     "attachment; filename=\"" + nomeRelatorio.replace("jasper", "pdf")+ "\"");    
+        	 response.setHeader("Content-Disposition", "attachment; filename=\"" + nomeRelatorio.replace("jasper", "pdf")+ "\"");
+
              ServletOutputStream saidaDoDownload;
 				saidaDoDownload = response.getOutputStream();
              
              try {  
             	 saidaDoDownload.write(relatorio, 0, relatorio.length);
+            	 //context.getApplication().getStateManager().saveView(context);  
+            	 context.renderResponse();
+                 context.responseComplete();    
              
 	         } catch (IOException e) {
 	                 throw new PlcException(e);
 	         }
 	         finally{
-	        	 //saidaDoDownload.flush();  
-            	 //saidaDoDownload.close(); 
+	        	 saidaDoDownload.flush();  
+            	 saidaDoDownload.close(); 
             	 response.getOutputStream().flush();
             	 response.getOutputStream().close();
             	 //response.flushBuffer();

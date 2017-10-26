@@ -34,9 +34,12 @@ public class TabelaPrecoAction extends AppAction  {
 	 */
 	private boolean validaDuplicado() throws PlcException {
 		
-		IAppFacade facade = (IAppFacade) getServiceFacade();
-		TabelaPrecoEntity tabela = (TabelaPrecoEntity) entidadePlc;
-		return facade.validaTabelaDuplicada(tabela.getTurma().getId(), tabela.getId());
+		if( PlcConstantesComuns.MODOS.MODO_INCLUSAO.equals( controleConversacaoPlc.getModoPlc() ) ){
+			IAppFacade facade = (IAppFacade) getServiceFacade();
+			TabelaPrecoEntity tabela = (TabelaPrecoEntity) entidadePlc;
+			return facade.validaTabelaDuplicada(tabela.getTurma().getId(), tabela.getAnoLetivo());
+		}
+		return false;
 		
 	}
 	

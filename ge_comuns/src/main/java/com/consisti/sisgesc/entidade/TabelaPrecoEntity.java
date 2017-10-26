@@ -20,7 +20,7 @@ import org.hibernate.annotations.AccessType;
 @SuppressWarnings("serial")
 @NamedQueries({
 	@NamedQuery(name="TabelaPrecoEntity.queryMan", query="from TabelaPrecoEntity obj"),
-	@NamedQuery(name="TabelaPrecoEntity.querySel", query="select new TabelaPrecoEntity(obj.id, obj.descricao, obj.turma.id , obj.turma.descricao, obj.observacao) from TabelaPrecoEntity obj left outer join obj.turma order by obj.descricao asc"),
+	@NamedQuery(name="TabelaPrecoEntity.querySel", query="select new TabelaPrecoEntity(obj.id, obj.descricao, obj.turma.id , obj.turma.descricao, obj.observacao, obj.anoLetivo) from TabelaPrecoEntity obj left outer join obj.turma order by obj.anoLetivo desc, obj.descricao asc"),
 	@NamedQuery(name="TabelaPrecoEntity.querySelLookup", query="select new TabelaPrecoEntity (obj.id, obj.descricao) from TabelaPrecoEntity obj where obj.id = ? order by obj.id asc")
 })
 public class TabelaPrecoEntity extends TabelaPreco {
@@ -54,5 +54,17 @@ public class TabelaPrecoEntity extends TabelaPreco {
 		getTurma().setId(turmaId);
 		getTurma().setDescricao(turmaDescricao);
 		setObservacao(observacao);
+	}
+	
+	public TabelaPrecoEntity(Long id, String descricao, Long turmaId, String turmaDescricao, String observacao, Integer anoLetivo) {
+		setId(id);
+		setDescricao(descricao);
+		if (getTurma() == null){
+			setTurma(new TurmaEntity());
+		}
+		getTurma().setId(turmaId);
+		getTurma().setDescricao(turmaDescricao);
+		setObservacao(observacao);
+		setAnoLetivo(anoLetivo);
 	}
 }

@@ -211,14 +211,14 @@ public class AppAction extends PlcBaseJsfAction {
 		
 		exibeGravar = exibeGravar == null ? contextHelperPlc.getRequest().getParameter("exibeBtGrava") : exibeGravar;
 		
-		//validaUrlAcesso();       
+		validaUrlAcesso();       
 		
 		contextHelperPlc.getRequest().setAttribute( PlcConstantes.ACAO.EXIBE_BT_CLONAR, PlcConstantes.NAO_EXIBIR );
 		contextHelperPlc.getRequest().setAttribute( PlcConstantes.ACAO.EXIBE_BT_VISUALIZA_DOCUMENTO, PlcConstantes.NAO_EXIBIR );
 		contextHelperPlc.getRequest().setAttribute( PlcConstantes.ACAO.EXIBE_BT_IMPRIMIR, PlcConstantes.NAO_EXIBIR );
 		contextHelperPlc.getRequest().setAttribute( PlcConstantes.ACAO.EXIBE_BT_PESQUISAR_RSS, PlcConstantes.NAO_EXIBIR );
 		
-		//trataPermissaoUsuario();
+		trataPermissaoUsuario();
 		
 		if( PlcConstantesComuns.MODOS.MODO_INCLUSAO.equals( controleConversacaoPlc.getModoPlc() ) ){
 			contextHelperPlc.getRequest().setAttribute( PlcConstantes.ACAO.EXIBE_BT_EXCLUIR, PlcConstantes.NAO_EXIBIR );

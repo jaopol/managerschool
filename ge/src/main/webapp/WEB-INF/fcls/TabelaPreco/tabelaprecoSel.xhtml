@@ -17,6 +17,9 @@
 				<plcf:celula header="true" styleClass="cabecalho"> 
 					<plcf:titulo tituloChave="label.turma">Turma</plcf:titulo> 
 				</plcf:celula>  
+				<plcf:celula header="true" styleClass="cabecalho"> 
+					<plcf:titulo tituloChave="label.anoLetivo">anoLetivo</plcf:titulo> 
+				</plcf:celula>  
 			</plcf:linha>  
 			<plcf:iteracao id="plcLogicaItens" value="#{plcLogicaItens.itensPlc}"> 
 				<plcf:linhaSelecao id="linhaSel" action="${sessionScope.actionUltManPlc}" linkEdicao="#{item.linkEdicaoPlc}"> 
@@ -25,6 +28,9 @@
 					</plcf:celula>  
 					<plcf:celula styleClass="campo"> 
 						<plcf:exibe value="#{item.turma}">turma</plcf:exibe> 
+					</plcf:celula>  
+					<plcf:celula styleClass="campo"> 
+						<plcf:exibe value="#{item.anoLetivo}">anoLetivo</plcf:exibe> 
 					</plcf:celula>  
 				</plcf:linhaSelecao> 
 			</plcf:iteracao> 

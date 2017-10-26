@@ -55,7 +55,7 @@ public abstract class Contrato extends AppBaseEntity {
 	@Column (name = "contrato_aluno", columnDefinition="blob(6M)")
 	private byte[] contrato; 
 	
-	@OneToMany (targetEntity = AditivoEntity.class, fetch = FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="contrato")
+	@OneToMany (targetEntity = AditivoEntity.class, fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy="contrato")
 	@ForeignKey(name="FK_ADITIVO_ALUNO")
 	@Valid
 	@JoinColumn (name = "ID_CONTRATO")

@@ -16,8 +16,12 @@
 					<plcf:texto id="descricao" value="#{plcEntidade.descricao}" ajudaChave="ajuda.descricao"/> 
 				</plcf:celula>  
 				<plcf:celula> 
+					<plcf:titulo tituloChave="label.anoLetivo"/>  
+					<plcf:texto id="anoLetivo" value="#{plcEntidade.anoLetivo}" ajudaChave="ajuda.anoLetivo" disabled="#{plcEntidade.id != null}"/> 
+				</plcf:celula> 
+				<plcf:celula> 
 					<plcf:titulo tituloChave="label.turma"/>  
-					<plcf:comboDinamico id="turma" value="#{plcEntidade.turma}" dominio="TurmaEntity" exibeBranco="S" ajudaChave="ajuda.turma"/> 
+					<plcf:comboDinamico id="turma" value="#{plcEntidade.turma}" dominio="TurmaEntity" exibeBranco="S" ajudaChave="ajuda.turma" disabled="#{plcEntidade.id != null}"/> 
 				</plcf:celula> 
 			</plcf:linha>  
 			<plcf:linha> 
